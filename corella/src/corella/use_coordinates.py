@@ -1,3 +1,4 @@
+import pandas as pd
 from .check_coordinates import check_coordinates
 
 def use_coordinates(dataframe=None,
@@ -5,27 +6,25 @@ def use_coordinates(dataframe=None,
                     decimalLongitude=None,
                     geodeticDatum=None,
                     coordinateUncertaintyInMeters=None,
-                    coordinatePrecision=None,
-                    assign = True):
+                    coordinatePrecision=None):
     """
     Checks for location information, as well as uncertainty and coordinate reference system.  
     Also runs data checks on coordinate validity.
 
     Parameters
     ----------
-        decimalLatitude: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents latitude (unit in degrees).
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check
+        decimalLatitude: ``str``
+            A column name (``str``) that contains your latitudes (units in degrees).
         decimalLongitude: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents longitude (unit in degrees).
-        geodeticDatum: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents the coordinate reference system (CRS).
-        coordinateUncertaintyInMeters: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents the uncertainty of the instrument measuring 
-            the latitude and longitude (unit is meters).
+            A column name (``str``) that contains your longitudes (units in degrees).
+        geodeticDatum: ``str`` 
+            A column name (``str``) or a ``str`` with the name of a valid Coordinate 
+            Reference System (CRS).
+        coordinateUncertaintyInMeters: ``str``, ``float`` or ``int`` 
+            A column name (``str``) or a ``str`` with the name of a valid Coordinate 
+            Reference System (CRS).
         coordinatePrecision: ``str`` or ``pandas.Series``
             Either a column name (``str``) or a column from the ``occurrences`` argument 
             (``pandas.Series``) that represents the inherent uncertainty of your measurement 
@@ -33,57 +32,49 @@ def use_coordinates(dataframe=None,
 
     Returns
     -------
-        Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        ``pandas.DataFrame`` with the updated data.
     """
 
-    # make copy of occurrences
-    temp_occurrences = self.occurrences.copy()
+    # mapping column names
+    mapping = {
+        decimalLatitude: 'decimalLatitude',
+        decimalLongitude: 'decimalLongitude', 
+        geodeticDatum: 'geodeticDatum',
+        coordinatePrecision: 'coordinatePrecision',
+        coordinateUncertaintyInMeters: 'coordinateUncertaintyInMeters'
+    }
 
-    # mapping here for later
-    mapping = {}
+    # accepted formats for inputs
+    accepted_formats = {
+        decimalLatitude: [float],
+        decimalLongitude: [float], 
+        geodeticDatum: [str],
+        coordinatePrecision: [float],
+        coordinateUncertaintyInMeters: [float,int]
+    }
 
+    # check if each variable is None
     if all([v is None for v in [decimalLatitude,decimalLongitude,geodeticDatum,coordinatePrecision,coordinateUncertaintyInMeters]]):
         raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(self.use_coordinates()) for valid arguments.")
 
-    # check if each variable is None
-    if decimalLatitude is not None:
-        mapping[decimalLatitude.name] = 'decimalLatitude'
-
-    if decimalLongitude is not None:
-        mapping[decimalLongitude.name] = 'decimalLongitude'
-
-    if geodeticDatum is not None:
-        if type(geodeticDatum) is pd.core.series.Series:
-            mapping[geodeticDatum.name] = 'geodeticDatum'
-        elif type(geodeticDatum) is str:
-            temp_occurrences['geodeticDatum'] = geodeticDatum
-        else:
-            raise ValueError("Only a string or pandas series is accepted for geodeticDatum")
-
-    if coordinateUncertaintyInMeters is not None:
-        if type(coordinateUncertaintyInMeters) is pd.core.series.Series:
-            mapping[coordinateUncertaintyInMeters.name] = 'coordinateUncertaintyInMeters'
-        elif (type(coordinateUncertaintyInMeters) is int or type(coordinateUncertaintyInMeters) is float):
-            temp_occurrences['coordinateUncertaintyInMeters'] = coordinateUncertaintyInMeters
-        else:
-            raise ValueError("Only an int, float or pandas series is accepted for coordinateUncertaintyInMeters")
-
-    if coordinatePrecision is not None:
-        if type(coordinatePrecision) is pd.core.series.Series:
-            mapping[coordinatePrecision.name] = 'coordinatePrecision'
-        elif (type(coordinatePrecision) is int or type(coordinatePrecision) is float):
-            temp_occurrences['coordinatePrecision'] = coordinatePrecision
-        else:
-            raise ValueError("Only an int, float or pandas series is accepted for coordinatePrecision")
+    # loop over all variables with following logic:
+    # 1. check if var is None
+    # 2.   If var is not none, and not in the column names, assume user has given us a value for the column and add it; 
+    #        delete entry in dictionary, as column does not need to be renamed 
+    for var in [decimalLatitude,decimalLongitude,geodeticDatum,coordinatePrecision,coordinateUncertaintyInMeters]:
+        if var is not None:
+            if var not in dataframe.columns:
+                if type(var) in accepted_formats[var]:
+                    dataframe[mapping[var]] = var
+                    del mapping[var]
+                else:
+                    raise ValueError("Only a {} is accepted for {}".format(accepted_formats[var],var))
 
     # rename all necessary columns
-    temp_occurrences = temp_occurrences.rename(columns=mapping)
+    dataframe = dataframe.rename(columns=mapping)
 
     # check all required variables
-    check_coordinates(dataframe=temp_occurrences)
+    check_coordinates(dataframe=dataframe)
 
     # set new occurrences to object
-    if assign:
-        self.occurrences = temp_occurrences
-    else:
-        print(temp_occurrences)
+    return dataframe

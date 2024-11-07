@@ -1,5 +1,6 @@
 # functions in package
-# from .dwca_build import dwca
+from .check_coordinates import check_coordinates
+from .check_datetime import check_datetime
 
 # get all functions to display
 # __all__=["dwca"]

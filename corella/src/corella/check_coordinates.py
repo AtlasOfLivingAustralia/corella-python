@@ -1,5 +1,4 @@
-from pandas.api.types import is_numeric_dtype
-from pandas.api.types import is_string_dtype
+from pandas.api.types import is_numeric_dtype,is_string_dtype
 from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS
 
 def check_coordinates(dataframe=None):
@@ -9,13 +8,19 @@ def check_coordinates(dataframe=None):
 
     Parameters
     ----------
-        None
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check.
 
     Returns
     -------
-        If something is not valid, raises a ``ValueError``.
-        Else, returns None.
+        Raises a ``ValueError``, else, return None.
     """
+    # First, check if a dataframe is provided
+    if dataframe is None:
+        raise ValueError("Please provide a dataframe to this function.")
+
+    # make a list of errors to return
+    errors = []
 
     # check data types for location data
     for c in GEO_REQUIRED_DWCA_TERMS["Australia"]:
@@ -23,28 +28,51 @@ def check_coordinates(dataframe=None):
             data_type = dataframe[c].dtypes
             
             if c in ['decimalLatitude','decimalLongitude','coordinatePrecision'] and not is_numeric_dtype(dataframe[c]):
-                raise ValueError("Column {} needs to be of type float.  Currently, it is {}.".format(c,data_type))
+                errors.append("Column {} needs to be of type float.  Currently, it is {}.".format(c,data_type))
             else:
                 pass
 
             if c == 'coordinateUncertaintyInMeters' and not is_numeric_dtype(dataframe[c]):
-                raise ValueError("Column {} needs to be of type float or type int.  Currently, it is {}.".format(c,data_type))
+                errors.append("Column {} needs to be of type float or type int.  Currently, it is {}.".format(c,data_type))
             else:
                 pass
 
             if c == 'geodeticDatum' and not is_string_dtype(dataframe[c]):
-                raise ValueError("Column {} needs to be of type str.  Currently, it is {}.".format(c,data_type))
+                errors.append("Column {} needs to be of type str.  Currently, it is {}.".format(c,data_type))
             else:
                 pass
-        # elif c in ['geodeticDatum','coordinateUncertaintyInMeters','coordinatePrecision']:
-        #     print('We noticed that you have not provided a {}.  We will then assume the default is {}.'.format(c,defaults[c]))
                 
+    # set ranges for easy looping
+    ranges = {
+        'decimalLatitude': [-90,90],
+        'decimalLongitude': [-180,180]
+    }
+
     # check range of lat/long are correct
-    lat_valid_count = dataframe['decimalLatitude'].astype(float).between(-90, 90, inclusive='both').sum()
-    lon_valid_count = dataframe['decimalLongitude'].astype(float).between(-180, 180, inclusive='both').sum()
+    for var in ['decimalLatitude','decimalLongitude']:
 
-    if lat_valid_count < len(dataframe['decimalLatitude']):
-        raise ValueError("There are some invalid latitude values.  They should be between -90 and 90.")
+        # check for any entries that aren't valid
+        if var in dataframe.columns:
 
-    if lon_valid_count < len(dataframe['decimalLongitude']):
-        raise ValueError("There are some invalid longitude values.  They should be between -180 and 180.")
+            valid_count = dataframe[var].astype(float).between(ranges[var][0], ranges[var][1], inclusive='both').sum()
+
+            # return errors
+            if valid_count < len(dataframe[var]):
+                errors.append("There are some invalid {} values.  They should be between {} and {}.".format(var,ranges[var][0],ranges[var][1]))
+
+    # make sure that any uncertainty provided is above 0
+    for var in ['coordinateUncertaintyInMeters','coordinatePrecision']:
+    
+        if var in dataframe.columns and is_numeric_dtype(dataframe[var]):
+
+            valid_count_df = dataframe[var] > 0
+            valid_count = valid_count_df.sum()
+
+            # return errors
+            if valid_count < len(dataframe[var]):
+                errors.append("There are some invalid {} values.  They should be above 0.".format(var))
+          
+    # return both errors 
+    if errors is not None:
+        return errors
+    return None
