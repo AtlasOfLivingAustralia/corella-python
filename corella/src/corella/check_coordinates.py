@@ -1,7 +1,9 @@
-from pandas.api.types import is_numeric_dtype,is_string_dtype
+from .common_functions import check_is_numeric,check_is_string
 from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS
+from pandas.api.types import is_numeric_dtype
 
-def check_coordinates(dataframe=None):
+def check_coordinates(dataframe=None,
+                      errors=[]):
     """
     Checks whether or not your occurrences data complies with 
     Darwin Core standards.
@@ -10,37 +12,28 @@ def check_coordinates(dataframe=None):
     ----------
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check.
+        errors: ``list``
+            A list of extant errors, if applicable
 
     Returns
     -------
-        Raises a ``ValueError``, else, return None.
+        A list of errors; else, return None.
     """
     # First, check if a dataframe is provided
     if dataframe is None:
         raise ValueError("Please provide a dataframe to this function.")
 
-    # make a list of errors to return
-    errors = []
-
     # check data types for location data
     for c in GEO_REQUIRED_DWCA_TERMS["Australia"]:
         if c in dataframe.columns:
-            data_type = dataframe[c].dtypes
             
-            if c in ['decimalLatitude','decimalLongitude','coordinatePrecision'] and not is_numeric_dtype(dataframe[c]):
-                errors.append("Column {} needs to be of type float.  Currently, it is {}.".format(c,data_type))
-            else:
-                pass
+            # first, check for numeric columns
+            if c in ['decimalLatitude','decimalLongitude','coordinatePrecision','coordinateUncertaintyInMeters']:
+                errors = check_is_numeric(dataframe=dataframe,column_name=c,errors=errors)
 
-            if c == 'coordinateUncertaintyInMeters' and not is_numeric_dtype(dataframe[c]):
-                errors.append("Column {} needs to be of type float or type int.  Currently, it is {}.".format(c,data_type))
-            else:
-                pass
-
-            if c == 'geodeticDatum' and not is_string_dtype(dataframe[c]):
-                errors.append("Column {} needs to be of type str.  Currently, it is {}.".format(c,data_type))
-            else:
-                pass
+            # then, check for string columns
+            if c == 'geodeticDatum': 
+                errors = check_is_string(dataframe=dataframe,column_name=c,errors=errors)
                 
     # set ranges for easy looping
     ranges = {
@@ -48,31 +41,29 @@ def check_coordinates(dataframe=None):
         'decimalLongitude': [-180,180]
     }
 
-    # check range of lat/long are correct
-    for var in ['decimalLatitude','decimalLongitude']:
+    # check if there were errors for decimalLatitude and decimalLongitude
+    if not any(x in errors for x in ['decimalLatitude','decimalLongitude','coordinateUncertaintyInMeters','coordinatePrecision']):
 
-        # check for any entries that aren't valid
-        if var in dataframe.columns:
+        # check range of lat/long are correct
+        for var in ['decimalLatitude','decimalLongitude','coordinateUncertaintyInMeters','coordinatePrecision']:
 
-            valid_count = dataframe[var].astype(float).between(ranges[var][0], ranges[var][1], inclusive='both').sum()
+            # check for any entries that aren't valid
+            if var in dataframe.columns and is_numeric_dtype(dataframe[var]):
 
-            # return errors
-            if valid_count < len(dataframe[var]):
-                errors.append("There are some invalid {} values.  They should be between {} and {}.".format(var,ranges[var][0],ranges[var][1]))
-
-    # make sure that any uncertainty provided is above 0
-    for var in ['coordinateUncertaintyInMeters','coordinatePrecision']:
-    
-        if var in dataframe.columns and is_numeric_dtype(dataframe[var]):
-
-            valid_count_df = dataframe[var] > 0
-            valid_count = valid_count_df.sum()
-
-            # return errors
-            if valid_count < len(dataframe[var]):
-                errors.append("There are some invalid {} values.  They should be above 0.".format(var))
+                if var in ['decimalLatitude','decimalLongitude']:
+                    valid_count = dataframe[var].astype(float).between(ranges[var][0], ranges[var][1], inclusive='both').sum()
+                    if valid_count < len(dataframe[var]):
+                        errors.append("There are some invalid {} values.  They should be between {} and {}.".format(var,ranges[var][0],ranges[var][1]))
           
-    # return both errors 
+                else:
+                    valid_count_df = dataframe[var] > 0
+                    valid_count = valid_count_df.sum()
+
+                    # return errors
+                    if valid_count < len(dataframe[var]):
+                        errors.append("There are some invalid {} values.  They should be above 0.".format(var))
+          
+    # return errors
     if errors is not None:
         return errors
     return None

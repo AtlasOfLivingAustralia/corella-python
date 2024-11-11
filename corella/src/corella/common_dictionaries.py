@@ -26,6 +26,7 @@ TAXON_TERMS = {
         'records_with_taxonomy_count': 'records_with_taxonomy_count',
         'records_with_recorded_by_count': 'records_with_recorded_by_count',
 '''
+
 required_columns_event = [
     "eventDate",
     "parentEventID",
@@ -33,6 +34,15 @@ required_columns_event = [
     "Event",
     "samplingProtocol"
 ]
+
+continents = ["Africa","Antarctica","Asia","Europe","North America","Oceania","South America"]
+
+unique_messages = {
+    'organismQuantity': 'The organismQuantity must be a string, and must give a quantity to measurement type.',
+    'organismQuantityType': 'The organismQuantity must be a string, and must give context to the field organismQuantity.'
+}
+
+
 
 REPORT_TERMS = {
     "Australia": {

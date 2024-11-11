@@ -1,5 +1,11 @@
 from .get_dwc_noncompliant_terms import get_dwc_noncompliant_terms
+from .check_abundance import check_abundance
+from .check_basisOfRecord import check_basisOfRecord
+from .check_coordinates import check_coordinates
+from .check_datetime import check_datetime
+from .check_locality import check_locality
 from .check_occurrenceIDs import check_occurrenceIDs
+from .check_scientificName import check_scientificName
 
 def check_occurrences(dataframe=None):
         """
@@ -15,22 +21,21 @@ def check_occurrences(dataframe=None):
             Raises a ``ValueError`` if something is not valid.
         """
 
+        # initialise errors 
+        errors = []
+
         # first, check for all terms that are not compliant
         vocab_check = get_dwc_noncompliant_terms(dataframe = dataframe)
         if len(vocab_check) > 0:
-            raise ValueError("Your column names do not comply with the DwC standard.")
+            errors.append("Your column names do not comply with the DwC standard.")
         
-        # check for presence of occurrenceID
-        if 'occurrenceID' not in list(dataframe):
-            raise ValueError("You need to add unique identifiers into your occurrences.")
-        
-        # check for unique ids
-        unique_id_check = check_occurrenceIDs(dataframe=dataframe)
-        if not unique_id_check:
-            list_event_ids = list(dataframe['occurrenceID'])
-            duplicates = [x for x in list_event_ids if list_event_ids.count(x) >= 2]
-            raise ValueError("There are some duplicate eventIDs: {}".format(duplicates))
-        
-        # now, run all available checks
-        
-        return True
+        # run all checks
+        errors = check_abundance(dataframe=dataframe,errors=errors)
+        errors = check_basisOfRecord(dataframe=dataframe,errors=errors)
+        errors = check_coordinates(dataframe=dataframe,errors=errors)
+        errors = check_datetime(dataframe=dataframe,errors=errors)
+        errors = check_locality(dataframe=dataframe,errors=errors)
+        errors = check_occurrenceIDs(dataframe=dataframe,errors=errors)
+        errors = check_scientificName(dataframe=dataframe,errors=errors)
+
+        # print out message to screen

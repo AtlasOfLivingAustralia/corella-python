@@ -1,7 +1,8 @@
 import datetime
-import pandas as pd
+from .common_functions import check_is_datetime,check_is_numeric
 
-def check_datetime(dataframe=None):
+def check_datetime(dataframe=None,
+                   errors=[]):
     """
     Checks whether or not your event dates complies with 
     Darwin Core standards.
@@ -20,14 +21,9 @@ def check_datetime(dataframe=None):
     if dataframe is None:
         raise ValueError("Please provide a dataframe to this function.")
 
-    # accepted formats for inputs
-    accepted_formats = {
-        'eventDate': [datetime.datetime,pd._libs.tslibs.timestamps.Timestamp],
-        'year': [int], 
-        'month': [int],
-        'day': [int],
-        'eventTime': [datetime.datetime,pd._libs.tslibs.timestamps.Timestamp]
-    }
+    # first, raise an error if there is not an eventDate column
+    if 'eventDate' not in dataframe.columns:
+        errors.append('eventDate is a required field. Please ensure it is in your dataframe')
 
     # accepted ranges for dates and times
     ranges_datetimes = {
@@ -38,27 +34,25 @@ def check_datetime(dataframe=None):
         'eventTime': [datetime.datetime.fromtimestamp(0).time,datetime.datetime.now().time]
     }
 
-    # first, raise an error if there is not an eventDate column
-    if 'eventDate' not in dataframe.columns:
-        raise ValueError('eventDate is a required field. Please ensure it is in your dataframe')
-
-    errors = []
-
     # check values 
-    for var in accepted_formats.keys():
+    for var in ranges_datetimes.keys():
 
+        # check if in columns
         if var in dataframe.columns:
-            column_types = list(set(list(type(x) for x in list(dataframe[var]))))
-            if len(column_types) > 1:
-                errors.append("There are multiple types in the {} column - ensure that there are only {} variable types".format(var,accepted_formats[var]))
-            else:
-                if column_types[0] not in accepted_formats[var]:
-                    errors.append("The accepted type for the {} column is {}.  Yours is currently in {}.".format(var,accepted_formats[var],column_types))
-                else:
-                    valid_count = dataframe[var].between(ranges_datetimes[var][0], ranges_datetimes[var][1], inclusive='both').sum()
 
-                    # return errors
-                    if valid_count < len(dataframe[var]):
-                        errors.append("There are some invalid {} values.  They should be between {} and {}.".format(var,ranges_datetimes[var][0],ranges_datetimes[var][1]))
+            # check type of variable first
+            if var in ['eventDate','eventTime']:
+                errors = check_is_datetime(dataframe=dataframe,column_name=var,errors=errors)
+            else:
+                errors = check_is_numeric(dataframe=dataframe,column_name=var,errors=errors)
             
-    return errors
+            # if the data type in column is correct, see if there are invalid values
+            if not any(var in x for x in errors):
+                valid_count = dataframe[var].between(ranges_datetimes[var][0], ranges_datetimes[var][1], inclusive='both').sum()
+                if valid_count < len(dataframe[var]):
+                    errors.append("There are some invalid {} values.  They should be between {} and {}.".format(var,ranges_datetimes[var][0],ranges_datetimes[var][1]))
+
+    # return errors if there are any; else, return None if everything is ok  
+    if errors is not None:
+        return errors  
+    return None
