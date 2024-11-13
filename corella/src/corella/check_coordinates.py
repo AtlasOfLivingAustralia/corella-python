@@ -41,6 +41,10 @@ def check_coordinates(dataframe=None,
         'decimalLongitude': [-180,180]
     }
 
+    # check for both lat and long
+    if not all(x in dataframe.columns for x in ['decimalLatitude','decimalLongitude']):
+        errors.append('You need to provide both decimalLatitude and decimalLongitude')
+
     # check if there were errors for decimalLatitude and decimalLongitude
     if not any(x in errors for x in ['decimalLatitude','decimalLongitude','coordinateUncertaintyInMeters','coordinatePrecision']):
 

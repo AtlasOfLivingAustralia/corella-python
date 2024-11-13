@@ -42,8 +42,6 @@ unique_messages = {
     'organismQuantityType': 'The organismQuantity must be a string, and must give context to the field organismQuantity.'
 }
 
-
-
 REPORT_TERMS = {
     "Australia": {
         'record_type': 'record_type',

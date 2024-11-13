@@ -17,13 +17,9 @@ def check_scientificName(dataframe=None,
     -------
         Raises a ``ValueError`` if something is not valid.
     """
-    # first, check if a dataframe has been provided
+    # check if dataframe is provided an argument
     if dataframe is None:
-        raise ValueError("You need to provide a dataframe")
-
-    # then, check to see for the required columns
-    if 'scientificName' not in dataframe.columns:
-        errors.append('scientificName is a required column.')
+        raise ValueError("Please provide a dataframe")
 
     # check the type of variable for all scientific name associated variables
     for item in ['scientificName','scientificNameRank','scientificNameAuthorship']:

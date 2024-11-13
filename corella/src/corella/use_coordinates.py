@@ -1,4 +1,4 @@
-import pandas as pd
+from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS
 from .check_coordinates import check_coordinates
 
 def use_coordinates(dataframe=None,
@@ -35,6 +35,10 @@ def use_coordinates(dataframe=None,
         ``pandas.DataFrame`` with the updated data.
     """
 
+    # raise a ValueError if no dataframe is provided
+    if dataframe is None:
+        raise ValueError('Please provide a dataframe.')
+    
     # mapping column names
     mapping = {
         decimalLatitude: 'decimalLatitude',
@@ -55,7 +59,8 @@ def use_coordinates(dataframe=None,
 
     # check if each variable is None
     if all([v is None for v in [decimalLatitude,decimalLongitude,geodeticDatum,coordinatePrecision,coordinateUncertaintyInMeters]]):
-        raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(self.use_coordinates()) for valid arguments.")
+        if all ([v not in GEO_REQUIRED_DWCA_TERMS['Australia'] for v in dataframe.columns]):
+            raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(self.use_coordinates()) for valid arguments.")
 
     # loop over all variables with following logic:
     # 1. check if var is None
@@ -74,7 +79,9 @@ def use_coordinates(dataframe=None,
     dataframe = dataframe.rename(columns=mapping)
 
     # check all required variables
-    check_coordinates(dataframe=dataframe)
+    errors = check_coordinates(dataframe=dataframe,errors=[])
 
-    # set new occurrences to object
+    # return errors if there are any; otherwise, return dataframe
+    if len(errors) > 0:
+        raise ValueError("There are some errors in your data.  They are as follows:\n\n{}".format('\n'.join(errors)))
     return dataframe

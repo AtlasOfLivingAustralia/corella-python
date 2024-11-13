@@ -31,7 +31,7 @@ def check_datetime(dataframe=None,
         'year': [0,datetime.datetime.now().year],
         'month': [1,12],
         'day': [1,31],
-        'eventTime': [datetime.datetime.fromtimestamp(0).time,datetime.datetime.now().time]
+        'eventTime': [datetime.datetime.fromtimestamp(0).time(),datetime.datetime.now().time()]
     }
 
     # check values 

@@ -1,10 +1,13 @@
-def use_scientific_name(self,scientific_name=None):
+from .check_scientificName import check_scientificName
+
+def use_scientific_name(dataframe=None,
+                        scientificName=None):
     """
     Checks for the name of the taxon you identified is present.
 
     Parameters
     ----------
-        scientific_name: ``str`` or ``pandas.Series``
+        scientificName: ``str`` or ``pandas.Series``
             Either a column name (``str``) or a column from the ``occurrences`` argument 
             (``pandas.Series``) that represents the taxonomic identification of the occurrences.
 
@@ -13,23 +16,18 @@ def use_scientific_name(self,scientific_name=None):
         Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
     """
 
-    if scientific_name is not None:
-
-        # create temporary occurrences
-        temp_occurrences = self.occurrences.copy()
+    if scientificName is not None:
 
         # check type of variable
-        if type(scientific_name) is pd.core.series.Series:
-            temp_occurrences['scientificName'] = scientific_name.copy()
-            temp_occurrences = temp_occurrences.drop(scientific_name.name,axis=1)
+        if type(scientificName) is str:
+            if scientificName in dataframe.columns:
+                dataframe = dataframe.rename(columns={scientificName: 'scientificName'})
         else:
-            raise ValueError("scientific_name argument must be a pandas Series (i.e. column)")
+            raise ValueError("scientificName argument must be a pandas Series (i.e. column)")
 
         # check values
-        check_scientificName(dataframe=temp_occurrences)
-
-        # assign temp_occurrences to occurrences
-        self.occurrences = temp_occurrences
+        errors = check_scientificName(dataframe=dataframe)
+        return errors       
     
     else:
 

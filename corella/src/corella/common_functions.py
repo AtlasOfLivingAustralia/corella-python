@@ -1,4 +1,6 @@
 import pandas as pd
+import numpy as np
+import datetime
 from pandas.api.types import is_numeric_dtype,is_string_dtype,is_datetime64_any_dtype
 
 def snake_to_camel_case(list_of_words=None):
@@ -66,7 +68,7 @@ def check_is_numeric(dataframe=None,
         ``errors``: ``list``
             updated list of errors
     """
-    if not is_numeric_dtype(dataframe[column_name]):
+    if (not is_numeric_dtype(dataframe[column_name])) and (not type(dataframe[column_name].dtypes) is np.dtypes.Int64DType):
         errors.append('the {} column must be numeric.'.format(column_name))
     return errors
 
@@ -90,8 +92,11 @@ def check_is_datetime(dataframe=None,
         ``errors``: ``list``
             updated list of errors
     """
+
     if not is_datetime64_any_dtype(dataframe[column_name]):
-        errors.append('the {} column must be in datetime format.'.format(column_name))
+        other_formats = list(set(type(x) for x in dataframe[column_name]))
+        if (len(other_formats) > 1 )| (other_formats[0] is not datetime.time):
+            errors.append('the {} column must be in datetime format.'.format(column_name))
     return errors
 
 def swap_error_message(errors=None,

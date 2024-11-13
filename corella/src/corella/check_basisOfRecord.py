@@ -17,7 +17,7 @@ def check_basisOfRecord(dataframe=None,
 
     # check if dataframe is provided an argument
     if dataframe is None:
-        raise ValueError("You need to provide a dataframe")
+        raise ValueError("Please provide a dataframe")
 
     # check basisOfRecord values
     if 'basisOfRecord' in dataframe.columns:
@@ -25,8 +25,6 @@ def check_basisOfRecord(dataframe=None,
         terms = get_bor_values()
         if not set(terms).issuperset(set(dataframe['basisOfRecord'])):
             errors.append("There are invalid basisOfRecord values.  Valid values are {}".format(', '.join(terms)))
-    else:
-        errors.append("The basisOfRecord column title wasn't set correctly.")
 
     # return errors or None if no errors
     if errors is not None:

@@ -1,4 +1,5 @@
-def check_occurrenceIDs(dataframe=None):
+def check_occurrenceIDs(dataframe=None,
+                        errors=[]):
     """
     Checks whether or not you have unique ids for your occurrences.
 
@@ -14,9 +15,6 @@ def check_occurrenceIDs(dataframe=None):
     # First, check if a dataframe is provided
     if dataframe is None:
         raise ValueError("Please provide a dataframe to this function.")
-
-    # make a list of errors to return
-    errors = []
 
     # look for duplicate unique IDs
     list_terms = list(dataframe.columns)
