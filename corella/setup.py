@@ -39,6 +39,6 @@ setup(
     include_package_data = True,
     package_data = {
     # If any package contains *.ini files or *.csv files, include them
-    '': ['config.ini','metadata_template.md'],
+    '': ['config.ini','src/corella/wikipedia_country_codes.csv','wikipedia_country_codes.csv'],
     },
 )
