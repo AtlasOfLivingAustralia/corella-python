@@ -1,19 +1,34 @@
+from .check_occurrenceStatus import check_occurrenceStatus
 from .common_dictionaries import unique_messages
 from .common_functions import check_is_numeric,check_is_string,swap_error_message
 
 def check_abundance(dataframe=None,
                     errors=[]):
     """
-    Checks whether or not your abundance data...
+    Checks the following columns:
+
+    - ``individualCount``
+    - ``organismQuantity``
+    - ``organismQuantityType``
+
+    For ``individualCount``, it will check if this is a numeric column.  If 
+    ``occurrenceStatus`` is in the data, it will check if there are mismatches 
+    between the two columns (i.e. if ``individualCount`` is greater than 0, but 
+    the ``occurrenceStatus`` is marked as ``absent``.)
+
+    For ``organismQuantity`` and ``organismQuantityType``, it will check if both 
+    columns are present and both are strings.
 
     Parameters
     ----------
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check.
+        errors: ``str``
+            A list of previous errors (used when you're doing multiple checks).
 
     Returns
     -------
-        A list of errors; else, return None.
+        A ``list`` of errors; else, return the ``dataframe``.
     """
 
     # check if dataframe is provided an argument
@@ -24,11 +39,17 @@ def check_abundance(dataframe=None,
     if 'individualCount' in dataframe.columns:
         errors = check_is_numeric(dataframe=dataframe,column_name='individualCount',errors=errors)
 
+        # now, do checks for occurrenceStatus
         if 'occurrenceStatus' in dataframe.columns:
+            errors_occstatus = check_occurrenceStatus(dataframe=dataframe,errors=errors)
+            if type(errors_occstatus) is list:
+                errors += errors_occstatus
             if any(dataframe[dataframe['individualCount'] == 0]):
-                wrong_statuses = dataframe.loc[(dataframe['individualCount'] == 0) & (dataframe['occurrenceStatus'] != 'ABSENT')]
-                if not wrong_statuses.empty:
-                    errors.append('Some of your individual counts are 0, yet the occurrence status is set to present.  Please change occurrenceStatus to ABSENT')
+                zeroes = dataframe.loc[dataframe['individualCount'] == 0]
+                if not zeroes.empty:
+                    wrong_statuses = zeroes[zeroes['occurrenceStatus'].isin(['PRESENT','present'])]
+                    if not wrong_statuses.empty:
+                        errors.append('Some of your individual counts are 0, yet the occurrence status is set to present.  Please change occurrenceStatus to ABSENT')
 
     # first, check if both organismQuantity and organismQuantityType are present; if not, add error message
     if any(x in dataframe.columns for x in ['organismQuantity','organismQuantityType']):

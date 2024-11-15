@@ -10,11 +10,18 @@ def use_abundance(dataframe=None,
 
     Parameters
     ----------
-        X
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check
+        individualCount: ``str``
+            A column name (``str``) that contains your individual counts (should be whole numbers).
+        organismQuantity: ``str`` or 
+            A column name (``str``) that contains a description of your individual counts.
+        organismQuantityType: ``str`` 
+            A column name (``str``) that describes what your organismQuantity is.
 
     Returns
     -------
-        Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        ``pandas.DataFrame`` with the updated data.
     """
 
     # raise a ValueError if no dataframe is provided

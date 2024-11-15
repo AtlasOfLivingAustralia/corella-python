@@ -5,17 +5,20 @@ def check_scientificName(dataframe=None,
     """
     Checks whether or not the following columns are in string format:
 
-    - scientificName
-    - scientificNameRank
-    - scientificNameAuthorship
+    - ``scientificName``
+    - ``scientificNameRank``
+    - ``scientificNameAuthorship``
 
     Parameters
     ----------
-        None
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check.
+        errors: ``str``
+            A list of previous errors (used when you're doing multiple checks).
 
     Returns
     -------
-        Raises a ``ValueError`` if something is not valid.
+        A ``list`` of errors; else, return the ``dataframe``.
     """
     # check if dataframe is provided an argument
     if dataframe is None:

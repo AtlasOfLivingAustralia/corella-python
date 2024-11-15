@@ -6,6 +6,8 @@ from .check_data import check_data
 from .check_datetime import check_datetime
 from .check_locality import check_locality
 from .check_occurrenceIDs import check_occurrenceIDs
+from .check_occurrences import check_occurrences
+from .check_occurrenceStatus import check_occurrenceStatus
 from .check_scientificName import check_scientificName
 from .suggest_workflow import suggest_workflow
 from .use_abundance import use_abundance
@@ -16,7 +18,10 @@ from .use_occurrences import use_occurrences
 from .use_scientific_name import use_scientific_name
 
 # get all functions to display
-# __all__=["dwca"]
+__all__=['check_abundance','check_basisOfRecord','check_coordinates','check_data','check_datetime',
+         'check_locality','check_occurrenceIDs','check_occurrences','check_occurrenceStatus',
+         'check_scientificName','suggest_workflow','use_abundance','use_coordinates','use_datetime',
+         'use_locality','use_occurrences','use_scientific_name']
 
 # import version
 from .version import __version__  

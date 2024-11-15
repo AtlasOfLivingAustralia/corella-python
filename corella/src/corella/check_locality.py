@@ -6,16 +6,30 @@ from .common_functions import check_is_string
 def check_locality(dataframe=None,
                    errors=[]):
     """
-    Checks whether or not your locality data complies with 
-    Darwin Core standards.
+    Checks the following fields:
+
+    - ``continent``
+    - ``country``
+    - ``countryCode``
+    - ``stateProvince``
+    - ``locality``
+
+    It will check if all the above fields are strings.    
+
+    It will also check if the ``continent``, ``country`` and ``countryCode`` 
+    column values are correct (valid country and country codes are found at 
+    https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
 
     Parameters
     ----------
-        None
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check.
+        errors: ``str``
+            A list of previous errors (used when you're doing multiple checks).
 
     Returns
     -------
-        Raises a ``ValueError`` if something is wrong, or returns True if it passes.
+        A ``list`` of errors; else, return the ``dataframe``.
     """
     
     # check if dataframe is provided an argument

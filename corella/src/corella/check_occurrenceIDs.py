@@ -1,15 +1,23 @@
 def check_occurrenceIDs(dataframe=None,
                         errors=[]):
     """
-    Checks whether or not you have unique ids for your occurrences.
+    Checks whether or not you have unique ids present in one or more of the following 
+    columns:
+
+    - ``occurrenceID``
+    - ``catalogNumber``
+    - ``recordNumber``
 
     Parameters
     ----------
-        None
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check.
+        errors: ``str``
+            A list of previous errors (used when you're doing multiple checks).
 
     Returns
     -------
-        Raises a ``ValueError`` if something is not valid.
+        A ``list`` of errors; else, return the ``dataframe``.
     """
 
     # First, check if a dataframe is provided

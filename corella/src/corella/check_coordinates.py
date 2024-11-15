@@ -5,20 +5,34 @@ from pandas.api.types import is_numeric_dtype
 def check_coordinates(dataframe=None,
                       errors=[]):
     """
-    Checks whether or not your occurrences data complies with 
-    Darwin Core standards.
+    Checks the following fields:
+
+    - ``decimalLatitude``
+    - ``decimalLongitude``
+    - ``geodeticDatum``
+    - ``coordinateUncertaintyInMeters``
+    - ``coordinatePrecision``
+
+    It will check if all the above fields (except ``geodeticDatum``) are numeric.  
+    It will also check if ``geodeticDatum`` is a string.  
+
+    For ``decimalLatitude`` and ``decimalLongitude``, it will check if they are 
+    between -90 and 90, and between -180 and 180, respectively.  It will then 
+    check if ``coordinateUncertaintyInMeters`` and ``coordinatePrecision`` are 
+    above 0.
 
     Parameters
     ----------
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check.
-        errors: ``list``
-            A list of extant errors, if applicable
+        errors: ``str``
+            A list of previous errors (used when you're doing multiple checks).
 
     Returns
     -------
-        A list of errors; else, return None.
+        A ``list`` of errors; else, return the ``dataframe``.
     """
+
     # First, check if a dataframe is provided
     if dataframe is None:
         raise ValueError("Please provide a dataframe to this function.")

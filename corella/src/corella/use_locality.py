@@ -7,28 +7,25 @@ def use_locality(dataframe=None,
                  stateProvince = None,
                  locality = None):
     """
-    (OPTIONAL) Checks for additional location information, such as country and countryCode.
+    Checks for additional location information, such as country and countryCode.
 
     Parameters
     ----------
-        continent: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents the continent of the occurrences.
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check
+        continent: ``str``
+            Either a column name (``str``) or a string denoting one of the seven continents.
         country: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents the country of the occurrence.
+            Either a column name (``str``) or a string denoting the country.
         countryCode: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents the countryCode of the occurrences.
+            Either a column name (``str``) or a string denoting the countryCode.
         stateProvince: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents the stateProvince of the occurrences.
+            Either a column name (``str``) or a string denoting the state or province.
         locality: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a column from the ``occurrences`` argument 
-            (``pandas.Series``) that represents the locality of the occurrences.
+            Either a column name (``str``) or a string denoting the locality.
     Returns
     -------
-        Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        ``pandas.DataFrame`` with the updated data.
     """
 
     # check for dataframe

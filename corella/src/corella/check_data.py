@@ -12,7 +12,7 @@ from .check_scientificName import check_scientificName
 def check_data(occurrences=None,
                max_num_errors=5):
         """
-        Checks whether or not your occurrences data complies with 
+        Checks whether or not the data in your occurrences complies with
         Darwin Core standards.
 
         Parameters
@@ -23,7 +23,20 @@ def check_data(occurrences=None,
         Returns
         -------
             Raises a ``ValueError`` if something is not valid.
-        """
+        
+        Examples
+        --------
+        Suggest a workflow for a small dataset
+
+        .. prompt:: python
+
+            import pandas as pd
+            import corella
+            df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']})
+            corella.check_data(occurrences=df)
+            
+        .. program-output:: python -c "import pandas as pd;import corella;df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']});print(corella.check_data(occurrences=df))"
+    """
 
         # First, check if a dataframe is provided
         if occurrences is None:
@@ -56,8 +69,10 @@ def check_data(occurrences=None,
 
         # run all checks
         for f in [check_abundance,check_basisOfRecord,check_coordinates,check_datetime,check_locality,check_occurrenceIDs,check_scientificName]:
-            errors = f(dataframe=occurrences,errors=errors)
-
+            errors_f = f(dataframe=occurrences)
+            if type(errors_f) is list:
+                errors += errors_f
+            
         # print out message to screen
         print("\nTesting data\n")
         for i,cname in enumerate(data_table['Column name']):
@@ -69,7 +84,7 @@ def check_data(occurrences=None,
         print(tabulate(df_data_table, showindex=False, headers=df_data_table.columns))
         print()
 
-        print("══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════")
+        print("\n══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n")
         print()
         total_errors = df_data_table['Number of Errors'].sum()
         total_passes = df_data_table[df_data_table['Pass/Fail'] == check_mark].value_counts().sum()

@@ -105,13 +105,13 @@ def test_continent_wrong_value():
         corella.use_locality(dataframe=df)
     assert "continent" in str(e_info.value)
 
-def test_country_wrong_type():
+def test_country_wrong_value():
     df = pd.DataFrame({'country': ['Austr','Austr']})
     with pytest.raises(Exception) as e_info:
         corella.use_locality(dataframe=df)
     assert "country" in str(e_info.value)
 
-def test_countryCodes_wrong_type():
+def test_countryCodes_wrong_value():
     df = pd.DataFrame({'countryCode': ['AB','AB']})
     with pytest.raises(Exception) as e_info:
         corella.use_locality(dataframe=df)

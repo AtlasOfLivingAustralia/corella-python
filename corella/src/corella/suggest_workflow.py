@@ -17,6 +17,19 @@ def suggest_workflow(dataframe=None):
     Returns
     -------
         A printed report detailing presence or absence of required data.
+
+    Examples
+    --------
+        Suggest a workflow for a small dataset
+
+        .. prompt:: python
+
+            import pandas as pd
+            import corella
+            df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']})
+            corella.suggest_workflow(dataframe=df)
+            
+        .. program-output:: python -c "import pandas as pd;import corella;df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']});print(corella.suggest_workflow(dataframe=df))"
     """
 
     # set up dictionary for printing results

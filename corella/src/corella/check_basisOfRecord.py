@@ -3,17 +3,19 @@ from .common_functions import get_bor_values,check_is_string
 def check_basisOfRecord(dataframe=None,
                         errors=[]):
     """
-    Checks whether or not your basisOfRecord values are valid.
+    Checks whether or not your ``basisOfRecord`` column values are valid.
 
     Parameters
     ----------
-        None
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check.
+        errors: ``str``
+            A list of previous errors (used when you're doing multiple checks).
 
     Returns
     -------
-        If one of your entries is not valid, raises a ``ValueError`` with a list of accepted terms.
-        Else, returns None
-    """
+        A ``list`` of errors; else, return the ``dataframe``.
+     """
 
     # check if dataframe is provided an argument
     if dataframe is None:
@@ -27,6 +29,6 @@ def check_basisOfRecord(dataframe=None,
             errors.append("There are invalid basisOfRecord values.  Valid values are {}".format(', '.join(terms)))
 
     # return errors or None if no errors
-    if errors is not None:
+    if len(errors) > 0:
         return errors
-    return None
+    return dataframe

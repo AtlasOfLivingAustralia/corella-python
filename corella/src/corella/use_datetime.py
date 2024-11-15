@@ -42,7 +42,7 @@ def use_datetime(dataframe=None,
 
     Returns
     -------
-        Raises a ``ValueError`` explaining what is wrong, or returns None if it passes.
+        ``pandas.DataFrame`` with the updated data.
     """
 
     # raise a ValueError if no dataframe is provided

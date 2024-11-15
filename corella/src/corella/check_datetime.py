@@ -4,17 +4,30 @@ from .common_functions import check_is_datetime,check_is_numeric
 def check_datetime(dataframe=None,
                    errors=[]):
     """
-    Checks whether or not your event dates complies with 
-    Darwin Core standards.
+    Checks the following fields:
+
+    - ``eventDate``
+    - ``year``
+    - ``month``
+    - ``day``
+    - ``eventTime``
+
+    It will check if all the above fields (except ``geodeticDatum``) are either 
+    numeric or ``datetime`` objects.    
+
+    It will also check if all column values are valid (i.e. there's no 13th month, 
+    25th hour etc.)
 
     Parameters
     ----------
         dataframe: ``pandas.DataFrame``
-            The ``pandas.DataFrame`` that contains your data to check
+            The ``pandas.DataFrame`` that contains your data to check.
+        errors: ``str``
+            A list of previous errors (used when you're doing multiple checks).
 
     Returns
     -------
-        Raises a ``ValueError`` if something is not valid.
+        A ``list`` of errors; else, return the ``dataframe``.
     """
 
     # First, check if a dataframe is provided
@@ -31,7 +44,7 @@ def check_datetime(dataframe=None,
         'year': [0,datetime.datetime.now().year],
         'month': [1,12],
         'day': [1,31],
-        'eventTime': [datetime.datetime.fromtimestamp(0).time(),datetime.datetime.now().time()]
+        'eventTime': [datetime.time(0,0,0),datetime.time(23,59,59)]
     }
 
     # check values 
