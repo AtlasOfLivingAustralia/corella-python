@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>use_occurrences &#8212; corella 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=3a1eb295" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=3a1eb295" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'corella_user_guide/use_occurrences';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="use_scientific_name.html" />
+    <link rel="prev" title="Initial Data Check" href="Initial_Data_Check.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="corella 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Corella User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../apidoc/corella.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/corella-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Corella User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../apidoc/corella.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/corella-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Corella User Guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">use_occurrences</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="use-occurrences">
+<span id="id1"></span><h1>use_occurrences<a class="headerlink" href="#use-occurrences" title="Link to this heading">#</a></h1>
+<p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code>.
+This function aims to check that you have the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>: how the occurrence was recorded (was it observed by a human? machine? is it part of a collection?)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> or <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>: a unique identifier for the record</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> (OPTIONAL): whether a species is present or absent.  Not required for data submission.</p></li>
+</ul>
+<p>If you haven’t read in our example dataset in the initial data cleaning page,
+here is an example and how to read it in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="p">{</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Callocephalon fimbriatum&#39;</span><span class="p">,</span> <span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="s1">&#39;-35.273&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]}</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><p>If you wish to follow with your own dataset in a csv file, use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to read
+in your csv file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
+</pre></div></div><section id="initial-run-of-use-occurrences">
+<h2>Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code><a class="headerlink" href="#initial-run-of-use-occurrences" title="Link to this heading">#</a></h2>
+<p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> to see what is in our dataset,
+and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> are in there
+and correct.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 21, in &lt;module&gt;
+    print(corella.use_occurrences(dataframe=df))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 50, in use_occurrences
+    raise ValueError(&quot;No Darwin Core arguments supplied to `use_occurrences()`.  See dir(corella.use_occurrences()) for valid arguments.&quot;)
+ValueError: No Darwin Core arguments supplied to `use_occurrences()`.  See dir(corella.use_occurrences()) for valid arguments.
+</pre></div>
+</div>
+<p>Here, we can see that we don’t have any column names matching the Darwin
+Core standard, and must specify them to <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> to proceed.
+First, let’s look at the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value.</p>
+</section>
+<section id="specify-basisofrecord-value">
+<h2>specify <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value<a class="headerlink" href="#specify-basisofrecord-value" title="Link to this heading">#</a></h2>
+<p>As mentioned above, the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value is a required and important
+field for an observation, as it lets others know how the record was recorded.
+For example, was it a machine that observed it? A human? Is this a specimen
+that’s part of a collection?</p>
+<p>Depending on your answer to these questions, the values will differ.  Luckily,
+Darwin Core has a predefined vocabulary to help you with this.  They are as
+follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;Observation&#39;, &#39;PreservedSpecimen&#39;, &#39;MaterialCitation&#39;, &#39;LivingSpecimen&#39;, &#39;FossilSpecimen&#39;, &#39;MaterialSample&#39;, &#39;MachineObservation&#39;, &#39;HumanObservation&#39;, &#39;Occurrence&#39;]
+</pre></div>
+</div>
+<p>If you are not able to check these, or have mistyped one of them, <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code>
+will provide the current accepted values for you as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;observe&#39;</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 25, in &lt;module&gt;
+    print(corella.use_occurrences(dataframe=df,basisOfRecord=&#39;observe&#39;))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 87, in use_occurrences
+    raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
+ValueError: There are some errors in your data.  They are as follows:
+
+There are invalid basisOfRecord values.  Valid values are FossilSpecimen, MaterialSample, Observation, LivingSpecimen, PreservedSpecimen, Occurrence, MaterialCitation, MachineObservation, HumanObservation
+</pre></div>
+</div>
+<p>For this exercise, let’s assume a human has seen these, which equates to a value of
+<code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>.  We can then set the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> argument as <code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>,
+and it will, by default, set the value of <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> for the whole dataframe.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species latitude  longitude        date   status     basisOfRecord
+0  Callocephalon fimbriatum   -35.31    149.125  14-01-2023  present  HumanObservation
+1     Eolophus roseicapilla  -35.273    149.133  15-01-2023  present  HumanObservation
+</pre></div>
+</div>
+</section>
+<section id="specify-occurrencestatus-column">
+<h2>specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column<a class="headerlink" href="#specify-occurrencestatus-column" title="Link to this heading">#</a></h2>
+<p><strong>Note:</strong> This is an optional field, but we are including it here to share how this argument works, and how this will rename your column</p>
+<p>Sometimes, you may want to include the <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> field in your observations, especially
+if you were expecting to see a species in a particular area, and/or have seen them in the past but
+did not see them on that particular day, you can include this to say they were absent.</p>
+<p>Since we have a column that denotes whether or not a species was present or absent, we can
+provide the name of that column, and <code class="docutils literal notranslate"><span class="pre">corella</span></code> will rename the column to conform with the
+Darwin Core standard.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;status&#39;</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species latitude  longitude        date occurrenceStatus     basisOfRecord
+0  Callocephalon fimbriatum   -35.31    149.125  14-01-2023          present  HumanObservation
+1     Eolophus roseicapilla  -35.273    149.133  15-01-2023          present  HumanObservation
+</pre></div>
+</div>
+</section>
+<section id="generate-occurrence-ids">
+<h2>generate occurrence IDs<a class="headerlink" href="#generate-occurrence-ids" title="Link to this heading">#</a></h2>
+<p>Every occurrence needs a unique identifier for easy future identification.  If your
+occurences don’t have either an <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>,
+you can provide the boolean <code class="docutils literal notranslate"><span class="pre">True</span></code> argument to <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, and unique identifiers
+will be generated for you.</p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> and / or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code> is normally used for collections,
+so it is best to go with <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> if you’re generating them using <code class="docutils literal notranslate"><span class="pre">corella</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                   species latitude  longitude        date occurrenceStatus     basisOfRecord
+0  f3a52f6b-5f00-428b-8126-1126e505ff5b  Callocephalon fimbriatum   -35.31    149.125  14-01-2023          present  HumanObservation
+1  f8e8ca4e-7ab8-4c38-8719-276ad9895098     Eolophus roseicapilla  -35.273    149.133  15-01-2023          present  HumanObservation
+</pre></div>
+</div>
+<p>Now that we’ve taken care of the pieces of information <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> is responsible
+for, we can assign the new dataframe to a variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div></section>
+<section id="what-does-check-data-and-suggest-workflow-say-now">
+<h2>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h2>
+<p><strong>Note:</strong> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
+Darwin core standard, but it’s always good to double-check your data.</p>
+<p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
+
+  Number of Errors  Pass/Fail    Column name
+------------------  -----------  ----------------
+                 0  ✓            occurrenceID
+                 0  ✓            occurrenceStatus
+                 0  ✓            basisOfRecord
+
+
+══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+
+Errors: 0 | Passes: 3
+
+✗ Data meets minimum Darwin core requirements
+Use corella.suggest_workflow()
+
+None
+</pre></div>
+</div>
+<p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
+again to see how our data is doing this time round.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── All DwC terms ──
+
+Matched 3 of 7 column names to DwC terms:
+
+✓ Matched: occurrenceID, occurrenceStatus, basisOfRecord
+✗ Unmatched: date, species, latitude, longitude
+
+── Minimum required DwC terms ──
+
+Type                       Matched term(s)    Missing term(s)
+-------------------------  -----------------  ----------------------------------------------------------------------------------------------------
+Identifier (at least one)  occurrenceID       -
+Record type                basisOfRecord      -
+Scientific name            -                  scientificName
+Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters, coordinatePrecision
+Date/Time                  -                  eventDate
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+To make your data Darwin Core compliant, use the following workflow:
+
+corella.use_scientific_name()
+corella.use_coordinates()
+corella.use_datetime()
+
+Additional functions: use_abundance(), use_locality()
+None
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Initial_Data_Check.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Initial Data Check</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="use_scientific_name.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-occurrences">Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-basisofrecord-value">specify <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-occurrencestatus-column">specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-occurrence-ids">generate occurrence IDs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Atlas of Living Australia.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
