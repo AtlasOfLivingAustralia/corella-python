@@ -17,6 +17,9 @@ df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapill
                    'date': ['14-01-2023', '15-01-2023'], 
                    'status': ['present', 'present']})
 
+# -----------------------------------------------------------------------------
+# use_occurrences
+# -----------------------------------------------------------------------------
 if stop == 1:
     print(corella.use_occurrences(dataframe=df))
     sys.exit()
@@ -42,14 +45,64 @@ if stop == 5:
                                   occurrenceID=True))
     sys.exit()
     
-df = corella.use_occurrences(dataframe=df,
-                             basisOfRecord='HumanObservation',
-                             occurrenceStatus='status',
-                             occurrenceID=True)
-
 if stop == 6:
+    df = corella.use_occurrences(dataframe=df,
+                                 basisOfRecord='HumanObservation',
+                                 occurrenceStatus='status',
+                                 occurrenceID=True)
     print(corella.check_data(occurrences=df))
     sys.exit()
 
 if stop == 7:
+    df = corella.use_occurrences(dataframe=df,
+                                 basisOfRecord='HumanObservation',
+                                 occurrenceStatus='status',
+                                 occurrenceID=True)
     print(corella.suggest_workflow(dataframe=df))
+
+# -----------------------------------------------------------------------------
+# use_scientific_name
+# -----------------------------------------------------------------------------
+if stop == 8:
+    print(corella.use_scientific_name(dataframe=df))
+    sys.exit() 
+
+if stop == 9:
+    print(corella.use_scientific_name(dataframe=df,
+                                      scientificName='species'))
+    sys.exit() 
+
+if stop == 10:
+    df = corella.use_scientific_name(dataframe=df,
+                                     scientificName='species')
+    print(corella.check_data(occurrences=df))
+    sys.exit() 
+
+if stop == 11:
+    df = corella.use_scientific_name(dataframe=df,
+                                     scientificName='species')
+    print(corella.suggest_workflow(dataframe=df))
+    sys.exit() 
+
+# -----------------------------------------------------------------------------
+# use_coordinates
+# -----------------------------------------------------------------------------
+if stop == 12:
+    print(corella.use_coordinates(dataframe=df))
+    sys.exit() 
+
+if stop == 13:
+    print(corella.use_coordinates(dataframe=df,
+                                  decimalLatitude='latitude',
+                                  decimalLongitude='longitude'))
+    sys.exit() 
+
+if stop == 14:
+    df = corella.use_coordinates(dataframe=df)
+    print(corella.check_data(occurrences=df))
+    sys.exit() 
+
+if stop == 15:
+    df = corella.use_coordinates(dataframe=df)
+    print(corella.suggest_workflow(dataframe=df))
+    sys.exit() 

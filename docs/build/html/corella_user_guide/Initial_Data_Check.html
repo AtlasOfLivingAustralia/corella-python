@@ -415,7 +415,7 @@ as shown below:</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 21, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 24, in &lt;module&gt;
     print(corella.use_occurrences(dataframe=df))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 50, in use_occurrences
@@ -432,14 +432,14 @@ have developed an all-purpose command called <code class="docutils literal notra
 are the results of this particular dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 25, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 28, in &lt;module&gt;
     print(corella.use_occurrences(dataframe=df,basisOfRecord=&#39;observe&#39;))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 87, in use_occurrences
     raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
 ValueError: There are some errors in your data.  They are as follows:
 
-There are invalid basisOfRecord values.  Valid values are FossilSpecimen, MaterialSample, Observation, LivingSpecimen, PreservedSpecimen, Occurrence, MaterialCitation, MachineObservation, HumanObservation
+There are invalid basisOfRecord values.  Valid values are PreservedSpecimen, Observation, FossilSpecimen, MaterialCitation, MaterialSample, Occurrence, LivingSpecimen, MachineObservation, HumanObservation
 </pre></div>
 </div>
 </section>
