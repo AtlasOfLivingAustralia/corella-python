@@ -6,14 +6,14 @@ use_datetime
 One of the functions you can use to check your data is ``use_datetime()``.  
 This function aims to check that you have the following:
 
-- ``decimalLatitude``: the latitude of your observation
-- ``decimalLongitude``: the latitude of your observation
-- ``geodeticDatum``: the coordinate reference system (CRS) of your latitude and longitude
+- ``eventDate``: the date of your observation
 
 It can also (optionally) can check the following:
 
-- ``coordinateUncertaintyInMeters``: uncertainty of your measurements in meters
-- ``coordinatePrecision``: uncertainty of your measurements in decimal degrees
+- ``year``: year of your observation
+- ``month``: year of your observation
+- ``day``: year of your observation
+- ``eventTime``: year of your observation
 
 If you haven't read in our example dataset in the initial data cleaning page, 
 here is an example and how to read it in:
@@ -37,3 +37,67 @@ in your csv file:
 
     >>> import pandas as pd
     >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
+
+Initial run of ``use_datetime``
+======================================
+
+Initally, we can run ``use_datetime()`` to see what is in our dataset, 
+and if any of the data types check with ``use_datetime()`` are in there 
+and correct.
+
+.. prompt:: python
+
+    >>> corella.use_datetime(dataframe=df)
+
+.. program-output:: python corella_user_guide/data_cleaning.py 21
+
+Here, we can see that we don't have any column names matching the Darwin 
+Core standard, and must specify them to ``use_datetime()`` to proceed.  
+The only required column is ``eventDate``.
+
+``eventDate`` and automatically converting strings
+=====================================================
+
+Since we can specify the 
+
+.. prompt:: python
+
+    >>> corella.use_datetime(dataframe=df,
+    ...                      eventDate='date')
+
+.. program-output:: python corella_user_guide/data_cleaning.py 22
+
+``use_datetime()`` requires the 
+
+.. prompt:: python
+
+    >>> corella.use_datetime(dataframe=df,
+    ...                      eventDate='date',
+    ...                      string_to_datetime=True,
+    ...                      yearfirst=False,
+    ...                      dayfirst=True)
+
+.. program-output:: python corella_user_guide/data_cleaning.py 23
+
+what does ``check_data`` and ``suggest_workflow`` say now? 
+==============================================================
+
+**Note:** each of the ``use_*`` functions checks your data for compliance with the 
+Darwin core standard, but it's always good to double-check your data.
+
+Now, we can check that our data column do comply with the Darwin Core standard.
+
+.. prompt:: python
+
+    >>> corella.check_data(occurrences=df)
+
+.. program-output:: python corella_user_guide/data_cleaning.py 24
+
+However, since we don't have all of the required columns, we can run ``suggest_workflow()`` 
+again to see how our data is doing this time round.
+
+.. prompt:: python
+
+    >>> corella.suggest_workflow(dataframe=df)
+
+.. program-output:: python corella_user_guide/data_cleaning.py 25

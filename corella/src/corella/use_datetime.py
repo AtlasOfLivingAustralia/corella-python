@@ -9,6 +9,8 @@ def use_datetime(dataframe=None,
                  day=None,
                  eventTime=None,
                  string_to_datetime=False,
+                 yearfirst=True,
+                 dayfirst=False,
                  time_format='%H:%m:%S'):
     """
     Checks for time information, such as the date an occurrence occurred.  Also runs checks 
@@ -36,9 +38,15 @@ def use_datetime(dataframe=None,
         string_to_datetime: ``logical``
             An argument that tells ``corella`` to convert dates that are in a string format to a ``datetime`` 
             format.  Default is ``False``.
-        orig_format: ``str``
+        yearfirst: ``logical``
+            An argument to specify whether or not the day is first when converting your string to datetime.  
+            Default is ``True``.
+        dayfirst: ``logical``
+            An argument to specify whether or not the day is first when converting your string to datetime.  
+            Default is ``False``.
+        time_format: ``str``
             A ``str`` denoting the original format of the dates that are being converted from a ``str`` to a 
-            ``datetime`` object.  Default is ``'%d-%m-%Y'``.
+            ``datetime`` object.  Default is ``'%H:%m:%S'``.
 
     Returns
     -------
@@ -87,7 +95,15 @@ def use_datetime(dataframe=None,
 
     # add option to convert strings to datetime
     if string_to_datetime:
-        dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],yearfirst=True)
+        # specify which of day,month,year is first
+        if yearfirst:
+            dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],yearfirst=yearfirst)
+        elif dayfirst:
+            dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],dayfirst=dayfirst)
+        else:
+            dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],dayfirst=dayfirst,yearfirst=yearfirst)
+
+        # check for event time
         if 'eventTime' in dataframe.columns:
             dataframe['eventTime'] = pd.to_datetime(dataframe['eventTime'],format=time_format).dt.time
     

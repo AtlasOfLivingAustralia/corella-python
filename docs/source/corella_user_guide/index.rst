@@ -8,6 +8,8 @@ Here is a more in-depth explanation of how to use the main functions.
 - :ref:`use_scientific_name`
 - :ref:`use_coordinates`
 - :ref:`use_datetime`
+- :ref:`use_abundance`
+- :ref:`use_locality`
 
 .. toctree::
    :maxdepth: 5
@@ -19,3 +21,5 @@ Here is a more in-depth explanation of how to use the main functions.
    use_scientific_name
    use_coordinates
    use_datetime
+   use_abundance
+   use_locality

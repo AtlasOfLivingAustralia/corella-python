@@ -60,8 +60,6 @@ def suggest_workflow(dataframe=None):
         'eventDate'
     ]
 
-    print(GEO_REQUIRED_DWCA_TERMS["Australia"])
-
     # loop over all terms to compile what the person has in the dataframe
     for i,t in enumerate(terms):
         if type(t) is list and i == 0:

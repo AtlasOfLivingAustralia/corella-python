@@ -148,3 +148,41 @@ if stop == 20:
                                  coordinatePrecision=0.1)
     print(corella.suggest_workflow(dataframe=df))
     sys.exit() 
+
+# -----------------------------------------------------------------------------
+# use_coordinates
+# -----------------------------------------------------------------------------
+if stop == 21:
+    print(corella.use_datetime(dataframe=df))
+    sys.exit() 
+
+if stop == 22:
+    print(corella.use_datetime(dataframe=df,
+                               eventDate='date'))
+    sys.exit() 
+
+if stop == 23:
+    print(corella.use_datetime(dataframe=df,
+                               eventDate='date',
+                               string_to_datetime=True,
+                               yearfirst=False,
+                               dayfirst=True))
+    sys.exit() 
+
+if stop == 24:
+    df = corella.use_datetime(dataframe=df,
+                               eventDate='date',
+                               string_to_datetime=True,
+                               yearfirst=False,
+                               dayfirst=True)
+    print(corella.check_data(occurrences=df))
+    sys.exit() 
+
+if stop == 25:
+    df = corella.use_datetime(dataframe=df,
+                               eventDate='date',
+                               string_to_datetime=True,
+                               yearfirst=False,
+                               dayfirst=True)
+    print(corella.suggest_workflow(dataframe=df))
+    sys.exit() 
