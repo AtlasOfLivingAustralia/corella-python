@@ -44,7 +44,7 @@ and correct.
 
     >>> corella.use_occurrences(dataframe=df)
 
-.. program-output:: python corella_user_guide/data_cleaning.py 1
+.. program-output:: python corella_user_guide/data_cleaning.py 3
 
 Here, we can see that we don't have any column names matching the Darwin 
 Core standard, and must specify them to ``use_occurrences()`` to proceed.  
@@ -74,7 +74,7 @@ will provide the current accepted values for you as well:
     ...     basisOfRecord='observe'
     ... )
 
-.. program-output:: python corella_user_guide/data_cleaning.py 2
+.. program-output:: python corella_user_guide/data_cleaning.py 4
 
 For this exercise, let's assume a human has seen these, which equates to a value of 
 ``HumanObservation``.  We can then set the ``basisOfRecord`` argument as ``HumanObservation``, 
@@ -87,7 +87,7 @@ and it will, by default, set the value of ``basisOfRecord`` for the whole datafr
     ...     basisOfRecord='HumanObservation'
     ... )
 
-.. program-output:: python corella_user_guide/data_cleaning.py 3
+.. program-output:: python corella_user_guide/data_cleaning.py 5
 
 specify ``occurrenceStatus`` column
 ======================================
@@ -110,7 +110,7 @@ Darwin Core standard.
     ...     occurrenceStatus='status'
     ... )
 
-.. program-output:: python corella_user_guide/data_cleaning.py 4
+.. program-output:: python corella_user_guide/data_cleaning.py 6
 
 generate occurrence IDs 
 ======================================
@@ -132,7 +132,7 @@ so it is best to go with ``occurrenceID`` if you're generating them using ``core
     ...     occurrenceID=True
     ... )
 
-.. program-output:: python corella_user_guide/data_cleaning.py 5
+.. program-output:: python corella_user_guide/data_cleaning.py 7
 
 Now that we've taken care of the pieces of information ``use_occurrences()`` is responsible 
 for, we can assign the new dataframe to a variable:
@@ -158,7 +158,7 @@ Now, we can check that our data column do comply with the Darwin Core standard.
 
     >>> corella.check_data(dataframe=df)
 
-.. program-output:: python corella_user_guide/data_cleaning.py 6
+.. program-output:: python corella_user_guide/data_cleaning.py 8
 
 However, since we don't have all of the required columns, we can run ``suggest_workflow()`` 
 again to see how our data is doing this time round.
@@ -167,4 +167,4 @@ again to see how our data is doing this time round.
 
     >>> corella.suggest_workflow(dataframe=df)
 
-.. program-output:: python corella_user_guide/data_cleaning.py 7
+.. program-output:: python corella_user_guide/data_cleaning.py 9

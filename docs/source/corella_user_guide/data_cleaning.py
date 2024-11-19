@@ -25,27 +25,35 @@ if stop == 1:
     sys.exit()
 
 if stop == 2:
-    print(corella.use_occurrences(dataframe=df,basisOfRecord='observe'))
+    print(corella.suggest_workflow(dataframe=df))
     sys.exit()
 
 if stop == 3:
-    print(corella.use_occurrences(dataframe=df,basisOfRecord='HumanObservation'))
+    print(corella.use_occurrences(dataframe=df))
     sys.exit()
 
 if stop == 4:
+    print(corella.use_occurrences(dataframe=df,basisOfRecord='observe'))
+    sys.exit()
+
+if stop == 5:
+    print(corella.use_occurrences(dataframe=df,basisOfRecord='HumanObservation'))
+    sys.exit()
+
+if stop == 6:
     print(corella.use_occurrences(dataframe=df,
                                   basisOfRecord='HumanObservation',
                                   occurrenceStatus='status'))
     sys.exit()
     
-if stop == 5:
+if stop == 7:
     print(corella.use_occurrences(dataframe=df,
                                   basisOfRecord='HumanObservation',
                                   occurrenceStatus='status',
                                   occurrenceID=True))
     sys.exit()
     
-if stop == 6:
+if stop == 8:
     df = corella.use_occurrences(dataframe=df,
                                  basisOfRecord='HumanObservation',
                                  occurrenceStatus='status',
@@ -53,7 +61,7 @@ if stop == 6:
     print(corella.check_data(occurrences=df))
     sys.exit()
 
-if stop == 7:
+if stop == 9:
     df = corella.use_occurrences(dataframe=df,
                                  basisOfRecord='HumanObservation',
                                  occurrenceStatus='status',
@@ -63,22 +71,22 @@ if stop == 7:
 # -----------------------------------------------------------------------------
 # use_scientific_name
 # -----------------------------------------------------------------------------
-if stop == 8:
+if stop == 10:
     print(corella.use_scientific_name(dataframe=df))
     sys.exit() 
 
-if stop == 9:
+if stop == 11:
     print(corella.use_scientific_name(dataframe=df,
                                       scientificName='species'))
     sys.exit() 
 
-if stop == 10:
+if stop == 12:
     df = corella.use_scientific_name(dataframe=df,
                                      scientificName='species')
     print(corella.check_data(occurrences=df))
     sys.exit() 
 
-if stop == 11:
+if stop == 13:
     df = corella.use_scientific_name(dataframe=df,
                                      scientificName='species')
     print(corella.suggest_workflow(dataframe=df))
@@ -87,22 +95,56 @@ if stop == 11:
 # -----------------------------------------------------------------------------
 # use_coordinates
 # -----------------------------------------------------------------------------
-if stop == 12:
+if stop == 14:
     print(corella.use_coordinates(dataframe=df))
     sys.exit() 
 
-if stop == 13:
+if stop == 15:
     print(corella.use_coordinates(dataframe=df,
                                   decimalLatitude='latitude',
                                   decimalLongitude='longitude'))
     sys.exit() 
 
-if stop == 14:
-    df = corella.use_coordinates(dataframe=df)
+if stop == 16:
+    df['latitude'] = pd.to_numeric(df['latitude'])
+    print(corella.use_coordinates(dataframe=df,
+                                  decimalLatitude='latitude',
+                                  decimalLongitude='longitude'))
+    sys.exit() 
+
+if stop == 17:
+    df['latitude'] = pd.to_numeric(df['latitude'])
+    print(corella.use_coordinates(dataframe=df,
+                                  decimalLatitude='latitude',
+                                  decimalLongitude='longitude',
+                                  geodeticDatum='WGS84'))
+    sys.exit() 
+
+if stop == 18:
+    df['latitude'] = pd.to_numeric(df['latitude'])
+    print(corella.use_coordinates(dataframe=df,
+                                  decimalLatitude='latitude',
+                                  decimalLongitude='longitude',
+                                  geodeticDatum='WGS84',
+                                  coordinatePrecision=0.1))
+    sys.exit() 
+
+if stop == 19:
+    df['latitude'] = pd.to_numeric(df['latitude'])
+    df = corella.use_coordinates(dataframe=df,
+                                 decimalLatitude='latitude',
+                                 decimalLongitude='longitude',
+                                 geodeticDatum='WGS84',
+                                 coordinatePrecision=0.1)
     print(corella.check_data(occurrences=df))
     sys.exit() 
 
-if stop == 15:
-    df = corella.use_coordinates(dataframe=df)
+if stop == 20:
+    df['latitude'] = pd.to_numeric(df['latitude'])
+    df = corella.use_coordinates(dataframe=df,
+                                 decimalLatitude='latitude',
+                                 decimalLongitude='longitude',
+                                 geodeticDatum='WGS84',
+                                 coordinatePrecision=0.1)
     print(corella.suggest_workflow(dataframe=df))
     sys.exit() 

@@ -60,6 +60,8 @@ def suggest_workflow(dataframe=None):
         'eventDate'
     ]
 
+    print(GEO_REQUIRED_DWCA_TERMS["Australia"])
+
     # loop over all terms to compile what the person has in the dataframe
     for i,t in enumerate(terms):
         if type(t) is list and i == 0:
@@ -72,15 +74,23 @@ def suggest_workflow(dataframe=None):
                     required_terms["Matched term(s)"][i] = list(dataframe.columns)[true_indices]
                 required_terms["Missing term(s)"][i] = '-'
         elif type(t) is list and i == 3:
+            
+            # check for required location terms
             location_names = []
-            for name in GEO_REQUIRED_DWCA_TERMS["Australia"]:
+            for name in terms[i]:
                 if name in dataframe.columns:
-                    location_names.append(name)
-                    required_terms["Missing term(s)"][i].remove(name)
+                    location_names.append(name)                
+            
+            # check which required terms are present
             if len(location_names) == 0:
                 location_names = ['-']
-            if len(required_terms["Missing term(s)"][i]) == 0:
+            elif len(location_names) == len(required_terms["Missing term(s)"][i]):
                 required_terms["Missing term(s)"][i] = ['-']
+            else:
+                for name in location_names:
+                    required_terms["Missing term(s)"][i].remove(name)
+
+            # set variables for disiaply table
             required_terms["Matched term(s)"][i] = ', '.join(location_names)
             required_terms["Missing term(s)"][i] = ', '.join(required_terms["Missing term(s)"][i])
         else:

@@ -47,7 +47,7 @@ and correct.
 
     >>> corella.use_scientific_name(dataframe=df)
 
-.. program-output:: python corella_user_guide/data_cleaning.py 8
+.. program-output:: python corella_user_guide/data_cleaning.py 10
 
 Here, we can see that we don't have any column names matching the Darwin 
 Core standard, and must specify them to ``use_scientific_name()`` to proceed.  
@@ -63,7 +63,7 @@ specify it with the Darwin Core term.  In this case, it is ``scientificName``.
 
     >>> corella.use_scientific_name(dataframe=df,scientificName='species')
 
-.. program-output:: python corella_user_guide/data_cleaning.py 9
+.. program-output:: python corella_user_guide/data_cleaning.py 11
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
 ==============================================================
@@ -77,7 +77,7 @@ Now, we can check that our data column do comply with the Darwin Core standard.
 
     >>> corella.check_data(occurrences=df)
 
-.. program-output:: python corella_user_guide/data_cleaning.py 10
+.. program-output:: python corella_user_guide/data_cleaning.py 12
 
 However, since we don't have all of the required columns, we can run ``suggest_workflow()`` 
 again to see how our data is doing this time round.
@@ -86,4 +86,4 @@ again to see how our data is doing this time round.
 
     >>> corella.suggest_workflow(dataframe=df)
 
-.. program-output:: python corella_user_guide/data_cleaning.py 11
+.. program-output:: python corella_user_guide/data_cleaning.py 13

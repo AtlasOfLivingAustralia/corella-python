@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; corella 0.1.0 documentation</title>
+    <title>use_datetime &#8212; corella 0.1.0 documentation</title>
   
   
   
@@ -374,7 +374,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Corella User Guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">&lt;no title&gt;</li>
+    <li class="breadcrumb-item active" aria-current="page">use_datetime</li>
   </ul>
 </nav>
 </div>
@@ -391,7 +391,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section id="use-datetime">
+<span id="id1"></span><h1>use_datetime<a class="headerlink" href="#use-datetime" title="Link to this heading">#</a></h1>
+<p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code>.
+This function aims to check that you have the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code>: the latitude of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code>: the latitude of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>: the coordinate reference system (CRS) of your latitude and longitude</p></li>
+</ul>
+<p>It can also (optionally) can check the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>: uncertainty of your measurements in meters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code>: uncertainty of your measurements in decimal degrees</p></li>
+</ul>
+<p>If you haven’t read in our example dataset in the initial data cleaning page,
+here is an example and how to read it in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="p">{</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Callocephalon fimbriatum&#39;</span><span class="p">,</span> <span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="s1">&#39;-35.273&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]}</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><p>If you wish to follow with your own dataset in a csv file, use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to read
+in your csv file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
+</pre></div></div></section>
+
 
                 </article>
               
@@ -427,22 +461,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

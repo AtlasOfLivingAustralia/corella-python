@@ -49,19 +49,20 @@ and correct.
 
     >>> corella.use_coordinates(dataframe=df)
 
-.. program-output:: python corella_user_guide/data_cleaning.py 12
+.. program-output:: python corella_user_guide/data_cleaning.py 14
 
 Here, we can see that we don't have any column names matching the Darwin 
 Core standard, and must specify them to ``use_coordinates()`` to proceed.  
 The three required columns are ``decimalLatitude``, ``decimalLongitude``, 
 and ``geodeticDatum``.
 
-Second ``use_coordinates``
-======================================
+Specifying ``decimalLatitude`` and ``decimalLongitude``
+==========================================================
 
-Initally, we can run ``use_coordinates()`` to see what is in our dataset, 
-and if any of the data types check with ``use_coordinates()`` are in there 
-and correct.
+Since we have latitude and longitude columns, we can specify them in the 
+``use_coordinates()`` function, and the columns will be renamed and the 
+values checked to see if i) they are numeric; and ii) if they are in the 
+correct ranges.
 
 .. prompt:: python
 
@@ -69,7 +70,62 @@ and correct.
     ...                         decimalLatitude='latitude',
     ...                         decimalLongitude='longitude')
 
-.. program-output:: python corella_user_guide/data_cleaning.py 13
+.. program-output:: python corella_user_guide/data_cleaning.py 15
+
+As we can see here, there are some values that are not numeric.  Luckily, 
+``pandas`` has a function called ``to_numeric`` which will convert strings 
+to numeric values for you (assuming those strings are numbers).  Below is an 
+example of how to convert a column to all numeric values.  Now that the values 
+are all numeric and in the correct range, we will get an updated dataframe.
+
+.. prompt:: python
+
+    >>> df['latitude'] = pd.to_numeric(df['latitude'])
+    >>> corella.use_coordinates(dataframe=df,
+    ...                         decimalLatitude='latitude',
+    ...                         decimalLongitude='longitude')
+
+.. program-output:: python corella_user_guide/data_cleaning.py 16
+
+``geodeticDatum``
+======================================
+
+Another required field is called ``geodeticDatum``.  This column is required as 
+it lets others know how you measured latitude and longitude.  ``geodeticDatum`` 
+refers to a Coordinate Reference System (CRS), which is how three-dimensional 
+coordinates are represented on a two-dimensional surface.  The most common CRS 
+(and what GPSs, as well as the ALA, uses) is called WGS84.  If you know that this 
+is the CRS you have used, you can set the default value of ``geodeticDatum`` in 
+``use_coordinates()``.
+
+.. prompt:: python
+
+    >>> corella.use_coordinates(dataframe=df,
+    ...                         decimalLatitude='latitude',
+    ...                         decimalLongitude='longitude',
+    ...                         geodeticDatum='WGS84')
+
+.. program-output:: python corella_user_guide/data_cleaning.py 17
+
+Adding Uncertainty
+======================================
+
+There is always uncertainty in measurements of latitude and longitude; however, 
+sometimes it is useful to include this, especially if you know the uncertainty of 
+your instruments or measurements.  If you know this information and want to include 
+it, you can specify a default value (similar to the ``geodeticDatum`` column above) 
+to either ``coordinatePrecision`` or ``coordinateUncertaintyInMeters``.  The former is 
+in decimal degrees, and the latter is in meters.
+
+.. prompt:: python
+
+    >>> corella.use_coordinates(dataframe=df,
+    ...                         decimalLatitude='latitude',
+    ...                         decimalLongitude='longitude',
+    ...                         geodeticDatum='WGS84',
+    ...                         coordinatePrecision=0.1)
+
+.. program-output:: python corella_user_guide/data_cleaning.py 18
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
 ==============================================================
@@ -83,7 +139,7 @@ Now, we can check that our data column do comply with the Darwin Core standard.
 
     >>> corella.check_data(occurrences=df)
 
-#.. program-output:: python corella_user_guide/data_cleaning.py 10
+.. program-output:: python corella_user_guide/data_cleaning.py 19
 
 However, since we don't have all of the required columns, we can run ``suggest_workflow()`` 
 again to see how our data is doing this time round.
@@ -92,4 +148,4 @@ again to see how our data is doing this time round.
 
     >>> corella.suggest_workflow(dataframe=df)
 
-#.. program-output:: python corella_user_guide/data_cleaning.py 11
+.. program-output:: python corella_user_guide/data_cleaning.py 20

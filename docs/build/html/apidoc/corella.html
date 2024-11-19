@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Authors and Citation" href="../authors/index.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="../corella_user_guide/use_datetime.html" />
+    <link rel="prev" title="use_datetime" href="../corella_user_guide/use_datetime.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -671,23 +671,25 @@ column, which are <code class="docutils literal notranslate"><span class="pre">P
 <span class="prompt1"><span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Callocephalon fimbriatum&#39;</span><span class="p">,</span> <span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="s1">&#39;-35.273&#39;</span><span class="p">],</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span> <span class="s1">&#39;eventDate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">],</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]})</span></span>
 <span class="prompt1"><span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;decimalLatitude&#39;, &#39;decimalLongitude&#39;, &#39;geodeticDatum&#39;]
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: species, longitude, latitude, status
+✗ Unmatched: latitude, species, status, longitude
 
 ── Minimum required DwC terms ──
 
 Type                       Matched term(s)    Missing term(s)
--------------------------  -----------------  ----------------------------------------------------------------------------------------------------
+-------------------------  -----------------  ------------------------------------------------
 Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
 Record type                -                  basisOfRecord
 Scientific name            -                  scientificName
-Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters, coordinatePrecision
+Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum
 Date/Time                  eventDate          -
 
 ── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -865,7 +867,7 @@ the dataset.</p></li>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">use_datetime</p>
       </div>
     </a>
     <a class="right-next"

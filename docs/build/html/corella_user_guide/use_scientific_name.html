@@ -429,7 +429,7 @@ and if any of the data types check with <code class="docutils literal notranslat
 and correct.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 67, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 75, in &lt;module&gt;
     print(corella.use_scientific_name(dataframe=df))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_scientific_name.py&quot;, line 27, in use_scientific_name
@@ -479,23 +479,25 @@ None
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;decimalLatitude&#39;, &#39;decimalLongitude&#39;, &#39;geodeticDatum&#39;]
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: scientificName
-✗ Unmatched: longitude, status, latitude, date
+✗ Unmatched: longitude, date, latitude, status
 
 ── Minimum required DwC terms ──
 
 Type                       Matched term(s)    Missing term(s)
--------------------------  -----------------  ----------------------------------------------------------------------------------------------------
+-------------------------  -----------------  ------------------------------------------------
 Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
 Record type                -                  basisOfRecord
 Scientific name            scientificName     -
-Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum, coordinateUncertaintyInMeters, coordinatePrecision
+Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum
 Date/Time                  -                  eventDate
 
 ── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

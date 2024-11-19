@@ -46,7 +46,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="use_datetime.html" />
+    <link rel="next" title="use_datetime" href="use_datetime.html" />
     <link rel="prev" title="use_scientific_name" href="use_scientific_name.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -431,7 +431,7 @@ and if any of the data types check with <code class="docutils literal notranslat
 and correct.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 91, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 99, in &lt;module&gt;
     print(corella.use_coordinates(dataframe=df))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_coordinates.py&quot;, line 63, in use_coordinates
@@ -444,16 +444,17 @@ Core standard, and must specify them to <code class="docutils literal notranslat
 The three required columns are <code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code>, <code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>.</p>
 </section>
-<section id="second-use-coordinates">
-<h2>Second <code class="docutils literal notranslate"><span class="pre">use_coordinates</span></code><a class="headerlink" href="#second-use-coordinates" title="Link to this heading">#</a></h2>
-<p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code> to see what is in our dataset,
-and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code> are in there
-and correct.</p>
+<section id="specifying-decimallatitude-and-decimallongitude">
+<h2>Specifying <code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code> and <code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code><a class="headerlink" href="#specifying-decimallatitude-and-decimallongitude" title="Link to this heading">#</a></h2>
+<p>Since we have latitude and longitude columns, we can specify them in the
+<code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code> function, and the columns will be renamed and the
+values checked to see if i) they are numeric; and ii) if they are in the
+correct ranges.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 95, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 103, in &lt;module&gt;
     print(corella.use_coordinates(dataframe=df,
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_coordinates.py&quot;, line 86, in use_coordinates
@@ -463,6 +464,58 @@ ValueError: There are some errors in your data.  They are as follows:
 the decimalLatitude column must be numeric.
 </pre></div>
 </div>
+<p>As we can see here, there are some values that are not numeric.  Luckily,
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> has a function called <code class="docutils literal notranslate"><span class="pre">to_numeric</span></code> which will convert strings
+to numeric values for you (assuming those strings are numbers).  Below is an
+example of how to convert a column to all numeric values.  Now that the values
+are all numeric and in the correct range, we will get an updated dataframe.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">])</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species  decimalLatitude  decimalLongitude        date   status
+0  Callocephalon fimbriatum          -35.310           149.125  14-01-2023  present
+1     Eolophus roseicapilla          -35.273           149.133  15-01-2023  present
+</pre></div>
+</div>
+</section>
+<section id="geodeticdatum">
+<h2><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code><a class="headerlink" href="#geodeticdatum" title="Link to this heading">#</a></h2>
+<p>Another required field is called <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>.  This column is required as
+it lets others know how you measured latitude and longitude.  <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>
+refers to a Coordinate Reference System (CRS), which is how three-dimensional
+coordinates are represented on a two-dimensional surface.  The most common CRS
+(and what GPSs, as well as the ALA, uses) is called WGS84.  If you know that this
+is the CRS you have used, you can set the default value of <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code> in
+<code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">geodeticDatum</span><span class="o">=</span><span class="s1">&#39;WGS84&#39;</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species  decimalLatitude  decimalLongitude        date   status geodeticDatum
+0  Callocephalon fimbriatum          -35.310           149.125  14-01-2023  present         WGS84
+1     Eolophus roseicapilla          -35.273           149.133  15-01-2023  present         WGS84
+</pre></div>
+</div>
+</section>
+<section id="adding-uncertainty">
+<h2>Adding Uncertainty<a class="headerlink" href="#adding-uncertainty" title="Link to this heading">#</a></h2>
+<p>There is always uncertainty in measurements of latitude and longitude; however,
+sometimes it is useful to include this, especially if you know the uncertainty of
+your instruments or measurements.  If you know this information and want to include
+it, you can specify a default value (similar to the <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code> column above)
+to either <code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code> or <code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>.  The former is
+in decimal degrees, and the latter is in meters.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">geodeticDatum</span><span class="o">=</span><span class="s1">&#39;WGS84&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                         <span class="n">coordinatePrecision</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species  decimalLatitude  decimalLongitude        date   status geodeticDatum  coordinatePrecision
+0  Callocephalon fimbriatum          -35.310           149.125  14-01-2023  present         WGS84                  0.1
+1     Eolophus roseicapilla          -35.273           149.133  15-01-2023  present         WGS84                  0.1
+</pre></div>
+</div>
 </section>
 <section id="what-does-check-data-and-suggest-workflow-say-now">
 <h2>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h2>
@@ -470,11 +523,62 @@ the decimalLatitude column must be numeric.
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><p>#.. program-output:: python corella_user_guide/data_cleaning.py 10</p>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
+
+  Number of Errors  Pass/Fail    Column name
+------------------  -----------  -------------------
+                 0  ✓            decimalLatitude
+                 0  ✓            decimalLongitude
+                 0  ✓            geodeticDatum
+                 0  ✓            coordinatePrecision
+
+
+══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+
+Errors: 0 | Passes: 4
+
+✗ Data meets minimum Darwin core requirements
+Use corella.suggest_workflow()
+
+None
+</pre></div>
+</div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><p>#.. program-output:: python corella_user_guide/data_cleaning.py 11</p>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;decimalLatitude&#39;, &#39;decimalLongitude&#39;, &#39;geodeticDatum&#39;]
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── All DwC terms ──
+
+Matched 4 of 7 column names to DwC terms:
+
+✓ Matched: decimalLatitude, decimalLongitude, geodeticDatum, coordinatePrecision
+✗ Unmatched: date, status, species
+
+── Minimum required DwC terms ──
+
+Type                       Matched term(s)                                   Missing term(s)
+-------------------------  ------------------------------------------------  ---------------------------------------------
+Identifier (at least one)  -                                                 occurrenceID OR catalogNumber OR recordNumber
+Record type                -                                                 basisOfRecord
+Scientific name            -                                                 scientificName
+Location                   decimalLatitude, decimalLongitude, geodeticDatum  -
+Date/Time                  -                                                 eventDate
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+To make your data Darwin Core compliant, use the following workflow:
+
+corella.use_occurrences()
+corella.use_scientific_name()
+corella.use_datetime()
+
+Additional functions: use_abundance(), use_locality()
+None
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -502,7 +606,7 @@ again to see how our data is doing this time round.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">use_datetime</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -525,7 +629,9 @@ again to see how our data is doing this time round.</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-coordinates">Initial run of <code class="docutils literal notranslate"><span class="pre">use_coordinates</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#second-use-coordinates">Second <code class="docutils literal notranslate"><span class="pre">use_coordinates</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-decimallatitude-and-decimallongitude">Specifying <code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code> and <code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geodeticdatum"><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-uncertainty">Adding Uncertainty</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
 </ul>
   </nav></div>
