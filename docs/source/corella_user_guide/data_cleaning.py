@@ -21,7 +21,7 @@ df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapill
 # use_occurrences
 # -----------------------------------------------------------------------------
 if stop == 1:
-    print(corella.use_occurrences(dataframe=df))
+    print(corella.check_data(occurrences=df))
     sys.exit()
 
 if stop == 2:
@@ -185,4 +185,18 @@ if stop == 25:
                                yearfirst=False,
                                dayfirst=True)
     print(corella.suggest_workflow(dataframe=df))
+    sys.exit() 
+
+# -----------------------------------------------------------------------------
+# use_abundance
+# -----------------------------------------------------------------------------
+df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 
+                   'latitude': [-35.310, '-35.273'], 
+                   'longitude': [149.125, 149.133], 
+                   'date': ['14-01-2023', '15-01-2023'], 
+                   'status': ['present', 'present'],
+                   'count': [2,1]})
+
+if stop == 26:
+    print(corella.use_abundance(dataframe=df))
     sys.exit() 

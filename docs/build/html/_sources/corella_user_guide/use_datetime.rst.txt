@@ -58,7 +58,7 @@ The only required column is ``eventDate``.
 ``eventDate`` and automatically converting strings
 =====================================================
 
-Since we can specify the 
+Since we can specify the column names, we can specify the ``eventDate`` column to be ``'date'``.
 
 .. prompt:: python
 
@@ -67,7 +67,15 @@ Since we can specify the
 
 .. program-output:: python corella_user_guide/data_cleaning.py 22
 
-``use_datetime()`` requires the 
+We get an error here because ``use_datetime()`` requires the ``eventDate`` column to be in a ``datetime`` 
+format.  This is to make sure the date is formatted correctly.  Luckily, ``use_datetime()`` has a few 
+arguments that will convert dates in strings to ``datetime`` format.  
+
+- ``string_to_datetime``: when this is set to ``True``, will convert any strings in the ``eventDate`` column to ``datetime`` objects.
+- ``yearfirst``: when this is set to ``True``, ``corella`` (and ``pandas``) assumes your date starts with the year.
+- ``dayfirst``: when this is set to ``True``, ``corella`` (and ``pandas``) assumes your date starts with the day.
+
+Note when both ``yearfirst`` and ``dayfirst`` are set to ``False``, ``pandas`` assumes month is first.
 
 .. prompt:: python
 
@@ -78,6 +86,14 @@ Since we can specify the
     ...                      dayfirst=True)
 
 .. program-output:: python corella_user_guide/data_cleaning.py 23
+
+OPTIONAL: ``eventTime``
+==========================================================
+
+If time is pertinent to your observation (i.e. you are looking at nocturnal species), then you can 
+include the ``eventTime`` field.
+
+Amanda come back to this.
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
 ==============================================================

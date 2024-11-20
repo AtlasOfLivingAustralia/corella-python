@@ -447,7 +447,7 @@ that’s part of a collection?</p>
 <p>Depending on your answer to these questions, the values will differ.  Luckily,
 Darwin Core has a predefined vocabulary to help you with this.  They are as
 follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;FossilSpecimen&#39;, &#39;Observation&#39;, &#39;LivingSpecimen&#39;, &#39;MaterialCitation&#39;, &#39;MachineObservation&#39;, &#39;MaterialSample&#39;, &#39;PreservedSpecimen&#39;, &#39;Occurrence&#39;, &#39;HumanObservation&#39;]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[&#39;LivingSpecimen&#39;, &#39;MachineObservation&#39;, &#39;FossilSpecimen&#39;, &#39;HumanObservation&#39;, &#39;Occurrence&#39;, &#39;MaterialCitation&#39;, &#39;PreservedSpecimen&#39;, &#39;MaterialSample&#39;, &#39;Observation&#39;]
 </pre></div>
 </div>
 <p>If you are not able to check these, or have mistyped one of them, <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code>
@@ -464,7 +464,7 @@ will provide the current accepted values for you as well:</p>
     raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
 ValueError: There are some errors in your data.  They are as follows:
 
-There are invalid basisOfRecord values.  Valid values are MaterialCitation, FossilSpecimen, Observation, MachineObservation, MaterialSample, Occurrence, PreservedSpecimen, LivingSpecimen, HumanObservation
+There are invalid basisOfRecord values.  Valid values are PreservedSpecimen, LivingSpecimen, Observation, MachineObservation, HumanObservation, Occurrence, MaterialSample, MaterialCitation, FossilSpecimen
 </pre></div>
 </div>
 <p>For this exercise, let’s assume a human has seen these, which equates to a value of
@@ -515,8 +515,8 @@ so it is best to go with <code class="docutils literal notranslate"><span class=
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                   species latitude  longitude        date occurrenceStatus     basisOfRecord
-0  bb7118fa-c66d-415f-b9cc-2f70bb6802d8  Callocephalon fimbriatum   -35.31    149.125  14-01-2023          present  HumanObservation
-1  4e80c1c8-cdbc-4d5b-91a1-2f1630c55b35     Eolophus roseicapilla  -35.273    149.133  15-01-2023          present  HumanObservation
+0  b8582581-fef3-462f-abed-cac495573bcf  Callocephalon fimbriatum   -35.31    149.125  14-01-2023          present  HumanObservation
+1  9752a5a4-7206-4bc2-be67-89917063f73a     Eolophus roseicapilla  -35.273    149.133  15-01-2023          present  HumanObservation
 </pre></div>
 </div>
 <p>Now that we’ve taken care of the pieces of information <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> is responsible
@@ -564,7 +564,7 @@ again to see how our data is doing this time round.</p>
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, occurrenceStatus, basisOfRecord
-✗ Unmatched: species, latitude, longitude, date
+✗ Unmatched: species, date, latitude, longitude
 
 ── Minimum required DwC terms ──
 

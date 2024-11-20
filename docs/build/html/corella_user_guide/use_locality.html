@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>use_scientific_name &#8212; corella 0.1.0 documentation</title>
+    <title>use_locality &#8212; corella 0.1.0 documentation</title>
   
   
   
@@ -42,12 +42,12 @@
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'corella_user_guide/use_scientific_name';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'corella_user_guide/use_locality';</script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="use_coordinates" href="use_coordinates.html" />
-    <link rel="prev" title="use_occurrences" href="use_occurrences.html" />
+    <link rel="next" title="API Docs" href="../apidoc/corella.html" />
+    <link rel="prev" title="use_abundance" href="use_abundance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -374,7 +374,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="index.html" class="nav-link">Corella User Guide</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">use_scientific_name</li>
+    <li class="breadcrumb-item active" aria-current="page">use_locality</li>
   </ul>
 </nav>
 </div>
@@ -391,17 +391,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="use-scientific-name">
-<span id="id1"></span><h1>use_scientific_name<a class="headerlink" href="#use-scientific-name" title="Link to this heading">#</a></h1>
-<p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code>.
+  <section id="use-locality">
+<span id="id1"></span><h1>use_locality<a class="headerlink" href="#use-locality" title="Link to this heading">#</a></h1>
+<p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">use_locality()</span></code>.
 This function aims to check that you have the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scientificName</span></code>: the scientific name of the species you observed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code>: the latitude of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code>: the latitude of your observation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>: the coordinate reference system (CRS) of your latitude and longitude</p></li>
 </ul>
 <p>It can also (optionally) can check the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scientificNameRank</span></code>: rank of the</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> (OPTIONAL): whether a species is present or absent.  Not required for data submission.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>: uncertainty of your measurements in meters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code>: uncertainty of your measurements in decimal degrees</p></li>
 </ul>
 <p>If you haven’t read in our example dataset in the initial data cleaning page,
 here is an example and how to read it in:</p>
@@ -422,95 +424,7 @@ span.prompt1:before {
 in your csv file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
-</pre></div></div><section id="initial-run-of-use-scientific-name">
-<h2>Initial run of <code class="docutils literal notranslate"><span class="pre">use_scientific_name</span></code><a class="headerlink" href="#initial-run-of-use-scientific-name" title="Link to this heading">#</a></h2>
-<p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code> to see what is in our dataset,
-and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code> are in there
-and correct.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 75, in &lt;module&gt;
-    print(corella.use_scientific_name(dataframe=df))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_scientific_name.py&quot;, line 27, in use_scientific_name
-    raise ValueError(&quot;No Darwin Core arguments supplied to `use_scientific_name()`.  See dir(corella.use_scientific_name()) for valid arguments.&quot;)
-ValueError: No Darwin Core arguments supplied to `use_scientific_name()`.  See dir(corella.use_scientific_name()) for valid arguments.
-</pre></div>
-</div>
-<p>Here, we can see that we don’t have any column names matching the Darwin
-Core standard, and must specify them to <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code> to proceed.
-The only required column is the <code class="docutils literal notranslate"><span class="pre">scientificName</span></code> value.</p>
-</section>
-<section id="specifying-scientificname">
-<h2>specifying <code class="docutils literal notranslate"><span class="pre">scientificName</span></code><a class="headerlink" href="#specifying-scientificname" title="Link to this heading">#</a></h2>
-<p>Like with other <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions, to specify which column you want to rename or change, you
-specify it with the Darwin Core term.  In this case, it is <code class="docutils literal notranslate"><span class="pre">scientificName</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;species&#39;</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>             scientificName latitude  longitude        date   status
-0  Callocephalon fimbriatum   -35.31    149.125  14-01-2023  present
-1     Eolophus roseicapilla  -35.273    149.133  15-01-2023  present
-</pre></div>
-</div>
-</section>
-<section id="what-does-check-data-and-suggest-workflow-say-now">
-<h2>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h2>
-<p><strong>Note:</strong> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
-Darwin core standard, but it’s always good to double-check your data.</p>
-<p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
-
-  Number of Errors  Pass/Fail    Column name
-------------------  -----------  --------------
-                 0  ✓            scientificName
-
-
-══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-
-Errors: 0 | Passes: 1
-
-✗ Data meets minimum Darwin core requirements
-Use corella.suggest_workflow()
-
-None
-</pre></div>
-</div>
-<p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
-again to see how our data is doing this time round.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-── All DwC terms ──
-
-Matched 1 of 5 column names to DwC terms:
-
-✓ Matched: scientificName
-✗ Unmatched: latitude, status, date, longitude
-
-── Minimum required DwC terms ──
-
-Type                       Matched term(s)    Missing term(s)
--------------------------  -----------------  ------------------------------------------------
-Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
-Record type                -                  basisOfRecord
-Scientific name            scientificName     -
-Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum
-Date/Time                  -                  eventDate
-
-── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-To make your data Darwin Core compliant, use the following workflow:
-
-corella.use_occurrences()
-corella.use_coordinates()
-corella.use_datetime()
-
-Additional functions: use_abundance(), use_locality()
-None
-</pre></div>
-</div>
-</section>
-</section>
+</pre></div></div></section>
 
 
                 </article>
@@ -523,20 +437,20 @@ None
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="use_occurrences.html"
+       href="use_abundance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">use_occurrences</p>
+        <p class="prev-next-title">use_abundance</p>
       </div>
     </a>
     <a class="right-next"
-       href="use_coordinates.html"
+       href="../apidoc/corella.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">use_coordinates</p>
+        <p class="prev-next-title">API Docs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -547,24 +461,7 @@ None
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-scientific-name">Initial run of <code class="docutils literal notranslate"><span class="pre">use_scientific_name</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-scientificname">specifying <code class="docutils literal notranslate"><span class="pre">scientificName</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

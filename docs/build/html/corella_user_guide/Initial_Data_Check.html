@@ -414,13 +414,21 @@ as shown below:</p>
 <span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]}</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/data_cleaning.py&quot;, line 24, in &lt;module&gt;
-    print(corella.use_occurrences(dataframe=df))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 50, in use_occurrences
-    raise ValueError(&quot;No Darwin Core arguments supplied to `use_occurrences()`.  See dir(corella.use_occurrences()) for valid arguments.&quot;)
-ValueError: No Darwin Core arguments supplied to `use_occurrences()`.  See dir(corella.use_occurrences()) for valid arguments.
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
+
+Number of Errors    Pass/Fail    Column name
+------------------  -----------  -------------
+
+
+══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+
+Errors: 0.0 | Passes: 0
+
+✗ Data meets minimum Darwin core requirements
+Use corella.suggest_workflow()
+
+None
 </pre></div>
 </div>
 <p>For this first example, the data tests may not be showing any errors, but
@@ -438,7 +446,7 @@ are the results of this particular dataset:</p>
 Matched 0 of 5 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: longitude, date, status, latitude, species
+✗ Unmatched: species, latitude, date, status, longitude
 
 ── Minimum required DwC terms ──
 
