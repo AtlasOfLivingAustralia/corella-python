@@ -3,8 +3,8 @@
 use_coordinates
 --------------------
 
-One of the functions you can use to check your data is ``use_coordinates()``.  
-This function aims to check that you have the following:
+One of the functions you can use to check certain columns of your data is ``use_coordinates()``.  
+This function aims to check that you have the following Darwin Core Vocabulary Terms:
 
 - ``decimalLatitude``: the latitude of your observation
 - ``decimalLongitude``: the latitude of your observation
@@ -15,8 +15,7 @@ It can also (optionally) can check the following:
 - ``coordinateUncertaintyInMeters``: uncertainty of your measurements in meters
 - ``coordinatePrecision``: uncertainty of your measurements in decimal degrees
 
-If you haven't read in our example dataset in the initial data cleaning page, 
-here is an example and how to read it in:
+For these examples, we will be using the following dataset:
 
 .. prompt:: python
 
@@ -30,11 +29,13 @@ here is an example and how to read it in:
     ...     'status': ['present', 'present']}
     ... )
 
-If you wish to follow with your own dataset in a csv file, use ``pandas`` to read 
-in your csv file:
+If, however, you want to go through this workflow using your own data, please feel 
+free to do so!  If your data is in a csv file, you can read your data into a ``pandas`` 
+dataframe like so:
 
 .. prompt:: python
 
+    >>> import corella
     >>> import pandas as pd
     >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
 
@@ -130,7 +131,7 @@ in decimal degrees, and the latter is in meters.
 what does ``check_data`` and ``suggest_workflow`` say now? 
 ==============================================================
 
-**Note:** each of the ``use_*`` functions checks your data for compliance with the 
+*Note:* each of the ``use_*`` functions checks your data for compliance with the 
 Darwin core standard, but it's always good to double-check your data.
 
 Now, we can check that our data column do comply with the Darwin Core standard.
@@ -149,3 +150,14 @@ again to see how our data is doing this time round.
     >>> corella.suggest_workflow(dataframe=df)
 
 .. program-output:: python corella_user_guide/data_cleaning.py 20
+
+To learn more about how to use these functions, go to 
+
+- `use_occurrences <../use_occurrences.html>`_
+- `use_datetime <../use_datetime.html>`_
+- `use_scientific_name <../use_scientific_name.html>`_
+
+Optional functions:
+
+- `use_abundance <../use_abundance.html>`_
+- `use_locality <../use_locality.html>`_

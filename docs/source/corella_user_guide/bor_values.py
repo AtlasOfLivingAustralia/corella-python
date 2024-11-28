@@ -12,4 +12,6 @@ def snake_to_camel_case(list_of_words=None):
 temp = pd.read_table('https://raw.githubusercontent.com/gbif/parsers/dev/src/main/resources/dictionaries/parse/basisOfRecord.tsv').dropna()
 terms = list(set(temp['PRESERVED_SPECIMEN']))
 terms = snake_to_camel_case(terms)
-print(terms)
+for i in terms:
+    print('- {}'.format(i))
+# print(terms)

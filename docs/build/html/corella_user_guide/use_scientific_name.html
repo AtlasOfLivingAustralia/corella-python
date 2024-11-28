@@ -393,18 +393,17 @@ document.write(`
                   
   <section id="use-scientific-name">
 <span id="id1"></span><h1>use_scientific_name<a class="headerlink" href="#use-scientific-name" title="Link to this heading">#</a></h1>
-<p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code>.
-This function aims to check that you have the following:</p>
+<p>One of the functions you can use to check certain columns of your data is <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code>.
+This function aims to check that you have the following Darwin Core Vocabulary Terms:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">scientificName</span></code>: the scientific name of the species you observed</p></li>
 </ul>
-<p>It can also (optionally) can check the following:</p>
+<p>It can also can check the following:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scientificNameRank</span></code>: rank of the</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> (OPTIONAL): whether a species is present or absent.  Not required for data submission.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scientificNameRank</span></code> (OPTIONAL): rank of the scientific name you are providing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> (OPTIONAL): whether a species is present or absent.</p></li>
 </ul>
-<p>If you haven’t read in our example dataset in the initial data cleaning page,
-here is an example and how to read it in:</p>
+<p>For these examples, we will be using the following dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
@@ -418,9 +417,11 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]}</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
-</pre></div></div><p>If you wish to follow with your own dataset in a csv file, use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to read
-in your csv file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+</pre></div></div><p>If, however, you want to go through this workflow using your own data, please feel
+free to do so!  If your data is in a csv file, you can read your data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code>
+dataframe like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
 </pre></div></div><section id="initial-run-of-use-scientific-name">
 <h2>Initial run of <code class="docutils literal notranslate"><span class="pre">use_scientific_name</span></code><a class="headerlink" href="#initial-run-of-use-scientific-name" title="Link to this heading">#</a></h2>
@@ -454,7 +455,7 @@ specify it with the Darwin Core term.  In this case, it is <code class="docutils
 </section>
 <section id="what-does-check-data-and-suggest-workflow-say-now">
 <h2>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h2>
-<p><strong>Note:</strong> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
+<p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
@@ -486,7 +487,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: scientificName
-✗ Unmatched: latitude, status, date, longitude
+✗ Unmatched: date, status, latitude, longitude
 
 ── Minimum required DwC terms ──
 
@@ -509,6 +510,17 @@ Additional functions: use_abundance(), use_locality()
 None
 </pre></div>
 </div>
+<p>To learn more about how to use these functions, go to</p>
+<ul class="simple">
+<li><p><a class="reference external" href="../use_occurrences.html">use_occurrences</a></p></li>
+<li><p><a class="reference external" href="../use_coordinates.html">use_coordinates</a></p></li>
+<li><p><a class="reference external" href="../use_datetime.html">use_datetime</a></p></li>
+</ul>
+<p>Optional functions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="../use_abundance.html">use_abundance</a></p></li>
+<li><p><a class="reference external" href="../use_locality.html">use_locality</a></p></li>
+</ul>
 </section>
 </section>
 

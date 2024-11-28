@@ -393,18 +393,16 @@ document.write(`
                   
   <section id="initial-data-check">
 <span id="id1"></span><h1>Initial Data Check<a class="headerlink" href="#initial-data-check" title="Link to this heading">#</a></h1>
-<p>To get started, if you think that your data is ready to go, you
-can read in your data and use <code class="docutils literal notranslate"><span class="pre">corella.check_data()</span></code>.  To read
-in your data from a csv file, you can use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to do this:</p>
+<p>When you’re ready to start submitting your data, there are a number of things to
+check to ensure the ingestion process into the ALA is smooth.  Some of this is ensuring
+that your column names conform to Darwin Core Vocabulary standards, and that your
+data is in the correct format (i.e. numerical columns are actually numerical).</p>
+<p>For these examples, we will be using the following dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
-</pre></div></div><p>However, for these examples, we will be using a smaller dataset
-as shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="p">{</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Callocephalon fimbriatum&#39;</span><span class="p">,</span> <span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
@@ -413,7 +411,15 @@ as shown below:</p>
 <span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]}</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+</pre></div></div><p>If, however, you want to go through this workflow using your own data, please feel
+free to do so!  If your data is in a csv file, you can read your data into a <code class="docutils literal notranslate"><span class="pre">pandas</span></code>
+dataframe like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
+</pre></div></div><p>Now that you have a dataframe with data in it, we can check the data using the
+function <code class="docutils literal notranslate"><span class="pre">corella.check_data()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
 
 Number of Errors    Pass/Fail    Column name
@@ -431,12 +437,12 @@ Use corella.suggest_workflow()
 None
 </pre></div>
 </div>
-<p>For this first example, the data tests may not be showing any errors, but
-no column names were checked.  This is because the names of the columns are
-not part of the standard Darwin Core vocabulary.  However, we have created a
-series of functions that can help you get your data conformant with the
-Darwin Core standard.  To show the functions you will need to do this, we
-have developed an all-purpose command called <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>.  Here
+<p>For our initial data example, the data tests may not be showing any errors, but
+unfortunately, this means no column names were checked.  This is because the names
+of the columns are not part of the standard Darwin Core Vocabulary.  Thankfully,
+we have created a series of functions that can help you get your data into the
+Darwin Core standard.  To show the functions <code class="docutils literal notranslate"><span class="pre">corella</span></code> contains that can help you
+do this, we have developed an all-purpose function called <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>.  Here
 are the results of this particular dataset:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -446,7 +452,7 @@ are the results of this particular dataset:</p>
 Matched 0 of 5 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: species, latitude, date, status, longitude
+✗ Unmatched: date, status, longitude, latitude, species
 
 ── Minimum required DwC terms ──
 
@@ -470,6 +476,18 @@ Additional functions: use_abundance(), use_locality()
 None
 </pre></div>
 </div>
+<p>To learn more about how to use these functions, go to</p>
+<ul class="simple">
+<li><p><a class="reference external" href="../use_occurrences.html">use_occurrences</a></p></li>
+<li><p><a class="reference external" href="../use_coordinates.html">use_coordinates</a></p></li>
+<li><p><a class="reference external" href="../use_datetime.html">use_datetime</a></p></li>
+<li><p><a class="reference external" href="../use_scientific_name.html">use_scientific_name</a></p></li>
+</ul>
+<p>Optional functions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="../use_abundance.html">use_abundance</a></p></li>
+<li><p><a class="reference external" href="../use_locality.html">use_locality</a></p></li>
+</ul>
 </section>
 
 

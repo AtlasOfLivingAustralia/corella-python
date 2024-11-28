@@ -3,20 +3,19 @@
 use_datetime
 --------------------
 
-One of the functions you can use to check your data is ``use_datetime()``.  
-This function aims to check that you have the following:
+One of the functions you can use to check certain columns of your data is ``use_datetime()``.  
+This function aims to check that you have the following Darwin Core Vocabulary Terms:
 
 - ``eventDate``: the date of your observation
 
 It can also (optionally) can check the following:
 
+- ``eventTime``: year of your observation
 - ``year``: year of your observation
 - ``month``: year of your observation
 - ``day``: year of your observation
-- ``eventTime``: year of your observation
 
-If you haven't read in our example dataset in the initial data cleaning page, 
-here is an example and how to read it in:
+For these examples, we will be using the following dataset:
 
 .. prompt:: python
 
@@ -30,11 +29,13 @@ here is an example and how to read it in:
     ...     'status': ['present', 'present']}
     ... )
 
-If you wish to follow with your own dataset in a csv file, use ``pandas`` to read 
-in your csv file:
+If, however, you want to go through this workflow using your own data, please feel 
+free to do so!  If your data is in a csv file, you can read your data into a ``pandas`` 
+dataframe like so:
 
 .. prompt:: python
 
+    >>> import corella
     >>> import pandas as pd
     >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
 
@@ -87,14 +88,6 @@ Note when both ``yearfirst`` and ``dayfirst`` are set to ``False``, ``pandas`` a
 
 .. program-output:: python corella_user_guide/data_cleaning.py 23
 
-OPTIONAL: ``eventTime``
-==========================================================
-
-If time is pertinent to your observation (i.e. you are looking at nocturnal species), then you can 
-include the ``eventTime`` field.
-
-Amanda come back to this.
-
 what does ``check_data`` and ``suggest_workflow`` say now? 
 ==============================================================
 
@@ -117,3 +110,14 @@ again to see how our data is doing this time round.
     >>> corella.suggest_workflow(dataframe=df)
 
 .. program-output:: python corella_user_guide/data_cleaning.py 25
+
+To learn more about how to use these functions, go to 
+
+- `use_occurrences <../use_occurrences.html>`_
+- `use_coordinates <../use_coordinates.html>`_
+- `use_scientific_name <../use_scientific_name.html>`_
+
+Optional functions:
+
+- `use_abundance <../use_abundance.html>`_
+- `use_locality <../use_locality.html>`_

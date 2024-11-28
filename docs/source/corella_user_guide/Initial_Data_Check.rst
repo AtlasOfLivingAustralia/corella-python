@@ -3,17 +3,12 @@
 Initial Data Check
 --------------------
 
-To get started, if you think that your data is ready to go, you 
-can read in your data and use ``corella.check_data()``.  To read 
-in your data from a csv file, you can use ``pandas`` to do this:
+When you're ready to start submitting your data, there are a number of things to 
+check to ensure the ingestion process into the ALA is smooth.  Some of this is ensuring 
+that your column names conform to Darwin Core Vocabulary standards, and that your 
+data is in the correct format (i.e. numerical columns are actually numerical).  
 
-.. prompt:: python
-
-    >>> import pandas as pd
-    >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
-
-However, for these examples, we will be using a smaller dataset 
-as shown below:
+For these examples, we will be using the following dataset:
 
 .. prompt:: python
 
@@ -26,16 +21,32 @@ as shown below:
     ...     'date': ['14-01-2023', '15-01-2023'], 
     ...     'status': ['present', 'present']}
     ... )
+
+If, however, you want to go through this workflow using your own data, please feel 
+free to do so!  If your data is in a csv file, you can read your data into a ``pandas`` 
+dataframe like so:
+
+.. prompt:: python
+
+    >>> import corella
+    >>> import pandas as pd
+    >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
+
+Now that you have a dataframe with data in it, we can check the data using the 
+function ``corella.check_data()``. 
+
+.. prompt:: python
+
     >>> corella.check_data(occurrences=df)
 
 .. program-output:: python corella_user_guide/data_cleaning.py 1
 
-For this first example, the data tests may not be showing any errors, but 
-no column names were checked.  This is because the names of the columns are 
-not part of the standard Darwin Core vocabulary.  However, we have created a 
-series of functions that can help you get your data conformant with the 
-Darwin Core standard.  To show the functions you will need to do this, we 
-have developed an all-purpose command called ``suggest_workflow()``.  Here 
+For our initial data example, the data tests may not be showing any errors, but 
+unfortunately, this means no column names were checked.  This is because the names 
+of the columns are not part of the standard Darwin Core Vocabulary.  Thankfully, 
+we have created a series of functions that can help you get your data into the 
+Darwin Core standard.  To show the functions ``corella`` contains that can help you 
+do this, we have developed an all-purpose function called ``suggest_workflow()``.  Here 
 are the results of this particular dataset:                                  
 
 .. prompt:: python
@@ -43,3 +54,15 @@ are the results of this particular dataset:
     >>> corella.suggest_workflow(dataframe=df)
 
 .. program-output:: python corella_user_guide/data_cleaning.py 2
+
+To learn more about how to use these functions, go to 
+
+- `use_occurrences <../use_occurrences.html>`_
+- `use_coordinates <../use_coordinates.html>`_
+- `use_datetime <../use_datetime.html>`_
+- `use_scientific_name <../use_scientific_name.html>`_
+
+Optional functions:
+
+- `use_abundance <../use_abundance.html>`_
+- `use_locality <../use_locality.html>`_

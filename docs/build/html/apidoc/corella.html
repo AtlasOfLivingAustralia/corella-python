@@ -391,81 +391,6 @@ document.write(`
   <section id="module-corella">
 <span id="api-docs"></span><h1>API Docs<a class="headerlink" href="#module-corella" title="Link to this heading">#</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="corella.check_abundance">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_abundance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_abundance" title="Link to this definition">#</a></dt>
-<dd><p>Checks the following columns:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">individualCount</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">organismQuantity</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">organismQuantityType</span></code></p></li>
-</ul>
-<p>For <code class="docutils literal notranslate"><span class="pre">individualCount</span></code>, it will check if this is a numeric column.  If
-<code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> is in the data, it will check if there are mismatches
-between the two columns (i.e. if <code class="docutils literal notranslate"><span class="pre">individualCount</span></code> is greater than 0, but
-the <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> is marked as <code class="docutils literal notranslate"><span class="pre">absent</span></code>.)</p>
-<p>For <code class="docutils literal notranslate"><span class="pre">organismQuantity</span></code> and <code class="docutils literal notranslate"><span class="pre">organismQuantityType</span></code>, it will check if both
-columns are present and both are strings.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="corella.check_basisOfRecord">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_basisOfRecord</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_basisOfRecord" title="Link to this definition">#</a></dt>
-<dd><p>Checks whether or not your <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> column values are valid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="corella.check_coordinates">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_coordinates" title="Link to this definition">#</a></dt>
-<dd><p>Checks the following fields:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code></p></li>
-</ul>
-<p>It will check if all the above fields (except <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>) are numeric.
-It will also check if <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code> is a string.</p>
-<p>For <code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code> and <code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code>, it will check if they are
-between -90 and 90, and between -180 and 180, respectively.  It will then
-check if <code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code> and <code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code> are
-above 0.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="corella.check_data">
 <span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_data" title="Link to this definition">#</a></dt>
 <dd><p>Checks whether or not the data in your occurrences complies with
@@ -513,147 +438,6 @@ None
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="corella.check_datetime">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_datetime" title="Link to this definition">#</a></dt>
-<dd><p>Checks the following fields:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">eventDate</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">year</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">month</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">day</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eventTime</span></code></p></li>
-</ul>
-<p>It will check if all the above fields (except <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code>) are either
-numeric or <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects.</p>
-<p>It will also check if all column values are valid (i.e. there’s no 13th month,
-25th hour etc.)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="corella.check_locality">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_locality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_locality" title="Link to this definition">#</a></dt>
-<dd><p>Checks the following fields:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">continent</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">country</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">countryCode</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stateProvince</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">locality</span></code></p></li>
-</ul>
-<p>It will check if all the above fields are strings.</p>
-<p>It will also check if the <code class="docutils literal notranslate"><span class="pre">continent</span></code>, <code class="docutils literal notranslate"><span class="pre">country</span></code> and <code class="docutils literal notranslate"><span class="pre">countryCode</span></code>
-column values are correct (valid country and country codes are found at
-<a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2</a>).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="corella.check_occurrenceIDs">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_occurrenceIDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_occurrenceIDs" title="Link to this definition">#</a></dt>
-<dd><p>Checks whether or not you have unique ids present in one or more of the following
-columns:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">recordNumber</span></code></p></li>
-</ul>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="corella.check_occurrenceStatus">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_occurrenceStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_occurrenceStatus" title="Link to this definition">#</a></dt>
-<dd><p>Checks whether or not you have valid values for the <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code>
-column, which are <code class="docutils literal notranslate"><span class="pre">PRESENT</span></code>, <code class="docutils literal notranslate"><span class="pre">ABSENT</span></code>, <code class="docutils literal notranslate"><span class="pre">present</span></code>, <code class="docutils literal notranslate"><span class="pre">absent</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="corella.check_occurrences">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_occurrences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_occurrences" title="Link to this definition">#</a></dt>
-<dd><p>This is meant to check your occurrence data for a few data columns:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> or <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code></p></li>
-</ul>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="corella.check_scientificName">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_scientificName</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_scientificName" title="Link to this definition">#</a></dt>
-<dd><p>Checks whether or not the following columns are in string format:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">scientificName</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scientificNameRank</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scientificNameAuthorship</span></code></p></li>
-</ul>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check.</p></li>
-<li><p><strong>errors</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A list of previous errors (used when you’re doing multiple checks).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> of errors; else, return the <code class="docutils literal notranslate"><span class="pre">dataframe</span></code>.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="corella.suggest_workflow">
 <span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">suggest_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.suggest_workflow" title="Link to this definition">#</a></dt>
 <dd><p>Suggests a workflow to ensure your data conforms with the pre-defined Darwin Core standard.</p>
@@ -678,7 +462,7 @@ column, which are <code class="docutils literal notranslate"><span class="pre">P
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: longitude, species, latitude, status
+✗ Unmatched: latitude, longitude, status, species
 
 ── Minimum required DwC terms ──
 
@@ -899,16 +683,7 @@ the dataset.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_abundance"><code class="docutils literal notranslate"><span class="pre">check_abundance()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_basisOfRecord"><code class="docutils literal notranslate"><span class="pre">check_basisOfRecord()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_coordinates"><code class="docutils literal notranslate"><span class="pre">check_coordinates()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_data"><code class="docutils literal notranslate"><span class="pre">check_data()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_datetime"><code class="docutils literal notranslate"><span class="pre">check_datetime()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_locality"><code class="docutils literal notranslate"><span class="pre">check_locality()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_occurrenceIDs"><code class="docutils literal notranslate"><span class="pre">check_occurrenceIDs()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_occurrenceStatus"><code class="docutils literal notranslate"><span class="pre">check_occurrenceStatus()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_occurrences"><code class="docutils literal notranslate"><span class="pre">check_occurrences()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.check_scientificName"><code class="docutils literal notranslate"><span class="pre">check_scientificName()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.suggest_workflow"><code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_abundance"><code class="docutils literal notranslate"><span class="pre">use_abundance()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_coordinates"><code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code></a></li>
