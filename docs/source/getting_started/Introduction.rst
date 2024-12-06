@@ -1,6 +1,6 @@
 .. _Introduction:
 
-Introduction
+Introduction 
 =================================
 
 ``corella`` is a software package which offers a streamlined workflow 
@@ -12,3 +12,6 @@ provide similar functionality.  With this package, you can
 - Check your data complies with Darwin Core standards
 - Determine if you have all required information for your particular atlas
 - Format your occurrence, event, mulitmedia or extended measurement or fact correctly
+
+For a further explanation on different file types and how they may be applicable 
+to your data, see `File Types <File_Types.html>`_.

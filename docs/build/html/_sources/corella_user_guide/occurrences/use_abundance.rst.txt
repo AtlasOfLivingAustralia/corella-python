@@ -1,0 +1,74 @@
+.. _use_abundance:
+
+use_abundance
+--------------------
+
+**Note: the information here is not required by the ALA**
+
+One of the functions you can use to check your data is ``use_abundance()``.  
+This function aims to check that you have the following:
+
+- ``individualCount``: the number of individuals observed of a particular species
+
+It can also (optionally) can check the following:
+
+- ``organismQuantity``: a description of your individual counts
+- ``organismQuantityType``: describes what your organismQuantity is
+
+For this exercise, we have included an extra column from the example dataframe titled ``'count'``:
+
+.. prompt:: python
+
+    >>> import corella
+    >>> import pandas as pd
+    >>> df = pd.DataFrame(
+    ...     {'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 
+    ...     'latitude': [-35.310, '-35.273'], 
+    ...     'longitude': [149.125, 149.133], 
+    ...     'date': ['14-01-2023', '15-01-2023'], 
+    ...     'status': ['present', 'present'],
+    ...     'count': [2,1]}
+    ... )
+
+If you wish to follow with your own dataset in a csv file, use ``pandas`` to read 
+in your csv file:
+
+.. prompt:: python
+
+    >>> import pandas as pd
+    >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
+
+Initial run of ``use_abundance``
+======================================
+
+Initally, we can run ``use_abundance()`` to see what is in our dataset, 
+and if any of the data types check with ``use_abundance()`` are in there 
+and correct.
+
+.. prompt:: python
+
+    >>> corella.use_abundance(dataframe=df)
+
+.. program-output:: python corella_user_guide/occurrences/data_cleaning.py 26
+
+Here, we can see that we don't have any column names matching the Darwin 
+Core standard, and must specify them to ``use_abundance()`` to proceed. The 
+only one we have is a count of the species, and so we can specify the ``count`` 
+column to ``individualCount``.
+
+.. prompt:: python
+
+    >>> corella.use_abundance(dataframe=df,individualCount='count')
+
+.. program-output:: python corella_user_guide/occurrences/data_cleaning.py 27
+
+To learn more about how to use other functions, go to 
+
+- `use_occurrences <../use_occurrences.html>`_
+- `use_coordinates <../use_coordinates.html>`_
+- `use_datetime <../use_datetime.html>`_
+- `use_scientific_name <../use_scientific_name.html>`_
+
+Optional functions:
+
+- `use_locality <../use_locality.html>`_

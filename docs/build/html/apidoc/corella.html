@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Authors and Citation" href="../authors/index.html" />
-    <link rel="prev" title="use_locality" href="../corella_user_guide/use_locality.html" />
+    <link rel="prev" title="Corella User Guide" href="../corella_user_guide/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -462,7 +462,7 @@ None
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: latitude, longitude, status, species
+✗ Unmatched: latitude, status, longitude, species
 
 ── Minimum required DwC terms ──
 
@@ -590,6 +590,11 @@ Default is <code class="docutils literal notranslate"><span class="pre">False</s
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="corella.use_multimedia">
+<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_multimedia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrenceID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">references</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">created</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">creator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">license</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_multimedia" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="corella.use_occurrences">
 <span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_occurrences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrenceID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalogNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recordNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basisOfRecord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrenceStatus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_occurrences" title="Link to this definition">#</a></dt>
 <dd><p>Checks for unique identifiers of each occurrence and how the occurrence was recorded.</p>
@@ -620,7 +625,7 @@ the dataset.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="corella.use_scientific_name">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_scientific_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_scientific_name" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_scientific_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificNameRank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificNameAuthorship</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_scientific_name" title="Link to this definition">#</a></dt>
 <dd><p>Checks for the name of the taxon you identified is present.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -648,12 +653,12 @@ the dataset.</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../corella_user_guide/use_locality.html"
+       href="../corella_user_guide/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">use_locality</p>
+        <p class="prev-next-title">Corella User Guide</p>
       </div>
     </a>
     <a class="right-next"
@@ -689,6 +694,7 @@ the dataset.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_coordinates"><code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_datetime"><code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_locality"><code class="docutils literal notranslate"><span class="pre">use_locality()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_multimedia"><code class="docutils literal notranslate"><span class="pre">use_multimedia()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_occurrences"><code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_scientific_name"><code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code></a></li>
 </ul>

@@ -1,25 +1,65 @@
 Corella User Guide
 ------------------------------
 
-Here is a more in-depth explanation of how to use the main functions.
+Each vignette is a more in-depth explanation of how to use functions in context with the different Darwin 
+Core Archive data types.
 
-- :ref:`Initial Data Check`
-- :ref:`use_occurrences`
-- :ref:`use_scientific_name`
-- :ref:`use_coordinates`
-- :ref:`use_datetime`
-- :ref:`use_abundance`
-- :ref:`use_locality`
+Core Archive Types
+=========================
 
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :hidden:
+.. grid:: 1 2 2 2
+    :gutter: 4
 
-   Initial_Data_Check
-   use_occurrences
-   use_scientific_name
-   use_coordinates
-   use_datetime
-   use_abundance
-   use_locality
+    .. grid-item-card::
+        :link: occurrences/index.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../_static/icons/binoculars.svg
+                
+        **Occurrences**
+
+        Preparing occurrences and sightings?
+
+    .. grid-item-card::
+        :link: events/index.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../_static/icons/calendar.svg
+
+        **Events**
+
+        Have many sightings in a place over time?
+
+Extensions
+=========================
+
+.. grid:: 1 2 2 2
+    :gutter: 4
+
+    .. grid-item-card::
+        :link: multimedia/index.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../_static/icons/faq.svg
+
+        **Multimedia**
+
+        Want to submit images, movies and sounds?
+    
+    .. grid-item-card:: 
+        :class-card: sd-text-black
+        :link: mof/index.html
+        :text-align: center
+
+        .. raw:: html
+            :file: ../_static/icons/faq.svg
+
+        **Measurement Or Fact**
+
+        Want to record environmental variables?
