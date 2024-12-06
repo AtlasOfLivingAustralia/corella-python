@@ -21,7 +21,7 @@ def test_coordinatePrecision_not_float():
     df = pd.DataFrame({'decimalLatitude': [-1.0,-1.0],'decimalLongitude': [-1.0,-1.0],'coordinatePrecision': ['-1.0','-1.0']})
     errors = corella.check_coordinates(dataframe=df,errors=[])
     assert len(errors) == 1
-
+#'''
 def test_coordinateUncertaintyInMeters_not_numeric():
     df = pd.DataFrame({'decimalLatitude': [-1.0,-1.0],'decimalLongitude': [-1.0,-1.0],'coordinateUncertaintyInMeters': ['-1.0','-1.0']})
     errors = corella.check_coordinates(dataframe=df,errors=[])
@@ -85,3 +85,4 @@ def test_decimalLongitude_decimalLatitdue_coordinateUncertaintyInMeters_geodetic
                        'coordinatePrecision': ['-1.0','-1.0']})
     errors = corella.check_coordinates(dataframe=df,errors=[])
     assert len(errors) == 5
+#'''

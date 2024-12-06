@@ -1,5 +1,6 @@
 from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS
 from .check_coordinates import check_coordinates
+from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
 
 def use_coordinates(dataframe=None,
                     decimalLatitude=None,
@@ -36,8 +37,7 @@ def use_coordinates(dataframe=None,
     """
 
     # raise a ValueError if no dataframe is provided
-    if dataframe is None:
-        raise ValueError('Please provide a dataframe.')
+    check_for_dataframe(dataframe=dataframe,func='use_coordinates')
     
     # mapping column names
     mapping = {
@@ -57,24 +57,14 @@ def use_coordinates(dataframe=None,
         coordinateUncertaintyInMeters: [float,int]
     }
 
+    values = ['decimalLatitude','decimalLongitude','geodeticDatum','coordinatePrecision','coordinateUncertaintyInMeters']
+
     # check if each variable is None
-    if all([v is None for v in [decimalLatitude,decimalLongitude,geodeticDatum,coordinatePrecision,coordinateUncertaintyInMeters]]):
-        if all ([v not in GEO_REQUIRED_DWCA_TERMS['Australia'] for v in dataframe.columns]):
-            raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(self.use_coordinates()) for valid arguments.")
-
-    # loop over all variables with following logic:
-    # 1. check if var is None
-    # 2.   If var is not none, and not in the column names, assume user has given us a value for the column and add it; 
-    #        delete entry in dictionary, as column does not need to be renamed 
-    for var in [decimalLatitude,decimalLongitude,geodeticDatum,coordinatePrecision,coordinateUncertaintyInMeters]:
-        if var is not None:
-            if var not in dataframe.columns:
-                if type(var) in accepted_formats[var]:
-                    dataframe[mapping[var]] = var
-                    del mapping[var]
-                else:
-                    raise ValueError("Only a {} is accepted for {}".format(accepted_formats[var],var))
-
+    check_if_all_args_empty(dataframe=dataframe,func='use_coordinates',keys=mapping.keys(),values=values)
+    
+    # check all column names and values
+    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
+    
     # rename all necessary columns
     dataframe = dataframe.rename(columns=mapping)
 

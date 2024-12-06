@@ -51,6 +51,11 @@ def check_abundance(dataframe=None,
                     if not wrong_statuses.empty:
                         errors.append('Some of your individual counts are 0, yet the occurrence status is set to present.  Please change occurrenceStatus to ABSENT')
 
+    accepted_types = {
+        'organismQuantity': [int],
+        'organismQuantityType': [str]
+    }
+
     # first, check if both organismQuantity and organismQuantityType are present; if not, add error message
     if any(x in dataframe.columns for x in ['organismQuantity','organismQuantityType']):
         if not set(dataframe.columns).issuperset(['organismQuantity','organismQuantityType']):
@@ -59,10 +64,13 @@ def check_abundance(dataframe=None,
         # now, check each individually
         for var in ['organismQuantity','organismQuantityType']:
             if var in dataframe.columns:
-                errors = check_is_string(dataframe=dataframe,column_name=var,errors=errors)
-                errors = swap_error_message(errors=errors,
-                                            orig_message='the {} column must be a string.'.format(var),
-                                            new_message=unique_messages[var])
+                if var == 'organismQuantity':
+                    errors = check_is_numeric(dataframe=dataframe,column_name=var,errors=errors)
+                else:
+                    errors = check_is_string(dataframe=dataframe,column_name=var,errors=errors)
+                    errors = swap_error_message(errors=errors,
+                                                orig_message='the {} column must be a {}.'.format(var,accepted_types[var]),
+                                                new_message=unique_messages[var])
     
     # return errors
     if errors is not None:

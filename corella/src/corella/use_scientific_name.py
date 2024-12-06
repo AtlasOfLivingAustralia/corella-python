@@ -1,7 +1,10 @@
 from .check_scientificName import check_scientificName
+from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
 
 def use_scientific_name(dataframe=None,
-                        scientificName=None):
+                        scientificName=None,
+                        scientificNameRank=None,
+                        scientificNameAuthorship=None):
     """
     Checks for the name of the taxon you identified is present.
 
@@ -18,23 +21,30 @@ def use_scientific_name(dataframe=None,
     """
 
     # check for dataframe
-    if dataframe is None:
-        raise ValueError('Please provide a dataframe.')
+    check_for_dataframe(dataframe=dataframe,func='use_scientific_name')
+    
+    mapping = {
+        scientificName: 'scientificName',
+        scientificNameRank: 'scientificNameRank',
+        scientificNameAuthorship: 'scientificNameAuthorship'
+    }
 
-    # check for validating data
-    if scientificName is None:
-        if 'scientificName' not in dataframe.columns:
-            raise ValueError("No Darwin Core arguments supplied to `use_scientific_name()`.  See dir(corella.use_scientific_name()) for valid arguments.")
+    accepted_formats = {
+        scientificName: [str],
+        scientificNameRank: [str],
+        scientificNameAuthorship: [str]
+    }
 
-    # now, do the checking
-    elif scientificName is not None:
+    values = ['scientificName','scientificNameRank','scientificNameAuthorship']
 
-        # check type of variable
-        if type(scientificName) is str:
-            if scientificName in dataframe.columns:
-                dataframe = dataframe.rename(columns={scientificName: 'scientificName'})
-        else:
-            raise ValueError("scientificName argument must be a string (column name).")
+    # check if all args are empty
+    check_if_all_args_empty(dataframe=dataframe,func='use_scientific_name',keys=mapping.keys(),values=values)
+
+    # check column names and values
+    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
+
+    # rename all necessary columns
+    dataframe = dataframe.rename(columns=mapping)
 
     # check values
     errors = check_scientificName(dataframe=dataframe)

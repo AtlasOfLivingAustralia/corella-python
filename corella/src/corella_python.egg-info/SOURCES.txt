@@ -8,7 +8,10 @@ src/corella/check_basisOfRecord.py
 src/corella/check_coordinates.py
 src/corella/check_data.py
 src/corella/check_datetime.py
+src/corella/check_emof.py
+src/corella/check_events.py
 src/corella/check_locality.py
+src/corella/check_multimedia.py
 src/corella/check_occurrenceIDs.py
 src/corella/check_occurrenceStatus.py
 src/corella/check_occurrences.py
@@ -23,7 +26,9 @@ src/corella/switch_check.py
 src/corella/use_abundance.py
 src/corella/use_coordinates.py
 src/corella/use_datetime.py
+src/corella/use_events.py
 src/corella/use_locality.py
+src/corella/use_multimedia.py
 src/corella/use_occurrences.py
 src/corella/use_scientific_name.py
 src/corella/version.py

@@ -1,4 +1,5 @@
 from .check_locality import check_locality
+from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
 
 def use_locality(dataframe=None,
                  continent = None,
@@ -29,16 +30,10 @@ def use_locality(dataframe=None,
     """
 
     # check for dataframe
-    if dataframe is None:
-        raise ValueError('Please provide a dataframe.')
-
-    # check for validating data
-    if all([v is None for v in [continent,country,countryCode,stateProvince,locality]]):
-        if all ([v not in ['continent','country','countryCode','stateProvince','locality'] for v in dataframe.columns]):
-            raise ValueError("No Darwin Core arguments supplied to `use_locality()`.  See dir(self.use_locality()) for valid arguments.")
+    check_for_dataframe(dataframe=dataframe,func='use_locality')
 
     # create a dictionary of names for renaming
-    names = {
+    mapping = {
         continent: 'continent',
         country: 'country',
         countryCode: 'countryCode',
@@ -46,19 +41,25 @@ def use_locality(dataframe=None,
         locality: 'locality'
     }
 
-    # check name of columns
-    for var in [continent,country,countryCode,stateProvince,locality]:
-        if var is not None:        
-            if type(var) is str:
-                if var in dataframe.columns:
-                    dataframe = dataframe.rename(columns={var: names[var]})
-                else:
-                    if not dataframe.empty:
-                        dataframe[names[var]] = var
-                    else:
-                        raise ValueError('This is an empty dataframe')
-            else:
-                raise ValueError("only accepts str types".format(var.name))
+    accepted_formats = {
+        continent: [str],
+        country: [str],
+        countryCode: [str],
+        stateProvince: [str],
+        locality: [str]
+    }
+
+    # specify values
+    values = ['continent','country','countryCode','stateProvince','locality']
+
+    # check if all args are empty
+    check_if_all_args_empty(dataframe=dataframe,func='use_locality',keys=mapping.keys(),values=values)
+
+    # check column names and values
+    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
+
+    # rename all necessary columns
+    dataframe = dataframe.rename(columns=mapping)
     
     # get errors in data
     errors = check_locality(dataframe=dataframe)

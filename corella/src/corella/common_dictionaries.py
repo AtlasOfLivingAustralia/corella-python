@@ -60,3 +60,10 @@ REPORT_TERMS = {
         'incorrect_dwc_terms': 'incorrect_dwc_terms'
     }
 }
+
+formats = {
+    str: 'str',
+    int: 'int',
+    float: 'float',
+    bool: 'bool'
+}

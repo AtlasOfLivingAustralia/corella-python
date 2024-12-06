@@ -1,6 +1,7 @@
 import pandas as pd
 from .add_unique_occurrence_ids import add_unique_occurrence_IDs
 from .check_occurrences import check_occurrences
+from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
 
 def use_occurrences(dataframe=None,
                     occurrenceID=None,
@@ -41,16 +42,10 @@ def use_occurrences(dataframe=None,
     """
 
     # check for dataframe
-    if dataframe is None:
-        raise ValueError('Please provide a dataframe.')
-
-    # check for validating data
-    if all([v is None for v in [occurrenceID,catalogNumber,recordNumber,basisOfRecord,occurrenceStatus]]):
-        if all ([v not in ['occurrenceID','catalogNumber','recordNumber','basisOfRecord','occurrenceStatus'] for v in dataframe.columns]):
-            raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(corella.use_occurrences()) for valid arguments.")
+    check_for_dataframe(dataframe=dataframe,func='use_occurrences')
 
     # column renaming dictionary
-    renaming_map = {
+    mapping = {
         occurrenceID: 'occurrenceID',
         catalogNumber: 'catalogNumber',
         recordNumber: 'recordNumber',
@@ -58,27 +53,29 @@ def use_occurrences(dataframe=None,
         occurrenceStatus: 'occurrenceStatus'
     }
 
-    # loop over all possible arguments
-    if any(x is not None for x in [renaming_map.keys()]):
+    accepted_formats = {
+        occurrenceID: [str,bool],
+        catalogNumber: [str],
+        recordNumber: [str],
+        basisOfRecord: [str],
+        occurrenceStatus: [str]
+    }
 
-        for var in renaming_map.keys():
+    values = ['occurrenceID','catalogNumber','recordNumber','basisOfRecord','occurrenceStatus']
 
-            if var is not None:
-                if (type(var) is bool) and (var in [occurrenceID,catalogNumber,recordNumber]) and (renaming_map[var] not in dataframe.columns):
-                    dataframe = add_unique_occurrence_IDs(column_name=renaming_map[var],dataframe=dataframe)
-                elif type(var) is str:
-                    if var in dataframe.columns: 
-                        index = list(dataframe.columns).index(var)
-                        dataframe = dataframe.rename(columns={dataframe.columns[index]: renaming_map[var]})
-                    else:
-                        dataframe[renaming_map[var]] = basisOfRecord
-                else:
-                    raise ValueError("occurrenceID argument must be a string or a boolean.")
+    # check if all arguments are empty
+    check_if_all_args_empty(dataframe=dataframe,func='use_occurrences',keys=mapping.keys(),values=values)
 
-    else:
-        
-        raise ValueError("No Darwin Core arguments supplied to `use_occurrences()`.  See dir(corella.use_occurrences()) for valid arguments.")
+    # check column names and values
+    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
+
+    # rename all necessary columns
+    dataframe = dataframe.rename(columns=mapping)
     
+    # check if unique occurrence IDs need to be added
+    if (type(occurrenceID) is bool):
+        dataframe = add_unique_occurrence_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
+
     # check data
     errors = check_occurrences(dataframe=dataframe,errors=[])
     

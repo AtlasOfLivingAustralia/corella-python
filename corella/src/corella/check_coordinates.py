@@ -1,4 +1,4 @@
-from .common_functions import check_is_numeric,check_is_string
+from .common_functions import check_is_numeric,check_is_string,check_for_dataframe
 from .common_dictionaries import GEO_REQUIRED_DWCA_TERMS
 from pandas.api.types import is_numeric_dtype
 
@@ -34,11 +34,13 @@ def check_coordinates(dataframe=None,
     """
 
     # First, check if a dataframe is provided
-    if dataframe is None:
-        raise ValueError("Please provide a dataframe to this function.")
+    check_for_dataframe(dataframe=dataframe,func='check_coordinates')
+    
+    # required terms
+    terms_to_check = GEO_REQUIRED_DWCA_TERMS["Australia"] + ['coordinatePrecision','coordinateUncertaintyInMeters']
 
     # check data types for location data
-    for c in GEO_REQUIRED_DWCA_TERMS["Australia"]:
+    for c in terms_to_check:
         if c in dataframe.columns:
             
             # first, check for numeric columns

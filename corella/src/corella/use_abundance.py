@@ -1,4 +1,5 @@
 from .check_abundance import check_abundance
+from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
 
 def use_abundance(dataframe=None,
                   individualCount=None,
@@ -25,8 +26,7 @@ def use_abundance(dataframe=None,
     """
 
     # raise a ValueError if no dataframe is provided
-    if dataframe is None:
-        raise ValueError('Please provide a dataframe.')
+    check_for_dataframe(dataframe=dataframe,func='use_abundance')
     
     # column renaming dictionary
     renaming_map = {
@@ -35,18 +35,24 @@ def use_abundance(dataframe=None,
         organismQuantityType: 'organismQuantityType',
     }
 
-    # loop over all possible arguments
-    if any(x is not None for x in [renaming_map.keys()]):
+    # manually set values for function
+    values = ['individualCount','organismQuantity','organismQuantityType']
 
-        for var in renaming_map.keys():
+    # check if all args are empty
+    check_if_all_args_empty(dataframe=dataframe,func='use_abundance',keys=renaming_map.keys(),values=values)
 
-            if var is not None:
-                if type(var) is str:
-                    if var in dataframe.columns:
-                        index = list(dataframe.columns).index(var)
-                        dataframe = dataframe.rename(columns={dataframe.columns[index]: renaming_map[var]})
-                else:
-                    raise ValueError("{} argument must be a string.".format(renaming_map[var]))
+    # denote accepted formats
+    accepted_formats = {
+        individualCount: [int],
+        organismQuantity: [int],
+        organismQuantityType: [str],
+    }
+
+    # check all columns and values to see if they need to be renamed or replaced
+    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=renaming_map,accepted_formats=accepted_formats)
+
+    # rename all necessary columns
+    dataframe = dataframe.rename(columns=mapping)
 
     # check errors in data
     errors = check_abundance(dataframe=dataframe,errors=[])

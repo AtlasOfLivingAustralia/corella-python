@@ -1,6 +1,7 @@
 import datetime
 import pandas as pd
 from .check_datetime import check_datetime
+from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
 
 def use_datetime(dataframe=None,
                  eventDate=None,
@@ -54,13 +55,7 @@ def use_datetime(dataframe=None,
     """
 
     # raise a ValueError if no dataframe is provided
-    if dataframe is None:
-        raise ValueError('Please provide a dataframe.')
-
-    # check for validating data
-    if all([v is None for v in [eventDate,year,month,day,eventTime]]):
-        if all ([v not in ['eventDate','year','month','day','eventTime'] for v in dataframe.columns]):
-            raise ValueError("No Darwin Core arguments supplied to `use_datetime()`.  See dir(corella.use_datetime()) for valid arguments.")
+    check_for_dataframe(dataframe=dataframe,func='use_datetime')
 
     # mapping column names
     mapping = {
@@ -80,21 +75,20 @@ def use_datetime(dataframe=None,
         eventTime: [datetime.datetime,str]
     }
 
-    # check name of columns
-    for var in mapping.keys():
-        if var is not None:  
-            if var not in dataframe.columns:      
-                if type(var) in accepted_formats[var]:
-                    dataframe[mapping[var]] = var
-                    del mapping[var]
-                else:
-                    raise ValueError("Only a {} is accepted for {}".format(accepted_formats[var],var))
-                
+    values = ['eventDate','year','month','day','eventTime']
+
+    # check if all arguments are empty
+    check_if_all_args_empty(dataframe=dataframe,func='use_datetime',keys=mapping.keys(),values=values)
+    
+    # check all columns and values
+    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
+
     # rename all necessary columns
     dataframe = dataframe.rename(columns=mapping)
 
     # add option to convert strings to datetime
     if string_to_datetime:
+        
         # specify which of day,month,year is first
         if yearfirst:
             dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],yearfirst=yearfirst)

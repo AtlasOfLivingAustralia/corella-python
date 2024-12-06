@@ -7,23 +7,23 @@ def test_no_dataframe():
         corella.use_abundance()
     assert "Please provide a dataframe" in str(e_info.value)
 
-def test_individualCount_not_string():
-    df = pd.DataFrame({'individualCount': [1,1]})
+def test_individualCount_not_numeric():
+    df = pd.DataFrame({'individualCount': ['1','1']})
     with pytest.raises(Exception) as e_info:
-        corella.use_abundance(dataframe=df,individualCount=1)
-    assert "argument must be a string" in str(e_info.value)
+        corella.use_abundance(dataframe=df)
+    assert "numeric" in str(e_info.value)
 
-def test_organismQuantity_not_string():
-    df = pd.DataFrame({'organismQuantity': [1,1]})
+def test_organismQuantity_not_numeric():
+    df = pd.DataFrame({'organismQuantity': ['one','one'], 'organismQuantityType': ['1','1']})
     with pytest.raises(Exception) as e_info:
-        corella.use_abundance(dataframe=df,organismQuantity=1)
-    assert "argument must be a string" in str(e_info.value)
+        corella.use_abundance(dataframe=df)
+    assert "numeric" in str(e_info.value)
 
 def test_organismQuantityType_not_string():
-    df = pd.DataFrame({'organismQuantity': [1,1]})
+    df = pd.DataFrame({'organismQuantity': [1,1], 'organismQuantityType': [1,1]})
     with pytest.raises(Exception) as e_info:
-        corella.use_abundance(dataframe=df,organismQuantityType=1)
-    assert "argument must be a string" in str(e_info.value)
+        corella.use_abundance(dataframe=df)
+    assert "string" in str(e_info.value)
 
 def test_individualCount_renamed():
     df = pd.DataFrame({'individuals': [1.0,1.0]})
