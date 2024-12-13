@@ -3,7 +3,7 @@ from .common_functions import check_for_dataframe,check_if_all_args_empty,check_
 
 def use_scientific_name(dataframe=None,
                         scientificName=None,
-                        scientificNameRank=None,
+                        taxonRank=None,
                         scientificNameAuthorship=None):
     """
     Checks for the name of the taxon you identified is present.
@@ -14,6 +14,10 @@ def use_scientific_name(dataframe=None,
             The ``pandas.DataFrame`` that contains your data to check
         scientificName: ``str``
             A column name (``str``) denoting all your scientific names.
+        taxonRank: ``str``
+            A column name (``str``) denoting the rank of your scientific names (species, genus etc.)
+        scientificNameAuthorship: ``str``
+            A column name (``str``) denoting who originated the scientific name.
 
     Returns
     -------
@@ -25,17 +29,17 @@ def use_scientific_name(dataframe=None,
     
     mapping = {
         scientificName: 'scientificName',
-        scientificNameRank: 'scientificNameRank',
+        taxonRank: 'taxonRank',
         scientificNameAuthorship: 'scientificNameAuthorship'
     }
 
     accepted_formats = {
         scientificName: [str],
-        scientificNameRank: [str],
+        taxonRank: [str],
         scientificNameAuthorship: [str]
     }
 
-    values = ['scientificName','scientificNameRank','scientificNameAuthorship']
+    values = ['scientificName','taxonRank','scientificNameAuthorship']
 
     # check if all args are empty
     check_if_all_args_empty(dataframe=dataframe,func='use_scientific_name',keys=mapping.keys(),values=values)

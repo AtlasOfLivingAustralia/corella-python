@@ -418,14 +418,15 @@ span.prompt1:before {
 in your csv file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
-</pre></div></div><section id="initial-run-of-use-abundance">
-<h2>Initial run of <code class="docutils literal notranslate"><span class="pre">use_abundance</span></code><a class="headerlink" href="#initial-run-of-use-abundance" title="Link to this heading">#</a></h2>
+</pre></div></div></section>
+<section id="initial-run-of-use-abundance">
+<h1>Initial run of <code class="docutils literal notranslate"><span class="pre">use_abundance</span></code><a class="headerlink" href="#initial-run-of-use-abundance" title="Link to this heading">#</a></h1>
 <p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_abundance()</span></code> to see what is in our dataset,
 and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_abundance()</span></code> are in there
 and correct.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_abundance</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 198, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 194, in &lt;module&gt;
     print(corella.use_abundance(dataframe=df))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_abundance.py&quot;, line 42, in use_abundance
@@ -439,6 +440,9 @@ ValueError: No Darwin Core arguments supplied to `use_abundance()`.  See dir(cor
 Core standard, and must specify them to <code class="docutils literal notranslate"><span class="pre">use_abundance()</span></code> to proceed. The
 only one we have is a count of the species, and so we can specify the <code class="docutils literal notranslate"><span class="pre">count</span></code>
 column to <code class="docutils literal notranslate"><span class="pre">individualCount</span></code>.</p>
+</section>
+<section id="specifying-individualcount">
+<h1>specifying <code class="docutils literal notranslate"><span class="pre">individualCount</span></code><a class="headerlink" href="#specifying-individualcount" title="Link to this heading">#</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_abundance</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">individualCount</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species latitude  longitude        date   status  individualCount
 0  Callocephalon fimbriatum   -35.31    149.125  14-01-2023  present                2
@@ -447,16 +451,15 @@ column to <code class="docutils literal notranslate"><span class="pre">individua
 </div>
 <p>To learn more about how to use other functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_occurrences.html">use_occurrences</a></p></li>
-<li><p><a class="reference external" href="../use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="../use_datetime.html">use_datetime</a></p></li>
-<li><p><a class="reference external" href="../use_scientific_name.html">use_scientific_name</a></p></li>
+<li><p><a class="reference external" href="use_occurrences.html">use_occurrences</a></p></li>
+<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
+<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
+<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
 </ul>
-</section>
 </section>
 
 
@@ -487,8 +490,11 @@ column to <code class="docutils literal notranslate"><span class="pre">individua
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-abundance">Initial run of <code class="docutils literal notranslate"><span class="pre">use_abundance</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">use_abundance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-abundance">Initial run of <code class="docutils literal notranslate"><span class="pre">use_abundance</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-individualcount">specifying <code class="docutils literal notranslate"><span class="pre">individualCount</span></code></a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

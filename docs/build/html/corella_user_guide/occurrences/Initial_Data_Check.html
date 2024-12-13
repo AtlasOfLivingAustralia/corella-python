@@ -405,9 +405,7 @@ span.prompt1:before {
 </pre></div></div><p>Now that you have a dataframe with data in it, we can check the data using the
 function <code class="docutils literal notranslate"><span class="pre">corella.check_data()</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
-
-Number of Errors    Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Number of Errors    Pass/Fail    Column name
 ------------------  -----------  -------------
 
 
@@ -416,7 +414,7 @@ Number of Errors    Pass/Fail    Column name
 
 Errors: 0.0 | Passes: 0
 
-✗ Data meets minimum Darwin core requirements
+✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
 
 None
@@ -437,9 +435,9 @@ are the results of this particular dataset:</p>
 Matched 0 of 4 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: Species, Collection_date, Latitude, Longitude
+✗ Unmatched: Latitude, Species, Longitude, Collection_date
 
-── Minimum required DwC terms ──
+── Minimum required DwC terms occurrences ──
 
 Type                       Matched term(s)    Missing term(s)
 -------------------------  -----------------  ------------------------------------------------
@@ -450,7 +448,10 @@ Location                   -                  decimalLatitude, decimalLongitude,
 Date/Time                  -                  eventDate
 
 ── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-To make your data Darwin Core compliant, use the following workflow:
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
 
 corella.use_occurrences()
 corella.use_scientific_name()
@@ -463,15 +464,15 @@ None
 </div>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_occurrences.html">use_occurrences</a></p></li>
-<li><p><a class="reference external" href="../use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="../use_datetime.html">use_datetime</a></p></li>
-<li><p><a class="reference external" href="../use_scientific_name.html">use_scientific_name</a></p></li>
+<li><p><a class="reference external" href="use_occurrences.html">use_occurrences</a></p></li>
+<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
+<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
+<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_abundance.html">use_abundance</a></p></li>
-<li><p><a class="reference external" href="../use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="use_abundance.html">use_abundance</a></p></li>
+<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
 </ul>
 </section>
 

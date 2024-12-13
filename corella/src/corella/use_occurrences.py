@@ -1,5 +1,5 @@
-import pandas as pd
-from .add_unique_occurrence_ids import add_unique_occurrence_IDs
+import uuid
+from .add_unique_IDs import add_unique_IDs
 from .check_occurrences import check_occurrences
 from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
 
@@ -54,7 +54,7 @@ def use_occurrences(dataframe=None,
     }
 
     accepted_formats = {
-        occurrenceID: [str,bool],
+        occurrenceID: [str,bool], #uuid.UUID
         catalogNumber: [str],
         recordNumber: [str],
         basisOfRecord: [str],
@@ -74,7 +74,7 @@ def use_occurrences(dataframe=None,
     
     # check if unique occurrence IDs need to be added
     if (type(occurrenceID) is bool):
-        dataframe = add_unique_occurrence_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
+        dataframe = add_unique_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
 
     # check data
     errors = check_occurrences(dataframe=dataframe,errors=[])

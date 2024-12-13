@@ -16,7 +16,7 @@ Core Archive Types
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/binoculars.svg
+            :file: ../_static/icons/faq.svg
                 
         **Occurrences**
 
@@ -28,7 +28,7 @@ Core Archive Types
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/calendar.svg
+            :file: ../_static/icons/faq.svg
 
         **Events**
 
@@ -48,7 +48,7 @@ Extensions
         .. raw:: html
             :file: ../_static/icons/faq.svg
 
-        **Multimedia**
+        **COMING SOON: Multimedia**
 
         Want to submit images, movies and sounds?
     
@@ -60,6 +60,6 @@ Extensions
         .. raw:: html
             :file: ../_static/icons/faq.svg
 
-        **Measurement Or Fact**
+        **COMING SOON: Measurement Or Fact**
 
         Want to record environmental variables?

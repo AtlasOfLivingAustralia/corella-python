@@ -398,8 +398,9 @@ This function aims to check that you have the following Darwin Core Vocabulary T
 <li><p><code class="docutils literal notranslate"><span class="pre">scientificNameRank</span></code> (OPTIONAL): rank of the scientific name you are providing.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scientificNameAuthorship</span></code> (OPTIONAL): Authors of the species name you are using.</p></li>
 </ul>
+</section>
 <section id="initial-run-of-use-scientific-name">
-<h2>Initial run of <code class="docutils literal notranslate"><span class="pre">use_scientific_name</span></code><a class="headerlink" href="#initial-run-of-use-scientific-name" title="Link to this heading">#</a></h2>
+<h1>Initial run of <code class="docutils literal notranslate"><span class="pre">use_scientific_name</span></code><a class="headerlink" href="#initial-run-of-use-scientific-name" title="Link to this heading">#</a></h1>
 <p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code> to see what is in our dataset,
 and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_scientific_name()</span></code> are in there
 and correct.</p>
@@ -409,10 +410,10 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 72, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 68, in &lt;module&gt;
     print(corella.use_scientific_name(dataframe=df))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_scientific_name.py&quot;, line 41, in use_scientific_name
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_scientific_name.py&quot;, line 45, in use_scientific_name
     check_if_all_args_empty(dataframe=dataframe,func=&#39;use_scientific_name&#39;,keys=mapping.keys(),values=values)
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
     raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
@@ -424,7 +425,7 @@ Core standard, and must specify them to <code class="docutils literal notranslat
 The only required column is the <code class="docutils literal notranslate"><span class="pre">scientificName</span></code> value.</p>
 </section>
 <section id="specifying-scientificname">
-<h2>specifying <code class="docutils literal notranslate"><span class="pre">scientificName</span></code><a class="headerlink" href="#specifying-scientificname" title="Link to this heading">#</a></h2>
+<h1>specifying <code class="docutils literal notranslate"><span class="pre">scientificName</span></code><a class="headerlink" href="#specifying-scientificname" title="Link to this heading">#</a></h1>
 <p>Like with other <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions, to specify which column you want to rename or change, you
 specify it with the Darwin Core term.  In this case, it is <code class="docutils literal notranslate"><span class="pre">scientificName</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
@@ -468,15 +469,13 @@ specify it with the Darwin Core term.  In this case, it is <code class="docutils
 </div>
 </section>
 <section id="what-does-check-data-and-suggest-workflow-say-now">
-<h2>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h2>
+<h1>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h1>
 <p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
-
-  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  --------------
                  0  ✓            scientificName
 
@@ -486,7 +485,7 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 
 Errors: 0 | Passes: 1
 
-✗ Data meets minimum Darwin core requirements
+✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
 
 None
@@ -502,9 +501,9 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: scientificName
-✗ Unmatched: Latitude, Longitude, Collection_date
+✗ Unmatched: Collection_date, Latitude, Longitude
 
-── Minimum required DwC terms ──
+── Minimum required DwC terms occurrences ──
 
 Type                       Matched term(s)    Missing term(s)
 -------------------------  -----------------  ------------------------------------------------
@@ -515,7 +514,10 @@ Location                   -                  decimalLatitude, decimalLongitude,
 Date/Time                  -                  eventDate
 
 ── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-To make your data Darwin Core compliant, use the following workflow:
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
 
 corella.use_occurrences()
 corella.use_coordinates()
@@ -525,18 +527,20 @@ Additional functions: use_abundance(), use_locality()
 None
 </pre></div>
 </div>
+</section>
+<section id="other-functions">
+<h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_occurrences.html">use_occurrences</a></p></li>
-<li><p><a class="reference external" href="../use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="../use_datetime.html">use_datetime</a></p></li>
+<li><p><a class="reference external" href="use_occurrences.html">use_occurrences</a></p></li>
+<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
+<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_abundance.html">use_abundance</a></p></li>
-<li><p><a class="reference external" href="../use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="use_abundance.html">use_abundance</a></p></li>
+<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
 </ul>
-</section>
 </section>
 
 
@@ -567,10 +571,13 @@ None
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-scientific-name">Initial run of <code class="docutils literal notranslate"><span class="pre">use_scientific_name</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-scientificname">specifying <code class="docutils literal notranslate"><span class="pre">scientificName</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">use_scientific_name</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-scientific-name">Initial run of <code class="docutils literal notranslate"><span class="pre">use_scientific_name</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-scientificname">specifying <code class="docutils literal notranslate"><span class="pre">scientificName</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

@@ -14,7 +14,7 @@ It can also can check the following:
 - ``scientificNameAuthorship`` (OPTIONAL): Authors of the species name you are using.
 
 Initial run of ``use_scientific_name``
-======================================
+---------------------------------------
 
 Initally, we can run ``use_scientific_name()`` to see what is in our dataset, 
 and if any of the data types check with ``use_scientific_name()`` are in there 
@@ -31,7 +31,7 @@ Core standard, and must specify them to ``use_scientific_name()`` to proceed.
 The only required column is the ``scientificName`` value.
 
 specifying ``scientificName``
-======================================
+---------------------------------------
 
 Like with other ``use_*`` functions, to specify which column you want to rename or change, you 
 specify it with the Darwin Core term.  In this case, it is ``scientificName``.
@@ -43,7 +43,7 @@ specify it with the Darwin Core term.  In this case, it is ``scientificName``.
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 11
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
-==============================================================
+------------------------------------------------------------------
 
 *Note:* each of the ``use_*`` functions checks your data for compliance with the 
 Darwin core standard, but it's always good to double-check your data.
@@ -66,13 +66,16 @@ again to see how our data is doing this time round.
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 13
 
+Other functions
+---------------------------------------
+
 To learn more about how to use these functions, go to 
 
-- `use_occurrences <../use_occurrences.html>`_
-- `use_coordinates <../use_coordinates.html>`_
-- `use_datetime <../use_datetime.html>`_
+- `use_occurrences <use_occurrences.html>`_
+- `use_coordinates <use_coordinates.html>`_
+- `use_datetime <use_datetime.html>`_
 
 Optional functions:
 
-- `use_abundance <../use_abundance.html>`_
-- `use_locality <../use_locality.html>`_
+- `use_abundance <use_abundance.html>`_
+- `use_locality <use_locality.html>`_

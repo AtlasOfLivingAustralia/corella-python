@@ -21,15 +21,11 @@ if stop == 1:
     sys.exit()
 
 if stop == 2:
-    print(corella.suggest_workflow(dataframe=df))
+    print(corella.suggest_workflow(occurrences=df))
     sys.exit()
 
 if stop == 3:
     print(corella.use_occurrences(dataframe=df))
-    sys.exit()
-
-if stop == 4:
-    print(corella.use_occurrences(dataframe=df,basisOfRecord='observe'))
     sys.exit()
 
 if stop == 5:
@@ -63,7 +59,7 @@ if stop == 9:
                                  basisOfRecord='HumanObservation',
                                  occurrenceStatus='PRESENT',
                                  occurrenceID=True)
-    print(corella.suggest_workflow(dataframe=df))
+    print(corella.suggest_workflow(occurrences=df))
 
 # -----------------------------------------------------------------------------
 # use_scientific_name
@@ -86,7 +82,7 @@ if stop == 12:
 if stop == 13:
     df = corella.use_scientific_name(dataframe=df,
                                      scientificName='Species')
-    print(corella.suggest_workflow(dataframe=df))
+    print(corella.suggest_workflow(occurrences=df))
     sys.exit() 
 
 # -----------------------------------------------------------------------------
@@ -143,7 +139,7 @@ if stop == 20:
                                  decimalLongitude='Longitude',
                                  geodeticDatum='WGS84',
                                  coordinatePrecision=0.1)
-    print(corella.suggest_workflow(dataframe=df))
+    print(corella.suggest_workflow(occurrences=df))
     sys.exit() 
 
 # -----------------------------------------------------------------------------
@@ -181,7 +177,7 @@ if stop == 25:
                                string_to_datetime=True,
                                yearfirst=False,
                                dayfirst=True)
-    print(corella.suggest_workflow(dataframe=df))
+    print(corella.suggest_workflow(occurrences=df))
     sys.exit() 
 
 # -----------------------------------------------------------------------------

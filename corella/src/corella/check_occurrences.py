@@ -24,17 +24,17 @@ def check_occurrences(dataframe=None,
     """
 
     # first, check basisOfRecord for errors
-    errors_bor = check_basisOfRecord(dataframe=dataframe)
+    errors_bor = check_basisOfRecord(dataframe=dataframe,errors=[])
     if type(errors_bor) is list:
         errors += errors_bor
 
     # then, occurrenceIDs
-    errors_occID = check_occurrenceIDs(dataframe=dataframe)
+    errors_occID = check_occurrenceIDs(dataframe=dataframe,errors=[])
     if type(errors_occID) is list:
         errors += errors_occID
     
     # then, abundance
-    errors_status = check_occurrenceStatus(dataframe=dataframe)
+    errors_status = check_occurrenceStatus(dataframe=dataframe,errors=[])
     if type(errors_status) is list:
         errors += errors_status
 

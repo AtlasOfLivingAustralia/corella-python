@@ -1,4 +1,4 @@
-eventType,locality,eventDate,eventName
+type,location,date,name
 siteVisit,Cannonvale,3/1/2023,bird survey local park honeyeater lookout point
 siteVisit,Cannonvale,17/1/2023,bird survey local park honeyeater lookout point
 siteVisit,Cannonvale,31/1/2023,bird survey local park honeyeater lookout point
@@ -25,39 +25,3 @@ siteVisit,Cannonvale,7/11/2023,bird survey local park honeyeater lookout point
 siteVisit,Cannonvale,21/11/2023,bird survey local park honeyeater lookout point
 siteVisit,Cannonvale,5/12/2023,bird survey local park honeyeater lookout point
 siteVisit,Cannonvale,19/12/2023,bird survey local park honeyeater lookout point
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,
-,,,

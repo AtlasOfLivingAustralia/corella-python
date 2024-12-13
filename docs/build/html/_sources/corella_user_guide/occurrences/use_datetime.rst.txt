@@ -22,7 +22,7 @@ It can also (optionally) can check the following:
     >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
 
 Initial run of ``use_datetime``
-======================================
+=====================================
 
 Initally, we can run ``use_datetime()`` to see what is in our dataset, 
 and if any of the data types check with ``use_datetime()`` are in there 
@@ -39,7 +39,7 @@ Core standard, and must specify them to ``use_datetime()`` to proceed.
 The only required column is ``eventDate``.
 
 ``eventDate`` and automatically converting strings
-=====================================================
+====================================================
 
 Since we can specify the column names, we can specify the ``eventDate`` column to be ``'date'``.
 
@@ -71,7 +71,7 @@ Note when both ``yearfirst`` and ``dayfirst`` are set to ``False``, ``pandas`` a
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 23
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
-==============================================================
+=============================================================
 
 *Note:* each of the ``use_*`` functions checks your data for compliance with the 
 Darwin core standard, but it's always good to double-check your data.
@@ -93,13 +93,16 @@ again to see how our data is doing this time round.
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 25
 
+Other functions
+=====================================
+
 To learn more about how to use these functions, go to 
 
-- `use_occurrences <../use_occurrences.html>`_
-- `use_coordinates <../use_coordinates.html>`_
-- `use_scientific_name <../use_scientific_name.html>`_
+- `use_occurrences <use_occurrences.html>`_
+- `use_coordinates <use_coordinates.html>`_
+- `use_scientific_name <use_scientific_name.html>`_
 
 Optional functions:
 
-- `use_abundance <../use_abundance.html>`_
-- `use_locality <../use_locality.html>`_
+- `use_abundance <use_abundance.html>`_
+- `use_locality <use_locality.html>`_

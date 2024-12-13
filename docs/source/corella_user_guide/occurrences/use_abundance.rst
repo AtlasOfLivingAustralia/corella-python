@@ -39,7 +39,7 @@ in your csv file:
     >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
 
 Initial run of ``use_abundance``
-======================================
+-----------------------------------------
 
 Initally, we can run ``use_abundance()`` to see what is in our dataset, 
 and if any of the data types check with ``use_abundance()`` are in there 
@@ -56,6 +56,9 @@ Core standard, and must specify them to ``use_abundance()`` to proceed. The
 only one we have is a count of the species, and so we can specify the ``count`` 
 column to ``individualCount``.
 
+specifying ``individualCount``
+-----------------------------------------
+
 .. prompt:: python
 
     >>> corella.use_abundance(dataframe=df,individualCount='count')
@@ -64,11 +67,11 @@ column to ``individualCount``.
 
 To learn more about how to use other functions, go to 
 
-- `use_occurrences <../use_occurrences.html>`_
-- `use_coordinates <../use_coordinates.html>`_
-- `use_datetime <../use_datetime.html>`_
-- `use_scientific_name <../use_scientific_name.html>`_
+- `use_occurrences <use_occurrences.html>`_
+- `use_coordinates <use_coordinates.html>`_
+- `use_datetime <use_datetime.html>`_
+- `use_scientific_name <use_scientific_name.html>`_
 
 Optional functions:
 
-- `use_locality <../use_locality.html>`_
+- `use_locality <use_locality.html>`_

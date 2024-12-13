@@ -392,7 +392,7 @@ document.write(`
 <span id="api-docs"></span><h1>API Docs<a class="headerlink" href="#module-corella" title="Link to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="corella.check_data">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_data" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">check_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.check_data" title="Link to this definition">#</a></dt>
 <dd><p>Checks whether or not the data in your occurrences complies with
 Darwin Core standards.</p>
 <dl class="field-list simple">
@@ -413,9 +413,7 @@ span.prompt1:before {
 <span class="prompt1"><span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Callocephalon fimbriatum&#39;</span><span class="p">,</span> <span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="s1">&#39;-35.273&#39;</span><span class="p">],</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span> <span class="s1">&#39;eventDate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">],</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]})</span></span>
 <span class="prompt1"><span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
-
-  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  -------------
                  1  ✗            eventDate
 
@@ -425,7 +423,7 @@ span.prompt1:before {
 
 Errors: 1 | Passes: 0
 
-✗ Data meets minimum Darwin core requirements
+✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
 
 ── Error in eventDate ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -439,7 +437,7 @@ None
 
 <dl class="py function">
 <dt class="sig sig-object py" id="corella.suggest_workflow">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">suggest_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.suggest_workflow" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">suggest_workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occurrences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.suggest_workflow" title="Link to this definition">#</a></dt>
 <dd><p>Suggests a workflow to ensure your data conforms with the pre-defined Darwin Core standard.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -455,34 +453,9 @@ None
 <span class="prompt1"><span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Callocephalon fimbriatum&#39;</span><span class="p">,</span> <span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="s1">&#39;-35.273&#39;</span><span class="p">],</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span> <span class="s1">&#39;eventDate&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">],</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">]})</span></span>
 <span class="prompt1"><span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-
-── All DwC terms ──
-
-Matched 1 of 5 column names to DwC terms:
-
-✓ Matched: eventDate
-✗ Unmatched: latitude, status, longitude, species
-
-── Minimum required DwC terms ──
-
-Type                       Matched term(s)    Missing term(s)
--------------------------  -----------------  ------------------------------------------------
-Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
-Record type                -                  basisOfRecord
-Scientific name            -                  scientificName
-Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum
-Date/Time                  eventDate          -
-
-── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-To make your data Darwin Core compliant, use the following workflow:
-
-corella.use_occurrences()
-corella.use_scientific_name()
-corella.use_coordinates()
-
-Additional functions: use_abundance(), use_locality()
-None
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: suggest_workflow() got an unexpected keyword argument &#39;dataframe&#39;
 </pre></div>
 </div>
 </dd></dl>
@@ -569,6 +542,12 @@ Default is <code class="docutils literal notranslate"><span class="pre">False</s
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="corella.use_events">
+<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_events</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parentEventID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samplingProtocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_hierarchy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_events" title="Link to this definition">#</a></dt>
+<dd><p>Comments here later.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="corella.use_locality">
 <span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_locality</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">countryCode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stateProvince</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_locality" title="Link to this definition">#</a></dt>
 <dd><p>Checks for additional location information, such as country and countryCode.</p>
@@ -625,13 +604,15 @@ the dataset.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="corella.use_scientific_name">
-<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_scientific_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificNameRank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificNameAuthorship</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_scientific_name" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">use_scientific_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taxonRank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scientificNameAuthorship</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.use_scientific_name" title="Link to this definition">#</a></dt>
 <dd><p>Checks for the name of the taxon you identified is present.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check</p></li>
 <li><p><strong>scientificName</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) denoting all your scientific names.</p></li>
+<li><p><strong>taxonRank</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) denoting the rank of your scientific names (species, genus etc.)</p></li>
+<li><p><strong>scientificNameAuthorship</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A column name (<code class="docutils literal notranslate"><span class="pre">str</span></code>) denoting who originated the scientific name.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -693,6 +674,7 @@ the dataset.</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_abundance"><code class="docutils literal notranslate"><span class="pre">use_abundance()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_coordinates"><code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_datetime"><code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_events"><code class="docutils literal notranslate"><span class="pre">use_events()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_locality"><code class="docutils literal notranslate"><span class="pre">use_locality()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_multimedia"><code class="docutils literal notranslate"><span class="pre">use_multimedia()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.use_occurrences"><code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code></a></li>

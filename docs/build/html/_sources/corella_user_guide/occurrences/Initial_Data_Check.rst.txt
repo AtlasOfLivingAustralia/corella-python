@@ -44,12 +44,12 @@ are the results of this particular dataset:
 
 To learn more about how to use these functions, go to 
 
-- `use_occurrences <../use_occurrences.html>`_
-- `use_coordinates <../use_coordinates.html>`_
-- `use_datetime <../use_datetime.html>`_
-- `use_scientific_name <../use_scientific_name.html>`_
+- `use_occurrences <use_occurrences.html>`_
+- `use_coordinates <use_coordinates.html>`_
+- `use_datetime <use_datetime.html>`_
+- `use_scientific_name <use_scientific_name.html>`_
 
 Optional functions:
 
-- `use_abundance <../use_abundance.html>`_
-- `use_locality <../use_locality.html>`_
+- `use_abundance <use_abundance.html>`_
+- `use_locality <use_locality.html>`_

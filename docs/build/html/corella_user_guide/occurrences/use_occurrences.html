@@ -395,8 +395,9 @@ This function aims to check that you have the following Darwin Core Vocabulary T
 <li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> or <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>: a unique identifier for the record (only one of these is necessary)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> (OPTIONAL): whether a species is present or absent.  Not required for data submission.</p></li>
 </ul>
+</section>
 <section id="initial-run-of-use-occurrences">
-<h2>Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code><a class="headerlink" href="#initial-run-of-use-occurrences" title="Link to this heading">#</a></h2>
+<h1>Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code><a class="headerlink" href="#initial-run-of-use-occurrences" title="Link to this heading">#</a></h1>
 <p>Initally, let’s run <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> to see if any of our columns match the Darwin
 Core Vocabulary mentioned above:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
@@ -421,7 +422,7 @@ that allow the user to specify a column of data as one of the column names, or t
 the column.</p>
 </section>
 <section id="specifying-basisofrecord-value">
-<h2>Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value<a class="headerlink" href="#specifying-basisofrecord-value" title="Link to this heading">#</a></h2>
+<h1>Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value<a class="headerlink" href="#specifying-basisofrecord-value" title="Link to this heading">#</a></h1>
 <p>As mentioned above, the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value is a required and important
 field for an observation, as it lets others know how the record was recorded.
 For example, was it a machine that observed it? A human? Is this a specimen
@@ -429,7 +430,15 @@ that’s part of a collection?</p>
 <p>Depending on your answer to these questions, the information you provide will differ.
 Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current
 accepted values are as follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>python: can&#39;t open file &#39;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/bor_values.py&#39;: [Errno 2] No such file or directory
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- HumanObservation
+- FossilSpecimen
+- PreservedSpecimen
+- MachineObservation
+- LivingSpecimen
+- MaterialSample
+- Observation
+- MaterialCitation
+- Occurrence
 </pre></div>
 </div>
 <p>For this exercise, let’s assume a human has seen these, which equates to a value of
@@ -479,7 +488,7 @@ and it will, by default, set the value of <code class="docutils literal notransl
 </div>
 </section>
 <section id="how-to-generate-occurrence-ids">
-<h2>How to generate occurrence IDs<a class="headerlink" href="#how-to-generate-occurrence-ids" title="Link to this heading">#</a></h2>
+<h1>How to generate occurrence IDs<a class="headerlink" href="#how-to-generate-occurrence-ids" title="Link to this heading">#</a></h1>
 <p><em>Note:</em> If you have occurrence IDs already in your dataset, you can specify the name of the column
 that contains your IDs, and <code class="docutils literal notranslate"><span class="pre">corella</span></code> will rename that column to comply with the Darwin Core Vocabulary
 Standard.</p>
@@ -495,20 +504,18 @@ will be generated for you.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 41, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 37, in &lt;module&gt;
     print(corella.use_occurrences(dataframe=df,
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 70, in use_occurrences
-    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 186, in check_all_columns_values
-    raise ValueError(&quot;Only type(s) {} is accepted for {}&quot;.format(&quot;,&quot;.format(f),mapping[var]))
-ValueError: Only type(s) , is accepted for occurrenceID
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 77, in use_occurrences
+    dataframe = add_unique_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
+                                           ~~~~~~~^^^^^^^^^^^^^^
+KeyError: True
 </pre></div>
 </div>
 </section>
 <section id="specify-occurrencestatus-column">
-<h2>specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column<a class="headerlink" href="#specify-occurrencestatus-column" title="Link to this heading">#</a></h2>
+<h1>specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column<a class="headerlink" href="#specify-occurrencestatus-column" title="Link to this heading">#</a></h1>
 <p><em>Note:</em> This is an optional field, but we are including it here to share how this argument works, and how this will rename your column</p>
 <p>Sometimes, you may want to include the <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> field in your observations, especially
 if you were expecting to see a species in a particular area, and/or have seen them in the past but
@@ -522,20 +529,18 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 47, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 43, in &lt;module&gt;
     print(corella.use_occurrences(dataframe=df,
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 70, in use_occurrences
-    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 186, in check_all_columns_values
-    raise ValueError(&quot;Only type(s) {} is accepted for {}&quot;.format(&quot;,&quot;.format(f),mapping[var]))
-ValueError: Only type(s) , is accepted for occurrenceID
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 77, in use_occurrences
+    dataframe = add_unique_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
+                                           ~~~~~~~^^^^^^^^^^^^^^
+KeyError: True
 </pre></div>
 </div>
 </section>
 <section id="what-does-check-data-and-suggest-workflow-say-now">
-<h2>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h2>
+<h1>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h1>
 <p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now that we’ve taken care of the pieces of information <code class="docutils literal notranslate"><span class="pre">use_occurrences()</span></code> is responsible
@@ -550,44 +555,42 @@ for, we can assign the new dataframe to a variable:</p>
 <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> and <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code> columns.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 54, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 50, in &lt;module&gt;
     df = corella.use_occurrences(dataframe=df,
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 70, in use_occurrences
-    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 186, in check_all_columns_values
-    raise ValueError(&quot;Only type(s) {} is accepted for {}&quot;.format(&quot;,&quot;.format(f),mapping[var]))
-ValueError: Only type(s) , is accepted for occurrenceID
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 77, in use_occurrences
+    dataframe = add_unique_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
+                                           ~~~~~~~^^^^^^^^^^^^^^
+KeyError: True
 </pre></div>
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see what other functions we can use to check our data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 62, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 58, in &lt;module&gt;
     df = corella.use_occurrences(dataframe=df,
          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 70, in use_occurrences
-    dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 186, in check_all_columns_values
-    raise ValueError(&quot;Only type(s) {} is accepted for {}&quot;.format(&quot;,&quot;.format(f),mapping[var]))
-ValueError: Only type(s) , is accepted for occurrenceID
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_occurrences.py&quot;, line 77, in use_occurrences
+    dataframe = add_unique_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
+                                           ~~~~~~~^^^^^^^^^^^^^^
+KeyError: True
 </pre></div>
 </div>
+</section>
+<section id="other-functions">
+<h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="../use_datetime.html">use_datetime</a></p></li>
-<li><p><a class="reference external" href="../use_scientific_name.html">use_scientific_name</a></p></li>
+<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
+<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
+<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_abundance.html">use_abundance</a></p></li>
-<li><p><a class="reference external" href="../use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="use_abundance.html">use_abundance</a></p></li>
+<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
 </ul>
-</section>
 </section>
 
 
@@ -618,12 +621,15 @@ ValueError: Only type(s) , is accepted for occurrenceID
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-occurrences">Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-basisofrecord-value">Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-generate-occurrence-ids">How to generate occurrence IDs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-occurrencestatus-column">specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">use_occurrences</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-occurrences">Initial run of <code class="docutils literal notranslate"><span class="pre">use_occurrences</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-basisofrecord-value">Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-generate-occurrence-ids">How to generate occurrence IDs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-occurrencestatus-column">specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>

@@ -414,7 +414,7 @@ and if any of the data types check with <code class="docutils literal notranslat
 and correct.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 153, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 149, in &lt;module&gt;
     print(corella.use_datetime(dataframe=df))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 81, in use_datetime
@@ -434,7 +434,7 @@ The only required column is <code class="docutils literal notranslate"><span cla
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 157, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 153, in &lt;module&gt;
     print(corella.use_datetime(dataframe=df,
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 109, in use_datetime
@@ -503,9 +503,7 @@ arguments that will convert dates in strings to <code class="docutils literal no
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Testing data
-
-  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  -------------
                  0  ✓            eventDate
 
@@ -515,7 +513,7 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 
 Errors: 0 | Passes: 1
 
-✗ Data meets minimum Darwin core requirements
+✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
 
 None
@@ -531,9 +529,9 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: Longitude, Latitude, Species
+✗ Unmatched: Latitude, Longitude, Species
 
-── Minimum required DwC terms ──
+── Minimum required DwC terms occurrences ──
 
 Type                       Matched term(s)    Missing term(s)
 -------------------------  -----------------  ------------------------------------------------
@@ -544,7 +542,10 @@ Location                   -                  decimalLatitude, decimalLongitude,
 Date/Time                  eventDate          -
 
 ── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-To make your data Darwin Core compliant, use the following workflow:
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
 
 corella.use_occurrences()
 corella.use_scientific_name()
@@ -554,16 +555,19 @@ Additional functions: use_abundance(), use_locality()
 None
 </pre></div>
 </div>
+</section>
+<section id="other-functions">
+<h2>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h2>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_occurrences.html">use_occurrences</a></p></li>
-<li><p><a class="reference external" href="../use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="../use_scientific_name.html">use_scientific_name</a></p></li>
+<li><p><a class="reference external" href="use_occurrences.html">use_occurrences</a></p></li>
+<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
+<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="../use_abundance.html">use_abundance</a></p></li>
-<li><p><a class="reference external" href="../use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="use_abundance.html">use_abundance</a></p></li>
+<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
 </ul>
 </section>
 </section>
@@ -599,6 +603,7 @@ None
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-datetime">Initial run of <code class="docutils literal notranslate"><span class="pre">use_datetime</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eventdate-and-automatically-converting-strings"><code class="docutils literal notranslate"><span class="pre">eventDate</span></code> and automatically converting strings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
 </ul>
   </nav></div>
 

@@ -1,5 +1,5 @@
 import datetime
-from .common_functions import check_is_datetime,check_is_numeric
+from .common_functions import check_is_datetime,check_is_numeric,check_for_dataframe
 
 def check_datetime(dataframe=None,
                    errors=[]):
@@ -31,8 +31,7 @@ def check_datetime(dataframe=None,
     """
 
     # First, check if a dataframe is provided
-    if dataframe is None:
-        raise ValueError("Please provide a dataframe to this function.")
+    check_for_dataframe(dataframe=dataframe,func='check_datetime')
 
     # first, raise an error if there is not an eventDate column
     if 'eventDate' not in dataframe.columns:

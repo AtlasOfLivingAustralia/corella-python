@@ -16,7 +16,7 @@ It can also (optionally) can check the following:
 - ``coordinatePrecision``: uncertainty of your measurements in decimal degrees
 
 Initial run of ``use_coordinates``
-======================================
+=====================================
 
 Initally, we can run ``use_coordinates()`` to see what is in our dataset, 
 and if any of the data types check with ``use_coordinates()`` are in there 
@@ -34,7 +34,7 @@ The three required columns are ``decimalLatitude``, ``decimalLongitude``,
 and ``geodeticDatum``.
 
 Specifying ``decimalLatitude`` and ``decimalLongitude``
-==========================================================
+============================================================
 
 Since we have latitude and longitude columns, we can specify them in the 
 ``use_coordinates()`` function, and the columns will be renamed and the 
@@ -62,7 +62,7 @@ that's ok!  Luckily, ``pandas`` has a function called ``to_numeric`` which will
     >>> df['latitude'] = pd.to_numeric(df['Latitude'],errors='coerce')
 
 ``geodeticDatum``
-======================================
+=====================================
 
 Another required field is called ``geodeticDatum``.  This column is required as 
 it lets others know how you measured latitude and longitude.  ``geodeticDatum`` 
@@ -82,7 +82,7 @@ is the CRS you have used, you can set the default value of ``geodeticDatum`` in
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 17
 
 Adding Uncertainty
-======================================
+=====================================
 
 There is always uncertainty in measurements of  and longitude; however, 
 sometimes it is useful to include this, especially if you know the uncertainty of 
@@ -102,7 +102,7 @@ in decimal degrees, and the latter is in meters.
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 18
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
-==============================================================
+===========================================================
 
 *Note:* each of the ``use_*`` functions checks your data for compliance with the 
 Darwin core standard, but it's always good to double-check your data.
@@ -124,13 +124,16 @@ again to see how our data is doing this time round.
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 20
 
+Other functions:
+=====================================
+
 To learn more about how to use these functions, go to 
 
-- `use_occurrences <../use_occurrences.html>`_
-- `use_datetime <../use_datetime.html>`_
-- `use_scientific_name <../use_scientific_name.html>`_
+- `use_occurrences <use_occurrences.html>`_
+- `use_datetime <use_datetime.html>`_
+- `use_scientific_name <use_scientific_name.html>`_
 
 Optional functions:
 
-- `use_abundance <../use_abundance.html>`_
-- `use_locality <../use_locality.html>`_
+- `use_abundance <use_abundance.html>`_
+- `use_locality <use_locality.html>`_

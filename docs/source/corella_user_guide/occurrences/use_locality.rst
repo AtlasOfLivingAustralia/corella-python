@@ -38,7 +38,7 @@ in your csv file:
     >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
 
 Initial run of ``use_locality()``
-=====================================
+---------------------------------------
 
 Initally, we can run ``use_locality()`` to see what is in our dataset, 
 and if any of the data types check with ``use_locality()`` are in there 
@@ -53,6 +53,9 @@ and correct.
 We can see that we don't have any extra locality information.  However, we can always 
 add it in.  For example, we know that these occurrences happened in Australia.  We may 
 then want to put the continent as ``Australia``.
+
+specifying ``continent`` and ``country``
+--------------------------------------------
 
 .. prompt:: python
 
@@ -70,13 +73,16 @@ continent that Australia is part of.  Therefore, we can set ``continent='Oceania
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 30
 
+Other functions
+---------------------------------------
+
 To learn more about how to use other functions, go to 
 
-- `use_occurrences <../use_occurrences.html>`_
-- `use_coordinates <../use_coordinates.html>`_
-- `use_datetime <../use_datetime.html>`_
-- `use_scientific_name <../use_scientific_name.html>`_
+- `use_occurrences <use_occurrences.html>`_
+- `use_coordinates <use_coordinates.html>`_
+- `use_datetime <use_datetime.html>`_
+- `use_scientific_name <use_scientific_name.html>`_
 
 Optional functions:
 
-- `use_abundance <../use_abundance.html>`_
+- `use_abundance <use_abundance.html>`_

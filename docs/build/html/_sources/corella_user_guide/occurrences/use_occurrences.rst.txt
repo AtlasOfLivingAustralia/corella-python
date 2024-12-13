@@ -11,7 +11,7 @@ This function aims to check that you have the following Darwin Core Vocabulary T
 - ``occurrenceStatus`` (OPTIONAL): whether a species is present or absent.  Not required for data submission.
 
 Initial run of ``use_occurrences``
-======================================
+---------------------------------------
 
 Initally, let's run ``use_occurrences()`` to see if any of our columns match the Darwin 
 Core Vocabulary mentioned above:
@@ -28,7 +28,7 @@ that allow the user to specify a column of data as one of the column names, or t
 the column.
 
 Specifying ``basisOfRecord`` value
-======================================
+---------------------------------------
 
 As mentioned above, the ``basisOfRecord`` value is a required and important 
 field for an observation, as it lets others know how the record was recorded.  
@@ -39,7 +39,7 @@ Depending on your answer to these questions, the information you provide will di
 Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current 
 accepted values are as follows:
 
-.. program-output:: python corella_user_guide/bor_values.py
+.. program-output:: python corella_user_guide/occurrences/bor_values.py
 
 For this exercise, let's assume a human has seen these, which equates to a value of 
 ``HumanObservation``.  We can then set the ``basisOfRecord`` argument as ``HumanObservation``, 
@@ -55,7 +55,7 @@ and it will, by default, set the value of ``basisOfRecord`` for the whole datafr
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 5
 
 How to generate occurrence IDs 
-======================================
+---------------------------------------
 
 *Note:* If you have occurrence IDs already in your dataset, you can specify the name of the column 
 that contains your IDs, and ``corella`` will rename that column to comply with the Darwin Core Vocabulary 
@@ -80,7 +80,7 @@ will be generated for you.
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 6
 
 specify ``occurrenceStatus`` column
-======================================
+---------------------------------------
 
 *Note:* This is an optional field, but we are including it here to share how this argument works, and how this will rename your column
 
@@ -103,7 +103,7 @@ Darwin Core standard.
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 7
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
-==============================================================
+-------------------------------------------------------------
 
 *Note:* each of the ``use_*`` functions checks your data for compliance with the 
 Darwin core standard, but it's always good to double-check your data.
@@ -138,13 +138,16 @@ again to see what other functions we can use to check our data:
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 9
 
+Other functions
+---------------------------------------
+
 To learn more about how to use these functions, go to 
 
-- `use_coordinates <../use_coordinates.html>`_
-- `use_datetime <../use_datetime.html>`_
-- `use_scientific_name <../use_scientific_name.html>`_
+- `use_coordinates <use_coordinates.html>`_
+- `use_datetime <use_datetime.html>`_
+- `use_scientific_name <use_scientific_name.html>`_
 
 Optional functions:
 
-- `use_abundance <../use_abundance.html>`_
-- `use_locality <../use_locality.html>`_
+- `use_abundance <use_abundance.html>`_
+- `use_locality <use_locality.html>`_
