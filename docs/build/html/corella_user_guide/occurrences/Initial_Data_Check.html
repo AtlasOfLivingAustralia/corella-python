@@ -401,10 +401,10 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
 </pre></div></div><p>Now that you have a dataframe with data in it, we can check the data using the
 function <code class="docutils literal notranslate"><span class="pre">corella.check_data()</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Number of Errors    Pass/Fail    Column name
 ------------------  -----------  -------------
 
@@ -427,7 +427,7 @@ we have created a series of functions that can help you get your data into the
 Darwin Core standard.  To show the functions <code class="docutils literal notranslate"><span class="pre">corella</span></code> contains that can help you
 do this, we have developed an all-purpose function called <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>.  Here
 are the results of this particular dataset:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
@@ -435,7 +435,7 @@ are the results of this particular dataset:</p>
 Matched 0 of 4 column names to DwC terms:
 
 ✓ Matched: 
-✗ Unmatched: Latitude, Species, Longitude, Collection_date
+✗ Unmatched: Longitude, Species, Collection_date, Latitude
 
 ── Minimum required DwC terms occurrences ──
 

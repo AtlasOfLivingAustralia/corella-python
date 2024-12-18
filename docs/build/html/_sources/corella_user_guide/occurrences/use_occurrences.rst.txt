@@ -18,7 +18,7 @@ Core Vocabulary mentioned above:
 
 .. prompt:: python
 
-    >>> corella.use_occurrences(dataframe=df)
+    >>> corella.use_occurrences(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 3
 
@@ -48,7 +48,7 @@ and it will, by default, set the value of ``basisOfRecord`` for the whole datafr
 .. prompt:: python
 
     >>> corella.use_occurrences(
-    ...     dataframe=df,
+    ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation'
     ... )
 
@@ -72,7 +72,7 @@ will be generated for you.
 .. prompt:: python
 
     >>> corella.use_occurrences(
-    ...     dataframe=df,
+    ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
     ...     occurrenceID=True
     ... )
@@ -95,7 +95,7 @@ Darwin Core standard.
 .. prompt:: python
 
     >>> corella.use_occurrences(
-    ...     dataframe=df,
+    ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
     ...     occurrenceStatus='PRESENT'
     ... )
@@ -113,8 +113,8 @@ for, we can assign the new dataframe to a variable:
 
 .. prompt:: python
 
-    >>> df = corella.use_occurrences(
-    ...     dataframe=df,
+    >>> occ = corella.use_occurrences(
+    ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
     ...     occurrenceStatus='status',
     ...     occurrenceID=True
@@ -125,7 +125,7 @@ Now, we can check that this new dataframe complies with the Darwin Core standard
 
 .. prompt:: python
 
-    >>> corella.check_data(dataframe=df)
+    >>> corella.check_data(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 8
 
@@ -134,7 +134,7 @@ again to see what other functions we can use to check our data:
 
 .. prompt:: python
 
-    >>> corella.suggest_workflow(dataframe=df)
+    >>> corella.suggest_workflow(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 9
 

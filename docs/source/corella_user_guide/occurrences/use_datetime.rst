@@ -19,7 +19,7 @@ It can also (optionally) can check the following:
 
     >>> import corella
     >>> import pandas as pd
-    >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
+    >>> occ = pd.read_csv('<YOUR-FILENAME>.csv')
 
 Initial run of ``use_datetime``
 =====================================
@@ -30,7 +30,7 @@ and correct.
 
 .. prompt:: python
 
-    >>> corella.use_datetime(dataframe=df)
+    >>> corella.use_datetime(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 21
 
@@ -45,7 +45,7 @@ Since we can specify the column names, we can specify the ``eventDate`` column t
 
 .. prompt:: python
 
-    >>> corella.use_datetime(dataframe=df,
+    >>> corella.use_datetime(dataframe=occ,
     ...                      eventDate='date')
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 22
@@ -62,7 +62,7 @@ Note when both ``yearfirst`` and ``dayfirst`` are set to ``False``, ``pandas`` a
 
 .. prompt:: python
 
-    >>> corella.use_datetime(dataframe=df,
+    >>> corella.use_datetime(dataframe=occ,
     ...                      eventDate='date',
     ...                      string_to_datetime=True,
     ...                      yearfirst=False,
@@ -80,7 +80,7 @@ Now, we can check that our data column do comply with the Darwin Core standard.
 
 .. prompt:: python
 
-    >>> corella.check_data(occurrences=df)
+    >>> corella.check_data(occurrences=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 24
 
@@ -89,7 +89,7 @@ again to see how our data is doing this time round.
 
 .. prompt:: python
 
-    >>> corella.suggest_workflow(dataframe=df)
+    >>> corella.suggest_workflow(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 25
 

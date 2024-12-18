@@ -15,6 +15,10 @@ Required
 - :ref:`use_coordinates`
 - :ref:`use_datetime`
 
+Example of Passing Dataset 
+----------------------------
+- :ref:`What Does A Passing Occurrences Dataset Look Like?`
+
 Optional
 ---------
 
@@ -35,3 +39,4 @@ Optional
    use_abundance
    use_locality
    convert_coordinates
+   passing_dataset

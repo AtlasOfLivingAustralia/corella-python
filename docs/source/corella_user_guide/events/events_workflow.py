@@ -1,7 +1,6 @@
 import corella
 import pandas as pd
 import sys
-import datetime
 
 # get option
 stopping_point = sys.argv[1]
@@ -68,6 +67,87 @@ if stopping_point == "7":
                              event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
     print(corella.suggest_workflow(events=new_events))
     sys.exit()
+
+if stopping_point == "8":
+    print(corella.use_datetime(dataframe=events))
+    import sys
+    sys.exit()
+
+if stopping_point == "9":
+    print(corella.use_datetime(dataframe=events,eventDate='date'))
+    import sys
+    sys.exit()
+
+if stopping_point == "10":
+    print(corella.use_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True))
+    import sys
+    sys.exit()
+
+if stopping_point == "11":
+    new_events = corella.use_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    corella.check_data(events=new_events)
+    import sys
+    sys.exit()
+
+if stopping_point == "12":
+    new_events = corella.use_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    corella.suggest_workflow(events=new_events)
+    import sys
+    sys.exit()
+
+if stopping_point == "13":
+    events = corella.use_events(dataframe=events,
+                             eventType='type',
+                             samplingProtocol='Observation',
+                             Event='name',
+                             event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+    events = corella.use_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    occ = corella.use_occurrences(dataframe=occ,
+                                  basisOfRecord='HumanObservation',
+                                  occurrenceStatus='PRESENT',
+                                  occurrenceID=True)
+    occ = corella.use_scientific_name(dataframe=occ,
+                                      scientificName='Species')
+    occ = corella.use_coordinates(dataframe=occ,
+                                  decimalLatitude='Latitude',
+                                  decimalLongitude='Longitude',
+                                  geodeticDatum='WGS84',
+                                  coordinatePrecision=0.1)
+    occ = corella.use_datetime(dataframe=occ,
+                               eventDate='Collection_date',
+                               string_to_datetime=True,
+                               yearfirst=False,
+                               dayfirst=True)
+    print(corella.use_occurrences(dataframe=occ,add_eventID=True,events=events,eventType='Observation'))
+
+if stopping_point == "14":
+    events = corella.use_events(dataframe=events,
+                             eventType='type',
+                             samplingProtocol='Observation',
+                             Event='name',
+                             event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+    events = corella.use_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,dayfirst=True)
+    occ = corella.use_occurrences(dataframe=occ,
+                                  basisOfRecord='HumanObservation',
+                                  occurrenceStatus='PRESENT',
+                                  occurrenceID=True,
+                                  add_eventID=True,
+                                  events=events,
+                                  eventType='Observation')
+    occ = corella.use_scientific_name(dataframe=occ,
+                                      scientificName='Species')
+    occ = corella.use_coordinates(dataframe=occ,
+                                  decimalLatitude='Latitude',
+                                  decimalLongitude='Longitude',
+                                  geodeticDatum='WGS84',
+                                  coordinatePrecision=0.1)
+    occ = corella.use_datetime(dataframe=occ,
+                               eventDate='Collection_date',
+                               string_to_datetime=True,
+                               yearfirst=False,
+                               dayfirst=True)
+    print(corella.check_data(occurrences=occ,events=events))
+
 
 # temp_emof = my_dwca.emof.rename(
 #     columns = {

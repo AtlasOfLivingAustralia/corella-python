@@ -1,0 +1,35 @@
+.. _What Does A Passing Occurrences Dataset Look Like?:
+
+What Does A Passing Occurrences Dataset Look Like?
+-------------------------------------------------------
+
+If you've gone through all the steps outlined for the example 
+occurrences dataset, your final step(s) will look like the following: 
+
+.. prompt:: python
+
+    >>> # this is each individual step as a command
+    >>> import pandas as pd
+    >>> import corella
+    >>> occ = pd.read_csv('<NAME-OF-FILE>.csv')
+    >>> occ = corella.use_occurrences(dataframe=occ,
+    ...                               basisOfRecord='HumanObservation',
+    ...                               occurrenceStatus='PRESENT',
+    ...                               occurrenceID=True)
+    >>> occ = corella.use_scientific_name(dataframe=occ,
+    ...                                   scientificName='Species')
+    >>> occ = corella.use_coordinates(dataframe=occ,
+    ...                               decimalLatitude='Latitude',
+    ...                               decimalLongitude='Longitude',
+    ...                               geodeticDatum='WGS84',
+    ...                               coordinatePrecision=0.1)
+    >>> occ = corella.use_datetime(dataframe=occ,
+    ...                            eventDate='Collection_date',
+    ...                            string_to_datetime=True,
+    ...                            yearfirst=False,
+    ...                            dayfirst=True)
+    >> corella.check_data(occurrences=occ)
+
+And your final output from ``check_data()`` will look like this:
+
+.. program-output:: python corella_user_guide/occurrences/data_cleaning.py 31

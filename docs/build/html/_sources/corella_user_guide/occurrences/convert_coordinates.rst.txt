@@ -44,16 +44,16 @@ like the following example:
 
     >>> from lat_lon_parser import parse
     >>> import pandas as pd 
-    >>> df = pd.DataFrame(
+    >>> occ = pd.DataFrame(
     ...     {
     ...         'decimalLatitude': ["35\° 50' 11\"", "45\° 51' 13\"", "30\° 20' 10\""], 
     ...         'decimalLongitude': ["138\° 01\' 26\"", "139\° 11\' 16\"", "128\° 05\' 29\""]
     ...     }
     ... )
-    >>> for i, row in df.iterrows():
-    ...     df.at[i, 'decimalLatitude'] = round(parse(row['decimalLatitude']),2)
-    ...     df.at[i, 'decimalLongitude'] = round(parse(row['decimalLongitude']),2)
-    >>> df
+    >>> for i, row in occ.iterrows():
+    ...     occ.at[i, 'decimalLatitude'] = round(parse(row['decimalLatitude']),2)
+    ...     occ.at[i, 'decimalLongitude'] = round(parse(row['decimalLongitude']),2)
+    >>> occ
 
 .. program-output:: python corella_user_guide/occurrences/convert_coords.py
 

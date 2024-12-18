@@ -408,11 +408,11 @@ and correct.</p>
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 68, in &lt;module&gt;
-    print(corella.use_scientific_name(dataframe=df))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    print(corella.use_scientific_name(dataframe=occ))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_scientific_name.py&quot;, line 45, in use_scientific_name
     check_if_all_args_empty(dataframe=dataframe,func=&#39;use_scientific_name&#39;,keys=mapping.keys(),values=values)
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
@@ -428,7 +428,7 @@ The only required column is the <code class="docutils literal notranslate"><span
 <h1>specifying <code class="docutils literal notranslate"><span class="pre">scientificName</span></code><a class="headerlink" href="#specifying-scientificname" title="Link to this heading">#</a></h1>
 <p>Like with other <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions, to specify which column you want to rename or change, you
 specify it with the Darwin Core term.  In this case, it is <code class="docutils literal notranslate"><span class="pre">scientificName</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                          scientificName  Latitude  Longitude Collection_date
 0                     Corymbia latifolia    -13.04     131.07       29/3/2022
 1                   Eucalyptus tectifica    -13.04     131.07       13/9/2022
@@ -473,8 +473,8 @@ specify it with the Darwin Core term.  In this case, it is <code class="docutils
 <p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  --------------
                  0  ✓            scientificName
@@ -493,7 +493,7 @@ None
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
@@ -501,7 +501,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: scientificName
-✗ Unmatched: Collection_date, Latitude, Longitude
+✗ Unmatched: Longitude, Latitude, Collection_date
 
 ── Minimum required DwC terms occurrences ──
 

@@ -80,10 +80,11 @@ def check_data(occurrences=None,
         }
 
         # run all checks on occurrences
-        for f in [check_abundance,check_basisOfRecord,check_coordinates,check_datetime,check_locality,check_occurrenceIDs,check_scientificName]:
-            errors_f = f(dataframe=occurrences)
-            if type(errors_f) is list:
-                errors += errors_f
+        if occurrences is not None:
+            for f in [check_abundance,check_basisOfRecord,check_coordinates,check_datetime,check_locality,check_occurrenceIDs,check_scientificName]:
+                errors_f = f(dataframe=occurrences)
+                if type(errors_f) is list:
+                    errors += errors_f
 
         # run all checks on events
         if events is not None:

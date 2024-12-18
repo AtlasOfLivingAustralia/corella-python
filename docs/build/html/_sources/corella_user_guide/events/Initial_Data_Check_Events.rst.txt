@@ -20,7 +20,7 @@ To read in the data you want to use, you're going to use ``pandas`` to read in t
     >>> import corella
     >>> import pandas as pd
     >>> occ = pd.read_csv('<NAME_OF_OCCURRENCES>.csv')
-    >>> events = pd.read_csv('<NAME_OF_OCCURRENCES>.csv')
+    >>> events = pd.read_csv('<NAME_OF_EVENTS>.csv')
     >>> corella.check_data(occurrences=occ,
     ...                    events=events)
 

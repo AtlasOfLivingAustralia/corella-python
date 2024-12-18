@@ -24,7 +24,7 @@ and correct.
 
 .. prompt:: python
 
-    >>> corella.use_coordinates(dataframe=df)
+    >>> corella.use_coordinates(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 14
 
@@ -43,7 +43,7 @@ correct ranges.
 
 .. prompt:: python
 
-    >>> corella.use_coordinates(dataframe=df,
+    >>> corella.use_coordinates(dataframe=occ,
     ...                         decimalLatitude='Latitude',
     ...                         decimalLongitude='Longitude')
 
@@ -59,7 +59,7 @@ that's ok!  Luckily, ``pandas`` has a function called ``to_numeric`` which will
 
 .. prompt:: python
 
-    >>> df['latitude'] = pd.to_numeric(df['Latitude'],errors='coerce')
+    >>> occ['latitude'] = pd.to_numeric(occ['Latitude'],errors='coerce')
 
 ``geodeticDatum``
 =====================================
@@ -74,7 +74,7 @@ is the CRS you have used, you can set the default value of ``geodeticDatum`` in
 
 .. prompt:: python
 
-    >>> corella.use_coordinates(dataframe=df,
+    >>> corella.use_coordinates(dataframe=occ,
     ...                         decimalLatitude='Latitude',
     ...                         decimalLongitude='Longitude',
     ...                         geodeticDatum='WGS84')
@@ -93,7 +93,7 @@ in decimal degrees, and the latter is in meters.
 
 .. prompt:: python
 
-    >>> corella.use_coordinates(dataframe=df,
+    >>> corella.use_coordinates(dataframe=occ,
     ...                         decimalLatitude='Latitude',
     ...                         decimalLongitude='Longitude',
     ...                         geodeticDatum='WGS84',
@@ -111,7 +111,7 @@ Now, we can check that our data column do comply with the Darwin Core standard.
 
 .. prompt:: python
 
-    >>> corella.check_data(occurrences=df)
+    >>> corella.check_data(occurrences=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 19
 
@@ -120,7 +120,7 @@ again to see how our data is doing this time round.
 
 .. prompt:: python
 
-    >>> corella.suggest_workflow(dataframe=df)
+    >>> corella.suggest_workflow(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 20
 

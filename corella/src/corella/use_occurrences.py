@@ -1,4 +1,4 @@
-import uuid
+from .add_eventID_occurrences import add_eventID_occurrences
 from .add_unique_IDs import add_unique_IDs
 from .check_occurrences import check_occurrences
 from .common_functions import check_for_dataframe,check_if_all_args_empty,check_all_columns_values
@@ -9,7 +9,10 @@ def use_occurrences(dataframe=None,
                     recordNumber=None,
                     basisOfRecord=None,
                     occurrenceStatus=None,
-                    errors=[]):
+                    errors=[],
+                    add_eventID=False,
+                    events=None,
+                    eventType=None):
     """
     Checks for unique identifiers of each occurrence and how the occurrence was recorded.
 
@@ -43,6 +46,10 @@ def use_occurrences(dataframe=None,
 
     # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='use_occurrences')
+    
+    # check for events for adding event ID
+    if add_eventID:
+        check_for_dataframe(dataframe=events,func='use_occurrences')
 
     # column renaming dictionary
     mapping = {
@@ -74,7 +81,10 @@ def use_occurrences(dataframe=None,
     
     # check if unique occurrence IDs need to be added
     if (type(occurrenceID) is bool):
-        dataframe = add_unique_IDs(column_name=mapping[occurrenceID],dataframe=dataframe)
+        dataframe = add_unique_IDs(column_name='occurrenceID',dataframe=dataframe)
+
+    if type(add_eventID) is bool and add_eventID:
+        dataframe = add_eventID_occurrences(occurrences=dataframe,events=events,eventType=eventType)
 
     # check data
     errors = check_occurrences(dataframe=dataframe,errors=[])

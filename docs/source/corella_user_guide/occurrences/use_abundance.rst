@@ -21,7 +21,7 @@ For this exercise, we have included an extra column from the example dataframe t
 
     >>> import corella
     >>> import pandas as pd
-    >>> df = pd.DataFrame(
+    >>> occ = pd.DataFrame(
     ...     {'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 
     ...     'latitude': [-35.310, '-35.273'], 
     ...     'longitude': [149.125, 149.133], 
@@ -36,7 +36,7 @@ in your csv file:
 .. prompt:: python
 
     >>> import pandas as pd
-    >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
+    >>> occ = pd.read_csv('<YOUR-FILENAME>.csv')
 
 Initial run of ``use_abundance``
 -----------------------------------------
@@ -47,7 +47,7 @@ and correct.
 
 .. prompt:: python
 
-    >>> corella.use_abundance(dataframe=df)
+    >>> corella.use_abundance(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 26
 
@@ -61,7 +61,7 @@ specifying ``individualCount``
 
 .. prompt:: python
 
-    >>> corella.use_abundance(dataframe=df,individualCount='count')
+    >>> corella.use_abundance(dataframe=occ,individualCount='count')
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 27
 

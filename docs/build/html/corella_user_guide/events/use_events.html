@@ -407,7 +407,7 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">events</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 36, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 35, in &lt;module&gt;
     print(corella.use_events(dataframe=events))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_events.py&quot;, line 41, in use_events
@@ -427,7 +427,7 @@ ValueError: No Darwin Core arguments supplied to `use_events()`.  See dir(corell
 <span class="prompt1"><span class="o">...</span>                    <span class="n">samplingProtocol</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 40, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 39, in &lt;module&gt;
     print(corella.use_events(dataframe=events,
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_events.py&quot;, line 57, in use_events
@@ -445,17 +445,17 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                 eventID                         parentEventID    eventType    location        date                                            Event samplingProtocol
-0   f10db9b1-9272-464d-b723-4fe716d9afcb                                         Site Visit  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
-1   a049bd04-3238-49c4-93ee-3c8f57f8f129  f10db9b1-9272-464d-b723-4fe716d9afcb       Sample  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
-2   ee0eddce-105a-42a4-af08-631badcb8953  a049bd04-3238-49c4-93ee-3c8f57f8f129  Observation  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
-3   9132bf93-a5ab-47c9-b75a-dd4c0d3ac1b0                                         Site Visit  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
-4   3e0d15dd-960f-423a-91c9-ba85b87a4bd2  9132bf93-a5ab-47c9-b75a-dd4c0d3ac1b0       Sample  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
+0   56e86b8b-529f-449a-b856-04008fbc667e                                         Site Visit  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
+1   cfd3a7eb-d08f-4b43-815e-c0e8b6cd8e59  56e86b8b-529f-449a-b856-04008fbc667e       Sample  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
+2   de419176-6865-4355-8e6a-df5e417b932e  cfd3a7eb-d08f-4b43-815e-c0e8b6cd8e59  Observation  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
+3   8bca61ab-bef8-4345-8dc9-08e4d0577ad0                                         Site Visit  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
+4   7d66f20e-b18b-4c5e-b304-3d086751e324  8bca61ab-bef8-4345-8dc9-08e4d0577ad0       Sample  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
 ..                                   ...                                   ...          ...         ...         ...                                              ...              ...
-73  7dd8fa6c-2020-4827-81ce-5bf26dea6695  8e646597-0c81-4015-abf8-c3a072136e88       Sample  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
-74  266f11d9-0d50-49a4-991e-57588d463424  7dd8fa6c-2020-4827-81ce-5bf26dea6695  Observation  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
-75  226e8943-6fe1-4b50-9eeb-cd1cf471e57c                                         Site Visit  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
-76  718c5c24-b86f-46ab-837e-250aadec31bc  226e8943-6fe1-4b50-9eeb-cd1cf471e57c       Sample  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
-77  35113102-016c-493b-a7fb-e62cd2bd2a1d  718c5c24-b86f-46ab-837e-250aadec31bc  Observation  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
+73  02ac9f8b-0425-40d0-bfc6-47929b80812f  463cb471-8803-464c-9ff1-94cf313e9c21       Sample  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
+74  2b82e42b-0980-4d94-af3c-b16ed47ebbfa  02ac9f8b-0425-40d0-bfc6-47929b80812f  Observation  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
+75  3998c2a5-e574-4e18-ba9a-fc0df3eaa7bc                                         Site Visit  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
+76  31cb4987-0d1d-4ab8-854b-91a3235709db  3998c2a5-e574-4e18-ba9a-fc0df3eaa7bc       Sample  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
+77  d03b1608-a6a3-48d7-9bce-6f315c16537e  31cb4987-0d1d-4ab8-854b-91a3235709db  Observation  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
 
 [78 rows x 7 columns]
 </pre></div>

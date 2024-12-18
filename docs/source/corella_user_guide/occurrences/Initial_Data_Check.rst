@@ -17,14 +17,14 @@ To read in the data you want to use, you're going to use ``pandas`` to read in t
 
     >>> import corella
     >>> import pandas as pd
-    >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
+    >>> occ = pd.read_csv('<YOUR-FILENAME>.csv')
 
 Now that you have a dataframe with data in it, we can check the data using the 
 function ``corella.check_data()``. 
 
 .. prompt:: python
 
-    >>> corella.check_data(occurrences=df)
+    >>> corella.check_data(occurrences=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 1
 
@@ -38,7 +38,7 @@ are the results of this particular dataset:
 
 .. prompt:: python
 
-    >>> corella.suggest_workflow(dataframe=df)
+    >>> corella.suggest_workflow(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 2
 

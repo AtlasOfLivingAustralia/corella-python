@@ -406,7 +406,7 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="p">{</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Callocephalon fimbriatum&#39;</span><span class="p">,</span> <span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="s1">&#39;-35.273&#39;</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
@@ -417,18 +417,18 @@ span.prompt1:before {
 </pre></div></div><p>If you wish to follow with your own dataset in a csv file, use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to read
 in your csv file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
 </pre></div></div></section>
 <section id="initial-run-of-use-abundance">
 <h1>Initial run of <code class="docutils literal notranslate"><span class="pre">use_abundance</span></code><a class="headerlink" href="#initial-run-of-use-abundance" title="Link to this heading">#</a></h1>
 <p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_abundance()</span></code> to see what is in our dataset,
 and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_abundance()</span></code> are in there
 and correct.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_abundance</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_abundance</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 194, in &lt;module&gt;
-    print(corella.use_abundance(dataframe=df))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    print(corella.use_abundance(dataframe=occ))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_abundance.py&quot;, line 42, in use_abundance
     check_if_all_args_empty(dataframe=dataframe,func=&#39;use_abundance&#39;,keys=renaming_map.keys(),values=values)
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
@@ -443,7 +443,7 @@ column to <code class="docutils literal notranslate"><span class="pre">individua
 </section>
 <section id="specifying-individualcount">
 <h1>specifying <code class="docutils literal notranslate"><span class="pre">individualCount</span></code><a class="headerlink" href="#specifying-individualcount" title="Link to this heading">#</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_abundance</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">individualCount</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_abundance</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">individualCount</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species latitude  longitude        date   status  individualCount
 0  Callocephalon fimbriatum   -35.31    149.125  14-01-2023  present                2
 1     Eolophus roseicapilla  -35.273    149.133  15-01-2023  present                1

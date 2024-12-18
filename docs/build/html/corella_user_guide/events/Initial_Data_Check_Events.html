@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>use_datetime &#8212; corella 0.1.0 documentation</title>
+    <title>Initial Data Check Events &#8212; corella 0.1.0 documentation</title>
   
   
   
@@ -42,7 +42,7 @@
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'corella_user_guide/events/use_datetime';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'corella_user_guide/events/Initial_Data_Check_Events';</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -369,7 +369,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">use_datetime</li>
+    <li class="breadcrumb-item active" aria-current="page">Initial...</li>
   </ul>
 </nav>
 </div>
@@ -386,140 +386,69 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="use-datetime">
-<span id="id1"></span><h1>use_datetime<a class="headerlink" href="#use-datetime" title="Link to this heading">#</a></h1>
-<p>One of the functions you can use to check certain columns of your data is <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code>.
-This function aims to check that you have the following Darwin Core Vocabulary Terms:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">eventDate</span></code>: the date of your observation</p></li>
-</ul>
-<p>It can also (optionally) can check the following:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">eventTime</span></code>: year of your observation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">year</span></code>: year of your observation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">month</span></code>: year of your observation</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">day</span></code>: year of your observation</p></li>
-</ul>
+  <section id="initial-data-check-events">
+<span id="id1"></span><h1>Initial Data Check Events<a class="headerlink" href="#initial-data-check-events" title="Link to this heading">#</a></h1>
+<p>When you’re ready to start submitting your data, there are a number of things to
+check to ensure the ingestion process into the ALA is smooth.  Some of this is ensuring
+that your column names conform to Darwin Core Vocabulary standards, and that your
+data is in the correct format (i.e. numerical columns are actually numerical).</p>
+<p><a href="#id2"><span class="problematic" id="id3">*</span></a>Note: the</p>
+<p>For these examples, we will be using the the dataset linked in the homepage.  If, however, you want to
+go through this workflow using your own data, please feel free to do so!</p>
+<p>To read in the data you want to use, you’re going to use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to read in the csv file as a table.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
-</pre></div></div></section>
-<section id="initial-run-of-use-datetime">
-<h1>Initial run of <code class="docutils literal notranslate"><span class="pre">use_datetime</span></code><a class="headerlink" href="#initial-run-of-use-datetime" title="Link to this heading">#</a></h1>
-<p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> to see what is in our dataset,
-and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> are in there
-and correct.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 72, in &lt;module&gt;
-    print(corella.use_datetime(dataframe=events))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 81, in use_datetime
-    check_if_all_args_empty(dataframe=dataframe,func=&#39;use_datetime&#39;,keys=mapping.keys(),values=values)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
-    raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
-ValueError: No Darwin Core arguments supplied to `use_datetime()`.  See dir(corella.use_datetime()) for valid arguments.
-</pre></div>
-</div>
-<p>Here, we can see that we don’t have any column names matching the Darwin
-Core standard, and must specify them to <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> to proceed.
-The only required column is <code class="docutils literal notranslate"><span class="pre">eventDate</span></code>.</p>
-</section>
-<section id="eventdate-and-automatically-converting-strings">
-<h1><code class="docutils literal notranslate"><span class="pre">eventDate</span></code> and automatically converting strings<a class="headerlink" href="#eventdate-and-automatically-converting-strings" title="Link to this heading">#</a></h1>
-<p>Since we can specify the column names, we can specify the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to be <code class="docutils literal notranslate"><span class="pre">'date'</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 77, in &lt;module&gt;
-    print(corella.use_datetime(dataframe=events,eventDate=&#39;date&#39;))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 109, in use_datetime
-    raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
-ValueError: There are some errors in your data.  They are as follows:
-
-the eventDate column must be in datetime format.
-</pre></div>
-</div>
-<p>We get an error here because <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> requires the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to be in a <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
-format.  This is to make sure the date is formatted correctly.  Luckily, <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> has a few
-arguments that will convert dates in strings to <code class="docutils literal notranslate"><span class="pre">datetime</span></code> format.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">string_to_datetime</span></code>: when this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, will convert any strings in the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">yearfirst</span></code>: when this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">corella</span></code> (and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>) assumes your date starts with the year.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">dayfirst</span></code>: when this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">corella</span></code> (and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>) assumes your date starts with the day.</p></li>
-</ul>
-<p>Note when both <code class="docutils literal notranslate"><span class="pre">yearfirst</span></code> and <code class="docutils literal notranslate"><span class="pre">dayfirst</span></code> are set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> assumes month is first.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                      <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                      <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                      <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>         type    location  eventDate                                             name
-0   siteVisit  Cannonvale 2023-01-03  bird survey local park honeyeater lookout point
-1   siteVisit  Cannonvale 2023-01-17  bird survey local park honeyeater lookout point
-2   siteVisit  Cannonvale 2023-01-31  bird survey local park honeyeater lookout point
-3   siteVisit  Cannonvale 2023-02-14  bird survey local park honeyeater lookout point
-4   siteVisit  Cannonvale 2023-02-28  bird survey local park honeyeater lookout point
-5   siteVisit  Cannonvale 2023-03-14  bird survey local park honeyeater lookout point
-6   siteVisit  Cannonvale 2023-03-28  bird survey local park honeyeater lookout point
-7   siteVisit  Cannonvale 2023-04-11  bird survey local park honeyeater lookout point
-8   siteVisit  Cannonvale 2023-04-25  bird survey local park honeyeater lookout point
-9   siteVisit  Cannonvale 2023-05-09  bird survey local park honeyeater lookout point
-10  siteVisit  Cannonvale 2023-05-23  bird survey local park honeyeater lookout point
-11  siteVisit  Cannonvale 2023-06-06  bird survey local park honeyeater lookout point
-12  siteVisit  Cannonvale 2023-06-20  bird survey local park honeyeater lookout point
-13  siteVisit  Cannonvale 2023-07-04  bird survey local park honeyeater lookout point
-14  siteVisit  Cannonvale 2023-07-18  bird survey local park honeyeater lookout point
-15  siteVisit  Cannonvale 2023-08-01  bird survey local park honeyeater lookout point
-16  siteVisit  Cannonvale 2023-08-15  bird survey local park honeyeater lookout point
-17  siteVisit  Cannonvale 2023-08-29  bird survey local park honeyeater lookout point
-18  siteVisit  Cannonvale 2023-09-12  bird survey local park honeyeater lookout point
-19  siteVisit  Cannonvale 2023-09-26  bird survey local park honeyeater lookout point
-20  siteVisit  Cannonvale 2023-10-10  bird survey local park honeyeater lookout point
-21  siteVisit  Cannonvale 2023-10-24  bird survey local park honeyeater lookout point
-22  siteVisit  Cannonvale 2023-11-07  bird survey local park honeyeater lookout point
-23  siteVisit  Cannonvale 2023-11-21  bird survey local park honeyeater lookout point
-24  siteVisit  Cannonvale 2023-12-05  bird survey local park honeyeater lookout point
-25  siteVisit  Cannonvale 2023-12-19  bird survey local park honeyeater lookout point
-</pre></div>
-</div>
-</section>
-<section id="what-does-check-data-and-suggest-workflow-say-now">
-<h1>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h1>
-<p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
-Darwin core standard, but it’s always good to double-check your data.</p>
-<p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;NAME_OF_OCCURRENCES&gt;.csv&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;NAME_OF_EVENTS&gt;.csv&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                    <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Number of Errors    Pass/Fail    Column name
 ------------------  -----------  -------------
-                 0  ✓            eventDate
 
 
 ══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
 
-Errors: 0 | Passes: 1
+Errors: 0.0 | Passes: 0
 
 ✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
+
+None
 </pre></div>
 </div>
-<p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
-again to see how our data is doing this time round.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
+<p>For our initial data example, the data tests may not be showing any errors, but
+unfortunately, this means no column names were checked.  This is because the names
+of the columns are not part of the standard Darwin Core Vocabulary.  Thankfully,
+we have created a series of functions that can help you get your data into the
+Darwin Core standard.  To show the functions <code class="docutils literal notranslate"><span class="pre">corella</span></code> contains that can help you
+do this, we have developed an all-purpose function called <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>.  Here
+are the results of this particular dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                          <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
-Matched 1 of 4 column names to DwC terms:
+Matched 0 of 9 column names to DwC terms:
 
-✓ Matched: eventDate
-✗ Unmatched: location, name, type
+✓ Matched: 
+✗ Unmatched: Latitude, Collection_date, Longitude, Species, number_birds, date, type, name, location
+
+── Minimum required DwC terms occurrences ──
+
+Type                       Matched term(s)    Missing term(s)
+-------------------------  -----------------  ------------------------------------------------
+Identifier (at least one)  -                  occurrenceID OR catalogNumber OR recordNumber
+Record type                -                  basisOfRecord
+Scientific name            -                  scientificName
+Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum
+Date/Time                  -                  eventDate
+Associated event ID        -                  eventID
 
 ── Minimum required DwC terms events ──
 
@@ -530,30 +459,34 @@ Linking identifier     -                  parentEventID
 Type of Event          -                  eventType
 Name of Event          -                  Event
 How data was acquired  -                  samplingProtocol
-Date of Event          eventDate          -
+Date of Event          -                  eventDate
 
 ── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
+
+corella.use_occurrences()
+corella.use_scientific_name()
+corella.use_coordinates()
+corella.use_datetime()
+
+Additional functions: use_abundance(), use_locality()
 
 ── Events ──
 
 To make your events Darwin Core compliant, use the following workflow:
 
 corella.use_events()
+corella.use_datetime()
+None
 </pre></div>
 </div>
-</section>
-<section id="other-functions">
-<h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
 <li><p><a class="reference external" href="use_events.html">use_events</a></p></li>
-<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
-</ul>
-<p>Optional functions:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="use_abundance.html">use_abundance</a></p></li>
-<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
 </ul>
 </section>
 
@@ -574,27 +507,7 @@ corella.use_events()
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-<div
-    id="pst-page-navigation-heading-2"
-    class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-  </div>
-  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">use_datetime</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-datetime">Initial run of <code class="docutils literal notranslate"><span class="pre">use_datetime</span></code></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eventdate-and-automatically-converting-strings"><code class="docutils literal notranslate"><span class="pre">eventDate</span></code> and automatically converting strings</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

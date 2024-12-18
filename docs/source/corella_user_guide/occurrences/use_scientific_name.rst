@@ -22,7 +22,7 @@ and correct.
 
 .. prompt:: python
 
-    >>> corella.use_scientific_name(dataframe=df)
+    >>> corella.use_scientific_name(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 10
 
@@ -38,7 +38,7 @@ specify it with the Darwin Core term.  In this case, it is ``scientificName``.
 
 .. prompt:: python
 
-    >>> corella.use_scientific_name(dataframe=df,scientificName='Species')
+    >>> corella.use_scientific_name(dataframe=occ,scientificName='Species')
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 11
 
@@ -52,8 +52,8 @@ Now, we can check that our data column do comply with the Darwin Core standard.
 
 .. prompt:: python
 
-    >>> df = corella.use_scientific_name(dataframe=df,scientificName='Species')
-    >>> corella.check_data(occurrences=df)
+    >>> occ = corella.use_scientific_name(dataframe=occ,scientificName='Species')
+    >>> corella.check_data(occurrences=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 12
 
@@ -62,7 +62,7 @@ again to see how our data is doing this time round.
 
 .. prompt:: python
 
-    >>> corella.suggest_workflow(dataframe=df)
+    >>> corella.suggest_workflow(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 13
 

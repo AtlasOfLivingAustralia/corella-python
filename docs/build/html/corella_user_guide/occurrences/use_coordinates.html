@@ -409,11 +409,11 @@ and correct.</p>
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 92, in &lt;module&gt;
-    print(corella.use_coordinates(dataframe=df))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    print(corella.use_coordinates(dataframe=occ))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_coordinates.py&quot;, line 63, in use_coordinates
     check_if_all_args_empty(dataframe=dataframe,func=&#39;use_coordinates&#39;,keys=mapping.keys(),values=values)
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
@@ -432,7 +432,7 @@ and <code class="docutils literal notranslate"><span class="pre">geodeticDatum</
 <code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code> function, and the columns will be renamed and the
 values checked to see if i) they are numeric; and ii) if they are in the
 correct ranges.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                 Species  decimalLatitude  decimalLongitude Collection_date
@@ -481,7 +481,7 @@ that’s ok!  Luckily, <code class="docutils literal notranslate"><span class="p
 Below is an example of how to convert a column to all numeric values.  Once this
 is completed, you can use the command above.</p>
 </div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">],</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">occ</span><span class="p">[</span><span class="s1">&#39;Latitude&#39;</span><span class="p">],</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span></span>
 </pre></div></div></section>
 <section id="geodeticdatum">
 <h2><code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code><a class="headerlink" href="#geodeticdatum" title="Link to this heading">#</a></h2>
@@ -492,7 +492,7 @@ coordinates are represented on a two-dimensional surface.  The most common CRS
 (and what GPSs, as well as the ALA, uses) is called WGS84.  If you know that this
 is the CRS you have used, you can set the default value of <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code> in
 <code class="docutils literal notranslate"><span class="pre">use_coordinates()</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">geodeticDatum</span><span class="o">=</span><span class="s1">&#39;WGS84&#39;</span><span class="p">)</span></span>
@@ -543,7 +543,7 @@ your instruments or measurements.  If you know this information and want to incl
 it, you can specify a default value (similar to the <code class="docutils literal notranslate"><span class="pre">geodeticDatum</span></code> column above)
 to either <code class="docutils literal notranslate"><span class="pre">coordinatePrecision</span></code> or <code class="docutils literal notranslate"><span class="pre">coordinateUncertaintyInMeters</span></code>.  The former is
 in decimal degrees, and the latter is in meters.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">geodeticDatum</span><span class="o">=</span><span class="s1">&#39;WGS84&#39;</span><span class="p">,</span></span>
@@ -592,7 +592,7 @@ in decimal degrees, and the latter is in meters.</p>
 <p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  -------------------
                  0  ✓            decimalLatitude
@@ -614,7 +614,7 @@ None
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
@@ -622,7 +622,7 @@ again to see how our data is doing this time round.</p>
 Matched 4 of 6 column names to DwC terms:
 
 ✓ Matched: decimalLatitude, decimalLongitude, geodeticDatum, coordinatePrecision
-✗ Unmatched: Collection_date, Species
+✗ Unmatched: Species, Collection_date
 
 ── Minimum required DwC terms occurrences ──
 

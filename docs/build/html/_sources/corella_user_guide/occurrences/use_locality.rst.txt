@@ -21,7 +21,7 @@ here is an example and how to read it in:
 
     >>> import corella
     >>> import pandas as pd
-    >>> df = pd.DataFrame(
+    >>> occ = pd.DataFrame(
     ...     {'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 
     ...     'latitude': [-35.310, '-35.273'], 
     ...     'longitude': [149.125, 149.133], 
@@ -35,7 +35,7 @@ in your csv file:
 .. prompt:: python
 
     >>> import pandas as pd
-    >>> df = pd.read_csv('<YOUR-FILENAME>.csv')
+    >>> occ = pd.read_csv('<YOUR-FILENAME>.csv')
 
 Initial run of ``use_locality()``
 ---------------------------------------
@@ -46,7 +46,7 @@ and correct.
 
 .. prompt:: python
 
-    >>> corella.use_locality(dataframe=df)
+    >>> corella.use_locality(dataframe=occ)
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 28
 
@@ -59,7 +59,7 @@ specifying ``continent`` and ``country``
 
 .. prompt:: python
 
-    >>> corella.use_locality(dataframe=df,continent='Australia')
+    >>> corella.use_locality(dataframe=occ,continent='Australia')
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 29
 
@@ -69,7 +69,7 @@ continent that Australia is part of.  Therefore, we can set ``continent='Oceania
 
 .. prompt:: python
 
-    >>> corella.use_locality(dataframe=df,continent='Oceania',country='Australia')
+    >>> corella.use_locality(dataframe=occ,continent='Oceania',country='Australia')
 
 .. program-output:: python corella_user_guide/occurrences/data_cleaning.py 30
 

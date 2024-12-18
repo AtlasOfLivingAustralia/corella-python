@@ -30,3 +30,8 @@ Required
    use_events
    use_datetime
    adding_eventID_occurrences
+
+Example of Passing Dataset 
+----------------------------
+
+- :ref:`What Does A Passing Events Dataset Look Like?`

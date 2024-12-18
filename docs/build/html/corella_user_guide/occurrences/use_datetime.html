@@ -406,17 +406,17 @@ span.prompt1:before {
 }
 </style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">corella</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
 </pre></div></div><section id="initial-run-of-use-datetime">
 <h2>Initial run of <code class="docutils literal notranslate"><span class="pre">use_datetime</span></code><a class="headerlink" href="#initial-run-of-use-datetime" title="Link to this heading">#</a></h2>
 <p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> to see what is in our dataset,
 and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> are in there
 and correct.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 149, in &lt;module&gt;
-    print(corella.use_datetime(dataframe=df))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    print(corella.use_datetime(dataframe=occ))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 81, in use_datetime
     check_if_all_args_empty(dataframe=dataframe,func=&#39;use_datetime&#39;,keys=mapping.keys(),values=values)
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
@@ -431,12 +431,12 @@ The only required column is <code class="docutils literal notranslate"><span cla
 <section id="eventdate-and-automatically-converting-strings">
 <h2><code class="docutils literal notranslate"><span class="pre">eventDate</span></code> and automatically converting strings<a class="headerlink" href="#eventdate-and-automatically-converting-strings" title="Link to this heading">#</a></h2>
 <p>Since we can specify the column names, we can specify the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to be <code class="docutils literal notranslate"><span class="pre">'date'</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 153, in &lt;module&gt;
-    print(corella.use_datetime(dataframe=df,
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    print(corella.use_datetime(dataframe=occ,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_datetime.py&quot;, line 109, in use_datetime
     raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
 ValueError: There are some errors in your data.  They are as follows:
@@ -453,7 +453,7 @@ arguments that will convert dates in strings to <code class="docutils literal no
 <li><p><code class="docutils literal notranslate"><span class="pre">dayfirst</span></code>: when this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">corella</span></code> (and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>) assumes your date starts with the day.</p></li>
 </ul>
 <p>Note when both <code class="docutils literal notranslate"><span class="pre">yearfirst</span></code> and <code class="docutils literal notranslate"><span class="pre">dayfirst</span></code> are set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> assumes month is first.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">,</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
@@ -502,7 +502,7 @@ arguments that will convert dates in strings to <code class="docutils literal no
 <p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  -------------
                  0  ✓            eventDate
@@ -521,7 +521,7 @@ None
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">df</span><span class="p">)</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
@@ -529,7 +529,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: Latitude, Longitude, Species
+✗ Unmatched: Species, Latitude, Longitude
 
 ── Minimum required DwC terms occurrences ──
 
