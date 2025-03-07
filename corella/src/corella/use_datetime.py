@@ -69,9 +69,9 @@ def use_datetime(dataframe=None,
     # accepted formats for inputs
     accepted_formats = {
         eventDate: [datetime.datetime,str],
-        year: [int], 
-        month: [int],
-        day: [int],
+        year: [str,int], 
+        month: [str,int],
+        day: [str,int],
         eventTime: [datetime.datetime,str]
     }
 
@@ -88,7 +88,6 @@ def use_datetime(dataframe=None,
 
     # add option to convert strings to datetime
     if string_to_datetime:
-        
         # specify which of day,month,year is first
         if yearfirst:
             dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],yearfirst=yearfirst)

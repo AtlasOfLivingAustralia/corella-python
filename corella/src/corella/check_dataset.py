@@ -10,7 +10,7 @@ from .check_locality import check_locality
 from .check_occurrenceIDs import check_occurrenceIDs
 from .check_scientificName import check_scientificName
 
-def check_data(occurrences=None,
+def check_dataset(occurrences=None,
                events=None,
                max_num_errors=5,
                print_report=True):
@@ -36,9 +36,9 @@ def check_data(occurrences=None,
             import pandas as pd
             import corella
             df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']})
-            corella.check_data(occurrences=df)
+            corella.check_dataset(occurrences=df)
             
-        .. program-output:: python -c "import pandas as pd;import corella;df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']});print(corella.check_data(occurrences=df))"
+        .. program-output:: python -c "import pandas as pd;import corella;df = pd.DataFrame({'species': ['Callocephalon fimbriatum', 'Eolophus roseicapilla'], 'latitude': [-35.310, '-35.273'], 'longitude': [149.125, 149.133], 'eventDate': ['14-01-2023', '15-01-2023'], 'status': ['present', 'present']});print(corella.check_dataset(occurrences=df))"
     """
 
         # First, check if a dataframe is provided

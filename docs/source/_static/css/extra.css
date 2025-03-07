@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+/* from galaxias - may need to change */
 :root {
   --pst-color-text-base: #495057!important;
   --pst-text-size: 1.1rem;
@@ -16,123 +17,167 @@ p {
   line-height: 1.5;
 }
 
+/* from R version of corella */
 h1, h2, h3, h4, .h1, .h2, .h3, .main-title, .main-subtitle {
   font-family: 'Lato' sans-serif;!important
   font-weight: normal;
-  color: #eb7c6b;
+  color: #076064;
 }
 
 a {
-    color: #8aa6d3;
+    color: #47a3a9;
     text-decoration: none;
 }
 
 a:hover {
-  color: #78CCCC;
+  color: #076064;
 }
 
-body { 
-  font-family: Roboto, sans-serif;!important
-}
+body { font-family: Roboto, sans-serif;!important }
 
 .navbar {
-  background: #8aa6d3;
+  background: #ffffff;
   transition: all 0.3s ease;
   box-shadow: 0 0 10px 2px rgba(0,0,0,.15);
   border: none;
   min-height: 40px;
 }
 
-.bd-header {
-  background: linear-gradient(to bottom, #fef7fa, #f4c4b4)!important
-}
-
 .navbar.bg-primary {
-  background-image: linear-gradient(to bottom, #fef7fa, #f4c4b4);
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff) !important;
   /*background-image: linear-gradient(#93d6d6, #78CCCC 60%, #6cb7b7);*/
 }
 
-.navbar-dark .navbar-brand {
-    color: #1c212a;
+.navbar-brand {
+    color: #e46962ff;
+}
+
+.navbar-brand:hover {
+    color: #82c8d0;
 }
 
 .navbar-dark .navbar-brand:hover {
-    color: #8aa6d3;
+    color: #82c8d0;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(24,40,40,0.8);
+.navbar-nav .nav-link {
+    color: #134348;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-    color: rgba(24,40,40,0.8);
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
 }
 
-.navbar-dark .navbar-nav .nav-link:focus {
-    color: rgba(24,40,40,0.8);
+.navbar-nav .nav-link:focus {
+    color: #d7eaf7;
+    background-color: #076064!important;
+}
+
+.navbar-nav .active>.nav-link {
+  background-color: #82c8d0;
+  color: #134348;
 }
 
 .nav-item:selection {
-  background-color: #8aa6d3;
+  background-color: #076064;
 }
 
 .nav-item:hover {
-  background-color: #8aa6d3;
+  background-color: #076064;
 }
 
 .dropdown-item:hover {
-  background-color: #6e85a9;
+  background-color: #076064;
 }
 
 .navlink:hover {
-  background-color: #adc1e0;
+  background-color: #076064;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus .navbar-nav>.drop>a:hover{
     color: #ffffff;
-    background-color: #1c212a;
+    background-color: #076064;
 }
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
     color: #ffffff;
-    background-color: #1c212a;
+    background-color: #076064;
 }
 
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
     color: #ffffff;
     text-decoration: none;
-    background-color: #1c212a;
+    background-color: #076064;
 }
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
     color: #ffffff;
-    background-color: #1c212a;
+    background-color: #076064;
 }
 
 .row>main, .row>aside {
   margin-top: 100px;
 }
 
-.svg-button {
-  fill: #f49c8a;
-  width: 70px;
-  height: 80px;
-}
-
-.sd-card:hover .svg-button{
-  fill: #eb7c6b;
-}
-
-.sd-card-hover:hover {
-  border-color: #eb7c6b;
-}
-
 pre {
     background-color: #f8fcfc;
 }
 
+
+.text-muted {
+  color: #82c8d0!important;
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: #d7eaf7;
+}
+
+.svg-button {
+  fill: #076064;
+  width: 70px;
+  height: 80px;
+}
+
+
+.sd-card:hover .svg-button{
+  fill: #82c8d0;
+}
+
+.sd-card-hover:hover {
+  border-color: #fce7bb;
+}
+
+pre {
+    background-color: #faf0dc;
+}
+
 dt:target, span.highlighted {
-  background-color: #c0e6e8 !important;
+  background-color: #faf0dc !important;
+}
+
+.main-logo-index {
+  display: flex;
+  flex: left;
+  max-width: 200px;
+  height: auto;
+}
+
+main-index-title {
+  display: flex;
+  flex: left;
+  padding-left: 30px;
+}
+
+.code {
+  color: #076064 !important;
+}
+
+code.literal {
+  background-color: #faf0dc;
+}
+
+pre {
+    background-color: #f8fcfc;
 }
 
 /*
@@ -159,24 +204,3 @@ dt:target, span.highlighted {
   background: #003A70;
   background-color: #003A70;
 }*/
-
-.main-logo-index {
-  display: flex;
-  flex: left;
-  max-width: 200px;
-  height: auto;
-}
-
-main-index-title {
-  display: flex;
-  flex: left;
-  padding-left: 30px;
-}
-
-.code {
-  color: #222322 !important;
-}
-
-code.literal {
-  background-color: #f4c4b4;
-}

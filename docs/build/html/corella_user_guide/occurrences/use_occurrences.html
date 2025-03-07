@@ -29,9 +29,9 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=3a1eb295" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=e692d64a" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=3a1eb295" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=e692d64a" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
@@ -430,15 +430,15 @@ that’s part of a collection?</p>
 <p>Depending on your answer to these questions, the information you provide will differ.
 Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current
 accepted values are as follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- LivingSpecimen
-- MaterialCitation
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- Observation
 - MaterialSample
-- Occurrence
 - HumanObservation
-- MachineObservation
-- PreservedSpecimen
-- Observation
+- Occurrence
+- LivingSpecimen
 - FossilSpecimen
+- PreservedSpecimen
+- MaterialCitation
+- MachineObservation
 </pre></div>
 </div>
 <p>For this exercise, let’s assume a human has seen these, which equates to a value of
@@ -504,41 +504,41 @@ will be generated for you.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                               Species  Latitude  Longitude Collection_date     basisOfRecord
-0   f0f36b79-fdec-49b2-be27-b61c6eb7c6a9                    Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1   4e91d28b-b48b-4cea-bb2c-9e812b504ca3                  Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2   99585625-60d0-4125-ab1c-6e4cb5025c39                        Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3   3359210f-a9b9-400d-a6f5-93bad5b21275               Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4   884047b3-ebd5-4c35-81db-8dbf829e26e7                     Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
-5   afe65478-e7af-47a7-a32d-cbf4e9e8ef45                         Acacia aneura    -22.35     133.33      11/10/2022  HumanObservation
-6   7a0ef6c6-97c5-4070-b241-d8202fc43bbc                       Acacia cambagei    -22.35     133.33       23/8/2022  HumanObservation
-7   0a908570-5e01-46f4-91ad-4f82c3e0644f                   Acacia dictyophleba    -22.35     133.33       11/1/2022  HumanObservation
-8   7fe90f47-c1b6-457c-b37f-d4c4b4096b15                  Acacia estrophiolata    -22.35     133.33       10/7/2022  HumanObservation
-9   994691e0-0a6e-464d-800a-06aff0893d03                       Acacia kempeana    -22.35     133.33       18/7/2022  HumanObservation
-10  e74e652a-8bb8-4a2d-8e37-ecfc6c593c67                     Acacia melleodora    -22.35     133.33       25/4/2022  HumanObservation
-11  4a9b21b3-ebf5-4f91-81df-1c32e28f9f2b                       Acacia murayana    -22.35     133.33      15/12/2022  HumanObservation
-12  85add1bb-f8c0-41b4-bd7f-d982611448cf                        Corymbia opaca    -22.35     133.33        6/2/2022  HumanObservation
-13  f24fd580-50eb-42a6-b99a-3c8e7f879b8a                   Corymbia terminalis    -22.35     133.33       21/4/2022  HumanObservation
-14  79faf049-6c19-4690-babe-d9b69cbb1011                   Eremophila latrobei    -22.35     133.33       30/1/2022  HumanObservation
-15  58a5617d-290e-43ef-a94a-7b17abeac131              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022  HumanObservation
-16  5edcedf1-f938-4790-9b9f-706308f5772b  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022  HumanObservation
-17  a39c6d68-98ba-420a-b9c5-c17eb7f996bf                      Hakea leucoptera    -22.35     133.33       11/3/2022  HumanObservation
-18  8994c138-4cef-4cf3-8ce8-325dcc1e1e43                      Hakea macrocarpa    -22.35     133.33       28/7/2022  HumanObservation
-19  e3eebe48-596e-4451-a49e-cda91298ca55                     Psydrax latifolia    -22.35     133.33        6/3/2022  HumanObservation
-20  4c8ac92b-8a46-4af9-ac04-2a9de0a0fdb8                          Acacia celsa    -17.26     145.46        5/9/2022  HumanObservation
-21  b2992949-3441-4685-87cb-93175f5400d8                    Acronychia acidula    -17.26     145.46       22/4/2022  HumanObservation
-22  905a0a5b-cd53-46af-88e4-80c4401c5557             Aleurites rockinghamensis    -17.26     145.46       21/7/2022  HumanObservation
-23  f140cd63-ffd3-4591-9989-3ff80d05edf5                    Alphitonia petriei    -17.26     145.46       11/3/2022  HumanObservation
-24  1fbc4aa2-f46b-4935-9c91-983e7d8e07b4                  Gillbeea adenopetala    -17.26     145.46       15/2/2022  HumanObservation
-25  b4cf197d-b731-4c82-860a-6ee0152c9461                       Litsea leefeana    -17.26     145.46       11/5/2022  HumanObservation
-26  551423ce-de7d-47b0-a3f6-2cee25d97001                        Myrsine porosa    -17.26     145.46      31/10/2022  HumanObservation
-27  a06cd37c-6f30-46a1-b1a6-695e2a5767bd                    Neolitsea dealbata    -17.26     145.46       8/10/2022  HumanObservation
-28  869bb9cc-a662-4931-942b-576b033909ad                 Polyscias australiana    -17.26     145.46      26/10/2022  HumanObservation
-29  9cc5b4ab-150b-480b-8f97-e2b2362cd57b                     Coprosma hirtella    -35.66     148.15        4/3/2022  HumanObservation
-30  f4da1481-5fad-4395-9285-014f9bd6c786                    Daviesia latifolia    -35.66     148.15       28/6/2022  HumanObservation
-31  90021ec4-ec5d-4332-b0de-38b21bee2aa9               Eucalyptus delegatensis    -35.66     148.15       22/1/2022  HumanObservation
-32  002acdb0-54f4-4139-8c11-33a20dfba743                  Tasmannia lanceolata    -35.66     148.15       24/6/2022  HumanObservation
-33  a10d4ded-94a6-4c36-9a97-3c7f17aa3aa4                    Eucalyptus miniata    -12.42     130.92      28/10/2022  HumanObservation
-34  94355e85-9593-49e7-84f3-4586ddb6158d                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022  HumanObservation
+0   1b077d06-d1de-4ac9-9f66-27aea1ef0dbb                    Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1   16db5b61-1600-45bb-b1dd-d81e4e1cc8dd                  Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2   4584e42a-ac23-45fe-811a-393bb7f9c91e                        Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3   e71d8dd3-a4dd-494f-8f92-c06ab056f55a               Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4   5349a70f-4c17-46bc-bbb2-edaba6997dd2                     Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+5   dcccb125-77f0-4ff4-b954-1316821d3651                         Acacia aneura    -22.35     133.33      11/10/2022  HumanObservation
+6   c4c092b7-8181-4175-9fb1-493bd0432c5e                       Acacia cambagei    -22.35     133.33       23/8/2022  HumanObservation
+7   b0d0db41-dacf-4f8e-86f5-9a3da2041a49                   Acacia dictyophleba    -22.35     133.33       11/1/2022  HumanObservation
+8   4b3a7bfb-3154-4a4a-9871-99cb5e2855b0                  Acacia estrophiolata    -22.35     133.33       10/7/2022  HumanObservation
+9   0bfdb0fb-5490-4f48-acc0-f3be1877947f                       Acacia kempeana    -22.35     133.33       18/7/2022  HumanObservation
+10  aaa70a50-e384-44e1-8e52-7f8aba080ad3                     Acacia melleodora    -22.35     133.33       25/4/2022  HumanObservation
+11  45f309ea-4b06-454a-9af6-80376b6931f3                       Acacia murayana    -22.35     133.33      15/12/2022  HumanObservation
+12  8e4d197d-e56d-4c14-a695-053cc385ca4f                        Corymbia opaca    -22.35     133.33        6/2/2022  HumanObservation
+13  0c430dca-f07e-4b66-8e9f-7e48ba33312e                   Corymbia terminalis    -22.35     133.33       21/4/2022  HumanObservation
+14  64ef38ec-c4f9-4312-b7d0-00f5856fd043                   Eremophila latrobei    -22.35     133.33       30/1/2022  HumanObservation
+15  50cffbd6-131d-42d7-82a1-d75e63c0d7c8              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022  HumanObservation
+16  0b95216c-5d6e-49de-9697-4eba3ee0b692  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022  HumanObservation
+17  648cdd4b-dbfe-431f-9966-c7e54555c6c4                      Hakea leucoptera    -22.35     133.33       11/3/2022  HumanObservation
+18  04c2c637-ceba-4899-8d3b-969942a0141c                      Hakea macrocarpa    -22.35     133.33       28/7/2022  HumanObservation
+19  661d2728-45b0-42c1-b5fd-e55ae9e3593b                     Psydrax latifolia    -22.35     133.33        6/3/2022  HumanObservation
+20  53316eee-8026-407a-85ef-5f66baf3f28a                          Acacia celsa    -17.26     145.46        5/9/2022  HumanObservation
+21  1d8aed05-ec58-4b29-8097-d60118430b24                    Acronychia acidula    -17.26     145.46       22/4/2022  HumanObservation
+22  bee07b80-e308-4174-9d2f-47562be5ec91             Aleurites rockinghamensis    -17.26     145.46       21/7/2022  HumanObservation
+23  e4781fb2-8d5d-4c35-8dea-25851202c469                    Alphitonia petriei    -17.26     145.46       11/3/2022  HumanObservation
+24  bd1dc567-61b8-46aa-be12-1d209d289af2                  Gillbeea adenopetala    -17.26     145.46       15/2/2022  HumanObservation
+25  54bcb92b-8a60-4606-aa9b-23d20f2631c9                       Litsea leefeana    -17.26     145.46       11/5/2022  HumanObservation
+26  0f550c59-61ad-48ac-b5c5-d6df6fb2ffe3                        Myrsine porosa    -17.26     145.46      31/10/2022  HumanObservation
+27  9a0bb8b1-b3e3-49b8-92cf-0f9b89e4aba3                    Neolitsea dealbata    -17.26     145.46       8/10/2022  HumanObservation
+28  2a4c4c6b-4739-4bce-8eef-a4318f3a125b                 Polyscias australiana    -17.26     145.46      26/10/2022  HumanObservation
+29  b7658931-1554-421b-9d7c-9a87dbf386f7                     Coprosma hirtella    -35.66     148.15        4/3/2022  HumanObservation
+30  e8603a57-07d2-40cc-b2a6-b2f89b30a589                    Daviesia latifolia    -35.66     148.15       28/6/2022  HumanObservation
+31  edc7c895-fab1-448e-be8b-a4c8693aa2a5               Eucalyptus delegatensis    -35.66     148.15       22/1/2022  HumanObservation
+32  7805b10d-c577-4951-8ede-74a3ca98fcdb                  Tasmannia lanceolata    -35.66     148.15       24/6/2022  HumanObservation
+33  3d4e27d9-2e53-4b35-aff8-b76e97004ec4                    Eucalyptus miniata    -12.42     130.92      28/10/2022  HumanObservation
+34  f3269a6c-159d-439d-aa06-9c245ccbb581                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -557,41 +557,41 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                               Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0   00de5f1e-6ca7-45d1-b17b-22756a0062d2                    Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1   550a0906-e8f2-4dbe-873b-7c4c329edb5a                  Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2   92f5cc52-c766-4b47-a517-0186d1c78ee1                        Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3   fbdf0425-7ae8-4ede-857e-4969f517e013               Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4   23a46706-cb37-491d-82d2-3ee127d3cf30                     Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
-5   66817da3-5fb4-451a-8ccc-ac4493067913                         Acacia aneura    -22.35     133.33      11/10/2022  HumanObservation          PRESENT
-6   40c48554-916d-4017-a91c-0592c877d23a                       Acacia cambagei    -22.35     133.33       23/8/2022  HumanObservation          PRESENT
-7   5275863a-dda5-4076-a0cb-f806de350aae                   Acacia dictyophleba    -22.35     133.33       11/1/2022  HumanObservation          PRESENT
-8   5f16c87a-c204-4632-9543-16dd61af18ee                  Acacia estrophiolata    -22.35     133.33       10/7/2022  HumanObservation          PRESENT
-9   2b4a2f8a-65a3-4636-8e49-308a8cd97be2                       Acacia kempeana    -22.35     133.33       18/7/2022  HumanObservation          PRESENT
-10  dff1e26e-6d2f-494b-8bec-7402125c9877                     Acacia melleodora    -22.35     133.33       25/4/2022  HumanObservation          PRESENT
-11  8abc58b8-7795-418b-87d8-a1c52b935dc8                       Acacia murayana    -22.35     133.33      15/12/2022  HumanObservation          PRESENT
-12  a13fc0cc-b5ee-45c5-816f-7ee02396d9da                        Corymbia opaca    -22.35     133.33        6/2/2022  HumanObservation          PRESENT
-13  0995a6e6-5b8f-4c72-9757-b199d275840d                   Corymbia terminalis    -22.35     133.33       21/4/2022  HumanObservation          PRESENT
-14  72034fa1-9aa6-469d-8e6d-de6b6d39e9a5                   Eremophila latrobei    -22.35     133.33       30/1/2022  HumanObservation          PRESENT
-15  994303ca-d63f-4640-ba1f-d6d4c1111da6              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022  HumanObservation          PRESENT
-16  4ac07ba8-9a36-4a9e-bcf3-a0b8f39001c3  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022  HumanObservation          PRESENT
-17  982fd664-32bf-4f77-92ad-93ac056d1cc1                      Hakea leucoptera    -22.35     133.33       11/3/2022  HumanObservation          PRESENT
-18  942de640-8494-498c-8967-e4636bbe586a                      Hakea macrocarpa    -22.35     133.33       28/7/2022  HumanObservation          PRESENT
-19  041e3a8d-444a-409c-bfd1-ed88b4051a54                     Psydrax latifolia    -22.35     133.33        6/3/2022  HumanObservation          PRESENT
-20  79220453-b11c-4023-b87a-a7fcc9c85a68                          Acacia celsa    -17.26     145.46        5/9/2022  HumanObservation          PRESENT
-21  27165572-72db-42d8-8148-4908a6990dc2                    Acronychia acidula    -17.26     145.46       22/4/2022  HumanObservation          PRESENT
-22  8045ea45-1d42-4ac3-bc6b-6313f907d059             Aleurites rockinghamensis    -17.26     145.46       21/7/2022  HumanObservation          PRESENT
-23  cdecee59-b9f4-4f00-806f-e893e6b4107e                    Alphitonia petriei    -17.26     145.46       11/3/2022  HumanObservation          PRESENT
-24  81309953-4811-413d-ba19-b90acd49df1f                  Gillbeea adenopetala    -17.26     145.46       15/2/2022  HumanObservation          PRESENT
-25  e446efaa-4cd5-497e-889e-c5aabd61181f                       Litsea leefeana    -17.26     145.46       11/5/2022  HumanObservation          PRESENT
-26  fac63a5f-d79a-454a-9eff-d926336b8a98                        Myrsine porosa    -17.26     145.46      31/10/2022  HumanObservation          PRESENT
-27  c5f45641-7e76-40b7-9bfa-7ec25d18cec7                    Neolitsea dealbata    -17.26     145.46       8/10/2022  HumanObservation          PRESENT
-28  763260e3-0e14-4576-b541-2f196bca6ff1                 Polyscias australiana    -17.26     145.46      26/10/2022  HumanObservation          PRESENT
-29  235cd886-c250-4383-890f-f407df20b74c                     Coprosma hirtella    -35.66     148.15        4/3/2022  HumanObservation          PRESENT
-30  580cf5ab-4d34-4901-9d00-9fe4d141cf73                    Daviesia latifolia    -35.66     148.15       28/6/2022  HumanObservation          PRESENT
-31  e84ddf5a-f5f8-4f78-b665-0411f3e68944               Eucalyptus delegatensis    -35.66     148.15       22/1/2022  HumanObservation          PRESENT
-32  f782da10-584b-45c1-83f6-bf7af0565358                  Tasmannia lanceolata    -35.66     148.15       24/6/2022  HumanObservation          PRESENT
-33  6830d18c-610a-4dff-bd5d-12dbdd5863c1                    Eucalyptus miniata    -12.42     130.92      28/10/2022  HumanObservation          PRESENT
-34  5452c2f1-5b4b-4072-a5ed-d0b825155bab                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022  HumanObservation          PRESENT
+0   f0c51db3-c72d-4ab8-9c44-b8daac392a27                    Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1   1e111d43-9740-4f58-bd78-4982b3510fc1                  Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2   3c615861-340f-44f4-beb7-b33205dafcf7                        Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3   81b3e64b-17b9-4d0d-839c-8e5394f16774               Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4   28404bfd-684f-4c65-8fd2-a1243b1630b0                     Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+5   482cac51-d471-4d18-bc92-7eb2cfaa03ed                         Acacia aneura    -22.35     133.33      11/10/2022  HumanObservation          PRESENT
+6   f47754d5-5ed3-455e-b6a9-5f092f4f0dca                       Acacia cambagei    -22.35     133.33       23/8/2022  HumanObservation          PRESENT
+7   8165d539-24e8-4d54-ac6a-7147c0539b0e                   Acacia dictyophleba    -22.35     133.33       11/1/2022  HumanObservation          PRESENT
+8   3c84787d-2e0d-49b0-8038-b17c0cd41b6d                  Acacia estrophiolata    -22.35     133.33       10/7/2022  HumanObservation          PRESENT
+9   dbaa43d8-55a7-4432-a7b1-4cbdb39e6f12                       Acacia kempeana    -22.35     133.33       18/7/2022  HumanObservation          PRESENT
+10  3a169419-965a-4562-b6f7-cdff617f992b                     Acacia melleodora    -22.35     133.33       25/4/2022  HumanObservation          PRESENT
+11  2b964659-5b43-4657-9729-19ce51cdc2a0                       Acacia murayana    -22.35     133.33      15/12/2022  HumanObservation          PRESENT
+12  8aca02d2-4ca2-45c9-9966-5f344d67e2d9                        Corymbia opaca    -22.35     133.33        6/2/2022  HumanObservation          PRESENT
+13  62d0b3da-572b-401e-aae4-8958de046ee2                   Corymbia terminalis    -22.35     133.33       21/4/2022  HumanObservation          PRESENT
+14  9477690c-7377-4ad1-aeb6-3bdb0eb5b518                   Eremophila latrobei    -22.35     133.33       30/1/2022  HumanObservation          PRESENT
+15  fe62e577-d43d-4e62-b5fc-629bf52d4852              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022  HumanObservation          PRESENT
+16  7c105b45-d3d4-4e18-ad75-5df9eeb00283  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022  HumanObservation          PRESENT
+17  1090bed4-f750-4bb1-aa88-0ca98e871354                      Hakea leucoptera    -22.35     133.33       11/3/2022  HumanObservation          PRESENT
+18  b8569825-7a4a-43bb-a39f-ab4ea9de03ac                      Hakea macrocarpa    -22.35     133.33       28/7/2022  HumanObservation          PRESENT
+19  bc9135ef-3e19-4d7e-b3c7-bbd2700ae7dd                     Psydrax latifolia    -22.35     133.33        6/3/2022  HumanObservation          PRESENT
+20  89705dba-3e55-459b-adb4-fb7a120df7f3                          Acacia celsa    -17.26     145.46        5/9/2022  HumanObservation          PRESENT
+21  ffcdb190-5aef-45a3-80b3-0aca9e2d9b9a                    Acronychia acidula    -17.26     145.46       22/4/2022  HumanObservation          PRESENT
+22  b8e6056f-a29f-4111-b70e-841b8b8dde8e             Aleurites rockinghamensis    -17.26     145.46       21/7/2022  HumanObservation          PRESENT
+23  12565326-46f0-4d4b-afc3-ed8fd962971f                    Alphitonia petriei    -17.26     145.46       11/3/2022  HumanObservation          PRESENT
+24  d909862a-f7e2-46b9-a883-9b09945e313a                  Gillbeea adenopetala    -17.26     145.46       15/2/2022  HumanObservation          PRESENT
+25  50ad1cb1-993d-4ae9-ac5f-f847f934085a                       Litsea leefeana    -17.26     145.46       11/5/2022  HumanObservation          PRESENT
+26  7606ab4e-142f-4d2a-b531-7b31255dbd65                        Myrsine porosa    -17.26     145.46      31/10/2022  HumanObservation          PRESENT
+27  45667874-ea97-459f-939b-06523a798492                    Neolitsea dealbata    -17.26     145.46       8/10/2022  HumanObservation          PRESENT
+28  12a5cd54-1c65-4cdf-a81f-9e08888c1eaf                 Polyscias australiana    -17.26     145.46      26/10/2022  HumanObservation          PRESENT
+29  742b5da3-97c0-47c3-92ae-cc1beef08928                     Coprosma hirtella    -35.66     148.15        4/3/2022  HumanObservation          PRESENT
+30  ee2da385-7df5-4566-b459-562150815fc5                    Daviesia latifolia    -35.66     148.15       28/6/2022  HumanObservation          PRESENT
+31  68e557ca-8d7b-4a07-8220-a038febaf483               Eucalyptus delegatensis    -35.66     148.15       22/1/2022  HumanObservation          PRESENT
+32  cacb2dd3-a8f4-484c-bc48-c49ea2aefe42                  Tasmannia lanceolata    -35.66     148.15       24/6/2022  HumanObservation          PRESENT
+33  54b90378-9197-4ea1-ab63-3ee8b3a93d23                    Eucalyptus miniata    -12.42     130.92      28/10/2022  HumanObservation          PRESENT
+34  e8fe3173-79d0-41c4-9e7c-4706a146d82d                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -638,7 +638,7 @@ again to see what other functions we can use to check our data:</p>
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Latitude, Collection_date, Species, Longitude
+✗ Unmatched: Longitude, Species, Collection_date, Latitude
 
 ── Minimum required DwC terms occurrences ──
 

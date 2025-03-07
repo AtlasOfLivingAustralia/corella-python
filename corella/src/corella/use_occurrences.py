@@ -38,6 +38,16 @@ def use_occurrences(dataframe=None,
         occurrenceStatus: ``str``
             Either a column name (``str``) or a valid value for ``occurrenceStatus`` to add to 
             the dataset.
+        errors: ``list``
+            ONLY FOR DEBUGGING: existing list of errors.
+        add_eventID: ``logic``
+            Either a column name (``str``) or a valid value for ``occurrenceStatus`` to add to 
+            the dataset.
+        events: ``pd.DataFrame``
+            Dataframe containing your events.
+        eventType: ``str``
+            Either a column name (``str``) or a valid value for ``eventType`` to add to 
+            the dataset.
 
     Returns
     -------

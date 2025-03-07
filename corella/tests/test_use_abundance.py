@@ -43,7 +43,7 @@ def test_individualCount_data_works():
 
 def test_organismQuanitityType_organismQuantity_renamed():
     df = pd.DataFrame({'individualCount': [1,1],
-                       'number': ['individual','individual'], 
+                       'number': [1,1], 
                        'description': ['individual adult','individual adult']})
     new_df = corella.use_abundance(dataframe=df,
                                    organismQuantity='number',
@@ -52,7 +52,7 @@ def test_organismQuanitityType_organismQuantity_renamed():
 
 def test_individualCount_organismQuanitityType_organismQuantity_renamed():
     df = pd.DataFrame({'individuals': [1,1],
-                       'number': ['individual','individual'], 
+                       'number': [1,1], 
                        'description': ['individual adult','individual adult']})
     new_df = corella.use_abundance(dataframe=df,
                                    individualCount='individuals',
@@ -62,7 +62,7 @@ def test_individualCount_organismQuanitityType_organismQuantity_renamed():
 
 def test_use_abundance_works():
     df = pd.DataFrame({'individualCount': [1,1], 
-                       'organismQuantity': ['individual','individual'], 
+                       'organismQuantity': [1,1], 
                        'organismQuantityType': ['individual adult','individual adult']})
     new_df = corella.use_abundance(dataframe=df)
     assert type(new_df) is pd.DataFrame

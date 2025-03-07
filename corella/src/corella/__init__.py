@@ -2,7 +2,7 @@
 from .check_abundance import check_abundance
 from .check_basisOfRecord import check_basisOfRecord
 from .check_coordinates import check_coordinates
-from .check_data import check_data
+from .check_dataset import check_dataset
 from .check_datetime import check_datetime
 from .check_locality import check_locality
 from .check_occurrenceIDs import check_occurrenceIDs
@@ -20,7 +20,7 @@ from .use_occurrences import use_occurrences
 from .use_scientific_name import use_scientific_name
 
 # get all functions to display
-__all__=['check_data','suggest_workflow','use_abundance','use_coordinates','use_datetime','use_events',
+__all__=['check_dataset','suggest_workflow','use_abundance','use_coordinates','use_datetime','use_events',
          'use_locality','use_multimedia','use_occurrences','use_scientific_name']
 
 # import version

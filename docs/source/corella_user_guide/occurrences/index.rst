@@ -6,37 +6,37 @@ Example Data:
 
 These are all the functions for your ``occurrences.txt`` file.
 
-Required 
-----------
+.. Required 
+.. ----------
 
-- :ref:`Initial Data Check`
-- :ref:`use_occurrences`
-- :ref:`use_scientific_name`
-- :ref:`use_coordinates`
-- :ref:`use_datetime`
+.. - :ref:`Initial Data Check`
+.. - :ref:`use_occurrences`
+.. - :ref:`use_scientific_name`
+.. - :ref:`use_coordinates`
+.. - :ref:`use_datetime`
 
-Example of Passing Dataset 
-----------------------------
-- :ref:`What Does A Passing Occurrences Dataset Look Like?`
+.. Example of Passing Dataset 
+.. ----------------------------
+.. - :ref:`What Does A Passing Occurrences Dataset Look Like?`
 
-Optional
----------
+.. Optional
+.. ---------
 
-- :ref:`use_abundance`
-- :ref:`use_locality`
-- :ref:`convert_coordinates`
+.. - :ref:`use_abundance`
+.. - :ref:`use_locality`
+.. - :ref:`convert_coordinates`
 
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :hidden:
+.. .. toctree::
+..    :maxdepth: 5
+..    :titlesonly:
+..    :hidden:
 
-   Initial_Data_Check
-   use_occurrences
-   use_scientific_name
-   use_coordinates
-   use_datetime
-   use_abundance
-   use_locality
-   convert_coordinates
-   passing_dataset
+..    Initial_Data_Check
+..    use_occurrences
+..    use_scientific_name
+..    use_coordinates
+..    use_datetime
+..    use_abundance
+..    use_locality
+..    convert_coordinates
+..    passing_dataset

@@ -11,7 +11,33 @@ def use_events(dataframe=None,
                samplingProtocol=None,
                event_hierarchy=None):
     """
-    Comments here later.
+    Checks for event-specific information, such as how the data was collected, what type of 
+    event it was, and names of events.
+
+    Parameters
+    ----------
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check
+        eventID: ``str``
+            A column name (``str``) that contains a unique ID for your event.
+        parentEventID: ``str``
+            A column name (``str``) that contains a unique ID belonging to an event below 
+            it in the event hierarchy.
+        eventType: ``str`` 
+            A column name (``str``) or a ``str`` denoting what type of event you have.
+        Event: ``str`` 
+            A column name (``str``) or a ``str`` denoting the name of the event.
+        samplingProtocol: ``str`` or 
+            Either a column name (``str``) or a ``str`` denoting how you collected the data, 
+            i.e. "Human Observation".
+        event_hierarchy: ``dict``
+            A dictionary containing a hierarchy of all events so they can be linked.  For example, 
+            if you have a set of observations that were taken at a particular site, you can use the 
+            dict {1: "Site Visit", 2: "Sample", 3: "Observation"}.
+
+    Returns
+    -------
+        ``pandas.DataFrame`` with the updated data.
     """
     
     # first, check for data frame

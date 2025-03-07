@@ -9,17 +9,19 @@
 
 **Date**: |today|  **Version**: |version|  
 
-The ``corella`` package offers a streamlined workflow for users to prepare 
-their biodiversity data for submission to the living atlases. This package 
-helps users to reformat their data according to Darwin Core standards 
-prior to submission, while still maintaining control over their data.
+``corella`` is an R package that helps users standardize their data using the 
+`Darwin Core <https://dwc.tdwg.org/>`_ data standard, used for biodiversity data 
+like species occurrences. corella provides tools to prepare, manipulate and 
+validate data against the standard’s criteria. Once standardized, data can be 
+subsequently shared as a `Darwin Core Archive <https://ipt.gbif.org/manual/en/ipt/latest/dwca-guide#what-is-darwin-core-archive-dwc-a>`_ 
+and published to open data infrastructures like the 
+`Atlas of Living Australia <https://www.ala.org.au/>`_ and `GBIF <https://www.gbif.org/>`_.
 
-``corella`` was built and is maintained by the 
-`Science & Decision Support Team <https://labs.ala.org.au/>`_ 
-at the `Atlas of Living Australia (ALA) <https://www.ala.org.au/>`_.  
-``corella`` is a collective name for cockatoos (udner the subgenus 
-*Licmetis*), a widely-distributed endemic Australian species.  
-The logo was designed by `Ian Brennan <http://www.iangbrennan.org/>`_.
+``corella`` was built, and is maintained, by the 
+`Science & Decision Support Team <https://labs.ala.org.au/>`_ at the 
+`Atlas of Living Australia <https://www.ala.org.au/>`_ (ALA). It is 
+named for the Little Corella (`*Cacatua sanguinea* <https://bie.ala.org.au/species/https%3A//biodiversity.org.au/afd/taxa/34b31e86-7ade-4cba-960f-82a6ae586206>`_). 
+The logo was designed by `Dax Kellie <https://daxkellie.com/>`_.
 
 If you have any comments, questions or suggestions, please `contact us <mailto:support@ala.org.au>`_.
 

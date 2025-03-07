@@ -7,31 +7,31 @@ Example Data:
 
 These are all the functions an explanation for your ``events.txt`` file.
 
-Before Processing Data
-------------------------
+.. Before Processing Data
+.. ------------------------
 
-- :ref:`How_to_Structure_Events`
+.. - :ref:`How_to_Structure_Events`
 
-Required 
------------
+.. Required 
+.. -----------
 
-- :ref:`Initial_Data_Check_Events`
-- :ref:`use_events`
-- :ref:`use_datetime`
-- :ref:`adding_eventID_occurrences`
+.. - :ref:`Initial_Data_Check_Events`
+.. - :ref:`use_events`
+.. - :ref:`use_datetime`
+.. - :ref:`adding_eventID_occurrences`
 
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :hidden:
+.. .. toctree::
+..    :maxdepth: 5
+..    :titlesonly:
+..    :hidden:
 
-   How_to_Structure_Events
-   Initial_Data_Check_Events
-   use_events
-   use_datetime
-   adding_eventID_occurrences
+..    How_to_Structure_Events
+..    Initial_Data_Check_Events
+..    use_events
+..    use_datetime
+..    adding_eventID_occurrences
 
-Example of Passing Dataset 
-----------------------------
+.. Example of Passing Dataset 
+.. ----------------------------
 
-- :ref:`What Does A Passing Events Dataset Look Like?`
+.. - :ref:`What Does A Passing Events Dataset Look Like?`
