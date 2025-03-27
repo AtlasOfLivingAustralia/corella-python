@@ -70,7 +70,12 @@ def check_dataset(occurrences=None,
                 if df is not None:
                     terms_to_check += [x for x in df.columns if x not in vocab_check]
         else:
-            terms_to_check = list(occurrences.columns)
+            if events is None and occurrences is not None:
+                terms_to_check = list(occurrences.columns)
+            elif events is not None and occurrences is None:
+                terms_to_check = list(events.columns)
+            else:
+                terms_to_check = list(occurrences.columns) + list(events.columns)
 
         # initialise table
         data_table = {
@@ -88,7 +93,7 @@ def check_dataset(occurrences=None,
 
         # run all checks on events
         if events is not None:
-            for f in [check_events,check_datetime]:
+            for f in [check_events,check_datetime,check_locality]:
                 errors_f = f(dataframe=events)
                 if type(errors_f) is list:
                     errors += errors_f

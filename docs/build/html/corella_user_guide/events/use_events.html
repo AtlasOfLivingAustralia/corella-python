@@ -29,9 +29,9 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=e692d64a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=bf674d46" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=e692d64a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=bf674d46" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
@@ -410,7 +410,7 @@ span.prompt1:before {
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 35, in &lt;module&gt;
     print(corella.use_events(dataframe=events))
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_events.py&quot;, line 41, in use_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_events.py&quot;, line 67, in use_events
     check_if_all_args_empty(dataframe=dataframe,func=&#39;use_events&#39;,keys=mapping.keys(),values=values)
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
     raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
@@ -430,7 +430,7 @@ ValueError: No Darwin Core arguments supplied to `use_events()`.  See dir(corell
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 39, in &lt;module&gt;
     print(corella.use_events(dataframe=events,
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_events.py&quot;, line 57, in use_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/use_events.py&quot;, line 83, in use_events
     raise ValueError(&quot;Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.&quot;)
 ValueError: Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.
 </pre></div>
@@ -445,17 +445,17 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                 eventID                         parentEventID    eventType    location        date                                            Event samplingProtocol
-0   46b8f5b7-825b-4e3a-815e-bd4a5a685dbf                                         Site Visit  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
-1   bb2fa5d9-6337-4e8b-b81e-5183398f6e17  46b8f5b7-825b-4e3a-815e-bd4a5a685dbf       Sample  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
-2   da2349c4-a168-41eb-be10-c8d257e2fc5e  bb2fa5d9-6337-4e8b-b81e-5183398f6e17  Observation  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
-3   343fd33a-ce2f-4a3f-8ad4-429d128053e7                                         Site Visit  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
-4   d7aa1519-0cb7-4f55-90dd-1d4787c1e484  343fd33a-ce2f-4a3f-8ad4-429d128053e7       Sample  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
+0   46b6556d-01c2-4ad3-ab79-a1fa425f6811                                         Site Visit  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
+1   fc83ec39-fe35-42c2-a69c-5619c844b26b  46b6556d-01c2-4ad3-ab79-a1fa425f6811       Sample  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
+2   49c1c817-fc8a-433a-af95-a9444a2e9c9b  fc83ec39-fe35-42c2-a69c-5619c844b26b  Observation  Cannonvale    3/1/2023  bird survey local park honeyeater lookout point      Observation
+3   ff82ba63-a688-4593-bcfb-f8c0795385a8                                         Site Visit  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
+4   1b12f885-3af5-4bc2-bb7f-d5bc3fd14668  ff82ba63-a688-4593-bcfb-f8c0795385a8       Sample  Cannonvale   17/1/2023  bird survey local park honeyeater lookout point      Observation
 ..                                   ...                                   ...          ...         ...         ...                                              ...              ...
-73  625a7a51-a516-47b8-ad10-b1d9f9064694  1492a385-22d3-4cb8-8fc0-66176f013cca       Sample  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
-74  25f86882-f8e7-4235-a4e8-44e06f440da6  625a7a51-a516-47b8-ad10-b1d9f9064694  Observation  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
-75  000cd23b-6431-4bcb-93b0-91d6b0be14ab                                         Site Visit  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
-76  f6e04f47-1977-4871-9413-ec44d12f7fdf  000cd23b-6431-4bcb-93b0-91d6b0be14ab       Sample  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
-77  76597b20-cec5-4afe-834d-4a5533714298  f6e04f47-1977-4871-9413-ec44d12f7fdf  Observation  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
+73  2d7d00fb-54ee-4f37-bd15-939fabf6b6fd  3c333f58-0051-4c92-9d5e-88376b0732ec       Sample  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
+74  472344b0-56d3-466c-9bbc-d942bd2f6ed8  2d7d00fb-54ee-4f37-bd15-939fabf6b6fd  Observation  Cannonvale   5/12/2023  bird survey local park honeyeater lookout point      Observation
+75  edb3d0b4-9a3e-4513-9c49-a1cbf942fb57                                         Site Visit  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
+76  df35626a-6885-4353-ac05-0562f5ba62ac  edb3d0b4-9a3e-4513-9c49-a1cbf942fb57       Sample  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
+77  72e7a16c-37fc-4a0c-a235-3695d35aa9d8  df35626a-6885-4353-ac05-0562f5ba62ac  Observation  Cannonvale  19/12/2023  bird survey local park honeyeater lookout point      Observation
 
 [78 rows x 7 columns]
 </pre></div>
@@ -468,24 +468,11 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occurrences</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
-------------------  -----------  ----------------
-                 0  ✓            eventID
-                 0  ✓            parentEventID
-                 0  ✓            eventType
-                 0  ✓            Event
-                 0  ✓            samplingProtocol
-
-
-══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-
-Errors: 0 | Passes: 5
-
-✗ Data does not meet minimum Darwin core requirements
-Use corella.suggest_workflow()
-
-None
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/events/events_workflow.py&quot;, line 59, in &lt;module&gt;
+    print(corella.check_data(occurrences=occ,events=new_events))
+          ^^^^^^^^^^^^^^^^^^
+AttributeError: module &#39;corella&#39; has no attribute &#39;check_data&#39;. Did you mean: &#39;check_dataset&#39;?
 </pre></div>
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>

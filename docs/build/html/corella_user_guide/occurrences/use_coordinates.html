@@ -29,9 +29,9 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=e692d64a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=bf674d46" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=e692d64a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=bf674d46" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
@@ -593,23 +593,11 @@ in decimal degrees, and the latter is in meters.</p>
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
-------------------  -----------  -------------------
-                 0  ✓            decimalLatitude
-                 0  ✓            decimalLongitude
-                 0  ✓            geodeticDatum
-                 0  ✓            coordinatePrecision
-
-
-══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-
-Errors: 0 | Passes: 4
-
-✗ Data does not meet minimum Darwin core requirements
-Use corella.suggest_workflow()
-
-None
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/occurrences/data_cleaning.py&quot;, line 132, in &lt;module&gt;
+    print(corella.check_data(occurrences=occ))
+          ^^^^^^^^^^^^^^^^^^
+AttributeError: module &#39;corella&#39; has no attribute &#39;check_data&#39;. Did you mean: &#39;check_dataset&#39;?
 </pre></div>
 </div>
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
@@ -622,7 +610,7 @@ again to see how our data is doing this time round.</p>
 Matched 4 of 6 column names to DwC terms:
 
 ✓ Matched: decimalLatitude, decimalLongitude, geodeticDatum, coordinatePrecision
-✗ Unmatched: Collection_date, Species
+✗ Unmatched: Species, Collection_date
 
 ── Minimum required DwC terms occurrences ──
 
