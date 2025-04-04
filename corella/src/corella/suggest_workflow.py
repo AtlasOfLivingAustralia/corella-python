@@ -175,14 +175,14 @@ def suggest_workflow(occurrences=None,
         print("\n── Occurrences ──\n")
         print("To make your occurrences Darwin Core compliant, use the following workflow:\n")
         if required_terms_occurrence["Matched term(s)"][0] == '-' or required_terms_occurrence["Matched term(s)"][1] == '-':
-            print("corella.use_occurrences()")
+            print("corella.set_occurrences()")
         if required_terms_occurrence["Matched term(s)"][2] == '-':
-            print("corella.use_scientific_name()")
+            print("corella.set_scientific_name()")
         if required_terms_occurrence["Missing term(s)"][3] != '-':
-            print("corella.use_coordinates()")
+            print("corella.set_coordinates()")
         if required_terms_occurrence["Matched term(s)"][4] == '-':
-            print("corella.use_datetime()")    
-        print("\nAdditional functions: use_abundance(), use_locality()")
+            print("corella.set_datetime()")    
+        print("\nAdditional functions: set_abundance(), set_locality()")
     
     # events
     if list(required_terms_event["Missing term(s)"]) == ['-','-','-','-','-','-']:
@@ -191,6 +191,6 @@ def suggest_workflow(occurrences=None,
         print("\n── Events ──\n")
         print("To make your events Darwin Core compliant, use the following workflow:\n")
         if not all(x != '-' for x in required_terms_event["Matched term(s)"][0:5]):
-            print("corella.use_events()")
+            print("corella.set_events()")
         if required_terms_event["Matched term(s)"][5] == '-':
-            print("corella.use_datetime()")    
+            print("corella.set_datetime()")    

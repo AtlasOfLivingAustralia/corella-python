@@ -1,3 +1,5 @@
+:orphan:
+
 .. _initial_multimedia_prep_dwc:
 
 Multimedia for occurrences
@@ -12,4 +14,4 @@ The only two fields required to tie your multimedia to your occurrences:
 So, if you had five occurrences, and you had one image for four occurrences, and two for the last 
 occurrence, your multimedia file would look something like this:
 
-.. program-output:: python -W ignore galaxias_user_guide/preparing_data/multimedia_dwc_example.py
+#.. program-output:: python -W ignore galaxias_user_guide/preparing_data/multimedia_dwc_example.py

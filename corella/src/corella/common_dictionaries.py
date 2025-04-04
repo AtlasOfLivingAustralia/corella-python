@@ -1,3 +1,5 @@
+import uuid
+
 REQUIRED_DWCA_TERMS = {
     "Australia": ["scientificName", "eventDate", "basisOfRecord"], #occurrenceID, catalogNumber, recordNumber
     "ALA": ["scientificName", "eventDate", "basisOfRecord"],
@@ -65,5 +67,8 @@ formats = {
     str: 'str',
     int: 'int',
     float: 'float',
-    bool: 'bool'
+    bool: 'bool',
+    uuid.UUID: 'uuid',
+    uuid.SafeUUID: 'uuid',
+    list: 'list'
 }

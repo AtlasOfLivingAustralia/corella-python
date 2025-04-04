@@ -1,3 +1,5 @@
+:orphan:
+
 If you want to add images, videos or sounds to your Darwin Core Archive, this is the place!  There is a 
 slightly different procedure between only having occurrence data and having both events and occurrence data, 
 so please choose wisely!

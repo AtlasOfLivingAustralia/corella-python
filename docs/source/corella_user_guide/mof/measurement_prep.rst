@@ -53,4 +53,4 @@ about the measurement, this is where you would include them.
 Example dataset
 -----------------------
 
-.. program-output:: python -W ignore galaxias_user_guide/preparing_data/measurement_example.py
+#.. program-output:: python -W ignore corella_user_guide/preparing_data/measurement_example.py

@@ -1,25 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
-/* from galaxias - may need to change
-:root {
-  --pst-color-text-base: #495057!important;
-  --pst-text-size: 1.1rem;
-  --pst-color-inline-code: #222322!important;
-}
-
-html[data-theme=light] {
-  --pst-color-inline-code: #222322!important;
-}
-
-p {
-  font-size: 1.1rem!important;
-  line-height: 1.5;
-} */
-
-/* from R version of corella */
 h1, h2, h3, h4, .h1, .h2, .h3, .main-title, .main-subtitle {
-  font-family: 'Lato' sans-serif;!important
+  font-family: Lato;
   font-weight: normal;
   color: #076064;
 }
@@ -33,7 +16,7 @@ a:hover {
   color: #076064;
 }
 
-body { font-family: Roboto, sans-serif;!important }
+body { font-family: Roboto; }
 
 .navbar {
   background: #ffffff;
@@ -43,20 +26,16 @@ body { font-family: Roboto, sans-serif;!important }
   min-height: 40px;
 }
 
-.bd-header {
-  background: linear-gradient(to bottom, #ffffff, #076064)!important
-}
-
 .navbar.bg-primary {
-  background-image: linear-gradient(to bottom, #ffffff, #076064) !important;
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff) !important;
   /*background-image: linear-gradient(#93d6d6, #78CCCC 60%, #6cb7b7);*/
 }
 
-.navbar .navbar-brand {
+.navbar-brand {
     color: #e46962ff;
 }
 
-.navbar .navbar-brand:hover {
+.navbar-brand:hover {
     color: #82c8d0;
 }
 
@@ -140,48 +119,6 @@ pre {
   fill: #076064;
   width: 70px;
   height: 80px;
-}
-
-
-.sd-card:hover .svg-button{
-  fill: #82c8d0;
-}
-
-.sd-card-hover:hover {
-  border-color: #fce7bb;
-}
-
-pre {
-    background-color: #faf0dc;
-}
-
-dt:target, span.highlighted {
-  background-color: #faf0dc !important;
-}
-
-.main-logo-index {
-  display: flex;
-  flex: left;
-  max-width: 200px;
-  height: auto;
-}
-
-main-index-title {
-  display: flex;
-  flex: left;
-  padding-left: 30px;
-}
-
-.code {
-  color: #076064 !important;
-}
-
-code.literal {
-  background-color: #faf0dc;
-}
-
-pre {
-    background-color: #f8fcfc;
 }
 
 /*

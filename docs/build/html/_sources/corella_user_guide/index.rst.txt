@@ -11,24 +11,24 @@ Core Archive Types
     :gutter: 4
 
     .. grid-item-card::
-        :link: occurrences/index.html
+        :link: independent_observations/index.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/faq.svg
+            :file: ../_static/icons/binoculars.svg
                 
         **Occurrences**
 
         Preparing occurrences and sightings?
 
     .. grid-item-card::
-        :link: events/index.html
+        :link: longitudinal_studies/index.html
         :class-card: sd-text-black
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/faq.svg
+            :file: ../_static/icons/clock.svg
 
         **Events**
 
@@ -46,7 +46,7 @@ Extensions
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/faq.svg
+            :file: ../_static/icons/camera.svg
 
         **COMING SOON: Multimedia**
 
@@ -58,7 +58,7 @@ Extensions
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/faq.svg
+            :file: ../_static/icons/flask.svg
 
         **COMING SOON: Measurement Or Fact**
 

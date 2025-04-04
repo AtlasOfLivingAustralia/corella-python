@@ -1,3 +1,5 @@
+:orphan:
+
 Occurrence Multimedia
 ==========================
 
@@ -6,7 +8,6 @@ Add description here.
 Required 
 ----------
 
-- :ref:`Initial Data Check`
 - :ref:`use_multimedia`
 
 Optional
@@ -19,5 +20,4 @@ add here later.
    :titlesonly:
    :hidden:
 
-   Initial_Data_Check
    use_multimedia

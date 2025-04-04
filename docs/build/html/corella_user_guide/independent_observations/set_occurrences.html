@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>set_occurrences &#8212; corella 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=f190fc39" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/extra.css?v=f190fc39" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'corella_user_guide/independent_observations/set_occurrences';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.0 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.0 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Corella User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../apidoc/corella.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/corella-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../index.html">
+                        Corella User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../apidoc/corella.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/corella-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">set_occurrences</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="set-occurrences">
+<span id="id1"></span><h1>set_occurrences<a class="headerlink" href="#set-occurrences" title="Link to this heading">#</a></h1>
+<p>One of the functions you can use to check certain columns of your data is <code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code>.
+This function aims to check that you have the following Darwin Core Vocabulary Terms:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>: how the occurrence was recorded (was it observed by a human? machine? is it part of a collection?)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> or <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>: a unique identifier for the record (only one of these is necessary)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> (OPTIONAL): whether a species is present or absent.  Not required for data submission.</p></li>
+</ul>
+</section>
+<section id="specifying-basisofrecord-value">
+<h1>Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value<a class="headerlink" href="#specifying-basisofrecord-value" title="Link to this heading">#</a></h1>
+<p>As mentioned above, the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value is a required and important
+field for an observation, as it lets others know how the record was recorded.
+For example, was it a machine that observed it? A human? Is this a specimen
+that’s part of a collection?</p>
+<p>Depending on your answer to these questions, the information you provide will differ.
+Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current
+accepted values are as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- HumanObservation
+- LivingSpecimen
+- MaterialCitation
+- Observation
+- MachineObservation
+- FossilSpecimen
+- MaterialSample
+- PreservedSpecimen
+- Occurrence
+</pre></div>
+</div>
+<p>For this exercise, let’s assume a human has seen these, which equates to a value of
+<code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>.  We can then set the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> argument as <code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>,
+and it will, by default, set the value of <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> for the whole dataframe.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                 Species  Latitude  Longitude Collection_date     basisOfRecord
+0                     Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1                   Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2                         Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3                Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4                      Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+5                          Acacia aneura    -22.35     133.33      11/10/2022  HumanObservation
+6                        Acacia cambagei    -22.35     133.33       23/8/2022  HumanObservation
+7                    Acacia dictyophleba    -22.35     133.33       11/1/2022  HumanObservation
+8                   Acacia estrophiolata    -22.35     133.33       10/7/2022  HumanObservation
+9                        Acacia kempeana    -22.35     133.33       18/7/2022  HumanObservation
+10                     Acacia melleodora    -22.35     133.33       25/4/2022  HumanObservation
+11                       Acacia murayana    -22.35     133.33      15/12/2022  HumanObservation
+12                        Corymbia opaca    -22.35     133.33        6/2/2022  HumanObservation
+13                   Corymbia terminalis    -22.35     133.33       21/4/2022  HumanObservation
+14                   Eremophila latrobei    -22.35     133.33       30/1/2022  HumanObservation
+15              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022  HumanObservation
+16  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022  HumanObservation
+17                      Hakea leucoptera    -22.35     133.33       11/3/2022  HumanObservation
+18                      Hakea macrocarpa    -22.35     133.33       28/7/2022  HumanObservation
+19                     Psydrax latifolia    -22.35     133.33        6/3/2022  HumanObservation
+20                          Acacia celsa    -17.26     145.46        5/9/2022  HumanObservation
+21                    Acronychia acidula    -17.26     145.46       22/4/2022  HumanObservation
+22             Aleurites rockinghamensis    -17.26     145.46       21/7/2022  HumanObservation
+23                    Alphitonia petriei    -17.26     145.46       11/3/2022  HumanObservation
+24                  Gillbeea adenopetala    -17.26     145.46       15/2/2022  HumanObservation
+25                       Litsea leefeana    -17.26     145.46       11/5/2022  HumanObservation
+26                        Myrsine porosa    -17.26     145.46      31/10/2022  HumanObservation
+27                    Neolitsea dealbata    -17.26     145.46       8/10/2022  HumanObservation
+28                 Polyscias australiana    -17.26     145.46      26/10/2022  HumanObservation
+29                     Coprosma hirtella    -35.66     148.15        4/3/2022  HumanObservation
+30                    Daviesia latifolia    -35.66     148.15       28/6/2022  HumanObservation
+31               Eucalyptus delegatensis    -35.66     148.15       22/1/2022  HumanObservation
+32                  Tasmannia lanceolata    -35.66     148.15       24/6/2022  HumanObservation
+33                    Eucalyptus miniata    -12.42     130.92      28/10/2022  HumanObservation
+34                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022  HumanObservation
+</pre></div>
+</div>
+</section>
+<section id="how-to-generate-occurrence-ids">
+<h1>How to generate occurrence IDs<a class="headerlink" href="#how-to-generate-occurrence-ids" title="Link to this heading">#</a></h1>
+<p><em>Note:</em> If you have occurrence IDs already in your dataset, you can specify the name of the column
+that contains your IDs, and <code class="docutils literal notranslate"><span class="pre">corella</span></code> will rename that column to comply with the Darwin Core Vocabulary
+Standard.</p>
+<p><em>Note:</em> <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> and / or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code> is normally used for collections,
+so it is best to go with <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> if you’re generating them using <code class="docutils literal notranslate"><span class="pre">corella</span></code>.</p>
+<p>Every occurrence needs a unique identifier for easy future identification.  If your
+occurences don’t have either an <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> or <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code>,
+you can provide a value of <code class="docutils literal notranslate"><span class="pre">True</span></code> to the <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, and unique identifiers
+will be generated for you.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                               Species  Latitude  Longitude Collection_date     basisOfRecord
+0   782004f5-2c24-4729-95ab-8476da414eec                    Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1   a8fbeb2f-e53d-479d-abfe-6b5087d23617                  Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2   fba1c3fd-5d80-403e-b7d0-1650f9e48f26                        Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3   f1ac0075-e7de-4551-878d-bbad1bd006de               Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4   116eb118-72bd-4e68-8064-0e24a3005f74                     Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+5   f43d7630-ab68-4bc7-b401-11695b89d230                         Acacia aneura    -22.35     133.33      11/10/2022  HumanObservation
+6   e834f4c8-cb3a-4407-baf9-2cb610aa5083                       Acacia cambagei    -22.35     133.33       23/8/2022  HumanObservation
+7   92767900-5604-451b-a72b-218083a29bac                   Acacia dictyophleba    -22.35     133.33       11/1/2022  HumanObservation
+8   db1b9064-d83d-4029-aecd-a1cddbe8672e                  Acacia estrophiolata    -22.35     133.33       10/7/2022  HumanObservation
+9   f25da1e4-f327-422b-a481-5546bc73a968                       Acacia kempeana    -22.35     133.33       18/7/2022  HumanObservation
+10  88bd2812-2f3c-4d3e-ad54-6256a1328253                     Acacia melleodora    -22.35     133.33       25/4/2022  HumanObservation
+11  d852b874-ba41-4329-a1ac-988b55631909                       Acacia murayana    -22.35     133.33      15/12/2022  HumanObservation
+12  2ace07b0-63ea-4f85-903f-4e9cd4d81996                        Corymbia opaca    -22.35     133.33        6/2/2022  HumanObservation
+13  f6b49261-b38a-40ba-955d-aa2774dfab5e                   Corymbia terminalis    -22.35     133.33       21/4/2022  HumanObservation
+14  fb7794df-c542-458b-a5ba-fadaa8cab3be                   Eremophila latrobei    -22.35     133.33       30/1/2022  HumanObservation
+15  7beb9f40-3853-4bd4-8a5a-8c945f3f9749              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022  HumanObservation
+16  3fc308f0-0c8d-4eaa-9fa7-0e6d20c42840  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022  HumanObservation
+17  8c6e3526-1b71-49e0-880b-a06cdb6254d1                      Hakea leucoptera    -22.35     133.33       11/3/2022  HumanObservation
+18  55d94c82-ee99-4497-9816-5061e7f7708a                      Hakea macrocarpa    -22.35     133.33       28/7/2022  HumanObservation
+19  8c4b44f6-b9f8-4ac7-a92a-f3928ae3c8c2                     Psydrax latifolia    -22.35     133.33        6/3/2022  HumanObservation
+20  55ba84b3-f720-4c53-8011-9f12680e3c25                          Acacia celsa    -17.26     145.46        5/9/2022  HumanObservation
+21  3606c5d6-c466-4405-957f-cd57dd7833e2                    Acronychia acidula    -17.26     145.46       22/4/2022  HumanObservation
+22  8662096a-98a8-4ef8-a51b-e6610f95f964             Aleurites rockinghamensis    -17.26     145.46       21/7/2022  HumanObservation
+23  fdf6de92-f0f2-42e6-aa8b-39751cc5ad22                    Alphitonia petriei    -17.26     145.46       11/3/2022  HumanObservation
+24  ca40ac0b-941d-4422-9049-b1543a9bc2f6                  Gillbeea adenopetala    -17.26     145.46       15/2/2022  HumanObservation
+25  a57b85d6-dcd7-47d1-93e4-bd8b82a7c8dc                       Litsea leefeana    -17.26     145.46       11/5/2022  HumanObservation
+26  ca6450b3-c317-48bc-8bdf-af54f07691ce                        Myrsine porosa    -17.26     145.46      31/10/2022  HumanObservation
+27  5c47e0f2-65db-47c0-abc3-027d61df3330                    Neolitsea dealbata    -17.26     145.46       8/10/2022  HumanObservation
+28  96bb5dda-d8bb-4efa-bd69-0e0e516f63a7                 Polyscias australiana    -17.26     145.46      26/10/2022  HumanObservation
+29  e76e48e1-6a03-45bb-be82-13754a1cc7e6                     Coprosma hirtella    -35.66     148.15        4/3/2022  HumanObservation
+30  1e84ba6f-bd90-45c8-8f39-43e7f45a9d3c                    Daviesia latifolia    -35.66     148.15       28/6/2022  HumanObservation
+31  6f5421f0-743f-486d-93de-1abb13393693               Eucalyptus delegatensis    -35.66     148.15       22/1/2022  HumanObservation
+32  7c0bd5f3-5247-4a0d-9313-5308714a5854                  Tasmannia lanceolata    -35.66     148.15       24/6/2022  HumanObservation
+33  bc9de19f-8851-45af-ba0a-25483d7af12b                    Eucalyptus miniata    -12.42     130.92      28/10/2022  HumanObservation
+34  0766cc2c-15f4-46fe-9198-a4d53061ee9b                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022  HumanObservation
+</pre></div>
+</div>
+</section>
+<section id="specify-occurrencestatus-column">
+<h1>specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column<a class="headerlink" href="#specify-occurrencestatus-column" title="Link to this heading">#</a></h1>
+<p><em>Note:</em> This is an optional field, but we are including it here to share how this argument works, and how this will rename your column</p>
+<p>Sometimes, you may want to include the <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> field in your observations, especially
+if you were expecting to see a species in a particular area, and/or have seen them in the past but
+did not see them on that particular day, you can include this to say they were absent.</p>
+<p>Since we have a column that denotes whether or not a species was present or absent, we can
+provide the name of that column, and <code class="docutils literal notranslate"><span class="pre">corella</span></code> will rename the column to conform with the
+Darwin Core standard.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                            occurrenceID                               Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
+0   5142c0bc-77b7-4021-be9e-e71d850efd42                    Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1   716e77e6-ee63-4255-8772-2df983016cd7                  Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2   1962eb3c-65a0-4459-9248-d82f1154d5e6                        Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3   eb51dae9-231c-47ca-a01d-de3f02d68224               Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4   155e975b-7824-42e7-b3f5-c22284df7f02                     Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+5   1c885d3f-1949-4010-924f-30e64aa2a482                         Acacia aneura    -22.35     133.33      11/10/2022  HumanObservation          PRESENT
+6   042ae46c-9486-4077-a7bf-8f487aebda2b                       Acacia cambagei    -22.35     133.33       23/8/2022  HumanObservation          PRESENT
+7   170b31de-8028-46e3-bb55-0cd0704ef181                   Acacia dictyophleba    -22.35     133.33       11/1/2022  HumanObservation          PRESENT
+8   70f6330e-5321-4968-a8e6-7f39eeeadc06                  Acacia estrophiolata    -22.35     133.33       10/7/2022  HumanObservation          PRESENT
+9   824ce692-4cf2-49d6-9ed1-dc11bd54e394                       Acacia kempeana    -22.35     133.33       18/7/2022  HumanObservation          PRESENT
+10  e2569a8c-8588-4385-ad4e-374d1e17dafa                     Acacia melleodora    -22.35     133.33       25/4/2022  HumanObservation          PRESENT
+11  b44af274-df8f-4b2f-a416-7eb5c590b3a1                       Acacia murayana    -22.35     133.33      15/12/2022  HumanObservation          PRESENT
+12  5778d6a7-cbe7-4d0a-bc61-4560548bddce                        Corymbia opaca    -22.35     133.33        6/2/2022  HumanObservation          PRESENT
+13  0206d01b-fec6-4e0d-8c15-7352c46f86c6                   Corymbia terminalis    -22.35     133.33       21/4/2022  HumanObservation          PRESENT
+14  d9d543fa-0506-461a-b2fb-82331dce45d9                   Eremophila latrobei    -22.35     133.33       30/1/2022  HumanObservation          PRESENT
+15  e6c7d06b-ee0b-42d0-bc8b-bb9f1f21b8ab              Eucalyptus camaldulensis    -22.35     133.33       30/3/2022  HumanObservation          PRESENT
+16  c14c9d69-cb30-4b72-93a1-37d20f5fd844  Eucalyptus camaldulensis var. obtusa    -22.35     133.33       25/7/2022  HumanObservation          PRESENT
+17  0d26c8b0-c291-4375-b0dd-ee5da4782a74                      Hakea leucoptera    -22.35     133.33       11/3/2022  HumanObservation          PRESENT
+18  1ef89ad5-3b07-49b6-8b11-5872d48bdff0                      Hakea macrocarpa    -22.35     133.33       28/7/2022  HumanObservation          PRESENT
+19  6f8226a0-fbf0-405a-8dc1-b17d5323d6e5                     Psydrax latifolia    -22.35     133.33        6/3/2022  HumanObservation          PRESENT
+20  4f1c9ae2-6f89-4ab9-8b6f-044229b434d0                          Acacia celsa    -17.26     145.46        5/9/2022  HumanObservation          PRESENT
+21  b832c78c-a17f-40f1-ad18-21f8b7673d8a                    Acronychia acidula    -17.26     145.46       22/4/2022  HumanObservation          PRESENT
+22  0c921c07-9b86-4faf-94a9-77eee62fc21d             Aleurites rockinghamensis    -17.26     145.46       21/7/2022  HumanObservation          PRESENT
+23  d84d8caf-71af-448a-8e2e-2e5e15f934bb                    Alphitonia petriei    -17.26     145.46       11/3/2022  HumanObservation          PRESENT
+24  4baecfff-4e9d-4f54-a1ad-34095337958b                  Gillbeea adenopetala    -17.26     145.46       15/2/2022  HumanObservation          PRESENT
+25  12715de2-52db-46ed-bec6-3b957d4811a5                       Litsea leefeana    -17.26     145.46       11/5/2022  HumanObservation          PRESENT
+26  1d229dda-bccc-4f6c-bdef-1e6fad13f25e                        Myrsine porosa    -17.26     145.46      31/10/2022  HumanObservation          PRESENT
+27  c08d8de6-5292-4f33-adb7-18dff14e3adf                    Neolitsea dealbata    -17.26     145.46       8/10/2022  HumanObservation          PRESENT
+28  6e14def4-1e9f-4148-9f25-525f7616d193                 Polyscias australiana    -17.26     145.46      26/10/2022  HumanObservation          PRESENT
+29  459754cf-910b-4cf2-9b57-3a4482ad3482                     Coprosma hirtella    -35.66     148.15        4/3/2022  HumanObservation          PRESENT
+30  4a86c8b7-db0c-4044-a14a-99f932eb9ae9                    Daviesia latifolia    -35.66     148.15       28/6/2022  HumanObservation          PRESENT
+31  e866bc6c-c6c8-4b98-92be-6754dbdebbf3               Eucalyptus delegatensis    -35.66     148.15       22/1/2022  HumanObservation          PRESENT
+32  096a07cf-de6d-4131-9dd5-9401be0a6949                  Tasmannia lanceolata    -35.66     148.15       24/6/2022  HumanObservation          PRESENT
+33  d790abc7-48b5-4c3c-b845-b85756df9cf3                    Eucalyptus miniata    -12.42     130.92      28/10/2022  HumanObservation          PRESENT
+34  47755528-94c1-4851-a7dc-6b9aa936e0b9                 Eucalyptus tetrodonta    -12.42     130.92       21/6/2022  HumanObservation          PRESENT
+</pre></div>
+</div>
+</section>
+<section id="what-does-check-data-and-suggest-workflow-say-now">
+<h1>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h1>
+<p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">set_*</span></code> functions checks your data for compliance with the
+Darwin core standard, but it’s always good to double-check your data.</p>
+<p>Now that we’ve taken care of the pieces of information <code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code> is responsible
+for, we can assign the new dataframe to a variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;status&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>     <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span></span>
+<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
+</pre></div></div><p>Now, we can check that this new dataframe complies with the Darwin Core standard for the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code>,
+<code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code>, <code class="docutils literal notranslate"><span class="pre">catalogNumber</span></code> and <code class="docutils literal notranslate"><span class="pre">recordNumber</span></code> columns.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+------------------  -----------  ----------------
+                 0  ✓            occurrenceID
+                 0  ✓            basisOfRecord
+                 0  ✓            occurrenceStatus
+
+
+══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+
+Errors: 0 | Passes: 3
+
+✗ Data does not meet minimum Darwin core requirements
+Use corella.suggest_workflow()
+</pre></div>
+</div>
+<p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
+again to see what other functions we can use to check our data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── All DwC terms ──
+
+Matched 3 of 7 column names to DwC terms:
+
+✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
+✗ Unmatched: Collection_date, Latitude, Species, Longitude
+
+── Minimum required DwC terms occurrences ──
+
+Type                       Matched term(s)    Missing term(s)
+-------------------------  -----------------  ------------------------------------------------
+Identifier (at least one)  occurrenceID       -
+Record type                basisOfRecord      -
+Scientific name            -                  scientificName
+Location                   -                  decimalLatitude, decimalLongitude, geodeticDatum
+Date/Time                  -                  eventDate
+
+── Suggested workflow ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+── Occurrences ──
+
+To make your occurrences Darwin Core compliant, use the following workflow:
+
+corella.set_scientific_name()
+corella.set_coordinates()
+corella.set_datetime()
+
+Additional functions: set_abundance(), set_locality()
+</pre></div>
+</div>
+</section>
+<section id="other-functions">
+<h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
+<p>To learn more about how to use these functions, go to</p>
+<ul class="simple">
+<li><p><a class="reference external" href="set_coordinates.html">set_coordinates</a></p></li>
+<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
+<li><p><a class="reference external" href="set_scientific_name.html">set_scientific_name</a></p></li>
+</ul>
+<p>Optional functions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="set_abundance.html">set_abundance</a></p></li>
+<li><p><a class="reference external" href="set_locality.html">set_locality</a></p></li>
+</ul>
+<p>Passing Dataset:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="passing_dataset.html">Passing Dataset</a></p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">set_occurrences</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-basisofrecord-value">Specifying <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> value</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-generate-occurrence-ids">How to generate occurrence IDs</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-occurrencestatus-column">specify <code class="docutils literal notranslate"><span class="pre">occurrenceStatus</span></code> column</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Atlas of Living Australia.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,3 +1,5 @@
+:orphan:
+
 .. _initial_multimedia_prep_eventcore:
 
 Multimedia for events
@@ -26,7 +28,7 @@ you will only need two fields to tie your multimedia to your occurrences:
 So, if you had five occurrences, and you had one image for four occurrences, and two for the last occurrence, your 
 multimedia file would look something like this:
 
-.. program-output:: python -W ignore galaxias_user_guide/preparing_data/multimedia_eventcore_example.py
+#.. program-output:: python -W ignore galaxias_user_guide/preparing_data/multimedia_eventcore_example.py
 
 Unfortunately, to ensure that your multimedia files are correctly associated with each occurrence, you will need to 
 manually check this.  [Is this correct?]

@@ -64,7 +64,7 @@ def test_eventDate_out_of_range():
     assert len(errors) == 1
 
 def test_year_out_of_range():
-    df = pd.DataFrame({'year': [2025,2025], 'eventDate': [datetime.datetime(1990,10,10),datetime.datetime(1990,10,10)]})
+    df = pd.DataFrame({'year': [2100,2100], 'eventDate': [datetime.datetime(1990,10,10),datetime.datetime(1990,10,10)]})
     errors = corella.check_datetime(dataframe=df,errors=[])
     assert len(errors) == 1
 
