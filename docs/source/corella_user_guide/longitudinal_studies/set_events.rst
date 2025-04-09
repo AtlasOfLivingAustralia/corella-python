@@ -12,23 +12,11 @@ For this function, we are only checking the ``events`` dataframe.  This function
 - ``Event``: name of the event
 - ``samplingProtocol``: how did you record your data (i.e. Observation, etc.)
 
-Initial run of ``set_events``
-=================================
-
-.. prompt:: python
-
-    >>> corella.set_events(
-    ...     dataframe=events
-    ... )
-
-.. program-output:: python corella_user_guide/longitudinal_studies/events_workflow.py 3
-
-Next.
-
 Adding event-specific information 
 ====================================
 
-For events, we need to 
+For events, we will start by specifying the information we know in the ``events`` data: ``eventType``, 
+``samplingProtocol`` and the ``Event`` itself.
 
 .. prompt:: python
 
@@ -39,7 +27,7 @@ For events, we need to
 
 .. program-output:: python corella_user_guide/longitudinal_studies/events_workflow.py 4
 
-Next.
+However, for the ``events`` file, each ``"event"`` has a few things.
 
 event hierarchy
 ====================================

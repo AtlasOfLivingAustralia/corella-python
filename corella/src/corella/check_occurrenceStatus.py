@@ -21,6 +21,7 @@ def check_occurrenceStatus(dataframe=None,
     
     # check if dataframe is provided an argument
     check_for_dataframe(dataframe=dataframe,func='check_occurrenceStatus')
+    
     # check basisOfRecord values
     if 'occurrenceStatus' in dataframe.columns:
         errors = check_is_string(dataframe=dataframe,column_name='occurrenceStatus',errors=errors)

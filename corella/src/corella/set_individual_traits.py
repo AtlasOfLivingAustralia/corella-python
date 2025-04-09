@@ -8,10 +8,41 @@ def set_individual_traits(dataframe=None,
                           sex=None,
                           vitality=None,
                           reproductiveCondition=None):
+    """
+    Checks for location information, as well as uncertainty and coordinate reference system.  
+    Also runs data checks on coordinate validity.
 
+    Parameters
+    ----------
+        dataframe: ``pandas.DataFrame``
+            The ``pandas.DataFrame`` that contains your data to check
+        individualID: ``str``
+            A column name containing an identifier for an individual or named group of 
+            individual organisms represented in the Occurrence. Meant to accommodate 
+            resampling of the same individual or group for monitoring purposes. May be 
+            a global unique identifier or an identifier specific to a data set.
+        lifeStage: ``str``
+            A column name containing the age, class or life stage of an organism at the time of occurrence.
+        sex: ``str`` 
+            A column name or value denoting the sex of the biological individual.
+        vitality: ``str``
+            A column name or value denoting whether an organism was alive or dead at the time of collection or observation.
+        reproductiveCondition: ``str``
+            A column name or value denoting the reproductive condition of the biological individual.
+        
+    Returns
+    -------
+        ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
+    """
+
+    # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_individual_traits')
 
-    # column renaming dictionary
+    # mapping of column names and variables
     mapping = {
         'individualID': individualID,
         'lifeStage': lifeStage,
@@ -20,7 +51,7 @@ def set_individual_traits(dataframe=None,
         'reproductiveCondition': reproductiveCondition,
     }
 
-    # denote accepted formats
+    # accepted data formats for each argument
     accepted_formats = {
         'individualID': [uuid.UUID,str,list],
         'lifeStage': [str,list],
@@ -29,13 +60,15 @@ def set_individual_traits(dataframe=None,
         'reproductiveCondition': [str,list],
     }
 
-    # manually set values for function
+    # specify variables and values for set_data_workflow()
     variables = [individualID,lifeStage,sex,vitality,reproductiveCondition]
     values = ['individualID','lifeStage','sex','vitality','reproductiveCondition']
 
+    # set column names and values specified by user
     dataframe = set_data_workflow(func='set_individual_traits',dataframe=dataframe,mapping=mapping,variables=variables,
                                   values=values,accepted_formats=accepted_formats)
     
+    # check values
     errors = check_individual_traits(dataframe=dataframe,errors=[])
 
     # return errors if there are any; otherwise, return dataframe

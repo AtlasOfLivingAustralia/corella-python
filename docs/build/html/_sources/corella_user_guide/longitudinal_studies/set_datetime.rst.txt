@@ -1,9 +1,9 @@
-.. _use_datetime:
+.. _set_datetime:
 
-use_datetime
+set_datetime
 ======================================
 
-One of the functions you can use to check certain columns of your data is ``use_datetime()``.  
+One of the functions you can use to check certain columns of your data is ``set_datetime()``.  
 This function aims to check that you have the following Darwin Core Vocabulary Terms:
 
 - ``eventDate``: the date of your observation
@@ -21,23 +21,6 @@ It can also (optionally) can check the following:
     >>> import pandas as pd
     >>> events = pd.read_csv('<YOUR-FILENAME>.csv')
 
-Initial run of ``use_datetime``
-=====================================
-
-Initally, we can run ``use_datetime()`` to see what is in our dataset, 
-and if any of the data types check with ``use_datetime()`` are in there 
-and correct.
-
-.. prompt:: python
-
-    >>> corella.use_datetime(dataframe=events)
-
-.. program-output:: python corella_user_guide/longitudinal_studies/events_workflow.py 8
-
-Here, we can see that we don't have any column names matching the Darwin 
-Core standard, and must specify them to ``use_datetime()`` to proceed.  
-The only required column is ``eventDate``.
-
 ``eventDate`` and automatically converting strings
 ====================================================
 
@@ -45,13 +28,13 @@ Since we can specify the column names, we can specify the ``eventDate`` column t
 
 .. prompt:: python
 
-    >>> corella.use_datetime(dataframe=events,
+    >>> corella.set_datetime(dataframe=events,
     ...                      eventDate='date')
 
 .. program-output:: python corella_user_guide/longitudinal_studies/events_workflow.py 9
 
-We get an error here because ``use_datetime()`` requires the ``eventDate`` column to be in a ``datetime`` 
-format.  This is to make sure the date is formatted correctly.  Luckily, ``use_datetime()`` has a few 
+We get an error here because ``set_datetime()`` requires the ``eventDate`` column to be in a ``datetime`` 
+format.  This is to make sure the date is formatted correctly.  Luckily, ``set_datetime()`` has a few 
 arguments that will convert dates in strings to ``datetime`` format.  
 
 - ``string_to_datetime``: when this is set to ``True``, will convert any strings in the ``eventDate`` column to ``datetime`` objects.
@@ -62,7 +45,7 @@ Note when both ``yearfirst`` and ``dayfirst`` are set to ``False``, ``pandas`` a
 
 .. prompt:: python
 
-    >>> corella.use_datetime(dataframe=events,
+    >>> corella.set_datetime(dataframe=events,
     ...                      eventDate='date',
     ...                      string_to_datetime=True,
     ...                      yearfirst=False,
@@ -73,7 +56,7 @@ Note when both ``yearfirst`` and ``dayfirst`` are set to ``False``, ``pandas`` a
 what does ``check_data`` and ``suggest_workflow`` say now? 
 =============================================================
 
-*Note:* each of the ``use_*`` functions checks your data for compliance with the 
+*Note:* each of the ``set_*`` functions checks your data for compliance with the 
 Darwin core standard, but it's always good to double-check your data.
 
 Now, we can check that our data column do comply with the Darwin Core standard.
@@ -98,11 +81,9 @@ Other functions
 
 To learn more about how to use these functions, go to 
 
-- `use_events <use_events.html>`_
-- `use_coordinates <use_coordinates.html>`_
-- `use_scientific_name <use_scientific_name.html>`_
+- `set_events <set_events.html>`_
 
 Optional functions:
 
-- `use_abundance <use_abundance.html>`_
-- `use_locality <use_locality.html>`_
+- `set_abundance <set_abundance_events.html>`_
+- `set_locality <set_locality_events.html>`_

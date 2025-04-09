@@ -45,16 +45,18 @@ in principle is supplying three arguments:
 - ``events``: provide the events dataframe containing the ``eventID``s to link.
 - ``eventType``: specify the ``eventType`` that you want to link to the occurrences.  In this case, ``'Observation'`` is the appropriate term.
 
-The command will then look like this (using one of the commands in the dropdown as a template)
+The command will then look like this (using one of the commands in the dropdown as a template).
 
 .. prompt:: python
 
-    >>> corella.use_occurrences(dataframe=occ,
-    ...                         add_eventID=True,
-    ...                         occurrenceStatus='PRESENT',
-    ...                         occurrenceID=True,
-    ...                         add_eventID=True,
-    ...                         events=events,
-    ...                         eventType='Observation')
+    >>> occ = corella.use_occurrences(dataframe=occ,
+    ...                               add_eventID=True,
+    ...                               occurrenceStatus='PRESENT',
+    ...                               occurrenceID=True,
+    ...                               random_id=True,
+    ...                               add_eventID=True,
+    ...                               events=events,
+    ...                               eventType='Observation')
+    >>> occ.head()
 
 .. program-output:: python corella_user_guide/longitudinal_studies/events_workflow.py 13

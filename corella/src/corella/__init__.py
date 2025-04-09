@@ -1,5 +1,5 @@
 # functions in package
-from .bor_values import bor_values
+from .basisOfRecord_values import basisOfRecord_values
 from .check_abundance import check_abundance
 from .check_basisOfRecord import check_basisOfRecord
 from .check_coordinates import check_coordinates
@@ -26,15 +26,15 @@ from .set_events import set_events
 from .set_individual_traits import set_individual_traits
 from .set_license import set_license
 from .set_locality import set_locality
-from .set_multimedia import set_multimedia
+# from .set_multimedia import set_multimedia
 from .set_occurrences import set_occurrences
 from .set_scientific_name import set_scientific_name
 from .set_taxonomy import set_taxonomy
 
 # get all functions to display
-__all__=['bor_values','check_dataset','countryCode_values','event_terms','occurrence_terms','suggest_workflow','set_abundance',
+__all__=['basisOfRecord_values','check_dataset','countryCode_values','event_terms','occurrence_terms','suggest_workflow','set_abundance',
          'set_collection','set_coordinates','set_datetime','set_events','set_individual_traits','set_license','set_locality',
-         'set_multimedia','set_occurrences','set_scientific_name','set_taxonomy']
+         'set_occurrences','set_scientific_name','set_taxonomy']
 
 # import version
 from .version import __version__  

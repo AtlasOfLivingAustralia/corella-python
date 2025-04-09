@@ -17,28 +17,37 @@ def set_coordinates(dataframe=None,
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
         decimalLatitude: ``str``
-            A column name (``str``) that contains your latitudes (units in degrees).
-        decimalLongitude: ``str`` or ``pandas.Series``
-            A column name (``str``) that contains your longitudes (units in degrees).
+            A column name that contains your latitudes (units in degrees).
+        decimalLongitude: ``str``
+            A column name that contains your longitudes (units in degrees).
         geodeticDatum: ``str`` 
-            A column name (``str``) or a ``str`` with the name of a valid Coordinate 
-            Reference System (CRS).
+            A column name or a ``str`` with he datum or spatial reference system 
+            that coordinates are recorded against (usually "WGS84" or "EPSG:4326"). 
+            This is often known as the Coordinate Reference System (CRS). If your 
+            coordinates are from a GPS system, your data are already using WGS84.
         coordinateUncertaintyInMeters: ``str``, ``float`` or ``int`` 
-            A column name (``str``) or a ``float``/``int`` with the name of a valid Coordinate 
-            Reference System (CRS).
+            A column name (``str``) or a ``float``/``int`` with the value of the 
+            coordinate uncertainty. ``coordinateUncertaintyInMeters`` will typically 
+            be around ``30`` (metres) if recorded with a GPS after 2000, or ``100`` 
+            before that year.
         coordinatePrecision: ``str``, ``float`` or ``int``
-            Either a column name (``str``) or a ``float``/``int`` that represents the inherent 
-            uncertainty of your measurement (unit in degrees).
+            Either a column name (``str``) or a ``float``/``int`` with the value of the 
+            coordinate precision. ``coordinatePrecision`` should be no less than 
+            ``0.00001`` if data were collected using GPS.
 
     Returns
     -------
         ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
     """
 
     # raise a ValueError if no dataframe is provided
     check_for_dataframe(dataframe=dataframe,func='set_coordinates')
 
-    # mapping column names
+    # mapping of column names and variables
     mapping = {
         'decimalLatitude': decimalLatitude,
         'decimalLongitude': decimalLongitude, 
@@ -47,7 +56,7 @@ def set_coordinates(dataframe=None,
         'coordinateUncertaintyInMeters': coordinateUncertaintyInMeters
     }
 
-    # accepted formats for inputs
+    # accepted data formats for each argument
     accepted_formats = {
         'decimalLatitude': [float],
         'decimalLongitude': [float], 
@@ -56,9 +65,11 @@ def set_coordinates(dataframe=None,
         'coordinateUncertaintyInMeters': [float,int]
     }
 
+    # specify variables and values for set_data_workflow()
     variables = [decimalLatitude,decimalLongitude,geodeticDatum,coordinatePrecision,coordinateUncertaintyInMeters]
     values = ['decimalLatitude','decimalLongitude','geodeticDatum','coordinatePrecision','coordinateUncertaintyInMeters']
 
+    # set column names and values specified by user
     dataframe = set_data_workflow(func='set_coordinates',dataframe=dataframe,mapping=mapping,variables=variables,
                                   values=values,accepted_formats=accepted_formats)
 

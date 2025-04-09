@@ -11,6 +11,12 @@ def add_eventID_occurrences(occurrences=None,
     if 'occurrenceID' not in occurrences.columns:
         raise ValueError("Please add occurrence IDs before adding eventIDs")
     
+    if 'eventDate' not in events.columns:
+        raise ValueError("Please ensure you have an eventDate column in the events data before you can generate matching eventIDs.")
+    
+    if 'eventDate' not in occurrences.columns:
+        raise ValueError("Please ensure you have an eventDate column in the occurrences data before you can generate matching eventIDs.")
+    
     if eventType is None:
         raise ValueError("Please specify which type of event should be associated with the occurrence (i.e. Observation)")   
 

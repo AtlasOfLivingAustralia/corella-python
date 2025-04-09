@@ -24,11 +24,11 @@ occ=pd.read_csv("corella_user_guide/data/occurrences_event_nomulti.csv")
 
 # generate initial data report and exit
 if stopping_point == "1":
-    print(corella.check_dataset(occurrences=occ,events=events))
+    corella.check_dataset(occurrences=occ,events=events)
     sys.exit()
 
 if stopping_point == "2":
-    print(corella.suggest_workflow(occurrences=occ,events=events))
+    corella.suggest_workflow(occurrences=occ,events=events)
     sys.exit()
 
 # --------------------------------------------------------
@@ -43,19 +43,22 @@ if stopping_point == "4":
 
 if stopping_point == "5":
     new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
-                                    Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+                                    Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
+                                    random_id=True)
     print(new_events.head())
     sys.exit()
 
 if stopping_point == "6":
     new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
-                                    Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+                                    Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
+                                    random_id=True)
     corella.check_dataset(occurrences=occ,events=new_events)
     sys.exit()
 
 if stopping_point == "7":
     new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
-                                    Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+                                    Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
+                                    random_id=True)
     corella.suggest_workflow(occurrences=occ,events=new_events)
     sys.exit()
 
@@ -64,51 +67,48 @@ if stopping_point == "7":
 # --------------------------------------------------------
 
 if stopping_point == "8":
-    corella.set_datetime(dataframe=events)
-    import sys
+    new_events = corella.set_datetime(dataframe=events)
+    print(new_events.head())
     sys.exit()
 
 if stopping_point == "9":
     new_events = corella.set_datetime(dataframe=events,eventDate='date')
-    import sys
+    print(new_events.head())
     sys.exit()
 
 if stopping_point == "10":
     new_events = corella.set_datetime(dataframe=events,eventDate='date',
                                       string_to_datetime=True,yearfirst=False,dayfirst=True)
     print(new_events.head())
-    import sys
     sys.exit()
 
 if stopping_point == "11":
     new_events = corella.set_datetime(dataframe=events,eventDate='date',
                                       string_to_datetime=True,yearfirst=False,dayfirst=True)
     corella.check_dataset(events=new_events)
-    import sys
     sys.exit()
 
 if stopping_point == "12":
     new_events = corella.set_datetime(dataframe=events,eventDate='date',
                                       string_to_datetime=True,yearfirst=False,dayfirst=True)
     corella.suggest_workflow(events=new_events)
-    import sys
     sys.exit()
 
 if stopping_point == "13":
-    events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
-                                Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
-    events = corella.set_datetime(dataframe=events,eventDate='date',string_to_datetime=True,
+    new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
+                                Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
+                                random_id=True)
+    new_events = corella.set_datetime(dataframe=new_events,eventDate='date',string_to_datetime=True,
                                   yearfirst=False,dayfirst=True)
-    occ = corella.set_occurrences(dataframe=occ,basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',
-                                  occurrenceID=True)
-    occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')
-    occ = corella.set_coordinates(dataframe=occ,decimalLatitude='Latitude',decimalLongitude='Longitude',
+    new_occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')
+    new_occ = corella.set_coordinates(dataframe=new_occ,decimalLatitude='Latitude',decimalLongitude='Longitude',
                                   geodeticDatum='WGS84',coordinatePrecision=0.1)
-    occ = corella.set_datetime(dataframe=occ,eventDate='Collection_date',string_to_datetime=True,
+    new_occ = corella.set_datetime(dataframe=new_occ,eventDate='Collection_date',string_to_datetime=True,
                                yearfirst=False,dayfirst=True)
-    occ = corella.set_occurrences(dataframe=occ,add_eventID=True,events=events,eventType='Observation')
-    print(occ.head())
-    import sys
+    new_occ = corella.set_occurrences(dataframe=new_occ,basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',
+                                      occurrenceID=True,random_id=True,add_eventID=True,events=new_events,
+                                      eventType='Observation')
+    print(new_occ.head())
     sys.exit()
 
 # --------------------------------------------------------
@@ -131,18 +131,20 @@ if stopping_point == '15':
 
 if stopping_point == "16":
     events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
-                                Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
+                                Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
+                                random_id=True)
     events = corella.set_datetime(dataframe=events,eventDate='date',string_to_datetime=True,yearfirst=False,
                                   dayfirst=True)
-    events = corella.set_locality(check_events = True, locality='location')
-    occ = corella.set_occurrences(dataframe=occ,basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',
-                                  occurrenceID=True,add_eventID=True,events=events,eventType='Observation')
+    events = corella.set_locality(dataframe=events, locality='location')
     occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')
     occ = corella.set_coordinates(dataframe=occ,decimalLatitude='Latitude',decimalLongitude='Longitude',
                                   geodeticDatum='WGS84',coordinatePrecision=0.1)
     occ = corella.set_datetime(dataframe=occ,eventDate='Collection_date',string_to_datetime=True,
                                yearfirst=False,dayfirst=True)
-    occ = corella.set_abundance(individualCount='number_birds')
+    occ = corella.set_occurrences(dataframe=occ,basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',
+                                occurrenceID=True,add_eventID=True,events=events,eventType='Observation',
+                                random_id=True)
+    occ = corella.set_abundance(dataframe=occ,individualCount='number_birds')
     corella.check_dataset(occurrences=occ,events=events)
     import sys
     sys.exit()

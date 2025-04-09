@@ -13,7 +13,7 @@ occurrences dataset, your final step(s) will look like the following:
     >>>
     >>> occ = pd.read_csv('<NAME-OF-OCCURRENCES>.csv')
     >>> occ = corella.use_occurrences(dataframe=occ,basisOfRecord='HumanObservation',
-    ...                               occurrenceStatus='PRESENT',occurrenceID=True)
+    ...                               occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
     >>> occ = corella.use_scientific_name(dataframe=occ,scientificName='Species')
     >>> occ = corella.use_coordinates(dataframe=occ,decimalLatitude='Latitude',
     ...                               decimalLongitude='Longitude',geodeticDatum='WGS84',

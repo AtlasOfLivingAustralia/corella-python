@@ -435,26 +435,22 @@ in principle is supplying three arguments:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">events</span></code>: provide the events dataframe containing the <a href="#id3"><span class="problematic" id="id4">``</span></a>eventID``s to link.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">eventType</span></code>: specify the <code class="docutils literal notranslate"><span class="pre">eventType</span></code> that you want to link to the occurrences.  In this case, <code class="docutils literal notranslate"><span class="pre">'Observation'</span></code> is the appropriate term.</p></li>
 </ul>
-<p>The command will then look like this (using one of the commands in the dropdown as a template)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                         <span class="n">add_eventID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                         <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                         <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                         <span class="n">add_eventID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                         <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
-<span class="prompt1"><span class="o">...</span>                         <span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 109, in &lt;module&gt;
-    occ = corella.set_occurrences(dataframe=occ,add_eventID=True,events=events,eventType=&#39;Observation&#39;)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_occurrences.py&quot;, line 97, in set_occurrences
-    dataframe = add_eventID_occurrences(occurrences=dataframe,events=events,eventType=eventType)
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/add_eventID_occurrences.py&quot;, line 17, in add_eventID_occurrences
-    occurrences.insert(1,&#39;eventID&#39;,[&#39;&#39; for i in list(range(occurrences.shape[0]))])
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/pandas/core/frame.py&quot;, line 4772, in insert
-    raise ValueError(f&quot;cannot insert {column}, already exists&quot;)
-ValueError: cannot insert eventID, already exists
+<p>The command will then look like this (using one of the commands in the dropdown as a template).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                               <span class="n">add_eventID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                               <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                               <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                               <span class="n">random_id</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                               <span class="n">add_eventID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                               <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                               <span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                               eventID                     scientificName  decimalLatitude  decimalLongitude  eventDate  number_birds geodeticDatum  coordinatePrecision     basisOfRecord occurrenceStatus
+0  11b142dc-df64-43b2-bdb9-461007bbb096  9cd5f706-df0e-4b00-b1f7-69b71949add0  Eopsaltria (Eopsaltria) australis           -20.29             148.7 2023-01-03             3         WGS84                  0.1  HumanObservation          PRESENT
+1  c813fe9a-26d7-4606-b078-9405ded5418a  9cd5f706-df0e-4b00-b1f7-69b71949add0          Symposiachrus trivirgatus           -20.29             148.7 2023-01-03             3         WGS84                  0.1  HumanObservation          PRESENT
+2  aab4897b-012e-4bf5-a50b-0376d1144d48  9cd5f706-df0e-4b00-b1f7-69b71949add0                Zosterops lateralis           -20.29             148.7 2023-01-03             2         WGS84                  0.1  HumanObservation          PRESENT
+3  6b9cc19e-83b5-4eee-8a66-4a02f3cffff2  9cd5f706-df0e-4b00-b1f7-69b71949add0              Ptilinopus magnificus           -20.29             148.7 2023-01-03             1         WGS84                  0.1  HumanObservation          PRESENT
+4  acc18c81-5966-46ce-918d-3eaac6a535ce  9cd5f706-df0e-4b00-b1f7-69b71949add0           Pitta (Pitta) versicolor           -20.29             148.7 2023-01-03             3         WGS84                  0.1  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>

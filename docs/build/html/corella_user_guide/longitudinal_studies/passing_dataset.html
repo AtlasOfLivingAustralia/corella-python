@@ -406,34 +406,34 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># first, events</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;NAME-OF-EVENTSE&gt;.csv&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_events</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_events</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                             <span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                             <span class="n">samplingProtocol</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                             <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">....</span>                            <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_locality</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_locality</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span>                               <span class="n">locality</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># now, use_occurrences</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="c1"># now, set_occurrences</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;NAME-OF-OCCURRENCES&gt;.csv&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_scientific_name</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                                   <span class="n">scientificName</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_coordinates</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">decimalLatitude</span><span class="o">=</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">decimalLongitude</span><span class="o">=</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">geodeticDatum</span><span class="o">=</span><span class="s1">&#39;WGS84&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                               <span class="n">coordinatePrecision</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                            <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;Collection_date&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                            <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                            <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                            <span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">add_eventID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">occurrenceStatus</span><span class="o">=</span><span class="s1">&#39;PRESENT&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                         <span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
@@ -446,11 +446,34 @@ run <code class="docutils literal notranslate"><span class="pre">check_data()</s
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                   <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
 </pre></div></div><p>If everything passes, you will get the following output:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 137, in &lt;module&gt;
-    events = corella.set_locality(check_events = True, locality=&#39;location&#39;)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: set_locality() got an unexpected keyword argument &#39;check_events&#39;
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+------------------  -----------  -------------------
+                 0  ✓            occurrenceID
+                 0  ✓            eventID
+                 0  ✓            scientificName
+                 0  ✓            decimalLatitude
+                 0  ✓            decimalLongitude
+                 0  ✓            eventDate
+                 0  ✓            individualCount
+                 0  ✓            geodeticDatum
+                 0  ✓            coordinatePrecision
+                 0  ✓            basisOfRecord
+                 0  ✓            occurrenceStatus
+                 0  ✓            eventID
+                 0  ✓            parentEventID
+                 0  ✓            eventType
+                 0  ✓            locality
+                 0  ✓            eventDate
+                 0  ✓            Event
+                 0  ✓            samplingProtocol
+
+
+══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+
+Errors: 0 | Passes: 18
+
+✓ Data meets minimum Darwin core requirements
 </pre></div>
 </div>
 <p><a class="reference external" href="index.html">Back to Longitudinal Studies TOC</a></p>

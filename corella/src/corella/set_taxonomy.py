@@ -11,7 +11,8 @@ def set_taxonomy(dataframe=None,
                  specificEpithet=None,
                  vernacularName=None):
     """
-    Checks for extra taxonomic information.  Also runs checks on whether or not a string is provided.
+    Adds extra taxonomic information.  Also runs checks on whether or not the names are the 
+    correct data type.
 
     Parameters
     ----------
@@ -38,19 +39,23 @@ def set_taxonomy(dataframe=None,
     Returns
     -------
         ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
     """
 
     # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_taxonomy')
     
-    # define values
+    # specify variables and values for set_data_workflow()
     variables = [kingdom,phylum,taxon_class,order,family,genus,specificEpithet,vernacularName]
     values = ['kingdom','phylum','class','order','family','genus','specificEpithet','vernacularName']
     
-    # define column name mapping
+    # mapping of column names and variables
     mapping = dict(zip(values,variables))
     
-    # define accepted formats
+    # accepted data formats for each argument
     accepted_formats = {x:[str,list] for x in values}
     
     # set variables

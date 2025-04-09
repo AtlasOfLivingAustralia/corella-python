@@ -14,15 +14,20 @@ def set_abundance(dataframe=None,
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
         individualCount: ``str``
-            A column name (``str``) that contains your individual counts (should be whole numbers).
-        organismQuantity: ``str`` or 
-            A column name (``str``) that contains a description of your individual counts.
+            A column name that contains your individual counts (should be whole numbers).
+        organismQuantity: ``str``
+            A column name that contains a number or enumeration value for the quantity of organisms.  
+            Used together with ``organismQuantityType`` to provide context.
         organismQuantityType: ``str`` 
-            A column name (``str``) that describes what your organismQuantity is.
+            A column name or phrase denoting the type of quantification system used for ``organismQuantity``.
 
     Returns
     -------
         ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
     """
 
     # raise a ValueError if no dataframe is provided

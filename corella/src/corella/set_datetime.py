@@ -22,20 +22,16 @@ def set_datetime(dataframe=None,
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
         eventDate: ``str``
-            A column name (``str``) denoting the column with the dates of the events, or a ``str`` or 
-            ``datetime.datetime`` object denoting the date of the event.
+            A column name or value with the date or date + time of the observation/event.
         year: ``str`` or ``int``
-            A column name (``str``) denoting the column with the dates of the events, or an ``int`` denoting
-            the year of the event.
+            A column name or value with the year the observation/event.
         month: ``str`` or ``int``
-            A column name (``str``) denoting the column with the dates of the events, or an ``int`` denoting
-            the month of the event.
+            A column name or value with the month the observation/event.
         day: ``str`` or ``int``
-            A column name (``str``) denoting the column with the dates of the events, or an ``int`` denoting
-            the day of the event.
+            A column name or value with the day the observation/event.
         eventTime: ``str``
-            A column name (``str``) denoting the column with the dates of the events, or a ``str`` denoting
-            the time of the event.
+            A column name or value with the time the observation/event.  Date + time information 
+            for observations is accepted in ``eventDate``.
         string_to_datetime: ``logical``
             An argument that tells ``corella`` to convert dates that are in a string format to a ``datetime`` 
             format.  Default is ``False``.
@@ -52,12 +48,16 @@ def set_datetime(dataframe=None,
     Returns
     -------
         ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
     """
 
-    # raise a ValueError if no dataframe is provided
+    # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_datetime')
 
-    # mapping column names
+    # mapping of column names and variables
     mapping = {
         'eventDate': eventDate,
         'year': year, 
@@ -66,7 +66,7 @@ def set_datetime(dataframe=None,
         'eventTime': eventTime
     }
 
-    # accepted formats for inputs
+    # accepted data formats for each argument
     accepted_formats = {
         'eventDate': [datetime.datetime,str],
         'year': [str,int], 
@@ -75,9 +75,11 @@ def set_datetime(dataframe=None,
         'eventTime': [datetime.datetime,str]
     }
 
+    # specify variables and values for set_data_workflow()
     variables = [eventDate,year,month,day,eventTime]
     values = ['eventDate','year','month','day','eventTime']
 
+    # set column names and values specified by user
     dataframe = set_data_workflow(func='set_datetime',dataframe=dataframe,mapping=mapping,variables=variables,
                                   values=values,accepted_formats=accepted_formats)
 

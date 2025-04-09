@@ -15,24 +15,29 @@ def set_locality(dataframe=None,
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
         continent: ``str``
-            Either a column name (``str``) or a string denoting one of the seven continents.
+            Either a column name (``str``) or a string denoting one of the seven continents.  
+            Valid values are: ``"Africa"``, ``"Antarctica"``, ``"Asia"``, ``"Europe"``, ``"North America"``, ``"Oceania"``, ``"South America"``
         country: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a string denoting the country.
+            Either a column name (``str``) or a string denoting a valid country name.  See ``country_codes``.
         countryCode: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a string denoting the countryCode.
+            Either a column name (``str``) or a string denoting a valid country code.  See ``country_codes``.
         stateProvince: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a string denoting the state or province.
+            Either a column name (``str``) or a string denoting a sub-national region.
         locality: ``str`` or ``pandas.Series``
-            Either a column name (``str``) or a string denoting the locality.
+            Either a column name (``str``) or a string containing a specific description of a location or place.
     Returns
     -------
         ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
     """
 
     # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_locality')
 
-    # create a dictionary of names for renaming
+    # mapping of column names and variables
     mapping = {
         'continent': continent,
         'country': country,
@@ -41,6 +46,7 @@ def set_locality(dataframe=None,
         'locality': locality
     }
 
+    # accepted data formats for each argument
     accepted_formats = {
         'continent': [str],
         'country': [str],
@@ -49,10 +55,11 @@ def set_locality(dataframe=None,
         'locality': [str]
     }
 
-    # specify values
+    # specify variables and values for set_data_workflow()
     variables = [continent,country,countryCode,stateProvince,locality]
     values = ['continent','country','countryCode','stateProvince','locality']
 
+    # set column names and values specified by user
     dataframe = set_data_workflow(func='set_locality',dataframe=dataframe,mapping=mapping,variables=variables,
                                   values=values,accepted_formats=accepted_formats)
     

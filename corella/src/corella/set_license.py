@@ -14,43 +14,51 @@ def set_license(dataframe=None,
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
         license: ``str``
-            A column name (``str``) that contains your individual counts (should be whole numbers).
-        rightsHolder: ``str`` or 
-            A column name (``str``) that contains a description of your individual counts.
-        accessRights: ``str`` 
-            A column name (``str``) that describes what your rightsHolder is.
+            A column name or value denoting a legal document giving official 
+            permission to do something with the resource. Must be provided as a 
+            url to a valid license.
+        rightsHolder: ``str``
+            A column name or value denoting the person or organisation owning or 
+            managing rights to resource.
+        accessRights: ``str``
+            A column name or value denoting any access or restrictions based on 
+            privacy or security.
 
     Returns
     -------
         ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
     """
 
-    # raise a ValueError if no dataframe is provided
+    # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_license')
     
-    # column renaming dictionary
+    # mapping of column names and variables
     mapping = {
         'license': license ,
         'rightsHolder': rightsHolder,
         'accessRights': accessRights,
     }
 
-    # denote accepted formats
+    # accepted data formats for each argument
     accepted_formats = {
         'license': [str,list],
         'rightsHolder': [str,list],
         'accessRights': [str,list],
     }
 
-    # manually set values for function
+    # specify variables and values for set_data_workflow()
     variables = [license,rightsHolder,accessRights]
     values = ['license','rightsHolder','accessRights']
 
-    # set all values in dataframe
+    # set column names and values specified by user
     dataframe = set_data_workflow(func='set_license',dataframe=dataframe,mapping=mapping,variables=variables,
                                   values=values,accepted_formats=accepted_formats)
 
-    # check errors in data
+    # check values
     errors = check_license(dataframe=dataframe,errors=[])
     
     # return errors if there are any; otherwise, return dataframe

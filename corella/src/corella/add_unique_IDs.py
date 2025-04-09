@@ -14,20 +14,23 @@ def add_unique_IDs(dataframe=None,
 
         Parameters
         ----------
-            ``dataframe`` : ``pandas Dataframe``
+            dataframe : ``pandas Dataframe``
                 ``dataframe`` containing your data.
-            ``column_name`` : ``str``
+            column_name : ``str``
                 String containing name of column you want to add.  Default is ``occurrenceID``
-            ``sequential_id``: ``logical``
-                Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
-            ``add_sequential_id``: ``str``
+            sequential_id: ``logical``
+              Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
+            add_sequential_id: ``str``
                 Determine where to add sequential id in composite id.  Values are ``first`` and ``last``.  Default is ``first``.
-            ``composite_id``: ``str``, ``list``
+            composite_id: ``str``, ``list``
                 ``str`` or ``list`` containing columns to create composite IDs.  Can be combined with sequential ID.
-            ``sep``: ``char``
+            sep: ``char``
                 Separation character for composite IDs.  Default is ``-``.
-            ``random_id``: ``logical``
+            random_id: ``logical``
                 Create a random ID using the ``uuid`` package.  Default is ``False``.
+            add_random_id: ``str``
+                Determine where to add sequential id in random id.  Values are ``first`` and ``last``.  Default is ``first``.
+            
 
         Returns
         -------
@@ -102,5 +105,12 @@ def add_unique_IDs(dataframe=None,
                     else:
                         raise ValueError("Please provide more than one column names for composite id.  Or, add a sequential or random ID")
                     return dataframe
+            else:
+                if not random_id and not sequential_id and composite_id is None:
+                    raise ValueError("Please specify whether or not you want a random ID, sequential ID or composite ID.")
+                else:
+                    print("random_id={}".format(random_id))
+                    print("sequential_id={}".format(sequential_id))
+                    print("composite_id={}".format(composite_id))
         else:
             raise ValueError("Please provide one of the following column names: \n\n{}".format(valid_id_names))

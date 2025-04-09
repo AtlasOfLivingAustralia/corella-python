@@ -1,4 +1,4 @@
-from .common_functions import get_bor_values,check_is_string
+from .common_functions import get_bor_values,check_is_string,check_for_dataframe
 
 def check_basisOfRecord(dataframe=None,
                         errors=[]):
@@ -18,8 +18,7 @@ def check_basisOfRecord(dataframe=None,
      """
 
     # check if dataframe is provided an argument
-    if dataframe is None:
-        raise ValueError("Please provide a dataframe")
+    check_for_dataframe(dataframe=dataframe,func='check_basisOfRecord')
 
     # check basisOfRecord values
     if 'basisOfRecord' in dataframe.columns:

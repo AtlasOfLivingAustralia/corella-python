@@ -397,24 +397,15 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">Event</span></code>: name of the event</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">samplingProtocol</span></code>: how did you record your data (i.e. Observation, etc.)</p></li>
 </ul>
-<section id="initial-run-of-set-events">
-<h2>Initial run of <code class="docutils literal notranslate"><span class="pre">set_events</span></code><a class="headerlink" href="#initial-run-of-set-events" title="Link to this heading">#</a></h2>
+<section id="adding-event-specific-information">
+<h2>Adding event-specific information<a class="headerlink" href="#adding-event-specific-information" title="Link to this heading">#</a></h2>
+<p>For events, we will start by specifying the information we know in the <code class="docutils literal notranslate"><span class="pre">events</span></code> data: <code class="docutils literal notranslate"><span class="pre">eventType</span></code>,
+<code class="docutils literal notranslate"><span class="pre">samplingProtocol</span></code> and the <code class="docutils literal notranslate"><span class="pre">Event</span></code> itself.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
 }
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_events</span><span class="p">(</span></span>
-<span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">events</span></span>
-<span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>Next.</p>
-</section>
-<section id="adding-event-specific-information">
-<h2>Adding event-specific information<a class="headerlink" href="#adding-event-specific-information" title="Link to this heading">#</a></h2>
-<p>For events, we need to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_events</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_events</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">eventType</span><span class="o">=</span><span class="s1">&#39;type&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">samplingProtocol</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span></span>
@@ -422,12 +413,12 @@ span.prompt1:before {
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 39, in &lt;module&gt;
     new_events = corella.set_events(dataframe=events,eventType=&#39;type&#39;,samplingProtocol=&#39;Observation&#39;,
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 83, in set_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 116, in set_events
     raise ValueError(&quot;Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.&quot;)
 ValueError: Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.
 </pre></div>
 </div>
-<p>Next.</p>
+<p>However, for the <code class="docutils literal notranslate"><span class="pre">events</span></code> file, each <code class="docutils literal notranslate"><span class="pre">&quot;event&quot;</span></code> has a few things.</p>
 </section>
 <section id="event-hierarchy">
 <h2>event hierarchy<a class="headerlink" href="#event-hierarchy" title="Link to this heading">#</a></h2>
@@ -437,11 +428,11 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
-0  5112d94a-3969-4def-9e61-1e4c9a45f6eb                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-1  db903638-3c6c-4abf-90a0-0e4d8b5a1fcf  5112d94a-3969-4def-9e61-1e4c9a45f6eb       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-2  36269ca9-315d-40d5-b5b8-82997079a87b  db903638-3c6c-4abf-90a0-0e4d8b5a1fcf  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-3  0d570d1c-8aab-460d-8703-7fd79273cd91                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
-4  7a9ab895-e9b0-4b5c-96be-a0f1a4147766  0d570d1c-8aab-460d-8703-7fd79273cd91       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+0  d8ac4cb7-6002-49c9-9676-f6959ff968af                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+1  afbe49fc-b644-443c-9ec4-a155dbc3743c  d8ac4cb7-6002-49c9-9676-f6959ff968af       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+2  812d1435-dce4-402d-8f71-c45fab43c053  afbe49fc-b644-443c-9ec4-a155dbc3743c  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+3  7aa7b613-50cb-4ac2-9803-db895a5c1fa4                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+4  0f20cadb-e2b9-4be2-86ea-d581315d5d6c  7aa7b613-50cb-4ac2-9803-db895a5c1fa4       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
 </pre></div>
 </div>
 </section>
@@ -455,7 +446,6 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  ----------------
                  0  ✓            eventID
-                 0  ✓            eventID
                  0  ✓            parentEventID
                  0  ✓            eventType
                  0  ✓            Event
@@ -465,7 +455,7 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 ══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
 
-Errors: 0 | Passes: 6
+Errors: 0 | Passes: 5
 
 ✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
@@ -478,10 +468,10 @@ again to see how our data is doing this time round.</p>
 
 ── All DwC terms ──
 
-Matched 6 of 13 column names to DwC terms:
+Matched 5 of 12 column names to DwC terms:
 
-✓ Matched: eventID, eventID, parentEventID, eventType, Event, samplingProtocol
-✗ Unmatched: Species, Collection_date, number_birds, Longitude, Latitude, date, location
+✓ Matched: eventID, parentEventID, eventType, Event, samplingProtocol
+✗ Unmatched: Latitude, Species, number_birds, Collection_date, Longitude, location, date
 
 ── Minimum required DwC terms occurrences ──
 
@@ -570,7 +560,6 @@ corella.set_datetime()
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-set-events">Initial run of <code class="docutils literal notranslate"><span class="pre">set_events</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-event-specific-information">Adding event-specific information</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#event-hierarchy">event hierarchy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>

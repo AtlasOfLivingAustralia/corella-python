@@ -30,42 +30,53 @@ and it will, by default, set the value of ``basisOfRecord`` for the whole datafr
 
 .. prompt:: python
 
-    >>> corella.set_occurrences(
+    >>> occurrences = corella.set_occurrences(
     ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation'
     ... )
+    >>> occurrences.head()
+
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 5
 
 How to generate occurrence IDs 
 ---------------------------------------
 
-*Note:* If you have occurrence IDs already in your dataset, you can specify the name of the column 
-that contains your IDs, and ``corella`` will rename that column to comply with the Darwin Core Vocabulary 
-Standard.
-
-*Note:* ``catalogNumber`` and / or ``recordNumber`` is normally used for collections, 
-so it is best to go with ``occurrenceID`` if you're generating them using ``corella``.
+.. Note:: 
+    
+    - If you have occurrence IDs already in your dataset, you can specify the name of the column 
+    that contains your IDs, and ``corella`` will rename that column to comply with the Darwin 
+    Core Vocabulary Standard.
+    - ``catalogNumber`` and / or ``recordNumber`` is normally used for collections, 
+    so it is best to go with ``occurrenceID`` if you're generating them using ``corella``.
 
 Every occurrence needs a unique identifier for easy future identification.  If your 
 occurences don't have either an ``occurrenceID``, ``catalogNumber`` or ``recordNumber``, 
-you can provide a value of ``True`` to the ``occurrenceID``, and unique identifiers 
-will be generated for you.
+you can provide a value of ``True`` to the ``occurrenceID``.  You will then have to 
+further specify whether or not you want a randomly generated UUID for each occurrence 
+(``random_id``), composite IDs (``composite_id``) or sequential IDs (``sequential_id``).  
+The example used here will be random; however, you can see a vignette **HERE** all about 
+generating IDs.
 
 .. prompt:: python
 
-    >>> corella.set_occurrences(
+    >>> occurrences = corella.set_occurrences(
     ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
-    ...     occurrenceID=True
+    ...     occurrenceID=True,
+    ...     random_id=True
     ... )
+    >>> occurrences.head()
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 6
 
 specify ``occurrenceStatus`` column
 ---------------------------------------
 
-*Note:* This is an optional field, but we are including it here to share how this argument works, and how this will rename your column
+.. Note:: 
+    
+    This is an optional field, but we are including it here to share how this 
+    argument works, and how this will rename your column
 
 Sometimes, you may want to include the ``occurrenceStatus`` field in your observations, especially 
 if you were expecting to see a species in a particular area, and/or have seen them in the past but 
@@ -77,19 +88,23 @@ Darwin Core standard.
 
 .. prompt:: python
 
-    >>> corella.set_occurrences(
+    >>> occurrences = corella.set_occurrences(
     ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
     ...     occurrenceStatus='PRESENT'
+    ...     random_id=True
     ... )
+    >>> occurrences.head()
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 7
 
 what does ``check_data`` and ``suggest_workflow`` say now? 
 -------------------------------------------------------------
 
-*Note:* each of the ``set_*`` functions checks your data for compliance with the 
-Darwin core standard, but it's always good to double-check your data.
+.. Note::
+    
+    each of the ``set_*`` functions checks your data for compliance with the 
+    Darwin core standard, but it's always good to double-check your data.
 
 Now that we've taken care of the pieces of information ``set_occurrences()`` is responsible 
 for, we can assign the new dataframe to a variable:
@@ -101,6 +116,7 @@ for, we can assign the new dataframe to a variable:
     ...     basisOfRecord='HumanObservation',
     ...     occurrenceStatus='status',
     ...     occurrenceID=True
+    ...     random_id=True
     ... )
 
 Now, we can check that this new dataframe complies with the Darwin Core standard for the ``basisOfRecord``, 

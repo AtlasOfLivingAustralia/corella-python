@@ -17,39 +17,46 @@ def set_collection(dataframe=None,
         datasetID: ``str``
             A column name or other string denoting the identifier for the set of data. May be a global unique 
             identifier or an identifier specific to a collection or institution.
-        datasetName: ``str`` or 
+        datasetName: ``str``
             A column name or other string identifying the data set from which the record was derived.
         catalogNumber: ``str`` 
-            A column name (``str``) or other string denoting a unique identifier for the record within the data set or collection.
+            A column name or other string denoting a unique identifier for the record within the data set or collection.
 
     Returns
     -------
         ``pandas.DataFrame`` with the updated data.
+
+    Examples
+    ----------
+        Either add here later or link to vignettes.
     """
-        # raise a ValueError if no dataframe is provided
+    
+    # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_collection')
     
-    # column renaming dictionary
+    # mapping of column names and variables
     mapping = {
         'datasetID': datasetID ,
         'datasetName': datasetName,
         'catalogNumber': catalogNumber,
     }
 
-    # denote accepted formats
+    # accepted data formats for each argument
     accepted_formats = {
         'datasetID': [type(uuid.uuid4()),str,list],
         'datasetName': [str,list],
         'catalogNumber': [str,list],
     }
 
-    # manually set values for function
+    # specify variables and values for set_data_workflow()
     variables = [datasetID,datasetName,catalogNumber]
     values = ['datasetID','datasetName','catalogNumber']
 
+    # set column names and values specified by user
     dataframe = set_data_workflow(func='set_collection',dataframe=dataframe,mapping=mapping,variables=variables,
                                   values=values,accepted_formats=accepted_formats)
     
+    # check values
     errors = check_collection(dataframe=dataframe,errors=[])
 
     # return errors if there are any; otherwise, return dataframe

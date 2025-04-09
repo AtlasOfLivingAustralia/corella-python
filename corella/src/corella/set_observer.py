@@ -1,10 +1,9 @@
 from .check_scientificName import check_scientificName
 from .common_functions import check_for_dataframe,set_data_workflow
 
-def set_scientific_name(dataframe=None,
-                        scientificName=None,
-                        taxonRank=None,
-                        scientificNameAuthorship=None):
+def set_observer(dataframe=None,
+                 recordedBy=None,
+                 recordedByID=None):
     """
     Checks for the name of the taxon you identified is present.
 
@@ -12,14 +11,13 @@ def set_scientific_name(dataframe=None,
     ----------
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
-        scientificName: ``str``
-            A column name (``str``) denoting all full scientific names in the lower level taxonomic rank 
-            that can be determined.
-        taxonRank: ``str``
-            A column name (``str``) denoting the taxonomic rank of your scientific 
-            names (species, genus etc.)
-        scientificNameAuthorship: ``str``
-            A column name (``str``) denoting the authorship information for ``scientificName``.
+        recordedBy: ``str``
+            A column name or name(s) of people, groups, or organizations responsible 
+            for recording the original occurrence. The primary collector or observer should be 
+            listed first.
+        recordedByID: ``str``
+            A column name or the globally unique identifier for the person, people, groups, or organizations 
+            responsible for recording the original occurrence.
 
     Returns
     -------
@@ -29,27 +27,24 @@ def set_scientific_name(dataframe=None,
     ----------
         Either add here later or link to vignettes.
     """
-
     # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_scientific_name')
     
     # mapping of column names and variables
     mapping = {
-        'scientificName': scientificName,
-        'taxonRank': taxonRank,
-        'scientificNameAuthorship': scientificNameAuthorship
+        'recordedBy': recordedBy,
+        'recordedByID': recordedByID,
     }
 
     # accepted data formats for each argument
     accepted_formats = {
-        'scientificName': [str],
-        'taxonRank': [str],
-        'scientificNameAuthorship': [str]
+        'recordedBy': [str],
+        'recordedByID': [str],
     }
 
     # specify variables and values for set_data_workflow()
-    variables = [scientificName,taxonRank,scientificNameAuthorship]
-    values = ['scientificName','taxonRank','scientificNameAuthorship']
+    variables = [recordedBy,recordedByID]
+    values = ['recordedBy','recordedByID']
 
     # set column names and values specified by user
     dataframe = set_data_workflow(func='set_taxonomy',dataframe=dataframe,mapping=mapping,variables=variables,

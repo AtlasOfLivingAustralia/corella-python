@@ -15,34 +15,34 @@ What Does A Passing Events Dataset Look Like?
         >>>
         >>> # first, events
         >>> events = pd.read_csv('<NAME-OF-EVENTSE>.csv')
-        >>> events = corella.use_events(dataframe=events,
+        >>> events = corella.set_events(dataframe=events,
         ...                             eventType='type',
         ...                             samplingProtocol='Observation',
         ...                             Event='name',
         ....                            event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"})
-        >>> events = corella.use_datetime(dataframe=events,
+        >>> events = corella.set_datetime(dataframe=events,
         ...                               eventDate='date',
         ...                               string_to_datetime=True,
         ...                               yearfirst=False,
         ...                               dayfirst=True)
-        >>> events = corella.use_locality(dataframe=events,
+        >>> events = corella.set_locality(dataframe=events,
         >>>                               locality='location')
         >>>
-        >>> # now, use_occurrences
+        >>> # now, set_occurrences
         >>> occ = pd.read_csv('<NAME-OF-OCCURRENCES>.csv')
-        >>> occ = corella.use_scientific_name(dataframe=occ,
+        >>> occ = corella.set_scientific_name(dataframe=occ,
         ...                                   scientificName='Species')
-        >>> occ = corella.use_coordinates(dataframe=occ,
+        >>> occ = corella.set_coordinates(dataframe=occ,
         ...                               decimalLatitude='Latitude',
         ...                               decimalLongitude='Longitude',
         ...                               geodeticDatum='WGS84',
         ...                               coordinatePrecision=0.1)
-        >>> occ = corella.use_datetime(dataframe=occ,
+        >>> occ = corella.set_datetime(dataframe=occ,
         ...                            eventDate='Collection_date',
         ...                            string_to_datetime=True,
         ...                            yearfirst=False,
         ...                            dayfirst=True)
-        >>> corella.use_occurrences(dataframe=occ,
+        >>> corella.set_occurrences(dataframe=occ,
         ...                         add_eventID=True,
         ...                         occurrenceStatus='PRESENT',
         ...                         occurrenceID=True,

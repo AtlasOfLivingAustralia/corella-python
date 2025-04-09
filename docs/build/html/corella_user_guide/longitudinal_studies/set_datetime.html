@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>use_datetime &#8212; corella 0.1.0 documentation</title>
+    <title>set_datetime &#8212; corella 0.1.0 documentation</title>
   
   
   
@@ -369,7 +369,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">use_datetime</li>
+    <li class="breadcrumb-item active" aria-current="page">set_datetime</li>
   </ul>
 </nav>
 </div>
@@ -386,9 +386,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="use-datetime">
-<span id="id1"></span><h1>use_datetime<a class="headerlink" href="#use-datetime" title="Link to this heading">#</a></h1>
-<p>One of the functions you can use to check certain columns of your data is <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code>.
+  <section id="set-datetime">
+<span id="id1"></span><h1>set_datetime<a class="headerlink" href="#set-datetime" title="Link to this heading">#</a></h1>
+<p>One of the functions you can use to check certain columns of your data is <code class="docutils literal notranslate"><span class="pre">set_datetime()</span></code>.
 This function aims to check that you have the following Darwin Core Vocabulary Terms:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">eventDate</span></code>: the date of your observation</p></li>
@@ -408,44 +408,24 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;YOUR-FILENAME&gt;.csv&#39;</span><span class="p">)</span></span>
 </pre></div></div></section>
-<section id="initial-run-of-use-datetime">
-<h1>Initial run of <code class="docutils literal notranslate"><span class="pre">use_datetime</span></code><a class="headerlink" href="#initial-run-of-use-datetime" title="Link to this heading">#</a></h1>
-<p>Initally, we can run <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> to see what is in our dataset,
-and if any of the data types check with <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> are in there
-and correct.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 67, in &lt;module&gt;
-    corella.set_datetime(dataframe=events)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 81, in set_datetime
-    check_if_all_args_empty(dataframe=dataframe,func=&#39;set_datetime&#39;,keys=mapping.keys(),values=values)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 161, in check_if_all_args_empty
-    raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
-ValueError: No Darwin Core arguments supplied to `set_datetime()`.  See dir(corella.set_datetime()) for valid arguments.
-</pre></div>
-</div>
-<p>Here, we can see that we don’t have any column names matching the Darwin
-Core standard, and must specify them to <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> to proceed.
-The only required column is <code class="docutils literal notranslate"><span class="pre">eventDate</span></code>.</p>
-</section>
 <section id="eventdate-and-automatically-converting-strings">
 <h1><code class="docutils literal notranslate"><span class="pre">eventDate</span></code> and automatically converting strings<a class="headerlink" href="#eventdate-and-automatically-converting-strings" title="Link to this heading">#</a></h1>
 <p>Since we can specify the column names, we can specify the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to be <code class="docutils literal notranslate"><span class="pre">'date'</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 72, in &lt;module&gt;
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 75, in &lt;module&gt;
     new_events = corella.set_datetime(dataframe=events,eventDate=&#39;date&#39;)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 108, in set_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 106, in set_datetime
     raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
 ValueError: There are some errors in your data.  They are as follows:
 
 the eventDate column must be in datetime format.
 </pre></div>
 </div>
-<p>We get an error here because <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> requires the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to be in a <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
-format.  This is to make sure the date is formatted correctly.  Luckily, <code class="docutils literal notranslate"><span class="pre">use_datetime()</span></code> has a few
+<p>We get an error here because <code class="docutils literal notranslate"><span class="pre">set_datetime()</span></code> requires the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to be in a <code class="docutils literal notranslate"><span class="pre">datetime</span></code>
+format.  This is to make sure the date is formatted correctly.  Luckily, <code class="docutils literal notranslate"><span class="pre">set_datetime()</span></code> has a few
 arguments that will convert dates in strings to <code class="docutils literal notranslate"><span class="pre">datetime</span></code> format.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">string_to_datetime</span></code>: when this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, will convert any strings in the <code class="docutils literal notranslate"><span class="pre">eventDate</span></code> column to <code class="docutils literal notranslate"><span class="pre">datetime</span></code> objects.</p></li>
@@ -453,7 +433,7 @@ arguments that will convert dates in strings to <code class="docutils literal no
 <li><p><code class="docutils literal notranslate"><span class="pre">dayfirst</span></code>: when this is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">corella</span></code> (and <code class="docutils literal notranslate"><span class="pre">pandas</span></code>) assumes your date starts with the day.</p></li>
 </ul>
 <p>Note when both <code class="docutils literal notranslate"><span class="pre">yearfirst</span></code> and <code class="docutils literal notranslate"><span class="pre">dayfirst</span></code> are set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code> assumes month is first.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">use_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_datetime</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">events</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">eventDate</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                      <span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span></span>
@@ -469,7 +449,7 @@ arguments that will convert dates in strings to <code class="docutils literal no
 </section>
 <section id="what-does-check-data-and-suggest-workflow-say-now">
 <h1>what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?<a class="headerlink" href="#what-does-check-data-and-suggest-workflow-say-now" title="Link to this heading">#</a></h1>
-<p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">use_*</span></code> functions checks your data for compliance with the
+<p><em>Note:</em> each of the <code class="docutils literal notranslate"><span class="pre">set_*</span></code> functions checks your data for compliance with the
 Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
@@ -497,7 +477,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: type, name, location
+✗ Unmatched: location, name, type
 
 ── Minimum required DwC terms events ──
 
@@ -524,14 +504,12 @@ corella.set_events()
 <h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="use_events.html">use_events</a></p></li>
-<li><p><a class="reference external" href="use_coordinates.html">use_coordinates</a></p></li>
-<li><p><a class="reference external" href="use_scientific_name.html">use_scientific_name</a></p></li>
+<li><p><a class="reference external" href="set_events.html">set_events</a></p></li>
 </ul>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="use_abundance.html">use_abundance</a></p></li>
-<li><p><a class="reference external" href="use_locality.html">use_locality</a></p></li>
+<li><p><a class="reference external" href="set_abundance_events.html">set_abundance</a></p></li>
+<li><p><a class="reference external" href="set_locality_events.html">set_locality</a></p></li>
 </ul>
 </section>
 
@@ -563,8 +541,7 @@ corella.set_events()
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">use_datetime</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-run-of-use-datetime">Initial run of <code class="docutils literal notranslate"><span class="pre">use_datetime</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">set_datetime</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#eventdate-and-automatically-converting-strings"><code class="docutils literal notranslate"><span class="pre">eventDate</span></code> and automatically converting strings</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-check-data-and-suggest-workflow-say-now">what does <code class="docutils literal notranslate"><span class="pre">check_data</span></code> and <code class="docutils literal notranslate"><span class="pre">suggest_workflow</span></code> say now?</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>

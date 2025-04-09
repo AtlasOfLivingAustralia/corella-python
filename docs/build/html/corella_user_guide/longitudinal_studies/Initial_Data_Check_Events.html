@@ -406,20 +406,17 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;&lt;NAME_OF_EVENTS&gt;.csv&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Number of Errors    Pass/Fail    Column name
 ------------------  -----------  -------------
-                 0  ✓            eventID
 
 
 ══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 
 
-Errors: 0 | Passes: 1
+Errors: 0.0 | Passes: 0
 
 ✗ Data does not meet minimum Darwin core requirements
 Use corella.suggest_workflow()
-
-None
 </pre></div>
 </div>
 <p>For our initial data example, the data tests may not be showing any errors, but
@@ -435,10 +432,10 @@ are the results of this particular dataset:</p>
 
 ── All DwC terms ──
 
-Matched 1 of 10 column names to DwC terms:
+Matched 0 of 9 column names to DwC terms:
 
-✓ Matched: eventID
-✗ Unmatched: Species, Latitude, Collection_date, Longitude, number_birds, type, name, date, location
+✓ Matched: 
+✗ Unmatched: Species, Collection_date, number_birds, Longitude, Latitude, date, location, name, type
 
 ── Minimum required DwC terms occurrences ──
 
@@ -481,13 +478,12 @@ To make your events Darwin Core compliant, use the following workflow:
 
 corella.set_events()
 corella.set_datetime()
-None
 </pre></div>
 </div>
 <p>To learn more about how to use these functions, go to</p>
 <ul class="simple">
-<li><p><a class="reference external" href="use_events.html">use_events</a></p></li>
-<li><p><a class="reference external" href="use_datetime.html">use_datetime</a></p></li>
+<li><p><a class="reference external" href="set_events.html">set_events</a></p></li>
+<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
 </ul>
 </section>
 
