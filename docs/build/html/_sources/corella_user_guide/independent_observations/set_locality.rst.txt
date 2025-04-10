@@ -3,7 +3,9 @@
 set_locality
 --------------------
 
-**Note: the information here is not required by the ALA**
+.. Note:: 
+    
+    Locality information is not required by the ALA, but it is nice to have.
 
 One of the functions you can use to check your data is ``set_locality()``.  
 This function aims to check if you have the following:
@@ -46,6 +48,14 @@ To learn more about how to use other functions, go to
 Optional functions:
 
 - `set_abundance <set_abundance.html>`_
+- `set_collection <set_collection.html>`_
+- `set_individual_traits <set_individual_traits.html>`_
+- `set_license <set_license.html>`_
+- `set_taxonomy <set_taxonomy.html>`_
+
+Creating Unique IDs:
+
+- `Creating Unique IDs for your Occurrences <creating_unique_IDs.html>`_
 
 Passing Dataset:
 

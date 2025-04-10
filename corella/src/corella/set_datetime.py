@@ -87,12 +87,7 @@ def set_datetime(dataframe=None,
     if string_to_datetime:
         
         # specify which of day,month,year is first
-        if yearfirst:
-            dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],yearfirst=yearfirst)
-        elif dayfirst:
-            dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],dayfirst=dayfirst)
-        else:
-            dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],dayfirst=dayfirst,yearfirst=yearfirst)
+        dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],dayfirst=dayfirst,yearfirst=yearfirst)
 
         # check for event time
         if 'eventTime' in dataframe.columns:

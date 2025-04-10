@@ -405,15 +405,15 @@ that’s part of a collection?</p>
 <p>Depending on your answer to these questions, the information you provide will differ.
 Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current
 accepted values are as follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- MaterialSample
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- FossilSpecimen
 - MaterialCitation
-- Occurrence
 - LivingSpecimen
 - PreservedSpecimen
-- FossilSpecimen
-- MachineObservation
-- Observation
 - HumanObservation
+- MaterialSample
+- Observation
+- MachineObservation
+- Occurrence
 </pre></div>
 </div>
 <p>For this exercise, let’s assume a human has seen these, which equates to a value of
@@ -464,11 +464,11 @@ generating IDs.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
-0  144d7676-ad8e-47c9-827e-18c985842614       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1  5ede311f-1f9a-4a08-aeed-ddfb4629d38a     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2  8a07a0fd-4a39-4817-b218-8d2a39921891           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3  cb9e5aa5-c707-4dfb-9a05-94d37ee0c1f8  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4  adac03ee-b49a-4507-8786-12f266868b2f        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+0  ed7c66ce-161f-4e06-9b92-17380f54c67e       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1  7db89063-5783-4532-85d6-694615392f2a     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2  d20c2012-0bfb-472f-96fe-825c104b66e7           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3  2866f659-6303-448b-ad99-14eca757934e  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4  ecaf85ce-8dc5-4106-9d47-45e2e02764ef        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -493,11 +493,11 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0  70659921-ea9d-4459-8642-5143cf67a3cf       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1  098ba4db-1e90-4667-a69f-99b0eba49dfc     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2  ac85d26e-31bf-470e-b812-8c30f053a408           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3  06f74eee-0a6c-4d17-8962-de8c1b3756b1  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4  8b7fc4e4-4cdf-4f3b-b7d4-2f426d9244c2        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+0  0c88bf8b-45bb-48cc-b967-c28eac0a72a9       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1  c576c50b-e860-4641-9ffa-494cd615ee03     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2  81a09dd1-2588-43c0-8a54-6025e3b58af3           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3  1a166941-5411-4b2d-b610-d4e31aba4d4d  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4  4ed314a3-dbb5-441f-8890-464d0c0668b7        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -546,7 +546,7 @@ again to see what other functions we can use to check our data:</p>
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Latitude, Longitude, Species, Collection_date
+✗ Unmatched: Longitude, Collection_date, Latitude, Species
 
 ── Minimum required DwC terms occurrences ──
 
@@ -574,7 +574,7 @@ Additional functions: set_abundance(), set_locality()
 </section>
 <section id="other-functions">
 <h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
-<p>To learn more about how to use these functions, go to</p>
+<p>To learn more about how to use other functions, go to</p>
 <ul class="simple">
 <li><p><a class="reference external" href="set_coordinates.html">set_coordinates</a></p></li>
 <li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
@@ -583,7 +583,15 @@ Additional functions: set_abundance(), set_locality()
 <p>Optional functions:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="set_abundance.html">set_abundance</a></p></li>
+<li><p><a class="reference external" href="set_collection.html">set_collection</a></p></li>
+<li><p><a class="reference external" href="set_individual_traits.html">set_individual_traits</a></p></li>
+<li><p><a class="reference external" href="set_license.html">set_license</a></p></li>
 <li><p><a class="reference external" href="set_locality.html">set_locality</a></p></li>
+<li><p><a class="reference external" href="set_taxonomy.html">set_taxonomy</a></p></li>
+</ul>
+<p>Creating Unique IDs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="creating_unique_IDs.html">Creating Unique IDs for your Occurrences</a></p></li>
 </ul>
 <p>Passing Dataset:</p>
 <ul class="simple">

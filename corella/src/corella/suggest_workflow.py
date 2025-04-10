@@ -182,7 +182,7 @@ def suggest_workflow(occurrences=None,
             print("corella.set_coordinates()")
         if required_terms_occurrence["Matched term(s)"][4] == '-':
             print("corella.set_datetime()")    
-        print("\nAdditional functions: set_abundance(), set_locality()")
+        print("\nAdditional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()")
     
     # events
     if list(required_terms_event["Missing term(s)"]) == ['-','-','-','-','-','-']:

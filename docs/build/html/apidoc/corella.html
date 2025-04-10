@@ -765,6 +765,29 @@ Valid values are: <code class="docutils literal notranslate"><span class="pre">&
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="corella.set_observer">
+<span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">set_observer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recordedBy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recordedByID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.set_observer" title="Link to this definition">#</a></dt>
+<dd><p>Checks for the name of the taxon you identified is present.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataframe</strong> (<code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code>) – The <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> that contains your data to check</p></li>
+<li><p><strong>recordedBy</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A column name or name(s) of people, groups, or organizations responsible
+for recording the original occurrence. The primary collector or observer should be
+listed first.</p></li>
+<li><p><strong>recordedByID</strong> (<code class="docutils literal notranslate"><span class="pre">str</span></code>) – A column name or the globally unique identifier for the person, people, groups, or organizations
+responsible for recording the original occurrence.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> with the updated data.</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Either add here later or link to vignettes.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="corella.set_occurrences">
 <span class="sig-prename descclassname"><span class="pre">corella.</span></span><span class="sig-name descname"><span class="pre">set_occurrences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrenceID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catalogNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recordNumber</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basisOfRecord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_sequential_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">composite_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_random_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'first'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">occurrenceStatus</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_eventID</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eventType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#corella.set_occurrences" title="Link to this definition">#</a></dt>
 <dd><p>Checks for unique identifiers of each occurrence and how the occurrence was recorded.</p>
@@ -887,7 +910,7 @@ correct data type.</p>
 Matched 1 of 5 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: longitude, latitude, status, species
+✗ Unmatched: longitude, status, species, latitude
 
 ── Minimum required DwC terms occurrences ──
 
@@ -975,6 +998,7 @@ Additional functions: set_abundance(), set_locality()
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.set_individual_traits"><code class="docutils literal notranslate"><span class="pre">set_individual_traits()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.set_license"><code class="docutils literal notranslate"><span class="pre">set_license()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.set_locality"><code class="docutils literal notranslate"><span class="pre">set_locality()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.set_observer"><code class="docutils literal notranslate"><span class="pre">set_observer()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.set_occurrences"><code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.set_scientific_name"><code class="docutils literal notranslate"><span class="pre">set_scientific_name()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#corella.set_taxonomy"><code class="docutils literal notranslate"><span class="pre">set_taxonomy()</span></code></a></li>

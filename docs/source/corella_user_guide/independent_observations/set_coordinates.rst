@@ -106,10 +106,10 @@ again to see how our data is doing this time round.
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 20
 
-Other functions:
-=====================================
+Other functions
+---------------------------------------
 
-To learn more about how to use these functions, go to 
+To learn more about how to use other functions, go to 
 
 - `set_occurrences <set_occurrences.html>`_
 - `set_datetime <set_datetime.html>`_
@@ -118,7 +118,15 @@ To learn more about how to use these functions, go to
 Optional functions:
 
 - `set_abundance <set_abundance.html>`_
+- `set_collection <set_collection.html>`_
+- `set_individual_traits <set_individual_traits.html>`_
+- `set_license <set_license.html>`_
 - `set_locality <set_locality.html>`_
+- `set_taxonomy <set_taxonomy.html>`_
+
+Creating Unique IDs:
+
+- `Creating Unique IDs for your Occurrences <creating_unique_IDs.html>`_
 
 Passing Dataset:
 

@@ -14,16 +14,20 @@ These are all the functions for your ``occurrences.txt`` file.
     .. grid-item:: **Required**
 
         - :ref:`Initial Data Check`
-        - :ref:`set_occurrences`
-        - :ref:`set_scientific_name`
         - :ref:`set_coordinates`
         - :ref:`set_datetime`
+        - :ref:`set_occurrences`
+        - :ref:`set_scientific_name`
 
     .. grid-item:: **Optional**
 
-        - :ref:`set_abundance`
-        - :ref:`set_locality`
         - :ref:`convert_coordinates`
+        - :ref:`set_abundance`
+        - :ref:`set_collection`
+        - :ref:`set_individual_traits`
+        - :ref:`set_license`
+        - :ref:`set_locality`
+        - :ref:`set_taxonomy`
 
 Example of Passing Dataset 
 ----------------------------
@@ -36,11 +40,15 @@ Example of Passing Dataset
    :hidden:
 
    Initial_Data_Check
-   set_occurrences
-   set_scientific_name
    set_coordinates
    set_datetime
-   set_abundance
-   set_locality
+   set_occurrences
+   set_scientific_name
    convert_coordinates
+   set_abundance
+   set_collection
+   set_individual_traits
+   set_license
+   set_locality
+   set_taxonomy
    passing_dataset

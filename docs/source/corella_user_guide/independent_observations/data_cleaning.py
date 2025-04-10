@@ -224,11 +224,58 @@ if stop == 30:
     sys.exit() 
 
 # -----------------------------------------------------------------------------
+# set_taxonomy
+# -----------------------------------------------------------------------------
+if stop == 31:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla']})
+    occ = corella.set_taxonomy(dataframe=occ,kingdom='Animalia',phylum='Chordata',taxon_class='Aves',
+                               order='Psittaciformes',family='Cacatuidae',genus='Eolophus',
+                               specificEpithet='roseicapilla',vernacularName='Galah')
+    print(occ.head())
+    sys.exit()
+
+# -----------------------------------------------------------------------------
+# set_collection
+# -----------------------------------------------------------------------------
+if stop == 32:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla']})
+    occ = corella.set_collection(dataframe=occ,datasetID='b15d4952-7d20-46f1-8a3e-556a512b04c5',
+                                 datasetName='Lacey Ctenomys Recaptures',catalogNumber='2008.1334')
+    print(occ.head())
+    sys.exit()
+
+# -----------------------------------------------------------------------------
+# set_individual_traits
+# -----------------------------------------------------------------------------
+if stop == 33:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla']})
+    occ = corella.set_individual_traits(dataframe=occ,individualID=['123456','123457'],
+                                        lifeStage='adult',sex=['male','female'],
+                                        vitality='alive',reproductiveCondition='not reproductive')
+    print(occ.head())
+    sys.exit()
+    
+# -----------------------------------------------------------------------------
+# set_license
+# -----------------------------------------------------------------------------
+if stop == 34:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla']})
+    occ = corella.set_license(dataframe=occ,license=['CC-BY 4.0 (Int)', 'CC-BY-NC 4.0 (Int)'],
+                              rightsHolder='The Regents of the University of California',
+                              accessRights=['','not-for-profit use only'])
+    print(occ.head())
+    sys.exit()
+    
+# -----------------------------------------------------------------------------
+# creating IDs
+# -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
 # final
 # -----------------------------------------------------------------------------
 occ = pd.read_csv('corella_user_guide/data/occurrences_dwc.csv')
 
-if stop == 31:
+if stop == 99:
     occ = corella.set_occurrences(dataframe=occ,basisOfRecord='HumanObservation',
                                 occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
     occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')

@@ -1,4 +1,4 @@
-from .check_scientificName import check_scientificName
+from .check_observer import check_observer
 from .common_functions import check_for_dataframe,set_data_workflow
 
 def set_observer(dataframe=None,
@@ -51,7 +51,7 @@ def set_observer(dataframe=None,
                                   values=values,accepted_formats=accepted_formats)
 
     # check values
-    errors = check_scientificName(dataframe=dataframe)
+    errors = check_observer(dataframe=dataframe)
                     
     # return errors if there are any; otherwise, return dataframe
     if len(errors) > 0:

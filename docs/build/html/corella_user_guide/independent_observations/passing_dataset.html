@@ -408,25 +408,9 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">...</span>                            <span class="n">string_to_datetime</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">yearfirst</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">)</span></span>
 </pre></div></div><p>And your final output from <code class="docutils literal notranslate"><span class="pre">check_data()</span></code> will look like this:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
-------------------  -----------  -------------------
-                 0  ✓            occurrenceID
-                 0  ✓            scientificName
-                 0  ✓            decimalLatitude
-                 0  ✓            decimalLongitude
-                 0  ✓            eventDate
-                 0  ✓            basisOfRecord
-                 0  ✓            occurrenceStatus
-                 0  ✓            geodeticDatum
-                 0  ✓            coordinatePrecision
-
-
-══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-
-Errors: 0 | Passes: 9
-
-✓ Data meets minimum Darwin core requirements
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>          scientificName   kingdom    phylum class           order      family     genus specificEpithet vernacularName
+0  Eolophus roseicapilla  Animalia  Chordata  Aves  Psittaciformes  Cacatuidae  Eolophus    roseicapilla          Galah
+1  Eolophus roseicapilla  Animalia  Chordata  Aves  Psittaciformes  Cacatuidae  Eolophus    roseicapilla          Galah
 </pre></div>
 </div>
 <p><a class="reference external" href="index.html">Back to Independent Observations TOC</a></p>
