@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# corella <a href="https://corella.ala.org.au"><img src="man/figures/logo.png" align="right" height="139" alt="corella website" /></a>
+# corella <a href="https://corella.ala.org.au"><img src="docs/source/_static/logo/logo.png" align="right" height="139" alt="corella website" /></a>
 
 <!-- badges: start -->
 
