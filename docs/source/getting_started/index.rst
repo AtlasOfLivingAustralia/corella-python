@@ -7,6 +7,7 @@ This section will take you through an introduction on what ``corella`` can be us
 - :ref:`Prerequisites`
 - :ref:`Installation`
 - :ref:`File_Types`
+- :ref:`Supported Terms`
 
 .. toctree::
    :maxdepth: 5
@@ -17,3 +18,4 @@ This section will take you through an introduction on what ``corella`` can be us
    Prerequisites
    Installation
    File_Types
+   Supported_Terms

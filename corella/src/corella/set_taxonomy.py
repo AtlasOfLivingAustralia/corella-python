@@ -42,7 +42,7 @@ def set_taxonomy(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_taxonomy vignette <../../html/corella_user_guide/independent_observations/set_taxonomy.html>`_
     """
 
     # check for dataframe

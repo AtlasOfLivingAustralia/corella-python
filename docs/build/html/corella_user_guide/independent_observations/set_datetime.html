@@ -413,7 +413,7 @@ span.prompt1:before {
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/independent_observations/data_cleaning.py&quot;, line 161, in &lt;module&gt;
     print(corella.set_datetime(dataframe=occ,
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 106, in set_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 101, in set_datetime
     raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
 ValueError: There are some errors in your data.  They are as follows:
 
@@ -503,7 +503,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: Latitude, Species, Longitude
+✗ Unmatched: Longitude, Species, Latitude
 
 ── Minimum required DwC terms occurrences ──
 
@@ -525,7 +525,7 @@ corella.set_occurrences()
 corella.set_scientific_name()
 corella.set_coordinates()
 
-Additional functions: set_abundance(), set_locality()
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
 </pre></div>
 </div>
 </section>

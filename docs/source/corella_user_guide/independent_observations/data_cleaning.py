@@ -269,13 +269,48 @@ if stop == 34:
 # -----------------------------------------------------------------------------
 # creating IDs
 # -----------------------------------------------------------------------------
+if stop == 35:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla'],
+                        'latitude': [-35.310, -35.273], 
+                        'longitude': [149.125, 149.133], 
+                        'date': ['14-01-2023', '15-01-2023']})
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,random_id=True)
+    print(occ)
+    sys.exit()
+
+if stop == 36:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla'],
+                        'latitude': [-35.310, -35.273], 
+                        'longitude': [149.125, 149.133], 
+                        'date': ['14-01-2023', '15-01-2023']})
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,sequential_id=True)
+    print(occ)
+    sys.exit()
+
+if stop == 37:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla'],
+                        'latitude': [-35.310, -35.273], 
+                        'longitude': [149.125, 149.133], 
+                        'date': ['14-01-2023', '15-01-2023']})
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',sequential_id=True,add_sequential_id='first')
+    print(occ)
+    sys.exit()
+
+if stop == 38:
+    occ = pd.DataFrame({'scientificName': ['Eolophus roseicapilla','Eolophus roseicapilla'],
+                        'latitude': [-35.310, -35.273], 
+                        'longitude': [149.125, 149.133], 
+                        'date': ['14-01-2023', '15-01-2023']})
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',random_id=True,add_random_id='last')
+    print(occ)
+    sys.exit()
 
 # -----------------------------------------------------------------------------
 # final
 # -----------------------------------------------------------------------------
 occ = pd.read_csv('corella_user_guide/data/occurrences_dwc.csv')
 
-if stop == 99:
+if stop == 39:
     occ = corella.set_occurrences(dataframe=occ,basisOfRecord='HumanObservation',
                                 occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
     occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')

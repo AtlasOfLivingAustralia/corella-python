@@ -405,15 +405,15 @@ that’s part of a collection?</p>
 <p>Depending on your answer to these questions, the information you provide will differ.
 Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current
 accepted values are as follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- FossilSpecimen
-- MaterialCitation
-- LivingSpecimen
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- MachineObservation
 - PreservedSpecimen
-- HumanObservation
 - MaterialSample
-- Observation
-- MachineObservation
 - Occurrence
+- MaterialCitation
+- FossilSpecimen
+- LivingSpecimen
+- Observation
+- HumanObservation
 </pre></div>
 </div>
 <p>For this exercise, let’s assume a human has seen these, which equates to a value of
@@ -464,11 +464,11 @@ generating IDs.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
-0  ed7c66ce-161f-4e06-9b92-17380f54c67e       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1  7db89063-5783-4532-85d6-694615392f2a     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2  d20c2012-0bfb-472f-96fe-825c104b66e7           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3  2866f659-6303-448b-ad99-14eca757934e  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4  ecaf85ce-8dc5-4106-9d47-45e2e02764ef        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+0  81bdc4b7-25e1-437b-bec9-26c48473d3fb       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1  b2a766a1-5d3e-49a8-b98e-0f02d805dd51     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2  a1349102-7148-4322-a154-a42e28d24748           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3  2486402d-937d-4336-9893-25fe75e23087  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4  cdd5efbf-7b7f-4a79-804c-60b103b4eee3        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -493,11 +493,11 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0  0c88bf8b-45bb-48cc-b967-c28eac0a72a9       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1  c576c50b-e860-4641-9ffa-494cd615ee03     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2  81a09dd1-2588-43c0-8a54-6025e3b58af3           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3  1a166941-5411-4b2d-b610-d4e31aba4d4d  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4  4ed314a3-dbb5-441f-8890-464d0c0668b7        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+0  731530cd-67f3-451c-aa4b-79a5242866ce       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1  bb648d33-18a7-4e40-8df1-471f1cb0a1f5     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2  399e6ff2-7402-414e-ae77-8284bca31955           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3  4bf00c40-d62a-442b-8b59-47fcac3d42bf  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4  82081dd8-4d45-4770-bb70-4b1a64c96e1f        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -546,7 +546,7 @@ again to see what other functions we can use to check our data:</p>
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Longitude, Collection_date, Latitude, Species
+✗ Unmatched: Latitude, Collection_date, Species, Longitude
 
 ── Minimum required DwC terms occurrences ──
 
@@ -568,7 +568,7 @@ corella.set_scientific_name()
 corella.set_coordinates()
 corella.set_datetime()
 
-Additional functions: set_abundance(), set_locality()
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
 </pre></div>
 </div>
 </section>

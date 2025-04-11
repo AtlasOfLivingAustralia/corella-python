@@ -77,7 +77,7 @@ def set_occurrences(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_occurrences vignette <../../html/corella_user_guide/independent_observations/set_occurrences.html>`_
     """
 
     # check for dataframe

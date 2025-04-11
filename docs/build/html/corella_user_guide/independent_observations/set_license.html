@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; corella 0.1.0 documentation</title>
+    <title>set_license &#8212; corella 0.1.0 documentation</title>
   
   
   
@@ -369,7 +369,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">&lt;no title&gt;</li>
+    <li class="breadcrumb-item active" aria-current="page">set_license</li>
   </ul>
 </nav>
 </div>
@@ -386,7 +386,62 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section id="set-license">
+<span id="id1"></span><h1>set_license<a class="headerlink" href="#set-license" title="Link to this heading">#</a></h1>
+<p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">set_individual_traits()</span></code>.
+This function aims to check if you have the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">license</span></code>: A legal document giving official permission to do something with the resource. Must be provided as a url to a valid license.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rightsHolder</span></code>: Person or organisation owning or managing rights to resource.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">accessRights</span></code>: Access or restrictions based on privacy or security.</p></li>
+</ul>
+</section>
+<section id="specifying-license-information">
+<h1>specifying license information<a class="headerlink" href="#specifying-license-information" title="Link to this heading">#</a></h1>
+<p>For specifying license information for individual organisms, as well as the rights holders, use the example below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">]})</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_license</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">license</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CC-BY 4.0 (Int)&#39;</span><span class="p">,</span> <span class="s1">&#39;CC-BY-NC 4.0 (Int)&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                           <span class="n">rightsHolder</span><span class="o">=</span><span class="s1">&#39;The Regents of the University of California&#39;</span><span class="p">,</span></span>
+<span class="prompt1"><span class="o">...</span>                           <span class="n">accessRights</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;not-for-profit use only&#39;</span><span class="p">])</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>          scientificName individualID lifeStage     sex vitality reproductiveCondition
+0  Eolophus roseicapilla       123456     adult    male    alive      not reproductive
+1  Eolophus roseicapilla       123457     adult  female    alive      not reproductive
+</pre></div>
+</div>
+</section>
+<section id="other-functions">
+<h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
+<p>To learn more about how to use other functions, go to</p>
+<ul class="simple">
+<li><p><a class="reference external" href="set_occurrences.html">set_occurrences</a></p></li>
+<li><p><a class="reference external" href="set_coordinates.html">set_coordinates</a></p></li>
+<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
+<li><p><a class="reference external" href="set_scientific_name.html">set_scientific_name</a></p></li>
+</ul>
+<p>Optional functions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="set_abundance.html">set_abundance</a></p></li>
+<li><p><a class="reference external" href="set_collection.html">set_collection</a></p></li>
+<li><p><a class="reference external" href="set_individual_traits.html">set_individual_traits</a></p></li>
+<li><p><a class="reference external" href="set_locality.html">set_locality</a></p></li>
+<li><p><a class="reference external" href="set_taxonomy.html">set_taxonomy</a></p></li>
+</ul>
+<p>Creating Unique IDs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="creating_unique_IDs.html">Creating Unique IDs for your Occurrences</a></p></li>
+</ul>
+<p>Passing Dataset:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="passing_dataset.html">Passing Dataset</a></p></li>
+</ul>
+</section>
+
 
                 </article>
               
@@ -414,7 +469,10 @@ document.write(`
     <i class="fa-solid fa-list"></i> On this page
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">set_license</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#specifying-license-information">specifying license information</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
 </ul>
 
   </nav></div>

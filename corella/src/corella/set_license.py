@@ -30,7 +30,7 @@ def set_license(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_license vignette <../../html/corella_user_guide/independent_observations/set_license.html>`_
     """
 
     # check for dataframe

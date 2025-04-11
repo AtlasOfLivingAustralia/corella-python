@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; corella 0.1.0 documentation</title>
+    <title>Creating Unique IDs &#8212; corella 0.1.0 documentation</title>
   
   
   
@@ -369,7 +369,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">&lt;no title&gt;</li>
+    <li class="breadcrumb-item active" aria-current="page">Creating Unique IDs</li>
   </ul>
 </nav>
 </div>
@@ -386,7 +386,120 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section id="creating-unique-ids">
+<span id="id1"></span><h1>Creating Unique IDs<a class="headerlink" href="#creating-unique-ids" title="Link to this heading">#</a></h1>
+<p>Having a unique ID for each occurrence/event is useful because these unique IDs can identify
+individual observations, and make it possible to change, amend or delete observations over time.
+They also prevent accidental deletion when when more than one record contains the same
+information (and would otherwise be considered a duplicate).</p>
+<p>There are three ways you can create identifiers for your occurrences/events:</p>
+<ul class="simple">
+<li><p>random IDs</p></li>
+<li><p>sequential IDs</p></li>
+<li><p>composite IDs</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of the IDs need to have <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> set to <code class="docutils literal notranslate"><span class="pre">True</span></code> in <code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_events()</span></code>.</p>
+</div>
+<section id="random-ids">
+<h2>random IDs<a class="headerlink" href="#random-ids" title="Link to this heading">#</a></h2>
+<p>Random IDs are created automatically in <code class="docutils literal notranslate"><span class="pre">corella</span></code> using the <a class="reference external" href="https://pypi.org/project/uuid/">uuid package</a>.
+To automatically generate random IDs, set <code class="docutils literal notranslate"><span class="pre">random_id=True</span></code> like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">random_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID         scientificName  latitude  longitude        date
+0  8bdddb30-74b0-450f-91d0-defe4e94e6e5  Eolophus roseicapilla   -35.310    149.125  14-01-2023
+1  92a6fb5a-f223-4375-9acb-26876a746e06  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div>
+</div>
+</section>
+<section id="sequential-ids">
+<h2>sequential IDs<a class="headerlink" href="#sequential-ids" title="Link to this heading">#</a></h2>
+<p>Sequential IDs are created from 0 to the number of rows in the data frame.  Like above, to generate sequential
+ids, set <code class="docutils literal notranslate"><span class="pre">sequential_id=True</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sequential_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  occurrenceID         scientificName  latitude  longitude        date
+0            0  Eolophus roseicapilla   -35.310    149.125  14-01-2023
+1            1  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div>
+</div>
+</section>
+<section id="composite-ids">
+<h2>composite IDs<a class="headerlink" href="#composite-ids" title="Link to this heading">#</a></h2>
+<p>If you don’t want only UUIDs or sequential IDs, but a composite of multiple items, the <code class="docutils literal notranslate"><span class="pre">composite_id</span></code> option
+exists.  You can do the following:</p>
+<ul class="simple">
+<li><p>Have a composite ID with multiple columns, separated by <code class="docutils literal notranslate"><span class="pre">sep</span></code>.  This is, by default, <code class="docutils literal notranslate"><span class="pre">-</span></code> but can be changed.</p></li>
+<li><p>Have a composite ID with one or more columns, and a UUID either at the beginning or end of the ID.</p></li>
+<li><p>Have a composite ID with one or more columns, and a sequential ID either at the beginning or end of the ID.</p></li>
+</ul>
+<p>Below are examples with sequential ID and random ID, both at the beginning or the end of the ID.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">composite_id</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">sequential_id</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">add_sequential_id</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   occurrenceID         scientificName  latitude  longitude        date
+0  0-14-01-2023  Eolophus roseicapilla   -35.310    149.125  14-01-2023
+1  1-15-01-2023  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
+<span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">composite_id</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">random_id</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">add_random_id</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                      occurrenceID         scientificName  latitude  longitude        date
+0  14-01-2023-a0f0a692-baf8-46b5-b835-9889a8f8107d  Eolophus roseicapilla   -35.310    149.125  14-01-2023
+1  15-01-2023-643d6383-5758-465d-a9fb-5d5758ae0ad0  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div>
+</div>
+</section>
+</section>
+<section id="other-functions">
+<h1>Other functions<a class="headerlink" href="#other-functions" title="Link to this heading">#</a></h1>
+<p>To learn more about how to use other functions, go to</p>
+<ul class="simple">
+<li><p><a class="reference external" href="set_occurrences.html">set_occurrences</a></p></li>
+<li><p><a class="reference external" href="set_coordinates.html">set_coordinates</a></p></li>
+<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
+<li><p><a class="reference external" href="set_scientific_name.html">set_scientific_name</a></p></li>
+</ul>
+<p>Optional functions:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="set_abundance.html">set_abundance</a></p></li>
+<li><p><a class="reference external" href="set_collection.html">set_collection</a></p></li>
+<li><p><a class="reference external" href="set_individual_traits.html">set_individual_traits</a></p></li>
+<li><p><a class="reference external" href="set_license.html">set_license</a></p></li>
+<li><p><a class="reference external" href="set_locality.html">set_locality</a></p></li>
+<li><p><a class="reference external" href="set_taxonomy.html">set_taxonomy</a></p></li>
+</ul>
+<p>Creating Unique IDs:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="creating_unique_IDs.html">Creating Unique IDs for your Occurrences</a></p></li>
+</ul>
+<p>Passing Dataset:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="passing_dataset.html">Passing Dataset</a></p></li>
+</ul>
+</section>
+
 
                 </article>
               
@@ -414,7 +527,14 @@ document.write(`
     <i class="fa-solid fa-list"></i> On this page
   </div>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Creating Unique IDs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-ids">random IDs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-ids">sequential IDs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-ids">composite IDs</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-functions">Other functions</a></li>
 </ul>
 
   </nav></div>

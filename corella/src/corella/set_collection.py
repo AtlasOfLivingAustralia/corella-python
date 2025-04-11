@@ -28,7 +28,7 @@ def set_collection(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_collection vignette <../../html/corella_user_guide/independent_observations/set_collection.html>`_
     """
     
     # check for dataframe

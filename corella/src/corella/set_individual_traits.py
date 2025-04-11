@@ -36,7 +36,7 @@ def set_individual_traits(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_individual_traits vignette <../../html/corella_user_guide/independent_observations/set_individual_traits.html>`_
     """
 
     # check for dataframe

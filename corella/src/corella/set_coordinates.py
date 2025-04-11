@@ -41,7 +41,7 @@ def set_coordinates(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_coordinates vignette <../../html/corella_user_guide/independent_observations/set_coordinates.html>`_
     """
 
     # raise a ValueError if no dataframe is provided

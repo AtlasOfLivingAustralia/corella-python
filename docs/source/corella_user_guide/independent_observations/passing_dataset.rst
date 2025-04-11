@@ -24,6 +24,6 @@ occurrences dataset, your final step(s) will look like the following:
 
 And your final output from ``check_data()`` will look like this:
 
-.. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 31
+.. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 39
 
 `Back to Independent Observations TOC <index.html>`_

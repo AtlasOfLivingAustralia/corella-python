@@ -32,6 +32,7 @@ Formatting Events
 
         - :ref:`set_abundance_events`
         - :ref:`set_locality_events`
+        - :ref:`Creating Unique IDs`
 
 Example of Passing Dataset 
 ----------------------------
@@ -50,4 +51,5 @@ Example of Passing Dataset
    adding_eventID_occurrences
    set_abundance_events
    set_locality_events
+   ../independent_observations/Creating Unique IDs
    passing_dataset

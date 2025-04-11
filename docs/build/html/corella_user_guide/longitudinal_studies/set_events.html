@@ -413,7 +413,7 @@ span.prompt1:before {
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 39, in &lt;module&gt;
     new_events = corella.set_events(dataframe=events,eventType=&#39;type&#39;,samplingProtocol=&#39;Observation&#39;,
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 116, in set_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 115, in set_events
     raise ValueError(&quot;Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.&quot;)
 ValueError: Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.
 </pre></div>
@@ -428,11 +428,11 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
-0  52249eee-a095-449d-9d62-1eb0b2081aa1                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-1  30375cf8-9504-4f2d-968f-c28707cd3beb  52249eee-a095-449d-9d62-1eb0b2081aa1       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-2  870d79e4-d29a-4a42-8312-85c23852e6f5  30375cf8-9504-4f2d-968f-c28707cd3beb  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-3  8468a5bf-2b03-4dde-ae62-814b5c59cd8e                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
-4  3f10a079-cfaf-4843-9dc0-f4139c1f6344  8468a5bf-2b03-4dde-ae62-814b5c59cd8e       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+0  b9ab9c1a-ae45-4094-bac6-72cc14b6699e                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+1  0c1dc4cd-bc82-4892-9ba3-b80c3722c649  b9ab9c1a-ae45-4094-bac6-72cc14b6699e       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+2  6df59986-7680-4560-af4f-5181df3bf760  0c1dc4cd-bc82-4892-9ba3-b80c3722c649  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+3  f551f5d4-49ce-4004-aaf6-c941fa8f9399                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+4  b10925e5-5b9e-4d26-886e-6ebb1cee2793  f551f5d4-49ce-4004-aaf6-c941fa8f9399       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
 </pre></div>
 </div>
 </section>
@@ -471,7 +471,7 @@ again to see how our data is doing this time round.</p>
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventID, parentEventID, eventType, Event, samplingProtocol
-✗ Unmatched: Longitude, Collection_date, Species, number_birds, Latitude, location, date
+✗ Unmatched: Latitude, Collection_date, Longitude, number_birds, Species, location, date
 
 ── Minimum required DwC terms occurrences ──
 
@@ -506,7 +506,7 @@ corella.set_scientific_name()
 corella.set_coordinates()
 corella.set_datetime()
 
-Additional functions: set_abundance(), set_locality()
+Additional functions: set_abundance(), set_collection(), set_individual_traits(), set_license(), set_locality(), set_taxonomy()
 
 ── Events ──
 

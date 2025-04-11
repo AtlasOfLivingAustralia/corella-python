@@ -27,7 +27,7 @@ def set_scientific_name(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_scientific_name vignette <../../html/corella_user_guide/independent_observations/set_scientific_name.html>`_
     """
 
     # check for dataframe

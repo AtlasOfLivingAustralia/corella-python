@@ -66,21 +66,21 @@ def add_unique_IDs(dataframe=None,
                 return dataframe
             elif sequential_id and composite_id is None:
                 ids = [str(x) for x in range(dataframe.shape[0])]
-                dataframe[column_name] = ids
+                dataframe.insert(0,column_name,ids)
                 return dataframe
             elif composite_id is not None:
                 if sequential_id:
                     ids = [str(x) for x in range(dataframe.shape[0])]
                     if add_sequential_id == 'first':
                         if type(composite_id) is str:
-                            dataframe[column_name] = [item + sep for item in ids] + dataframe[composite_id]
+                            dataframe.insert(0,column_name,[item + sep for item in ids] + dataframe[composite_id])
                         else:
-                            dataframe[column_name] = [item + sep for item in ids] + dataframe[composite_id].agg(sep.join, axis=1)
+                            dataframe.insert(0,column_name,[item + sep for item in ids] + dataframe[composite_id].agg(sep.join, axis=1))
                     elif add_sequential_id == 'last':
                         if type(composite_id) is str:
-                            dataframe[column_name] = dataframe[composite_id] + [sep + item for item in ids]
+                            dataframe.insert(0,column_name,dataframe[composite_id] + [sep + item for item in ids])
                         else:
-                            dataframe[column_name] = dataframe[composite_id].agg(sep.join, axis=1) + [sep + item for item in ids]
+                            dataframe.insert(0,column_name,dataframe[composite_id].agg(sep.join, axis=1) + [sep + item for item in ids])
                     else:
                         raise ValueError("Please provide only \'first\' and \'last\' as arguments for add_sequential_id.")
                     return dataframe
@@ -88,20 +88,20 @@ def add_unique_IDs(dataframe=None,
                     ids = [str(uuid.uuid4()) for x in range(dataframe.shape[0])]
                     if add_random_id == 'first':
                         if type(composite_id) is str:
-                            dataframe[column_name] = [item + sep for item in ids] + dataframe[composite_id]
+                            dataframe.insert(0,column_name,[item + sep for item in ids] + dataframe[composite_id])
                         else:
-                            dataframe[column_name] = [item + sep for item in ids] + dataframe[composite_id].agg(sep.join, axis=1)
+                            dataframe.insert(0,column_name,[item + sep for item in ids] + dataframe[composite_id].agg(sep.join, axis=1))
                     elif add_random_id == 'last':
                         if type(composite_id) is str:
-                            dataframe[column_name] = dataframe[composite_id] + [sep + item for item in ids]
+                            dataframe.insert(0,column_name,dataframe[composite_id] + [sep + item for item in ids])
                         else:
-                            dataframe[column_name] = dataframe[composite_id].agg(sep.join, axis=1) + [sep + item for item in ids]
+                            dataframe.insert(0,column_name,dataframe[composite_id].agg(sep.join, axis=1) + [sep + item for item in ids])
                     else:
                         raise ValueError("Please provide only \'first\' and \'last\' as arguments for add_sequential_id.")
                     return dataframe
                 else:
                     if type(composite_id) is list:
-                        dataframe[column_name] = dataframe[composite_id].agg(sep.join, axis=1)
+                        dataframe.insert(0,column_name,dataframe[composite_id].agg(sep.join, axis=1))
                     else:
                         raise ValueError("Please provide more than one column names for composite id.  Or, add a sequential or random ID")
                     return dataframe

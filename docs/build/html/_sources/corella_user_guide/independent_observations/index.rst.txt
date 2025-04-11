@@ -22,6 +22,7 @@ These are all the functions for your ``occurrences.txt`` file.
     .. grid-item:: **Optional**
 
         - :ref:`convert_coordinates`
+        - :ref:`Creating Unique IDs`
         - :ref:`set_abundance`
         - :ref:`set_collection`
         - :ref:`set_individual_traits`
@@ -45,6 +46,7 @@ Example of Passing Dataset
    set_occurrences
    set_scientific_name
    convert_coordinates
+   Creating Unique IDs
    set_abundance
    set_collection
    set_individual_traits

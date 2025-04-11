@@ -67,8 +67,7 @@ def set_events(dataframe=None,
 
     Examples
     ----------
-
-        See `set_events vignette <./corella_user_guide/longitudinal_studies/set_events.html>`_ for a more detailed explanation.
+        `set_events vignette <../../html/corella_user_guide/longitudinal_studies/set_events.html>`_
     """
     
     # first, check for data frame

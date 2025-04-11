@@ -27,7 +27,7 @@ def set_abundance(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_abundance vignette <../../html/corella_user_guide/independent_observations/set_abundance.html>`_
     """
 
     # raise a ValueError if no dataframe is provided

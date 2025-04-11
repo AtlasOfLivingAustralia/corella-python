@@ -42,7 +42,7 @@ def check_dataset(occurrences=None,
     
     Examples
     --------
-        Add link to vignette.
+        `Passing Dataset Occurrences using check_dataset <../../html/corella_user_guide/independent_observations/passing_dataset.html>`_
     """
 
     # First, check if a dataframe is provided

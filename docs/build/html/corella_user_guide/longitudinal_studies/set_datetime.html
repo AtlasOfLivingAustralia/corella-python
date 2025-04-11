@@ -417,7 +417,7 @@ span.prompt1:before {
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 75, in &lt;module&gt;
     new_events = corella.set_datetime(dataframe=events,eventDate=&#39;date&#39;)
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 106, in set_datetime
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_datetime.py&quot;, line 101, in set_datetime
     raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
 ValueError: There are some errors in your data.  They are as follows:
 
@@ -477,7 +477,7 @@ again to see how our data is doing this time round.</p>
 Matched 1 of 4 column names to DwC terms:
 
 ✓ Matched: eventDate
-✗ Unmatched: type, name, location
+✗ Unmatched: type, location, name
 
 ── Minimum required DwC terms events ──
 
