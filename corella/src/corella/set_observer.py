@@ -25,7 +25,7 @@ def set_observer(dataframe=None,
 
     Examples
     ----------
-        Either add here later or link to vignettes.
+        `set_observer vignette <../../html/corella_user_guide/independent_observations/set_observer.html>`_
     """
     # check for dataframe
     check_for_dataframe(dataframe=dataframe,func='set_scientific_name')
