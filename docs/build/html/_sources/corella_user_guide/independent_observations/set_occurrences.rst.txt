@@ -19,10 +19,14 @@ For example, was it a machine that observed it? A human? Is this a specimen
 that's part of a collection?
 
 Depending on your answer to these questions, the information you provide will differ.  
-Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current 
-accepted values are as follows:
+Luckily, Darwin Core has a predefined vocabulary to help you with this, and ``corella`` 
+will tell you what this vocab is with the following function:
 
-.. program-output:: python corella_user_guide/independent_observations/bor_values.py
+.. prompt:: python
+
+    >>> corella.basisOfRecord_values()
+
+.. program-output:: python -c "import corella;print(corella.basisOfRecord_values())"
 
 For this exercise, let's assume a human has seen these, which equates to a value of 
 ``HumanObservation``.  We can then set the ``basisOfRecord`` argument as ``HumanObservation``, 

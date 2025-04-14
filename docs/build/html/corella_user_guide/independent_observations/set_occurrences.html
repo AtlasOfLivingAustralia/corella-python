@@ -403,27 +403,26 @@ field for an observation, as it lets others know how the record was recorded.
 For example, was it a machine that observed it? A human? Is this a specimen
 that’s part of a collection?</p>
 <p>Depending on your answer to these questions, the information you provide will differ.
-Luckily, Darwin Core has a predefined vocabulary to help you with this.  The current
-accepted values are as follows:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>- Observation
-- HumanObservation
-- MaterialCitation
-- PreservedSpecimen
-- MachineObservation
-- FossilSpecimen
-- MaterialSample
-- Occurrence
-- LivingSpecimen
+Luckily, Darwin Core has a predefined vocabulary to help you with this, and <code class="docutils literal notranslate"><span class="pre">corella</span></code>
+will tell you what this vocab is with the following function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">basisOfRecord_values</span><span class="p">()</span></span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  basisOfRecord values
+0     humanObservation
+1   machineObservation
+2       livingSpecimen
+3    preservedSpecimen
+4       fossilSpecimen
+5     materialCitation
 </pre></div>
 </div>
 <p>For this exercise, let’s assume a human has seen these, which equates to a value of
 <code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>.  We can then set the <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> argument as <code class="docutils literal notranslate"><span class="pre">HumanObservation</span></code>,
 and it will, by default, set the value of <code class="docutils literal notranslate"><span class="pre">basisOfRecord</span></code> for the whole dataframe.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
-span.prompt1:before {
-  content: " ";
-}
-</style><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>     <span class="n">basisOfRecord</span><span class="o">=</span><span class="s1">&#39;HumanObservation&#39;</span></span>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
@@ -464,11 +463,11 @@ generating IDs.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
-0  45503099-cb53-4d23-86f4-2d679e369295       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1  b98f1696-e14b-4ba9-b499-1579f36e0a51     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2  ae7f5e1f-77cf-4c2c-a538-c0e146c31dff           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3  6f511550-2f99-4b1c-8230-636517856083  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4  c078fc82-782d-49da-8b36-99d4f3957c93        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+0  966f873a-cd17-4649-a687-bd0c6681b203       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1  ab73665b-6464-437b-9b7d-ecc16f2a0a4c     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2  bf83e995-30ac-45e7-bd5c-7f5e1ab446f4           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3  3af103cb-122c-4b8a-9b12-9bba1a434113  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4  31069383-4ba6-4bb7-b5ba-002e5ea0dd69        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -493,11 +492,11 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0  9a845b72-a9b8-4b5b-8eb5-b42cbdb7ba7e       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1  47775f72-e99d-4ad7-957c-6794789d10b0     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2  9bdb4559-d6e4-4d75-9869-2d3a85f8d6f1           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3  65c29b43-f7ea-4b90-a1c6-7ad9c8c345ef  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4  54fb81b3-628f-478d-84b7-b242751f388f        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+0  8fdc7d54-55d4-428c-a4e4-f3af9247862c       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1  192887b6-3cb1-4709-9b1f-a01d3fba615d     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2  879659d7-2edb-42c4-a79b-de346eca44ae           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3  9f3876e0-405e-417d-845d-54e6c4530a0d  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4  65467d57-8446-4242-bbb8-64eb99f00a76        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -546,7 +545,7 @@ again to see what other functions we can use to check our data:</p>
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Longitude, Collection_date, Latitude, Species
+✗ Unmatched: Collection_date, Species, Latitude, Longitude
 
 ── Minimum required DwC terms occurrences ──
 
