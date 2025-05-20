@@ -3,13 +3,6 @@ import corella
 import pandas as pd
 import uuid
 
-'''
-individualID=None,
-                          lifeStage=None,
-                          sex=None,
-                          vitality=None,
-                          reproductiveCondition=None
-'''
 def test_no_dataframe():
     with pytest.raises(Exception) as e_info:
         corella.set_individual_traits()

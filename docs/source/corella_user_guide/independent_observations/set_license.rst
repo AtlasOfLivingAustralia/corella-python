@@ -24,7 +24,7 @@ For specifying license information for individual organisms, as well as the righ
     ...                           accessRights=['','not-for-profit use only'])
     >>> occ.head()
 
-.. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 33
+.. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 34
 
 Other functions
 ---------------------------------------

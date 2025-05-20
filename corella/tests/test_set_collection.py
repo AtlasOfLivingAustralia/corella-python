@@ -3,12 +3,6 @@ import pytest
 import pandas as pd
 import uuid
 
-'''
-datasetID=None,
-datasetName=None,
-catalogNumber=None
-'''
-
 def test_no_dataframe():
     with pytest.raises(Exception) as e_info:
         corella.set_collection()

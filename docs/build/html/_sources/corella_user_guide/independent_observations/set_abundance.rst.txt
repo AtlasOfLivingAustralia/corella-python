@@ -3,7 +3,9 @@
 set_abundance
 --------------------
 
-**Note: the information here is not required by the ALA**
+.. Note:: 
+    
+    Abundance information is not required by the ALA, but it is nice to have.
 
 One of the functions you can use to check your data is ``set_abundance()``.  
 This function aims to check that you have the following:
@@ -33,6 +35,9 @@ the number of individuals observed:
 
 specifying ``individualCount``
 -----------------------------------------
+
+You can also specify the  number of individuals you observed with the ``individualCount`` 
+argument.
 
 .. prompt:: python
 

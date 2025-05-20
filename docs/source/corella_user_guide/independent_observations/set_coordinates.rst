@@ -31,17 +31,17 @@ correct ranges.
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 15
 
-*Note: Non-numeric values*
+.. note:: Non-numeric values
 
-If you get an error saying some latitude and longitude values are not numeric, 
-that's ok!  Luckily, ``pandas`` has a function called ``to_numeric`` which will
- convert strings to numeric values for you (assuming those strings are numbers).  
- Below is an example of how to convert a column to all numeric values.  Once this 
- is completed, you can use the command above.
+    If you get an error saying some latitude and longitude values are not numeric, 
+    that's ok!  Luckily, ``pandas`` has a function called ``to_numeric`` which will
+    convert strings to numeric values for you (assuming those strings are numbers).  
+    Below is an example of how to convert a column to all numeric values.  Once this 
+    is completed, you can use the command above.
 
-.. prompt:: python
+    .. prompt:: python
 
-    >>> occ['latitude'] = pd.to_numeric(occ['Latitude'],errors='coerce')
+        >>> occ['latitude'] = pd.to_numeric(occ['Latitude'],errors='coerce')
 
 ``geodeticDatum``
 =====================================
@@ -86,8 +86,10 @@ in decimal degrees, and the latter is in meters.
 what does ``check_data`` and ``suggest_workflow`` say now? 
 ===========================================================
 
-*Note:* each of the ``set_*`` functions checks your data for compliance with the 
-Darwin core standard, but it's always good to double-check your data.
+.. note::
+    
+    Each of the ``set_*`` functions checks your data for compliance with the 
+    Darwin core standard, but it's always good to double-check your data.
 
 Now, we can check that our data column do comply with the Darwin Core standard.
 

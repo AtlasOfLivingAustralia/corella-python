@@ -388,7 +388,10 @@ document.write(`
                   
   <section id="set-abundance">
 <span id="id1"></span><h1>set_abundance<a class="headerlink" href="#set-abundance" title="Link to this heading">#</a></h1>
-<p><strong>Note: the information here is not required by the ALA</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Abundance information is not required by the ALA, but it is nice to have.</p>
+</div>
 <p>One of the functions you can use to check your data is <code class="docutils literal notranslate"><span class="pre">set_abundance()</span></code>.
 This function aims to check that you have the following:</p>
 <ul class="simple">
@@ -418,6 +421,8 @@ span.prompt1:before {
 </pre></div></div></section>
 <section id="specifying-individualcount">
 <h1>specifying <code class="docutils literal notranslate"><span class="pre">individualCount</span></code><a class="headerlink" href="#specifying-individualcount" title="Link to this heading">#</a></h1>
+<p>You can also specify the  number of individuals you observed with the <code class="docutils literal notranslate"><span class="pre">individualCount</span></code>
+argument.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_abundance</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">individualCount</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    species latitude  longitude        date   status  individualCount
 0  Callocephalon fimbriatum   -35.31    149.125  14-01-2023  present                2
