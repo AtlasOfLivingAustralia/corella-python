@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![pypi](https://img.shields.io/pypi/v/galah-python.svg)](https://pypi.org/project/galah-python/)
+[![pypi](https://img.shields.io/pypi/v/corella-python.svg)](https://pypi.org/project/corella-python/)
 
 <!-- badges: end -->
 
