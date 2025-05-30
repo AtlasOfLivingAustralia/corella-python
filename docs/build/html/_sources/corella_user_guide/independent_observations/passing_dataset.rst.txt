@@ -12,13 +12,13 @@ occurrences dataset, your final step(s) will look like the following:
     >>> import corella
     >>>
     >>> occ = pd.read_csv('<NAME-OF-OCCURRENCES>.csv')
-    >>> occ = corella.use_occurrences(dataframe=occ,basisOfRecord='HumanObservation',
+    >>> occ = corella.set_occurrences(dataframe=occ,basisOfRecord='HumanObservation',
     ...                               occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
-    >>> occ = corella.use_scientific_name(dataframe=occ,scientificName='Species')
-    >>> occ = corella.use_coordinates(dataframe=occ,decimalLatitude='Latitude',
+    >>> occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')
+    >>> occ = corella.set_coordinates(dataframe=occ,decimalLatitude='Latitude',
     ...                               decimalLongitude='Longitude',geodeticDatum='WGS84',
     ...                               coordinatePrecision=0.1)
-    >>> occ = corella.use_datetime(dataframe=occ,eventDate='Collection_date',
+    >>> occ = corella.set_datetime(dataframe=occ,eventDate='Collection_date',
     ...                            string_to_datetime=True,yearfirst=False,dayfirst=True)
     >> corella.check_data(occurrences=occ)
 
