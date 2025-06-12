@@ -463,11 +463,11 @@ generating IDs.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord
-0  aaae5a45-c452-4f25-a1be-5edd65823eca       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
-1  c4092ef7-9b7e-4c26-bffc-cf32a0e20c88     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
-2  2eff992a-1bef-4638-86dd-4f0c70beac91           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
-3  fde0a6d1-33b0-4421-aaad-f6c2b5557824  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
-4  e521a219-3522-4a33-ad27-1c881976cdc1        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
+0  e990c9d1-c166-42b8-904b-8a4bb1c36819       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation
+1  852f835a-1125-47c6-8c9a-b506b3079457     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation
+2  540e6ff0-9180-4a9b-ba61-9d9c5600feea           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation
+3  cc5c32de-e7ce-48ac-a0fc-a79f8cf75106  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation
+4  6decbf11-ab44-455a-b8b6-1e57d563fd7c        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation
 </pre></div>
 </div>
 </section>
@@ -492,11 +492,11 @@ Darwin Core standard.</p>
 <span class="prompt1"><span class="o">...</span> <span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occurrences</span><span class="o">.</span><span class="n">head</span><span class="p">()</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID                  Species  Latitude  Longitude Collection_date     basisOfRecord occurrenceStatus
-0  431666c2-6dbb-489e-adb4-eba653a778f5       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
-1  5df12363-ceec-44c7-a48c-586aea0935df     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
-2  ef7ac635-8a98-4d7c-9af1-99990bf2e95c           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
-3  fc70f096-1e65-4c07-84ff-33a369a57c3c  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
-4  e16149a0-cfdb-47e4-aeb0-4ccac7cd927c        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
+0  a19477a4-561f-4d8a-aa7e-d4f1fff6d0ba       Corymbia latifolia    -13.04     131.07       29/3/2022  HumanObservation          PRESENT
+1  e71f5715-fac3-419c-8b6d-2b9e7158de93     Eucalyptus tectifica    -13.04     131.07       13/9/2022  HumanObservation          PRESENT
+2  cf17ec44-e535-4894-a46e-218af4075f47           Banksia aemula    -33.60     150.72       15/8/2022  HumanObservation          PRESENT
+3  08d33206-fe5f-4d27-bddb-b2b726ba7eea  Eucalyptus sclerophylla    -33.60     150.72       16/6/2022  HumanObservation          PRESENT
+4  ae822f05-6a49-4332-9853-c4c83822246d        Persoonia laurina    -33.60     150.72      19/10/2022  HumanObservation          PRESENT
 </pre></div>
 </div>
 </section>
@@ -545,7 +545,7 @@ again to see what other functions we can use to check our data:</p>
 Matched 3 of 7 column names to DwC terms:
 
 ✓ Matched: occurrenceID, basisOfRecord, occurrenceStatus
-✗ Unmatched: Longitude, Collection_date, Species, Latitude
+✗ Unmatched: Longitude, Species, Latitude, Collection_date
 
 ── Minimum required DwC terms occurrences ──
 
@@ -576,7 +576,7 @@ Additional functions: set_abundance(), set_collection(), set_individual_traits()
 <p>To learn more about how to use other functions, go to</p>
 <ul class="simple">
 <li><p><a class="reference external" href="set_coordinates.html">set_coordinates</a></p></li>
-<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
+<li><p><a class="reference external" href="set_datetime_occ.html">set_datetime</a></p></li>
 <li><p><a class="reference external" href="set_scientific_name.html">set_scientific_name</a></p></li>
 </ul>
 <p>Optional functions:</p>

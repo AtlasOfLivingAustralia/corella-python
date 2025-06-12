@@ -1,4 +1,4 @@
-.. _set_datetime:
+.. _set_datetime_events:
 
 set_datetime
 ======================================

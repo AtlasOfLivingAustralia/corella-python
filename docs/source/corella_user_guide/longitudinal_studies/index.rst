@@ -25,14 +25,13 @@ Formatting Events
 
          - :ref:`Initial_Data_Check_Events`
          - :ref:`set_events`
-         - :ref:`set_datetime`
+         - :ref:`set_datetime_events`
          - :ref:`adding_eventID_occurrences`
 
     .. grid-item:: **Optional**
 
         - :ref:`set_abundance_events`
         - :ref:`set_locality_events`
-        - :ref:`Creating Unique IDs`
 
 Example of Passing Dataset 
 ----------------------------
@@ -47,9 +46,9 @@ Example of Passing Dataset
    How_to_Structure_Events
    Initial_Data_Check_Events
    set_events
-   set_datetime
+   set_datetime_events
    adding_eventID_occurrences
    set_abundance_events
    set_locality_events
-   ../independent_observations/Creating Unique IDs
+   ../independent_observations/creating_unique_IDs
    passing_dataset

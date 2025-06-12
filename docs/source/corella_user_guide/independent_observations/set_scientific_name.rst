@@ -56,7 +56,7 @@ To learn more about how to use other functions, go to
 
 - `set_occurrences <set_occurrences.html>`_
 - `set_coordinates <set_coordinates.html>`_
-- `set_datetime <set_datetime.html>`_
+- `set_datetime <set_datetime_occ.html>`_
 
 Optional functions:
 

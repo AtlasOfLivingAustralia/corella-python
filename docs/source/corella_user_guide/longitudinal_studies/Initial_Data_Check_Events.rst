@@ -8,8 +8,6 @@ check to ensure the ingestion process into the ALA is smooth.  Some of this is e
 that your column names conform to Darwin Core Vocabulary standards, and that your 
 data is in the correct format (i.e. numerical columns are actually numerical).  
 
-*Note: the 
-
 For these examples, we will be using the the dataset linked in the homepage.  If, however, you want to 
 go through this workflow using your own data, please feel free to do so!  
 
