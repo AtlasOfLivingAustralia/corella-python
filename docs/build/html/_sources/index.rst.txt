@@ -20,7 +20,7 @@ and published to open data infrastructures like the
 ``corella`` was built, and is maintained, by the 
 `Science & Decision Support Team <https://labs.ala.org.au/>`_ at the 
 `Atlas of Living Australia <https://www.ala.org.au/>`_ (ALA). It is 
-named for the Little Corella (`*Cacatua sanguinea* <https://bie.ala.org.au/species/https%3A//biodiversity.org.au/afd/taxa/34b31e86-7ade-4cba-960f-82a6ae586206>`_). 
+named for the Little Corella (`Cacatua sanguinea <https://bie.ala.org.au/species/https%3A//biodiversity.org.au/afd/taxa/34b31e86-7ade-4cba-960f-82a6ae586206>`_). 
 The logo was designed by `Dax Kellie <https://daxkellie.com/>`_.
 
 If you have any comments, questions or suggestions, please `contact us <mailto:support@ala.org.au>`_.

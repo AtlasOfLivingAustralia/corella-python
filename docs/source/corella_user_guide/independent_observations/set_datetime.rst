@@ -1,4 +1,4 @@
-.. _set_datetime:
+.. _set_datetime_occ:
 
 set_datetime
 --------------------
@@ -77,7 +77,6 @@ To learn more about how to use other functions, go to
 
 - `set_occurrences <set_occurrences.html>`_
 - `set_coordinates <set_coordinates.html>`_
-- `set_datetime <set_datetime.html>`_
 - `set_scientific_name <set_scientific_name.html>`_
 
 Optional functions:

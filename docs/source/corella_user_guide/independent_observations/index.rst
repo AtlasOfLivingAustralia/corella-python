@@ -1,10 +1,13 @@
 :orphan:
 
 Independent Observations
-===================================
+----------------------------
 
 Example Data: 
 :download:`Example Occurrences<../data/occurrences_dwc.csv>`
+
+Functions
+=================
 
 These are all the functions for your ``occurrences.txt`` file.
 
@@ -15,14 +18,14 @@ These are all the functions for your ``occurrences.txt`` file.
 
         - :ref:`Initial Data Check`
         - :ref:`set_coordinates`
-        - :ref:`set_datetime`
+        - :ref:`set_datetime_occ`
         - :ref:`set_occurrences`
         - :ref:`set_scientific_name`
 
-    .. grid-item:: **Optional**
+    .. grid-item:: **Optional**`
 
         - :ref:`convert_coordinates`
-        - :ref:`Creating Unique IDs`
+        - :ref:`creating_unique_IDs`
         - :ref:`set_abundance`
         - :ref:`set_collection`
         - :ref:`set_individual_traits`
@@ -31,7 +34,8 @@ These are all the functions for your ``occurrences.txt`` file.
         - :ref:`set_taxonomy`
 
 Example of Passing Dataset 
-----------------------------
+==================================
+
 - :ref:`What Does A Passing Occurrences Dataset Look Like?`
 
 
@@ -46,7 +50,7 @@ Example of Passing Dataset
    set_occurrences
    set_scientific_name
    convert_coordinates
-   Creating Unique IDs
+   creating_unique_IDs
    set_abundance
    set_collection
    set_individual_traits

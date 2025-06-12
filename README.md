@@ -11,7 +11,7 @@
 
 ## Overview
 
-`corella-python` is an R package that helps users standardize their data using
+`corella-python` is a Python package that helps users standardize their data using
 the [*Darwin Core*](https://dwc.tdwg.org) data standard, used for
 biodiversity data like species occurrences. `corella-python` provides tools to
 prepare, manipulate and validate data against the standard’s criteria.
