@@ -26,3 +26,11 @@ pytest = "^7.4.3"
 requests = "^2.31.0"
 
 [tool.poetry.dev-dependencies]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+tag_format = "$version"
+version_scheme = "pep440"
+version = "0.1.1"
+update_changelog_on_bump = true
+major_version_zero = true
