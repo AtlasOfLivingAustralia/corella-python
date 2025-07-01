@@ -8,12 +8,7 @@ def set_occurrences(dataframe=None,
                     catalogNumber=None,
                     recordNumber=None,
                     basisOfRecord=None,
-                    sequential_id=False,
-                    add_sequential_id='first',
-                    composite_id=None,
                     sep='-',
-                    random_id=False,
-                    add_random_id='first',
                     occurrenceStatus=None,
                     errors=[],
                     add_eventID=False,
@@ -26,33 +21,22 @@ def set_occurrences(dataframe=None,
     ----------
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
-        occurrenceID: ``str`` or ``bool``
-            Either a column name (``str``) or ``True`` (``bool``).  If a column name is 
-            provided, the column will be renamed.  If ``True`` is provided, unique identifiers
-            will be generated in the dataset.
+        occurrenceID: ``str``, ``bool`` or ``list``
+            You can provide 3 types of arguments to ``occurrenceID``:
+            - ``str``: rename the column of interest to ``occurrenceID``
+            - ``bool``: generate random UUIDs
+            - ``list``: generate composite ids.  If you want either sequential numbers or 
+                        random UUIDs added, use the keywords ``"sequential"`` or ``"random"``
+                        to your 
             *Note*: Every occurrence should have an occurrenceID entry. Ideally, IDs should be 
             persistent to avoid being lost in future updates. They should also be unique, both within 
             the dataset, and (ideally) across all other datasets.
         catalogNumber: ``str`` or ``bool``
-            Either a column name (``str``) or ``True`` (``bool``).  If a column name is 
-            provided, the column will be renamed.  If ``True`` is provided, unique identifiers
-            will be generated in the dataset.
+            See ``occurrenceID``
         recordNumber: ``str`` or ``bool``
-            Either a column name (``str``) or ``True`` (``bool``).  If a column name is 
-            provided, the column will be renamed.  If ``True`` is provided, unique identifiers
-            will be generated in the dataset.
-        sequential_id: ``logical``
-            Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
-        add_sequential_id: ``str``
-            Determine where to add sequential id in composite id.  Values are ``first`` and ``last``.  Default is ``first``.
-        composite_id: ``str``, ``list``
-            ``str`` or ``list`` containing columns to create composite IDs.  Can be combined with sequential ID.
+            See ``occurrenceID``
         sep: ``char``
             Separation character for composite IDs.  Default is ``-``.
-        random_id: ``logical``
-            Create a random ID using the ``uuid`` package.  Default is ``False``.
-        add_random_id: ``str``
-            Determine where to add sequential id in random id.  Values are ``first`` and ``last``.  Default is ``first``.        
         basisOfRecord: ``str``
             Either a column name (``str``) or a valid value for ``basisOfRecord`` to add to 
             the dataset.  For values of ``basisOfRecord``, it only accepts ``camelCase``, for consistency with field 
@@ -98,7 +82,7 @@ def set_occurrences(dataframe=None,
 
     # accepted data formats for each argument
     accepted_formats = {
-        'occurrenceID': [str,bool],
+        'occurrenceID': [str,list,bool],
         'catalogNumber': [str],
         'recordNumber': [str],
         'basisOfRecord': [str],
@@ -109,14 +93,34 @@ def set_occurrences(dataframe=None,
     variables = [occurrenceID,catalogNumber,recordNumber,basisOfRecord,occurrenceStatus]
     values = ['occurrenceID','catalogNumber','recordNumber','basisOfRecord','occurrenceStatus']
 
-    # set column names and values specified by user
-    dataframe = set_data_workflow(func='set_occurrences',dataframe=dataframe,mapping=mapping,variables=variables,
-                                  values=values,accepted_formats=accepted_formats)
-    
+    # if user wants a random or sequential ID
+    for id in ['occurrenceID','catalogNumber','recordNumber']:
+        if mapping[id] in ['random','sequential']:
+            values.remove(id)
+            variables.remove(mapping[id])
+            del mapping[id]
+            del accepted_formats[id]
+
+    if any(x in ['random','sequential'] for x in [occurrenceID,catalogNumber,recordNumber]):
+        if not all(mapping[x] is None for x in mapping):
+            # set column names and values specified by user
+            dataframe = set_data_workflow(func='set_occurrences',dataframe=dataframe,mapping=mapping,variables=variables,
+                                          values=values,accepted_formats=accepted_formats)
+        else:
+            print("here")
+    else:
+        dataframe = set_data_workflow(func='set_occurrences',dataframe=dataframe,mapping=mapping,variables=variables,
+                                      values=values,accepted_formats=accepted_formats)
+
     # check if unique occurrence IDs need to be added
-    if (type(occurrenceID) is bool) and occurrenceID: 
-        dataframe = add_unique_IDs(column_name='occurrenceID',sequential_id=sequential_id,add_sequential_id=add_sequential_id,
-                                   composite_id=composite_id,sep=sep,random_id=random_id,add_random_id=add_random_id,
+    if (type(occurrenceID) in [str,bool,list] and 'occurrenceID' not in dataframe.columns): 
+        dataframe = add_unique_IDs(column_name='occurrenceID',sep=sep,column_info=occurrenceID,
+                                   dataframe=dataframe)
+    if (type(catalogNumber) in [str,bool,list] and 'catalogNumber' not in dataframe.columns): 
+        dataframe = add_unique_IDs(column_name='catalogNumber',sep=sep,column_info=catalogNumber,
+                                   dataframe=dataframe)
+    if (type(recordNumber)  in [str,bool,list] and 'recordNumber' not in dataframe.columns): 
+        dataframe = add_unique_IDs(column_name='recordNumber',sep=sep,column_info=recordNumber,
                                    dataframe=dataframe)
         
     # check if we are adding eventID to occurrences

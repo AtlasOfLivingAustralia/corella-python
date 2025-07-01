@@ -12,7 +12,7 @@ def set_data_workflow(func=None,
                       accepted_formats=None):
 
     # check if all args are empty
-    check_if_all_args_empty(dataframe=dataframe,func='set_taxonomy',keys=variables,values=values)
+    check_if_all_args_empty(dataframe=dataframe,func=func,keys=variables,values=values)
 
     # check column names and values
     dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
