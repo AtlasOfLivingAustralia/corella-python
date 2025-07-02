@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>set_events &#8212; corella 0.1.1 documentation</title>
+    <title>set_events &#8212; corella 0.1.2 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
+    <script src="../../_static/documentation_options.js?v=92734c54"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.1 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.1 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.2 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.2 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -429,11 +429,11 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
                                 eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
-0  c4de5d6a-854b-478c-b57c-3ede10bc2adc                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-1  a1dbd4d1-500c-4112-8a3f-b43f8e0a5d8a  c4de5d6a-854b-478c-b57c-3ede10bc2adc       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-2  9026accd-9eeb-4a15-a816-fcfab992a368  a1dbd4d1-500c-4112-8a3f-b43f8e0a5d8a  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-3  f5773602-8018-40f8-ba89-e24ef1aba8e5                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
-4  6145684e-fb00-4d00-829e-cee1e979eca8  f5773602-8018-40f8-ba89-e24ef1aba8e5       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+0  594ad0b3-2fb7-4741-9200-2e53d4be89c3                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+1  1f798ae6-eab9-4b28-be20-d41e7ac3ca4c  594ad0b3-2fb7-4741-9200-2e53d4be89c3       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+2  19f8541e-ddbd-47e7-83f1-e2aa400dc39b  1f798ae6-eab9-4b28-be20-d41e7ac3ca4c  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+3  5c412291-f247-4161-b98e-0f87a080febf                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+4  ce612b80-d659-41fa-8e5e-c09b309fee89  5c412291-f247-4161-b98e-0f87a080febf       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
 </pre></div>
 </div>
 </section>
@@ -475,7 +475,7 @@ again to see how our data is doing this time round.</p>
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventID, parentEventID, eventType, Event, samplingProtocol
-✗ Unmatched: Longitude, number_birds, Latitude, Species, Collection_date, date, location
+✗ Unmatched: Latitude, Collection_date, Species, Longitude, number_birds, location, date
 
 ── Minimum required DwC terms occurrences ──
 
