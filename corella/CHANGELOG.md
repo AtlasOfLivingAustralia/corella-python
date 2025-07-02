@@ -1,3 +1,9 @@
+## 0.1.2 (2025-07-02)
+
+### Fix
+
+- **fixed-some-bugs-wih-generating-an-ID**: fixed some bugs with generating an ID
+
 ## 0.1.1 (2025-07-02)
 
 ### Feat

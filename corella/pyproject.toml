@@ -29,13 +29,11 @@ requests = "^2.31.0"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
+update_changelog_on_bump = true
 tag_format = "$version"
-version_scheme = "pep440"
-version = "0.1.1"
+version = "0.1.2"
 version_files = [
     "pyproject.toml:version",
-    "src/galah/version.py:version",
+    "src/corella/version.py:version",
     "setup.py:version"
 ]
-update_changelog_on_bump = true
-major_version_zero = true
