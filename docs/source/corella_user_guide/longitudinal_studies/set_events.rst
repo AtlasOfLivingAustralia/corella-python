@@ -71,9 +71,9 @@ Other functions
 
 To learn more about how to use these functions, go to 
 
- - `set_datetime <set_datetime.html>`_
+ - `set_datetime <set_datetime_events.html>`_
 
 Optional functions:
 
-- `set_abundance <set_abundance.html>`_
-- `set_locality <set_locality.html>`_
+- `set_abundance <set_abundance_events.html>`_
+- `set_locality <set_locality_events.html>`_

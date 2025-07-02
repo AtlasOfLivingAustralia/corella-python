@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>set_events &#8212; corella 0.1.0 documentation</title>
+    <title>set_events &#8212; corella 0.1.2 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/documentation_options.js?v=92734c54"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.2 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.2 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -413,7 +413,7 @@ span.prompt1:before {
   File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 39, in &lt;module&gt;
     new_events = corella.set_events(dataframe=events,eventType=&#39;type&#39;,samplingProtocol=&#39;Observation&#39;,
                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 115, in set_events
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_events.py&quot;, line 116, in set_events
     raise ValueError(&quot;Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.&quot;)
 ValueError: Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.
 </pre></div>
@@ -427,12 +427,13 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <span class="prompt1"><span class="o">...</span>                    <span class="n">samplingProtocol</span><span class="o">=</span><span class="s1">&#39;Observation&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">Event</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
-0  eb313020-270a-477a-8178-b662dc053e5b                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-1  ced2f203-f0fd-492e-bed4-b34ece846234  eb313020-270a-477a-8178-b662dc053e5b       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-2  1cd4034b-b8ef-4246-a46d-924a9b2af9ba  ced2f203-f0fd-492e-bed4-b34ece846234  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-3  1e35f7a3-7c4e-4a61-b609-e4895fa6ba1e                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
-4  d944a502-09d1-4bb6-a7da-40661a5c3c28  1e35f7a3-7c4e-4a61-b609-e4895fa6ba1e       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+                                eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
+0  594ad0b3-2fb7-4741-9200-2e53d4be89c3                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+1  1f798ae6-eab9-4b28-be20-d41e7ac3ca4c  594ad0b3-2fb7-4741-9200-2e53d4be89c3       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+2  19f8541e-ddbd-47e7-83f1-e2aa400dc39b  1f798ae6-eab9-4b28-be20-d41e7ac3ca4c  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+3  5c412291-f247-4161-b98e-0f87a080febf                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+4  ce612b80-d659-41fa-8e5e-c09b309fee89  5c412291-f247-4161-b98e-0f87a080febf       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
 </pre></div>
 </div>
 </section>
@@ -443,7 +444,8 @@ Darwin core standard, but it’s always good to double-check your data.</p>
 <p>Now, we can check that our data column do comply with the Darwin Core standard.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occurrences</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                    <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+  Number of Errors  Pass/Fail    Column name
 ------------------  -----------  ----------------
                  0  ✓            eventID
                  0  ✓            parentEventID
@@ -464,14 +466,16 @@ Use corella.suggest_workflow()
 <p>However, since we don’t have all of the required columns, we can run <code class="docutils literal notranslate"><span class="pre">suggest_workflow()</span></code>
 again to see how our data is doing this time round.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">suggest_workflow</span><span class="p">(</span><span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+
+── Darwin Core terms ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
 ── All DwC terms ──
 
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventID, parentEventID, eventType, Event, samplingProtocol
-✗ Unmatched: Species, Collection_date, number_birds, Latitude, Longitude, date, location
+✗ Unmatched: Latitude, Collection_date, Species, Longitude, number_birds, location, date
 
 ── Minimum required DwC terms occurrences ──
 
@@ -521,13 +525,13 @@ corella.set_datetime()
 <p>To learn more about how to use these functions, go to</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><a class="reference external" href="set_datetime.html">set_datetime</a></p></li>
+<li><p><a class="reference external" href="set_datetime_events.html">set_datetime</a></p></li>
 </ul>
 </div></blockquote>
 <p>Optional functions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="set_abundance.html">set_abundance</a></p></li>
-<li><p><a class="reference external" href="set_locality.html">set_locality</a></p></li>
+<li><p><a class="reference external" href="set_abundance_events.html">set_abundance</a></p></li>
+<li><p><a class="reference external" href="set_locality_events.html">set_locality</a></p></li>
 </ul>
 </section>
 </section>

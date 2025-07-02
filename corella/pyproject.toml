@@ -26,3 +26,14 @@ pytest = "^7.4.3"
 requests = "^2.31.0"
 
 [tool.poetry.dev-dependencies]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+update_changelog_on_bump = true
+tag_format = "$version"
+version = "0.1.2"
+version_files = [
+    "pyproject.toml:version",
+    "src/corella/version.py:version",
+    "setup.py:version"
+]

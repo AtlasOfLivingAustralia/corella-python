@@ -14,15 +14,11 @@ There are three ways you can create identifiers for your occurrences/events:
 - sequential IDs
 - composite IDs
 
-.. Note::
-
-    All of the IDs need to have ``occurrenceID`` set to ``True`` in ``set_occurrences()`` and ``set_events()``.
-
 random IDs
 =============
 
 Random IDs are created automatically in ``corella`` using the `uuid package <https://pypi.org/project/uuid/>`_.  
-To automatically generate random IDs, set ``random_id=True`` like so:
+To automatically generate random IDs, set ``occurrenceID='random'`` like so:
 
 .. prompt:: python
 
@@ -30,7 +26,7 @@ To automatically generate random IDs, set ``random_id=True`` like so:
     ...                     'latitude': [-35.310, -35.273], 
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
-    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,random_id=True)
+    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID='random')
     >>> occ
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 35
@@ -39,7 +35,7 @@ sequential IDs
 ==================
 
 Sequential IDs are created from 0 to the number of rows in the data frame.  Like above, to generate sequential 
-ids, set ``sequential_id=True``.
+ids, set ``occurrenceID='sequential'``.
 
 .. prompt:: python
 
@@ -47,7 +43,7 @@ ids, set ``sequential_id=True``.
     ...                     'latitude': [-35.310, -35.273], 
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
-    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,sequential_id=True)
+    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID='sequential')
     >>> occ
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 36
@@ -55,14 +51,10 @@ ids, set ``sequential_id=True``.
 composite IDs
 ==================
 
-If you don't want only UUIDs or sequential IDs, but a composite of multiple items, the ``composite_id`` option 
-exists.  You can do the following:
-
-- Have a composite ID with multiple columns, separated by ``sep``.  This is, by default, ``-`` but can be changed.
-- Have a composite ID with one or more columns, and a UUID either at the beginning or end of the ID.
-- Have a composite ID with one or more columns, and a sequential ID either at the beginning or end of the ID.
-
-Below are examples with sequential ID and random ID, both at the beginning or the end of the ID.
+If you don't want only UUIDs or sequential IDs, but a composite of multiple items, you can provide a list of 
+column names and keywords in the order you want to compose your unique ID. Below are examples using the ``'date'`` 
+column in conjunction with either the keywords ``sequential`` or ``random`` to add either sequential or random 
+IDs to your composite ID.
 
 .. prompt:: python
 
@@ -70,7 +62,7 @@ Below are examples with sequential ID and random ID, both at the beginning or th
     ...                     'latitude': [-35.310, -35.273], 
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
-    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',sequential_id=True,add_sequential_id='first')
+    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID=['sequential','date'])
     >>> occ
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 37
@@ -81,7 +73,7 @@ Below are examples with sequential ID and random ID, both at the beginning or th
     ...                     'latitude': [-35.310, -35.273], 
     ...                     'longitude': [149.125, 149.133], 
     ...                     'date': ['14-01-2023', '15-01-2023']})
-    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',random_id=True,add_random_id='last')
+    >>> occ = corella.set_occurrences(dataframe=occ,occurrenceID=['date','random'])
     >>> occ
 
 .. program-output:: python corella_user_guide/independent_observations/data_cleaning.py 38

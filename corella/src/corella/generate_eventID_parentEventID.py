@@ -4,13 +4,8 @@ from .common_functions import check_for_dataframe
 
 def generate_eventID_parentEventID(dataframe=None,
                                    event_hierarchy=None,
-                                   sequential_id=False,
-                                   add_sequential_id='first',
-                                   add_random_id='first',
-                                   composite_id=None,
                                    sep='-',
-                                   random_id=False):
-    
+                                   eventID='random'):
     # first, check for dataframe
     check_for_dataframe(dataframe=dataframe,func='generate_eventID_parentEventID')
 
@@ -34,12 +29,8 @@ def generate_eventID_parentEventID(dataframe=None,
 
     # after generating all events, generate all eventIDs
     new_dataframe = add_unique_IDs(dataframe=new_dataframe,column_name='eventID',
-                                   sequential_id=sequential_id,
-                                   add_sequential_id=add_sequential_id,
-                                   add_random_id=add_random_id,
-                                   composite_id=composite_id,sep=sep,
-                                   random_id=random_id)
-
+                                   column_info=eventID,sep=sep)
+    
     # now, link all events together via the parentEventID column
     new_dataframe.insert(1,'parentEventID',['' for i in list(range(new_dataframe.shape[0]))])
     for i,row in new_dataframe.iterrows():

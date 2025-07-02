@@ -44,21 +44,21 @@ if stopping_point == "4":
 if stopping_point == "5":
     new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
                                     Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-                                    random_id=True)
+                                    eventID='random')
     print(new_events.head())
     sys.exit()
 
 if stopping_point == "6":
     new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
                                     Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-                                    random_id=True)
+                                    eventID='random')
     corella.check_dataset(occurrences=occ,events=new_events)
     sys.exit()
 
 if stopping_point == "7":
     new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
                                     Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-                                    random_id=True)
+                                    eventID='random')
     corella.suggest_workflow(occurrences=occ,events=new_events)
     sys.exit()
 
@@ -97,7 +97,7 @@ if stopping_point == "12":
 if stopping_point == "13":
     new_events = corella.set_events(dataframe=events,eventType='type',samplingProtocol='Observation',
                                 Event='name',event_hierarchy={1: "Site Visit", 2: "Sample", 3: "Observation"},
-                                random_id=True)
+                                eventID='random')
     new_events = corella.set_datetime(dataframe=new_events,eventDate='date',string_to_datetime=True,
                                   yearfirst=False,dayfirst=True)
     new_occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')
@@ -106,7 +106,7 @@ if stopping_point == "13":
     new_occ = corella.set_datetime(dataframe=new_occ,eventDate='Collection_date',string_to_datetime=True,
                                yearfirst=False,dayfirst=True)
     new_occ = corella.set_occurrences(dataframe=new_occ,basisOfRecord='HumanObservation',occurrenceStatus='PRESENT',
-                                      occurrenceID=True,random_id=True,add_eventID=True,events=new_events,
+                                      occurrenceID='random',add_eventID=True,events=new_events,
                                       eventType='Observation')
     print(new_occ.head())
     sys.exit()

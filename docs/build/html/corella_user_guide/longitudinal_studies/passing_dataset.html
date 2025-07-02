@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>What Does A Passing Events Dataset Look Like? &#8212; corella 0.1.0 documentation</title>
+    <title>What Does A Passing Events Dataset Look Like? &#8212; corella 0.1.2 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/documentation_options.js?v=92734c54"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.2 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.2 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -446,34 +446,11 @@ run <code class="docutils literal notranslate"><span class="pre">check_data()</s
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;</span> <span class="n">corella</span><span class="o">.</span><span class="n">check_data</span><span class="p">(</span><span class="n">occurrences</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span></span>
 <span class="prompt1"><span class="o">...</span>                   <span class="n">events</span><span class="o">=</span><span class="n">events</span><span class="p">)</span></span>
 </pre></div></div><p>If everything passes, you will get the following output:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  Number of Errors  Pass/Fail    Column name
-------------------  -----------  -------------------
-                 0  ✓            occurrenceID
-                 0  ✓            eventID
-                 0  ✓            scientificName
-                 0  ✓            decimalLatitude
-                 0  ✓            decimalLongitude
-                 0  ✓            eventDate
-                 0  ✓            individualCount
-                 0  ✓            geodeticDatum
-                 0  ✓            coordinatePrecision
-                 0  ✓            basisOfRecord
-                 0  ✓            occurrenceStatus
-                 0  ✓            eventID
-                 0  ✓            parentEventID
-                 0  ✓            eventType
-                 0  ✓            locality
-                 0  ✓            eventDate
-                 0  ✓            Event
-                 0  ✓            samplingProtocol
-
-
-══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
-
-
-Errors: 0 | Passes: 18
-
-✓ Data meets minimum Darwin core requirements
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/longitudinal_studies/events_workflow.py&quot;, line 133, in &lt;module&gt;
+    events = corella.set_events(dataframe=events,eventType=&#39;type&#39;,samplingProtocol=&#39;Observation&#39;,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: set_events() got an unexpected keyword argument &#39;random_id&#39;
 </pre></div>
 </div>
 <p><a class="reference external" href="index.html">Back to Longitudinal Studies TOC</a></p>

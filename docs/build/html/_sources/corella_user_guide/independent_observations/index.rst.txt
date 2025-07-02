@@ -22,7 +22,7 @@ These are all the functions for your ``occurrences.txt`` file.
         - :ref:`set_occurrences`
         - :ref:`set_scientific_name`
 
-    .. grid-item:: **Optional**`
+    .. grid-item:: **Optional**
 
         - :ref:`convert_coordinates`
         - :ref:`creating_unique_IDs`
