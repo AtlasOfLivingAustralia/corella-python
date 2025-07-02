@@ -41,6 +41,8 @@ def add_unique_IDs(dataframe=None,
 
         # declare valid ID column names
         valid_id_names = ["occurrenceID","catalogNumber","recordNumber","eventID"]
+
+        print(column_info)
         
         # check if column name is in valid_id_names; if it is, add column.  If not, raise ValueError.
         if column_name in valid_id_names:
@@ -56,7 +58,7 @@ def add_unique_IDs(dataframe=None,
                 else:
                     raise ValueError("Please provide either a valid column name, the word 'random' or the word 'sequential'.")
             elif type(column_info) is list:
-                comp_id_info = ''
+                comp_id_info = []
                 for ci in column_info:
                     if ci in dataframe.columns:
                         comp_id_info += dataframe[ci]

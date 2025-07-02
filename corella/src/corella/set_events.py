@@ -10,12 +10,7 @@ def set_events(dataframe=None,
                Event=None,
                samplingProtocol=None,
                event_hierarchy=None,
-               sequential_id=False,
-               add_sequential_id='first',
-               add_random_id='first',
-               composite_id=None,
-               sep='-',
-               random_id=False):
+               sep='-'):
     """
     Identify or format columns that contain information about an Event. An "Event" in Darwin Core Standard refers to an action that occurs at a place and time. Examples include:
 
@@ -30,22 +25,18 @@ def set_events(dataframe=None,
     ----------
         dataframe: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
-        eventID: ``str``, ``logical``
-            A column name (``str``) that contains a unique identifier for your event.  Can also be set 
-            to ``True`` to generate values.  Parameters for these values can be specified with the arguments 
-            ``sequential_id``, ``add_sequential_id``, ``composite_id``, ``sep`` and ``random_id``
-        sequential_id: ``logical``
-            Create sequential IDs and/or add sequential ids to composite ID.  Default is ``False``.
-        add_sequential_id: ``str``
-            Determine where to add sequential id in composite id.  Values are ``first`` and ``last``.  Default is ``first``.
-        composite_id: ``str``, ``list``
-            ``str`` or ``list`` containing columns to create composite IDs.  Can be combined with sequential ID.
+        eventID: ``str``, ``list``, ``logical``
+            You can provide 3 types of arguments to ``eventID``:
+            - ``str``: rename the column of interest to ``eventID``
+            - ``bool``: generate random UUIDs
+            - ``list``: generate composite ids.  If you want either sequential numbers or 
+                        random UUIDs added, use the keywords ``"sequential"`` or ``"random"``
+                        to your 
+            *Note*: Every occurrence should have an eventID entry. Ideally, IDs should be 
+            persistent to avoid being lost in future updates. They should also be unique, both within 
+            the dataset, and (ideally) across all other datasets.
         sep: ``char``
             Separation character for composite IDs.  Default is ``-``.
-        random_id: ``logical``
-            Create a random ID using the ``uuid`` package.  Default is ``False``.
-        add_random_id: ``str``
-            Determine where to add sequential id in random id.  Values are ``first`` and ``last``.  Default is ``first``.
         parentEventID: ``str``
             A column name (``str``) that contains a unique ID belonging to an event below 
             it in the event hierarchy.
@@ -95,8 +86,22 @@ def set_events(dataframe=None,
     variables = [eventID,parentEventID,eventType,Event,samplingProtocol]
     values = ['eventID','parentEventID','eventType','Event','samplingProtocol']
 
+    # if user wants a random or sequential ID
+    if type(mapping['eventID']) is str or type(mapping['eventID']) is list:
+        if mapping['eventID'] in ['random','sequential'] or any(x in ['random','sequential'] for x in mapping['eventID']):
+            values.remove('eventID')
+            variables.remove(mapping['eventID'])
+            del mapping['eventID']
+            del accepted_formats['eventID']
+
     # set column names and values specified by user
-    dataframe = set_data_workflow(func='set_events',dataframe=dataframe,mapping=mapping,variables=variables,
+    if any(x in ['random','sequential'] for x in [eventID]):
+        if not all(mapping[x] is None for x in mapping):
+            # set column names and values specified by user
+            dataframe = set_data_workflow(func='set_events',dataframe=dataframe,mapping=mapping,variables=variables,
+                                          values=values,accepted_formats=accepted_formats)
+    else:
+        dataframe = set_data_workflow(func='set_events',dataframe=dataframe,mapping=mapping,variables=variables,
                                   values=values,accepted_formats=accepted_formats)
 
     # check for event_hierarchy
@@ -104,22 +109,14 @@ def set_events(dataframe=None,
         if parentEventID is None:
             print("parentEventID has not been provided, but will automatically be generated.")
             dataframe = generate_eventID_parentEventID(dataframe=dataframe,event_hierarchy=event_hierarchy,
-                                                       sequential_id=sequential_id,
-                                                       add_sequential_id=add_sequential_id,
-                                                       add_random_id=add_random_id,
-                                                       sep=sep,random_id=random_id,
-                                                       composite_id=composite_id)
+                                                       sep=sep,eventID=eventID)
         elif parentEventID in mapping:
             raise ValueError("a parentEventID column has been provided, but eventID has not. Please provide your eventID column.")
     elif not set(dataframe.columns).issuperset({'eventID','parentEventID'}) and event_hierarchy is None:
         raise ValueError("Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.")
     elif event_hierarchy is not None and not set(dataframe.columns).issuperset({'eventID','parentEventID'}):
         dataframe=generate_eventID_parentEventID(dataframe=dataframe,event_hierarchy=event_hierarchy,
-                                                 sequential_id=sequential_id,
-                                                 add_sequential_id=add_sequential_id,
-                                                 add_random_id=add_random_id,
-                                                 composite_id=composite_id,sep=sep,
-                                                 random_id=random_id)
+                                                 sep=sep,eventID=eventID)
     else:
         pass
 

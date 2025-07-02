@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Creating Unique IDs &#8212; corella 0.1.0 documentation</title>
+    <title>Creating Unique IDs &#8212; corella 0.1.1 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/documentation_options.js?v=a58bc63e"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.0 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.0 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.1 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.1 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -398,14 +398,10 @@ information (and would otherwise be considered a duplicate).</p>
 <li><p>sequential IDs</p></li>
 <li><p>composite IDs</p></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All of the IDs need to have <code class="docutils literal notranslate"><span class="pre">occurrenceID</span></code> set to <code class="docutils literal notranslate"><span class="pre">True</span></code> in <code class="docutils literal notranslate"><span class="pre">set_occurrences()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_events()</span></code>.</p>
-</div>
 <section id="random-ids">
 <h2>random IDs<a class="headerlink" href="#random-ids" title="Link to this heading">#</a></h2>
 <p>Random IDs are created automatically in <code class="docutils literal notranslate"><span class="pre">corella</span></code> using the <a class="reference external" href="https://pypi.org/project/uuid/">uuid package</a>.
-To automatically generate random IDs, set <code class="docutils literal notranslate"><span class="pre">random_id=True</span></code> like so:</p>
+To automatically generate random IDs, set <code class="docutils literal notranslate"><span class="pre">occurrenceID='random'</span></code> like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
 span.prompt1:before {
   content: " ";
@@ -414,25 +410,27 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">random_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID         scientificName  latitude  longitude        date
-0  dd467143-118c-422f-aeeb-42008074920c  Eolophus roseicapilla   -35.310    149.125  14-01-2023
-1  90a26d15-eaf4-4681-a7e6-a0ed5d68847f  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
+                           occurrenceID         scientificName  latitude  longitude        date
+0  b9d5dc85-c6c9-4699-ad02-5de721cf1072  Eolophus roseicapilla   -35.310    149.125  14-01-2023
+1  4cb82082-2113-4f78-b376-c65f90a593d7  Eolophus roseicapilla   -35.273    149.133  15-01-2023
 </pre></div>
 </div>
 </section>
 <section id="sequential-ids">
 <h2>sequential IDs<a class="headerlink" href="#sequential-ids" title="Link to this heading">#</a></h2>
 <p>Sequential IDs are created from 0 to the number of rows in the data frame.  Like above, to generate sequential
-ids, set <code class="docutils literal notranslate"><span class="pre">sequential_id=True</span></code>.</p>
+ids, set <code class="docutils literal notranslate"><span class="pre">occurrenceID='sequential'</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">sequential_id</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;sequential&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  occurrenceID         scientificName  latitude  longitude        date
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sequential
+  occurrenceID         scientificName  latitude  longitude        date
 0            0  Eolophus roseicapilla   -35.310    149.125  14-01-2023
 1            1  Eolophus roseicapilla   -35.273    149.133  15-01-2023
 </pre></div>
@@ -440,34 +438,48 @@ ids, set <code class="docutils literal notranslate"><span class="pre">sequential
 </section>
 <section id="composite-ids">
 <h2>composite IDs<a class="headerlink" href="#composite-ids" title="Link to this heading">#</a></h2>
-<p>If you don’t want only UUIDs or sequential IDs, but a composite of multiple items, the <code class="docutils literal notranslate"><span class="pre">composite_id</span></code> option
-exists.  You can do the following:</p>
-<ul class="simple">
-<li><p>Have a composite ID with multiple columns, separated by <code class="docutils literal notranslate"><span class="pre">sep</span></code>.  This is, by default, <code class="docutils literal notranslate"><span class="pre">-</span></code> but can be changed.</p></li>
-<li><p>Have a composite ID with one or more columns, and a UUID either at the beginning or end of the ID.</p></li>
-<li><p>Have a composite ID with one or more columns, and a sequential ID either at the beginning or end of the ID.</p></li>
-</ul>
-<p>Below are examples with sequential ID and random ID, both at the beginning or the end of the ID.</p>
+<p>If you don’t want only UUIDs or sequential IDs, but a composite of multiple items, you can provide a list of
+column names and keywords in the order you want to compose your unique ID. Below are examples using the <code class="docutils literal notranslate"><span class="pre">'date'</span></code>
+column in conjunction with either the keywords <code class="docutils literal notranslate"><span class="pre">sequential</span></code> or <code class="docutils literal notranslate"><span class="pre">random</span></code> to add either sequential or random
+IDs to your composite ID.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">composite_id</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">sequential_id</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">add_sequential_id</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sequential&#39;</span><span class="p">,</span><span class="s1">&#39;date&#39;</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>   occurrenceID         scientificName  latitude  longitude        date
-0  0-14-01-2023  Eolophus roseicapilla   -35.310    149.125  14-01-2023
-1  1-15-01-2023  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/independent_observations/data_cleaning.py&quot;, line 291, in &lt;module&gt;
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=[&#39;sequential&#39;,&#39;date&#39;])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_occurrences.py&quot;, line 111, in set_occurrences
+    dataframe = set_data_workflow(func=&#39;set_occurrences&#39;,dataframe=dataframe,mapping=mapping,variables=variables,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 15, in set_data_workflow
+    check_if_all_args_empty(dataframe=dataframe,func=func,keys=variables,values=values)
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 180, in check_if_all_args_empty
+    raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
+ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(corella.set_occurrences()) for valid arguments.
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;scientificName&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">,</span><span class="s1">&#39;Eolophus roseicapilla&#39;</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">35.310</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.273</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">149.125</span><span class="p">,</span> <span class="mf">149.133</span><span class="p">],</span></span>
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
-<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">composite_id</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="n">random_id</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">add_random_id</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">)</span></span>
+<span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;random&#39;</span><span class="p">])</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                                      occurrenceID         scientificName  latitude  longitude        date
-0  14-01-2023-767a4e83-e490-4491-b748-60e6b0f9b099  Eolophus roseicapilla   -35.310    149.125  14-01-2023
-1  15-01-2023-02994e23-e466-4d12-96d1-893ef1c798f6  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/independent_observations/data_cleaning.py&quot;, line 300, in &lt;module&gt;
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=[&#39;date&#39;,&#39;random&#39;])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_occurrences.py&quot;, line 111, in set_occurrences
+    dataframe = set_data_workflow(func=&#39;set_occurrences&#39;,dataframe=dataframe,mapping=mapping,variables=variables,
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 15, in set_data_workflow
+    check_if_all_args_empty(dataframe=dataframe,func=func,keys=variables,values=values)
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 180, in check_if_all_args_empty
+    raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
+ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(corella.set_occurrences()) for valid arguments.
 </pre></div>
 </div>
 </section>

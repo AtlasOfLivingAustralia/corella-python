@@ -37,8 +37,7 @@ if stop == 5:
 if stop == 6:
     new_occ = corella.set_occurrences(dataframe=occ,
                                       basisOfRecord='HumanObservation',
-                                      occurrenceID=True,
-                                      random_id=True)
+                                      occurrenceID='random')
     print(new_occ.head())
     sys.exit()
 
@@ -46,8 +45,7 @@ if stop == 7:
     new_occ = corella.set_occurrences(dataframe=occ,
                                       basisOfRecord='HumanObservation',
                                       occurrenceStatus='PRESENT',
-                                      occurrenceID=True,
-                                      random_id=True)
+                                      occurrenceID='random')
     print(new_occ.head())
     sys.exit()
     
@@ -55,8 +53,7 @@ if stop == 8:
     occ = corella.set_occurrences(dataframe=occ,
                                  basisOfRecord='HumanObservation',
                                  occurrenceStatus='PRESENT',
-                                 occurrenceID=True,
-                                 random_id=True)
+                                 occurrenceID=['random'])
     corella.check_dataset(occurrences=occ)
     sys.exit()
 
@@ -64,8 +61,7 @@ if stop == 9:
     occ = corella.set_occurrences(dataframe=occ,
                                  basisOfRecord='HumanObservation',
                                  occurrenceStatus='PRESENT',
-                                 occurrenceID=True,
-                                 random_id=True)
+                                 occurrenceID=['random'])
     corella.suggest_workflow(occurrences=occ)
     sys.exit()
 
@@ -274,7 +270,7 @@ if stop == 35:
                         'latitude': [-35.310, -35.273], 
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
-    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,random_id=True)
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID='random')
     print(occ)
     sys.exit()
 
@@ -283,7 +279,7 @@ if stop == 36:
                         'latitude': [-35.310, -35.273], 
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
-    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,sequential_id=True)
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID='sequential')
     print(occ)
     sys.exit()
 
@@ -292,7 +288,7 @@ if stop == 37:
                         'latitude': [-35.310, -35.273], 
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
-    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',sequential_id=True,add_sequential_id='first')
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=['sequential','date'])
     print(occ)
     sys.exit()
 
@@ -301,7 +297,7 @@ if stop == 38:
                         'latitude': [-35.310, -35.273], 
                         'longitude': [149.125, 149.133], 
                         'date': ['14-01-2023', '15-01-2023']})
-    occ = corella.set_occurrences(dataframe=occ,occurrenceID=True,composite_id='date',random_id=True,add_random_id='last')
+    occ = corella.set_occurrences(dataframe=occ,occurrenceID=['date','random'])
     print(occ)
     sys.exit()
 
@@ -312,7 +308,7 @@ occ = pd.read_csv('corella_user_guide/data/occurrences_dwc.csv')
 
 if stop == 39:
     occ = corella.set_occurrences(dataframe=occ,basisOfRecord='HumanObservation',
-                                occurrenceStatus='PRESENT',occurrenceID=True,random_id=True)
+                                occurrenceStatus='PRESENT',occurrenceID='random')
     occ = corella.set_scientific_name(dataframe=occ,scientificName='Species')
     occ = corella.set_coordinates(dataframe=occ,
                                   decimalLatitude='Latitude',

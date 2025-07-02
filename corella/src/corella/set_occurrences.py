@@ -95,19 +95,18 @@ def set_occurrences(dataframe=None,
 
     # if user wants a random or sequential ID
     for id in ['occurrenceID','catalogNumber','recordNumber']:
-        if mapping[id] in ['random','sequential']:
-            values.remove(id)
-            variables.remove(mapping[id])
-            del mapping[id]
-            del accepted_formats[id]
+        if type(mapping[id]) is str or type(mapping[id]) is list:
+            if mapping[id] in ['random','sequential'] or any(x in ['random','sequential'] for x in mapping[id]):
+                values.remove(id)
+                variables.remove(mapping[id])
+                del mapping[id]
+                del accepted_formats[id]
 
     if any(x in ['random','sequential'] for x in [occurrenceID,catalogNumber,recordNumber]):
         if not all(mapping[x] is None for x in mapping):
             # set column names and values specified by user
             dataframe = set_data_workflow(func='set_occurrences',dataframe=dataframe,mapping=mapping,variables=variables,
                                           values=values,accepted_formats=accepted_formats)
-        else:
-            print("here")
     else:
         dataframe = set_data_workflow(func='set_occurrences',dataframe=dataframe,mapping=mapping,variables=variables,
                                       values=values,accepted_formats=accepted_formats)

@@ -48,11 +48,8 @@ How to generate occurrence IDs
 
 .. Note:: 
     
-    - If you have occurrence IDs already in your dataset, you can specify the name of the column 
-    that contains your IDs, and ``corella`` will rename that column to comply with the Darwin 
-    Core Vocabulary Standard.
-    - ``catalogNumber`` and / or ``recordNumber`` is normally used for collections, 
-    so it is best to go with ``occurrenceID`` if you're generating them using ``corella``.
+    - If you have occurrence IDs already in your dataset, you can specify the name of the column that contains your IDs, and ``corella`` will rename that column to comply with the Darwin Core Vocabulary Standard.
+    - ``catalogNumber`` and / or ``recordNumber`` is normally used for collections, so it is best to go with ``occurrenceID`` if you're generating them using ``corella``.
 
 Every occurrence needs a unique identifier for easy future identification.  If your 
 occurences don't have either an ``occurrenceID``, ``catalogNumber`` or ``recordNumber``, 
@@ -67,8 +64,7 @@ generating IDs.
     >>> occurrences = corella.set_occurrences(
     ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
-    ...     occurrenceID=True,
-    ...     random_id=True
+    ...     occurrenceID='random'
     ... )
     >>> occurrences.head()
 
@@ -95,8 +91,8 @@ Darwin Core standard.
     >>> occurrences = corella.set_occurrences(
     ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
+    ...     occurrenceID=['random']
     ...     occurrenceStatus='PRESENT'
-    ...     random_id=True
     ... )
     >>> occurrences.head()
 
@@ -119,8 +115,7 @@ for, we can assign the new dataframe to a variable:
     ...     dataframe=occ,
     ...     basisOfRecord='HumanObservation',
     ...     occurrenceStatus='status',
-    ...     occurrenceID=True
-    ...     random_id=True
+    ...     occurrenceID='random'
     ... )
 
 Now, we can check that this new dataframe complies with the Darwin Core standard for the ``basisOfRecord``, 
