@@ -16,7 +16,7 @@ Core Archive Types
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/binoculars.svg
+            :file: ../_static/icons/occurrences.svg
                 
         **Occurrences**
 
@@ -28,7 +28,7 @@ Core Archive Types
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/clock.svg
+            :file: ../_static/icons/event.svg
 
         **Events**
 
@@ -58,7 +58,7 @@ Extensions
         :text-align: center
 
         .. raw:: html
-            :file: ../_static/icons/flask.svg
+            :file: ../_static/icons/emof.svg
 
         **COMING SOON: Measurement Or Fact**
 
