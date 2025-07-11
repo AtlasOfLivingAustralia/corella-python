@@ -429,11 +429,11 @@ ValueError: Please provide column names for eventID and parentEventID.  Or, prov
 <span class="prompt1"><span class="o">...</span>                    <span class="n">event_hierarchy</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Site Visit&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Sample&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Observation&quot;</span><span class="p">})</span></span>
 </pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
                                 eventID                         parentEventID    eventType    location       date                                            Event samplingProtocol
-0  594ad0b3-2fb7-4741-9200-2e53d4be89c3                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-1  1f798ae6-eab9-4b28-be20-d41e7ac3ca4c  594ad0b3-2fb7-4741-9200-2e53d4be89c3       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-2  19f8541e-ddbd-47e7-83f1-e2aa400dc39b  1f798ae6-eab9-4b28-be20-d41e7ac3ca4c  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
-3  5c412291-f247-4161-b98e-0f87a080febf                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
-4  ce612b80-d659-41fa-8e5e-c09b309fee89  5c412291-f247-4161-b98e-0f87a080febf       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+0  e0c2f6fa-ebc0-4990-836b-ea76bc1f748f                                         Site Visit  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+1  a10a86b6-877e-41a3-b4ea-1850dc06ec2c  e0c2f6fa-ebc0-4990-836b-ea76bc1f748f       Sample  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+2  245debb5-4e67-4729-90bb-25f45a0c7298  a10a86b6-877e-41a3-b4ea-1850dc06ec2c  Observation  Cannonvale   3/1/2023  bird survey local park honeyeater lookout point      Observation
+3  0d278085-ed12-48c8-92d5-4ac52bdd2f74                                         Site Visit  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
+4  61b35534-7bf5-4e88-a969-008890a8e237  0d278085-ed12-48c8-92d5-4ac52bdd2f74       Sample  Cannonvale  17/1/2023  bird survey local park honeyeater lookout point      Observation
 </pre></div>
 </div>
 </section>
@@ -475,7 +475,7 @@ again to see how our data is doing this time round.</p>
 Matched 5 of 12 column names to DwC terms:
 
 ✓ Matched: eventID, parentEventID, eventType, Event, samplingProtocol
-✗ Unmatched: Latitude, Collection_date, Species, Longitude, number_birds, location, date
+✗ Unmatched: Species, Longitude, Collection_date, number_birds, Latitude, location, date
 
 ── Minimum required DwC terms occurrences ──
 
