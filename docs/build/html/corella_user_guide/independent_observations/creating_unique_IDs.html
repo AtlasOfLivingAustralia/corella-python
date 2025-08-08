@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Creating Unique IDs &#8212; corella 0.1.2 documentation</title>
+    <title>Creating Unique IDs &#8212; corella 0.1.3 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
-    <script src="../../_static/documentation_options.js?v=92734c54"></script>
+    <script src="../../_static/documentation_options.js?v=360bc84d"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/design-tabs.js?v=36754332"></script>
@@ -125,8 +125,8 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.2 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.2 documentation - Home"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="corella 0.1.3 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.3 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -412,10 +412,9 @@ span.prompt1:before {
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>random
-                           occurrenceID         scientificName  latitude  longitude        date
-0  e3e76e62-7a83-4980-993d-e7af6d21d0c8  Eolophus roseicapilla   -35.310    149.125  14-01-2023
-1  f3f7f19c-41ca-49fd-b57b-a0cd4e8ef3dd  Eolophus roseicapilla   -35.273    149.133  15-01-2023
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                           occurrenceID         scientificName  latitude  longitude        date
+0  ff0f525b-cfc9-4c50-baaa-419102c51411  Eolophus roseicapilla   -35.310    149.125  14-01-2023
+1  e7a305ab-d66a-4386-a530-2f7486ddd50b  Eolophus roseicapilla   -35.273    149.133  15-01-2023
 </pre></div>
 </div>
 </section>
@@ -429,8 +428,7 @@ ids, set <code class="docutils literal notranslate"><span class="pre">occurrence
 <span class="prompt1"><span class="o">...</span>                     <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;14-01-2023&#39;</span><span class="p">,</span> <span class="s1">&#39;15-01-2023&#39;</span><span class="p">]})</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span> <span class="o">=</span> <span class="n">corella</span><span class="o">.</span><span class="n">set_occurrences</span><span class="p">(</span><span class="n">dataframe</span><span class="o">=</span><span class="n">occ</span><span class="p">,</span><span class="n">occurrenceID</span><span class="o">=</span><span class="s1">&#39;sequential&#39;</span><span class="p">)</span></span>
 <span class="prompt1"><span class="o">&gt;&gt;&gt;</span> <span class="n">occ</span></span>
-</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sequential
-  occurrenceID         scientificName  latitude  longitude        date
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>  occurrenceID         scientificName  latitude  longitude        date
 0            0  Eolophus roseicapilla   -35.310    149.125  14-01-2023
 1            1  Eolophus roseicapilla   -35.273    149.133  15-01-2023
 </pre></div>
@@ -457,7 +455,7 @@ IDs to your composite ID.</p>
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 15, in set_data_workflow
     check_if_all_args_empty(dataframe=dataframe,func=func,keys=variables,values=values)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 180, in check_if_all_args_empty
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 179, in check_if_all_args_empty
     raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
 ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(corella.set_occurrences()) for valid arguments.
 </pre></div>
@@ -477,7 +475,7 @@ ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(c
                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 15, in set_data_workflow
     check_if_all_args_empty(dataframe=dataframe,func=func,keys=variables,values=values)
-  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 180, in check_if_all_args_empty
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/common_functions.py&quot;, line 179, in check_if_all_args_empty
     raise ValueError(&quot;No Darwin Core arguments supplied to `{}()`.  See dir(corella.{}()) for valid arguments.&quot;.format(func,func))
 ValueError: No Darwin Core arguments supplied to `set_occurrences()`.  See dir(corella.set_occurrences()) for valid arguments.
 </pre></div>
