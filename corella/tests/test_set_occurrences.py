@@ -90,48 +90,48 @@ def test_set_occurrences_occurrenceStatus__wrong_value_rename():
 # ADD ID STUFF
 def test_set_occurrences_add_occurrenceIDs_random():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla']})
-    new_df = corella.set_occurrences(dataframe=df,occurrenceID=True,random_id=True)
+    new_df = corella.set_occurrences(dataframe=df,occurrenceID='random')
     assert 'occurrenceID' in new_df.columns
 
 def test_set_occurrences_add_occurrenceIDs_sequential():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla'],
                        'decimalLatitude': [1.0,1.0],
                        'decimalLongitude': [1.0,1.0]})
-    new_df = corella.set_occurrences(dataframe=df,occurrenceID=True,sequential_id=True)
+    new_df = corella.set_occurrences(dataframe=df,occurrenceID='sequential')
     assert 'occurrenceID' in new_df.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla'],
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
-    new_df = corella.set_occurrences(dataframe=df,occurrenceID=True,composite_id=['eventDate','catalogNumber'])
+    new_df = corella.set_occurrences(dataframe=df,occurrenceID=['eventDate','catalogNumber'])
     assert 'occurrenceID' in new_df.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_random():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla'],
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
-    new_df = corella.set_occurrences(dataframe=df,occurrenceID=True,composite_id=['eventDate','catalogNumber'],random_id=True)
+    new_df = corella.set_occurrences(dataframe=df,occurrenceID=['random','eventDate','catalogNumber'])
     assert 'occurrenceID' in new_df.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_random_last():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla'],
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
-    new_df = corella.set_occurrences(dataframe=df,occurrenceID=True,composite_id=['eventDate','catalogNumber'],random_id=True,add_random_id='last')
+    new_df = corella.set_occurrences(dataframe=df,occurrenceID=['eventDate','catalogNumber','random'])
     assert 'occurrenceID' in new_df.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_sequential():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla'],
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
-    new_df = corella.set_occurrences(dataframe=df,occurrenceID=True,composite_id=['eventDate','catalogNumber'],sequential_id=True)
+    new_df = corella.set_occurrences(dataframe=df,occurrenceID=['sequential','eventDate','catalogNumber'])
     assert 'occurrenceID' in new_df.columns
 
 def test_set_occurrences_add_occurrenceIDs_composite_sequential_last():
     df = pd.DataFrame({'species': ['Eolophus roseicapilla','Eolophus roseicapilla'],
                        'eventDate': ['2024-10-10','2024-10-10'],
                        'catalogNumber': ['1','2']})
-    new_df = corella.set_occurrences(dataframe=df,occurrenceID=True,composite_id=['eventDate','catalogNumber'],sequential_id=True,add_sequential_id='last')
+    new_df = corella.set_occurrences(dataframe=df,occurrenceID=['eventDate','catalogNumber','sequential'])
     assert 'occurrenceID' in new_df.columns
 #'''
