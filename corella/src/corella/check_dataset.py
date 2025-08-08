@@ -110,9 +110,10 @@ def check_dataset(occurrences=None,
             data_table['Number of Errors'][i] += 1
             data_table['Pass/Fail'][i] = cross_mark
     
+    df_data_table = pd.DataFrame(data_table)
+
     if print_report:
     
-        df_data_table = pd.DataFrame(data_table)
         print(tabulate(df_data_table, showindex=False, headers=df_data_table.columns))
         print()
         print("\n══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n")

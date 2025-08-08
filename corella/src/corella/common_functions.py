@@ -89,7 +89,6 @@ def check_is_numeric(dataframe=None,
     """
     if (not is_numeric_dtype(dataframe[column_name])) and (not type(dataframe[column_name].dtypes) in [np.dtypes.Int64DType,np.dtypes.Int32DType]):
         other_formats = list(set(type(x) for x in dataframe[column_name]))
-        print(other_formats)
         if (len(other_formats) > 1 )| (not is_numeric_dtype(other_formats[0])):
             errors.append('the {} column must be numeric.'.format(column_name))
     return errors

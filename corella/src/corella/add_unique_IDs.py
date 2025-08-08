@@ -42,8 +42,6 @@ def add_unique_IDs(dataframe=None,
         # declare valid ID column names
         valid_id_names = ["occurrenceID","catalogNumber","recordNumber","eventID"]
 
-        print(column_info)
-        
         # check if column name is in valid_id_names; if it is, add column.  If not, raise ValueError.
         if column_name in valid_id_names:
             if type(column_info) is bool and column_info:
@@ -58,14 +56,19 @@ def add_unique_IDs(dataframe=None,
                 else:
                     raise ValueError("Please provide either a valid column name, the word 'random' or the word 'sequential'.")
             elif type(column_info) is list:
-                comp_id_info = []
+                comp_id_info = [None for x in range(dataframe.shape[0])]
                 for ci in column_info:
                     if ci in dataframe.columns:
-                        comp_id_info += dataframe[ci]
+                        comp_id_info = add_to_comp_id(comp_id_info=comp_id_info,dataframe=dataframe,
+                                                      index=ci,sep=sep)
                     elif ci == 'random':
-                        comp_id_info += generate_uuids_list(dataframe=dataframe)
+                        uuid_list = generate_uuids_list(dataframe=dataframe)
+                        comp_id_info = add_to_comp_id(comp_id_info=comp_id_info,rand_seq_list=uuid_list,
+                                                      index=ci,sep=sep)
                     elif ci == 'sequential':
-                        comp_id_info += [str(x) for x in range(dataframe.shape[0])]
+                        sequential_list = [str(x) for x in range(dataframe.shape[0])]
+                        comp_id_info = add_to_comp_id(comp_id_info=comp_id_info,rand_seq_list=sequential_list,
+                                                      index=ci,sep=sep)
                     else:
                         raise ValueError("Please provide either a valid column name, the word 'random' or the word 'sequential'.")
                 dataframe.insert(0,column_name,comp_id_info)
@@ -85,3 +88,24 @@ def generate_uuids_list(dataframe=None):
     for i in range(dataframe.shape[0]):
         uuids[i] = str(uuid.uuid4())
     return uuids
+
+def add_to_comp_id(comp_id_info=None,
+                   dataframe=None,
+                   index=None,
+                   rand_seq_list=None,
+                   sep=None):
+
+    # determine if adding random/sequential or dataframe entry
+    if rand_seq_list is not None:
+        enumeration_list = rand_seq_list
+    else:
+        enumeration_list = list(dataframe[index])
+        
+    # add this to the comp id
+    for i,x in enumerate(enumeration_list):
+        if comp_id_info[i] is None:
+            comp_id_info[i] = x
+        else:
+            comp_id_info[i] += '{}{}'.format(sep,x)
+    
+    return comp_id_info
