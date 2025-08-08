@@ -1,3 +1,9 @@
+## 0.1.3 (2025-08-08)
+
+### Fix
+
+- **common_functions**: updated unique IDs and composite IDs to work properly;updated tests to reflect changes
+
 ## 0.1.2 (2025-07-02)
 
 ### Fix
