@@ -72,6 +72,7 @@ tests/test_set_abundance.py
 tests/test_set_collection.py
 tests/test_set_coordinates.py
 tests/test_set_datetime.py
+tests/test_set_events.py
 tests/test_set_individual_traits.py
 tests/test_set_license.py
 tests/test_set_locality.py
