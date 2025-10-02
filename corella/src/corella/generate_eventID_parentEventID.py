@@ -13,8 +13,8 @@ def generate_eventID_parentEventID(dataframe=None,
     if event_hierarchy is None:
         raise ValueError('Please provide an event_hierarchy to use_events.')
     
-    if 'eventType' not in dataframe.columns:
-        raise ValueError("Please ensure that you have an eventType column so the event hierarchy can correctly be assigned.")
+    # if 'eventType' not in dataframe.columns:
+    #     raise ValueError("Please ensure that you have an eventType column so the event hierarchy can correctly be assigned.")
     
     # now, generate all events in the event hierarchy
     new_dataframe = pd.DataFrame()

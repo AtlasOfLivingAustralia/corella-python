@@ -12,7 +12,7 @@ def set_datetime(dataframe=None,
                  string_to_datetime=False,
                  yearfirst=True,
                  dayfirst=False,
-                 time_format='%H:%m:%S'):
+                 time_format='mixed'):
     """
     Checks for time information, such as the date an occurrence occurred.  Also runs checks 
     on the validity of the format of the date.
@@ -87,7 +87,8 @@ def set_datetime(dataframe=None,
     if string_to_datetime:
         
         # specify which of day,month,year is first
-        dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],dayfirst=dayfirst,yearfirst=yearfirst)
+        if 'eventDate' in dataframe.columns:
+            dataframe['eventDate'] = pd.to_datetime(dataframe['eventDate'],dayfirst=dayfirst,yearfirst=yearfirst)
 
         # check for event time
         if 'eventTime' in dataframe.columns:

@@ -1,4 +1,5 @@
 import pandas as pd
+from .add_unique_IDs import add_unique_IDs
 from .check_events import check_events
 from .common_functions import check_for_dataframe,set_data_workflow
 from .generate_eventID_parentEventID import generate_eventID_parentEventID
@@ -28,7 +29,6 @@ def set_events(dataframe=None,
         eventID: ``str``, ``list``, ``logical``
             You can provide 3 types of arguments to ``eventID``:
             - ``str``: rename the column of interest to ``eventID``
-            - ``bool``: generate random UUIDs
             - ``list``: generate composite ids.  If you want either sequential numbers or 
                         random UUIDs added, use the keywords ``"sequential"`` or ``"random"``
                         to your 
@@ -75,8 +75,8 @@ def set_events(dataframe=None,
 
     # accepted data formats for each argument
     accepted_formats = {
-        'eventID': [str,bool],
-        'parentEventID': [str,bool], 
+        'eventID': [str,list],
+        'parentEventID': [str,list], 
         'eventType': [str],
         'Event': [str],
         'samplingProtocol': [str]
@@ -86,7 +86,11 @@ def set_events(dataframe=None,
     variables = [eventID,parentEventID,eventType,Event,samplingProtocol]
     values = ['eventID','parentEventID','eventType','Event','samplingProtocol']
 
-    # if user wants a random or sequential ID
+    # check that parentEventID is not present without eventID
+    if parentEventID is not None and eventID is None:
+        raise ValueError("You cannot set parentEventID without defining your eventID.")
+
+    # check if user wants a random or sequential ID
     if type(mapping['eventID']) is str or type(mapping['eventID']) is list:
         if mapping['eventID'] in ['random','sequential'] or any(x in ['random','sequential'] for x in mapping['eventID']):
             values.remove('eventID')
@@ -94,27 +98,32 @@ def set_events(dataframe=None,
             del mapping['eventID']
             del accepted_formats['eventID']
 
+    # make sure the eventID variable is a list
+    if type(eventID) is str:
+        eventID = [eventID]
+
     # set column names and values specified by user
-    if any(x in ['random','sequential'] for x in [eventID]):
-        if not all(mapping[x] is None for x in mapping):
-            # set column names and values specified by user
+    if eventID is not None:
+        if any(x in ['random','sequential'] for x in eventID):
+            if not all(mapping[x] is None for x in mapping):
+                # set column names and values specified by user
+                dataframe = set_data_workflow(func='set_events',dataframe=dataframe,mapping=mapping,variables=variables,
+                                              values=values,accepted_formats=accepted_formats)
+            elif event_hierarchy is None:
+                dataframe = add_unique_IDs(dataframe=dataframe,column_name='eventID',column_info=eventID,sep=sep)
+        else:
             dataframe = set_data_workflow(func='set_events',dataframe=dataframe,mapping=mapping,variables=variables,
                                           values=values,accepted_formats=accepted_formats)
     else:
         dataframe = set_data_workflow(func='set_events',dataframe=dataframe,mapping=mapping,variables=variables,
-                                  values=values,accepted_formats=accepted_formats)
+                                      values=values,accepted_formats=accepted_formats)
 
     # check for event_hierarchy
-    if type(eventID) is bool:
-        if parentEventID is None:
-            print("parentEventID has not been provided, but will automatically be generated.")
-            dataframe = generate_eventID_parentEventID(dataframe=dataframe,event_hierarchy=event_hierarchy,
-                                                       sep=sep,eventID=eventID)
-        elif parentEventID in mapping:
-            raise ValueError("a parentEventID column has been provided, but eventID has not. Please provide your eventID column.")
-    elif not set(dataframe.columns).issuperset({'eventID','parentEventID'}) and event_hierarchy is None:
-        raise ValueError("Please provide column names for eventID and parentEventID.  Or, provide an event_hierarchy dictionary for automatic ID generation.")
-    elif event_hierarchy is not None and not set(dataframe.columns).issuperset({'eventID','parentEventID'}):
+    # need to figure out parentEventID...
+    if event_hierarchy is not None and not set(dataframe.columns).issuperset({'eventID','parentEventID'}):
+        if eventID is None and (eventID not in dataframe.columns):
+            print('setting your eventIDs to a random UUID.  To make a custom eventID, provide column names, and/or the words \'random\', \'sequential\'.')
+            eventID='random'
         dataframe=generate_eventID_parentEventID(dataframe=dataframe,event_hierarchy=event_hierarchy,
                                                  sep=sep,eventID=eventID)
     else:
@@ -122,7 +131,7 @@ def set_events(dataframe=None,
 
     # check for errors
     errors = check_events(dataframe=dataframe,errors=[])
-    
+
     # return errors if there are any; otherwise, return dataframe
     if len(errors) > 0:
         raise ValueError("There are some errors in your data.  They are as follows:\n\n{}".format('\n'.join(errors)))

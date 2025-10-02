@@ -28,8 +28,7 @@ def check_datetime(dataframe=None,
     Returns
     -------
         A ``list`` of errors; else, return the ``dataframe``.
-    """
-
+    """    
     # First, check if a dataframe is provided
     check_for_dataframe(dataframe=dataframe,func='check_datetime')
 

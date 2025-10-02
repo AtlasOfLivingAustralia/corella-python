@@ -3,7 +3,7 @@ from .add_unique_IDs import add_unique_IDs
 from .check_occurrences import check_occurrences
 from .common_functions import check_for_dataframe,set_data_workflow
 
-def set_occurrences(dataframe=None,
+def set_occurrences(occurrences=None,
                     occurrenceID=None,
                     catalogNumber=None,
                     recordNumber=None,
@@ -19,7 +19,7 @@ def set_occurrences(dataframe=None,
 
     Parameters
     ----------
-        dataframe: ``pandas.DataFrame``
+        occurrences: ``pandas.DataFrame``
             The ``pandas.DataFrame`` that contains your data to check
         occurrenceID: ``str``, ``bool`` or ``list``
             You can provide 3 types of arguments to ``occurrenceID``:
@@ -65,7 +65,7 @@ def set_occurrences(dataframe=None,
     """
 
     # check for dataframe
-    check_for_dataframe(dataframe=dataframe,func='set_occurrences')
+    check_for_dataframe(dataframe=occurrences,func='set_occurrences')
     
     # check for events for adding event ID
     if add_eventID:
@@ -105,31 +105,31 @@ def set_occurrences(dataframe=None,
     if any(x in ['random','sequential'] for x in [occurrenceID,catalogNumber,recordNumber]):
         if not all(mapping[x] is None for x in mapping):
             # set column names and values specified by user
-            dataframe = set_data_workflow(func='set_occurrences',dataframe=dataframe,mapping=mapping,variables=variables,
+            occurrences = set_data_workflow(func='set_occurrences',dataframe=occurrences,mapping=mapping,variables=variables,
                                           values=values,accepted_formats=accepted_formats)
     else:
-        dataframe = set_data_workflow(func='set_occurrences',dataframe=dataframe,mapping=mapping,variables=variables,
+        occurrences = set_data_workflow(func='set_occurrences',dataframe=occurrences,mapping=mapping,variables=variables,
                                       values=values,accepted_formats=accepted_formats)
 
     # check if unique occurrence IDs need to be added
-    if (type(occurrenceID) in [str,bool,list] and 'occurrenceID' not in dataframe.columns): 
-        dataframe = add_unique_IDs(column_name='occurrenceID',sep=sep,column_info=occurrenceID,
-                                   dataframe=dataframe)
-    if (type(catalogNumber) in [str,bool,list] and 'catalogNumber' not in dataframe.columns): 
-        dataframe = add_unique_IDs(column_name='catalogNumber',sep=sep,column_info=catalogNumber,
-                                   dataframe=dataframe)
-    if (type(recordNumber)  in [str,bool,list] and 'recordNumber' not in dataframe.columns): 
-        dataframe = add_unique_IDs(column_name='recordNumber',sep=sep,column_info=recordNumber,
-                                   dataframe=dataframe)
+    if (type(occurrenceID) in [str,bool,list] and 'occurrenceID' not in occurrences.columns): 
+        occurrences = add_unique_IDs(column_name='occurrenceID',sep=sep,column_info=occurrenceID,
+                                   dataframe=occurrences)
+    if (type(catalogNumber) in [str,bool,list] and 'catalogNumber' not in occurrences.columns): 
+        occurrences = add_unique_IDs(column_name='catalogNumber',sep=sep,column_info=catalogNumber,
+                                   dataframe=occurrences)
+    if (type(recordNumber)  in [str,bool,list] and 'recordNumber' not in occurrences.columns): 
+        occurrences = add_unique_IDs(column_name='recordNumber',sep=sep,column_info=recordNumber,
+                                   dataframe=occurrences)
         
     # check if we are adding eventID to occurrences
     if type(add_eventID) is bool and add_eventID:
-        dataframe = add_eventID_occurrences(occurrences=dataframe,events=events,eventType=eventType)
+        occurrences = add_eventID_occurrences(occurrences=occurrences,events=events,eventType=eventType)
         
     # check data
-    errors = check_occurrences(dataframe=dataframe,errors=[])
+    errors = check_occurrences(dataframe=occurrences,errors=[])
     
     # return errors if there are any; otherwise, 
     if len(errors) > 0:
         raise ValueError("There are some errors in your data.  They are as follows:\n\n{}".format('\n'.join(errors)))
-    return dataframe
+    return occurrences

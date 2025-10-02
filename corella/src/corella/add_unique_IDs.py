@@ -15,7 +15,7 @@ def add_unique_IDs(dataframe=None,
             column_name : ``str``
                 String containing name of column you want to add.  Default is ``occurrenceID``
             column_info: ``str``, ``logical`` or ``list``
-              Contains column names for 
+              Contains column names for creating IDs
             sep: ``char``
                 Separation character for composite IDs.  Default is ``-``.
 
@@ -73,6 +73,9 @@ def add_unique_IDs(dataframe=None,
                         raise ValueError("Please provide either a valid column name, the word 'random' or the word 'sequential'.")
                 dataframe.insert(0,column_name,comp_id_info)
                 return dataframe 
+            else:
+                print("in the else loop")
+                print(type(column_info))
         else:
             raise ValueError("Please provide one of the following column names: \n\n{}".format(valid_id_names))
         
