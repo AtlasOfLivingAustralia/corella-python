@@ -99,14 +99,14 @@ def check_dataset(occurrences=None,
         for df in [occurrences,events]:
             if df is not None:
                 terms_to_check += [x for x in df.columns if x not in vocab_check]
-    else:
-        if events is None and occurrences is not None:
-            terms_to_check = list(occurrences.columns)
-        elif events is not None and occurrences is None:
-            terms_to_check = list(events.columns)
-        else:
-            terms_to_check = list(occurrences.columns) + list(events.columns)
 
+    occ_terms_check = []
+    events_terms_check = []
+    if occurrences is not None:
+        occ_terms_check = list(occurrences.columns)
+    if events is not None:
+        events_terms_check = list(events.columns)
+    
     # initialise table
     data_table = {
             'Number of Errors': [0 for x in range(len(terms_to_check))],
@@ -114,16 +114,26 @@ def check_dataset(occurrences=None,
             'Column name': list(terms_to_check)
     }
 
-    occ_terms = list(set(itemgetter(*occurrences.columns)(terms_and_check_functions)))
-    occ_functions = []
-    if events is not None:
-        event_terms = list(set(itemgetter(*events.columns)(terms_and_check_functions)))
-    event_functions = []
+    # determine functions to check
+    str_occ_functions = []
+    str_event_functions = []
+    for term in occ_terms_check:
+        if term in terms_and_check_functions.keys():
+            str_occ_functions.append(terms_and_check_functions[term])
+    if events_terms_check is not None:
+        for term in events_terms_check:
+            if term in terms_and_check_functions.keys():
+                str_event_functions.append(terms_and_check_functions[term])
+    str_occ_functions = list(set(str_occ_functions))
+    str_event_functions = list(set(str_event_functions))
+
+    occ_functions=[]
+    event_functions=[]
     for f in all_functions:
-        if f.__name__ in occ_terms:
+        if f.__name__ in str_occ_functions:
             occ_functions.append(f)
         if events is not None:
-            if f.__name__ in event_terms:
+            if f.__name__ in str_event_functions:
                 event_functions.append(f)
 
     # run all checks on occurrences
@@ -150,6 +160,7 @@ def check_dataset(occurrences=None,
 
     if print_report:
     
+        print()
         print(tabulate(df_data_table, showindex=False, headers=df_data_table.columns))
         print()
         print("\n══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════\n")
@@ -169,8 +180,8 @@ def check_dataset(occurrences=None,
         for i,cname in enumerate(data_table['Column name']):
             if data_table['Number of Errors'][i] > 0:
                 print('── Error in {} ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────\n'.format(cname))
-                errors = [x for x in errors if cname in x]
-                for e in errors:
+                temp_errors = [x for x in errors if cname in x]
+                for e in temp_errors:
                     print(e)
                     num_errors += 1
                     if num_errors >= max_num_errors:

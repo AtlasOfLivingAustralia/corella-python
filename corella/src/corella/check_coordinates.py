@@ -36,8 +36,10 @@ def check_coordinates(dataframe=None,
     # First, check if a dataframe is provided
     check_for_dataframe(dataframe=dataframe,func='check_coordinates')
     
-    # required terms
+    # let user know what terms are being checked
     terms_to_check = GEO_REQUIRED_DWCA_TERMS["Australia"] + ['coordinatePrecision']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
 
     # check data types for location data
     for c in terms_to_check:

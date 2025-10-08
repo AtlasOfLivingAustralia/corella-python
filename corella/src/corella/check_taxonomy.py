@@ -29,8 +29,13 @@ def check_taxonomy(dataframe=None,
     if dataframe is None:
         raise ValueError("Please provide a dataframe")
 
+    # let user know what terms are being checked
+    terms_to_check = ['kingdom','phylum','class','order','family','genus','specificEpithet','vernacularName']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
+
     # check the type of variable for all scientific name associated variables
-    for item in ['kingdom','phylum','class','order','family','genus','specificEpithet','vernacularName']:
+    for item in terms_to_check:
         if item in dataframe.columns:
             errors = check_is_string(dataframe=dataframe,column_name=item,errors=errors)
 

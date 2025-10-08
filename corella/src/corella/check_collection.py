@@ -25,8 +25,13 @@ def check_collection(dataframe=None,
     if dataframe is None:
         raise ValueError("Please provide a dataframe")
 
+    # let user know what terms are being checked
+    terms_to_check = ['datasetID','datasetName','catalogNumber']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
+
     # check the type of variable for all scientific name associated variables
-    for item in 'datasetID','datasetName','catalogNumber':
+    for item in terms_to_check:
         if item in dataframe.columns:
             if item == 'datasetID':
                 other_formats = list(set(type(x) for x in dataframe[item]))

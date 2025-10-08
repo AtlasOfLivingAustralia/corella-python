@@ -35,6 +35,11 @@ def check_abundance(dataframe=None,
     if dataframe is None:
         raise ValueError("Please provide a dataframe")
 
+    # let user know what terms are being checked
+    terms_to_check = ['individualCount','organismQuantity','organismQuantityType']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
+
     # first, check if individual count is numeric
     if 'individualCount' in dataframe.columns:
         errors = check_is_numeric(dataframe=dataframe,column_name='individualCount',errors=errors)

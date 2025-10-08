@@ -36,6 +36,11 @@ def check_datetime(dataframe=None,
     if 'eventDate' not in dataframe.columns:
         errors.append('eventDate is a required field. Please ensure it is in your dataframe')
 
+    # let user know what terms are being checked
+    terms_to_check = ['eventDate','year','month','day','eventTime']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
+
     # accepted ranges for dates and times
     ranges_datetimes = {
         'eventDate': [datetime.datetime.fromtimestamp(0),datetime.datetime.now()],
