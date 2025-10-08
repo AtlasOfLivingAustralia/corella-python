@@ -52,4 +52,3 @@ def test_organismQuantity_organismQuantityType_wrong_var_type_orgQuant():
     df = pd.DataFrame({'individualCount': [1,0], 'organismQuantity': [1,0], 'organismQuantityType': ['individual','individual']})
     errors = corella.check_abundance(dataframe=df,errors=[])
     assert len(errors) == 0
-#'''

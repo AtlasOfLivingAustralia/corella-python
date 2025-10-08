@@ -28,14 +28,18 @@ def check_datetime(dataframe=None,
     Returns
     -------
         A ``list`` of errors; else, return the ``dataframe``.
-    """
-
+    """    
     # First, check if a dataframe is provided
     check_for_dataframe(dataframe=dataframe,func='check_datetime')
 
     # first, raise an error if there is not an eventDate column
     if 'eventDate' not in dataframe.columns:
         errors.append('eventDate is a required field. Please ensure it is in your dataframe')
+
+    # let user know what terms are being checked
+    terms_to_check = ['eventDate','year','month','day','eventTime']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
 
     # accepted ranges for dates and times
     ranges_datetimes = {

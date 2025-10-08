@@ -1,21 +1,38 @@
 Getting Started
 ===============
 
-This section will take you through an introduction on what ``corella`` can be used for, how to install prerequisites, how to install ``corella`` via ``pip`` or ``git``, and will give you a quick tutorial to get you started.
-
-- :ref:`Introduction`
-- :ref:`Prerequisites`
-- :ref:`Installation`
-- :ref:`File_Types`
-- :ref:`Supported Terms`
+Not sure where to begin?
 
 .. toctree::
-   :maxdepth: 5
-   :titlesonly:
-   :hidden:
+   :maxdepth: 2
+   :hidden: 
 
-   Introduction
-   Prerequisites
-   Installation
-   File_Types
-   Supported_Terms
+   Quick Start Guide <Quick_Start_Guide>
+   Installation <Installation>
+
+.. grid:: 1 2 2 2
+    :gutter: 4
+
+    .. grid-item-card::
+        :link: Installation.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../_static/icons/configuration.svg
+
+        **Installation**
+
+        Want to know how to install ``galaxias``?
+    
+    .. grid-item-card::
+        :link: Quick_Start_Guide.html
+        :class-card: sd-text-black
+        :text-align: center
+
+        .. raw:: html
+            :file: ../_static/icons/getting_started_rocket.svg
+                
+        **Quick Start Guide**
+
+        New to Darwin Core? Unsure what type of data you have?

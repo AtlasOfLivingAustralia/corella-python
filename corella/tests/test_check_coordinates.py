@@ -2,6 +2,7 @@ import corella
 import pytest
 import pandas as pd
 
+#'''
 def test_no_dataframe():
     with pytest.raises(Exception) as e_info:
         corella.check_coordinates()
@@ -18,15 +19,15 @@ def test_decimalLongitude_not_float():
     assert len(errors) == 1
 
 def test_coordinatePrecision_not_float():
-    df = pd.DataFrame({'decimalLatitude': [-1.0,-1.0],'decimalLongitude': [-1.0,-1.0],'coordinatePrecision': ['-1.0','-1.0']})
-    errors = corella.check_coordinates(dataframe=df,errors=[])
-    assert len(errors) == 1
-#'''
-def test_coordinateUncertaintyInMeters_not_numeric():
-    df = pd.DataFrame({'decimalLatitude': [-1.0,-1.0],'decimalLongitude': [-1.0,-1.0],'coordinateUncertaintyInMeters': ['-1.0','-1.0']})
+    df = pd.DataFrame({'decimalLatitude': [-1.0,-1.0],'decimalLongitude': [-1.0,-1.0],'coordinatePrecision': ['-?.0','-?.0']})
     errors = corella.check_coordinates(dataframe=df,errors=[])
     assert len(errors) == 1
 
+def test_coordinateUncertaintyInMeters_not_numeric():
+    df = pd.DataFrame({'decimalLatitude': [-1.0,-1.0],'decimalLongitude': [-1.0,-1.0],'coordinateUncertaintyInMeters': ['-?.0','-?.0']})
+    errors = corella.check_coordinates(dataframe=df,errors=[])
+    print(errors)
+    assert len(errors) == 1
 def test_geodeticDatum_not_float():
     df = pd.DataFrame({'decimalLatitude': [-1.0,-1.0],'decimalLongitude': [-1.0,-1.0],'geodeticDatum': [1.0,1.0]})
     errors = corella.check_coordinates(dataframe=df,errors=[])
@@ -80,9 +81,9 @@ def test_decimalLongitude_decimalLatitdue_coordinateUncertaintyInMeters_geodetic
 def test_decimalLongitude_decimalLatitdue_coordinateUncertaintyInMeters_geodeticDatum_coordinatePrecision_incorrect():
     df = pd.DataFrame({'decimalLongitude': ['-1.0','-1.0'],
                        'decimalLatitude': ['-1.0','-1.0'],
-                       'coordinateUncertaintyInMeters': ['-1.0','-1.0'],
+                       'coordinateUncertaintyInMeters': ['-?.0','-?.0'],
                        'geodeticDatum': [1.0,1.0],
-                       'coordinatePrecision': ['-1.0','-1.0']})
+                       'coordinatePrecision': ['-?.0','-?.0']})
     errors = corella.check_coordinates(dataframe=df,errors=[])
     assert len(errors) == 5
 #'''

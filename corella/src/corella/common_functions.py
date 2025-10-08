@@ -16,10 +16,10 @@ def set_data_workflow(func=None,
 
     # check column names and values
     dataframe,mapping = check_all_columns_values(dataframe=dataframe,mapping=mapping,accepted_formats=accepted_formats)
-
+    
     # rename all necessary columns
     dataframe = dataframe.rename(columns=mapping)
-
+    
     return dataframe
 
 def snake_to_camel_case(list_of_words=None):
@@ -89,7 +89,7 @@ def check_is_numeric(dataframe=None,
     """
     if (not is_numeric_dtype(dataframe[column_name])) and (not type(dataframe[column_name].dtypes) in [np.dtypes.Int64DType,np.dtypes.Int32DType]):
         other_formats = list(set(type(x) for x in dataframe[column_name]))
-        if (len(other_formats) > 1 )| (not is_numeric_dtype(other_formats[0])):
+        if (len(other_formats) > 1 ) | (not is_numeric_dtype(other_formats[0])):
             errors.append('the {} column must be numeric.'.format(column_name))
     return errors
 

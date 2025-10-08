@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Checking your dataset &#8212; corella 0.1.5 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=f190fc39" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/extra.css?v=f190fc39" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="../_static/documentation_options.js?v=59fadc99"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'corella_user_guide/checking_dataset';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="corella 0.1.5 documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="corella 0.1.5 documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Corella User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../apidoc/corella.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/corella-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../getting_started/index.html">
+                        Getting Started
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Corella User Guide
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../apidoc/corella.html">
+                        API Docs
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../authors/index.html">
+                        Authors
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/AtlasOfLivingAustralia/corella-python" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Checking...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="checking-your-dataset">
+<h1>Checking your dataset<a class="headerlink" href="#checking-your-dataset" title="Link to this heading">#</a></h1>
+<p><em>Dax Kellie, Amanda Buyan</em></p>
+<p>A Darwin Core Archive consists of several pieces to ensure a dataset is structured correctly
+(and can be restructured correctly in the future). These pieces include the dataset, a metadata
+statement, and an xml file detailing how the columns in the data relate to each other.</p>
+<p><code class="docutils literal notranslate"><span class="pre">corella</span></code> is designed to check whether a dataset conforms to Darwin Core standard. This involves
+two main steps:</p>
+<ul class="simple">
+<li><p>Ensuring that a dataset uses valid Darwin Core terms as column names</p></li>
+<li><p>Checking that the data in each column is the correct type for the specified Darwin Core term</p></li>
+</ul>
+<p>This vignette gives additional information about the second step of checking each column’s data.</p>
+<section id="checking-individual-terms">
+<h2>Checking individual terms<a class="headerlink" href="#checking-individual-terms" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">corella</span></code> consists of many internal <code class="docutils literal notranslate"><span class="pre">check_</span></code> functions. Each one runs basic validation checks on
+the specified column to ensure the data conforms to the Darwin Core term’s expected data type.</p>
+<p>For example, here is a very small dataset with two observations of galahs (<em>Eolophus roseicapilla</em>)
+(class <code class="docutils literal notranslate"><span class="pre">str</span></code>), their latitude and longitude coordinates (class <code class="docutils literal notranslate"><span class="pre">numeric</span></code>), and a location description
+in the column place (class <code class="docutils literal notranslate"><span class="pre">str</span></code>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><style type="text/css">
+span.prompt1:before {
+  content: " ";
+}
+</style><span class="prompt1">&gt;&gt;&gt; import corella</span>
+<span class="prompt1">&gt;&gt;&gt; import pandas as pd</span>
+<span class="prompt1">&gt;&gt;&gt; df = pd.DataFrame({</span>
+<span class="prompt1">...     &#39;name&#39;: [&#39;Eolophus roseicapilla&#39;, &#39;Eolophus roseicapilla&#39;],</span>
+<span class="prompt1">...     &#39;latitude&#39;: [-35.310, -35.273],</span>
+<span class="prompt1">...     &#39;longitude&#39;: [149.125, 149.133],</span>
+<span class="prompt1">...     &#39;place&#39;: [&#39;a big tree&#39;, &#39;an open field&#39;],</span>
+<span class="prompt1">... })</span>
+<span class="prompt1">&gt;&gt;&gt; df</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>                    name  latitude  longitude          place
+0  Eolophus roseicapilla   -35.310    149.125     a big tree
+1  Eolophus roseicapilla   -35.273    149.133  an open field
+</pre></div>
+</div>
+<p>I can use the function <code class="docutils literal notranslate"><span class="pre">set_coordinates()</span></code> to specify which of my columns refer to
+the valid Darwin Core terms <code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code> and <code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code>. I have intentionally
+added the wrong column place as <code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code>. <code class="docutils literal notranslate"><span class="pre">corella</span></code> will return an error because
+<code class="docutils literal notranslate"><span class="pre">decimalLatitude</span></code> and <code class="docutils literal notranslate"><span class="pre">decimalLongitude</span></code> fields must be numeric in Darwin Core standard.
+This error comes from a small internal checking function called <code class="docutils literal notranslate"><span class="pre">check_decimalLatitude()</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; df = corella.set_coordinates(dataframe=df,</span>
+<span class="prompt1">...                              decimalLatitude = &#39;place&#39;, # wrong column</span>
+<span class="prompt1">...                              decimalLongitude = &#39;longitude&#39;)</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Checking 2 column(s): decimalLongitude, decimalLatitude
+Traceback (most recent call last):
+  File &quot;/Users/buy003/Documents/GitHub/corella-python/docs/source/corella_user_guide/checking_dataset_code.py&quot;, line 19, in &lt;module&gt;
+    df = corella.set_coordinates(dataframe=df,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File &quot;/Users/buy003/anaconda3/envs/galaxias-dev/lib/python3.11/site-packages/corella/set_coordinates.py&quot;, line 81, in set_coordinates
+    raise ValueError(&quot;There are some errors in your data.  They are as follows:\n\n{}&quot;.format(&#39;\n&#39;.join(errors)))
+ValueError: There are some errors in your data.  They are as follows:
+
+the decimalLatitude column must be numeric.
+</pre></div>
+</div>
+</section>
+<section id="supported-terms">
+<h2>Supported terms<a class="headerlink" href="#supported-terms" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">corella</span></code> contains internal <code class="docutils literal notranslate"><span class="pre">check_</span></code> functions for all individual Darwin Core terms
+that are supported. These are as follows:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-info sd-bg-text-info">
+Supported Darwin Core Terms and Their Associated Functions<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<table class="table">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">set_function</p></th>
+<th class="head"><p class="sd-card-text">dwc_term</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text">set_occurrences()</p></td>
+<td><p class="sd-card-text">basisOfRecord</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">occurrenceID</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">set_scientific_name()</p></td>
+<td><p class="sd-card-text">scientificName</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">taxonRank</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">scientificNameAuthorship</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">set_coordinates()</p></td>
+<td><p class="sd-card-text">decimalLatitude</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">decimalLongitude</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">geodeticDatum</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">coordinateUncertaintyInMeters</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">coordinatePrecision</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">set_datetime()</p></td>
+<td><p class="sd-card-text">eventDate</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">year</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">month</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">day</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">eventTime</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">set_locality()</p></td>
+<td><p class="sd-card-text">continent</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">country</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">countryCode</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">stateProvince</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">locality</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">set_taxonomy()</p></td>
+<td><p class="sd-card-text">kingdom</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">phylum</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">class</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">order</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">family</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">genus</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">specificEpithet</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">vernacularName</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">set_abundance()</p></td>
+<td><p class="sd-card-text">individualCount</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">organismQuantity</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">organismQuantityType</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">organismQuantity</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">set_collection()</p></td>
+<td><p class="sd-card-text">datasetID</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">datasetName</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">catalogNumber</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">set_individual_traits()</p></td>
+<td><p class="sd-card-text">individualID</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">)</p></td>
+<td><p class="sd-card-text">lifeStage</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">sex</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">vitality</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">reproductiveCondition</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">set_observer()</p></td>
+<td><p class="sd-card-text">recordedBy</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">recordedByID</p></td>
+</tr>
+<tr class="row-even"><td><p class="sd-card-text">set_events()</p></td>
+<td><p class="sd-card-text">eventID</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">eventType</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">parentEventID</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text">set_license()</p></td>
+<td><p class="sd-card-text">license</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p class="sd-card-text">rightsHolder</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p class="sd-card-text">accessRights</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details><p>When a user specifies a column to a matching Darwin Core term (or the column/term is detected by
+<code class="docutils literal notranslate"><span class="pre">corella</span></code> automatically) in a <code class="docutils literal notranslate"><span class="pre">set_</span></code> function, the <code class="docutils literal notranslate"><span class="pre">set_</span></code> function triggers that matching
+term’s <code class="docutils literal notranslate"><span class="pre">check_</span></code> function. This process ensures that the data is correctly formatted prior to
+being saved in a Darwin Core Archive.</p>
+<p>It’s useful to know that these internal, individual <code class="docutils literal notranslate"><span class="pre">check_</span></code> functions exist because they are
+the building blocks of a full suite of checks, which users can run with <code class="docutils literal notranslate"><span class="pre">check_dataset()</span></code>.</p>
+</section>
+<section id="checking-a-full-dataset">
+<h2>Checking a full dataset<a class="headerlink" href="#checking-a-full-dataset" title="Link to this heading">#</a></h2>
+<p>For users who are familiar with Darwin Core standards, or who have datasets that already conform
+to Darwin Core standards (or are very close), it might be more convenient to run many checks at one time.</p>
+<p>Users can use the <code class="docutils literal notranslate"><span class="pre">check_dataset()</span></code> function to run a “test suite” on their dataset. <code class="docutils literal notranslate"><span class="pre">check_dataset()</span></code>
+detects all columns that match valid Darwin Core terms, and runs all matching <code class="docutils literal notranslate"><span class="pre">check_</span></code> functions all at
+once, interactively.</p>
+<p>The output of <code class="docutils literal notranslate"><span class="pre">check_dataset()</span></code> returns:</p>
+<ul class="simple">
+<li><p>A summary table of whether each matching column’s check passed or failed</p></li>
+<li><p>The number of errors and passed columns</p></li>
+<li><p>Whether the data meets minimum Darwin Core requirements</p></li>
+<li><p>The first 5 error messages returned by checks</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span class="prompt1">&gt;&gt;&gt; df = pd.DataFrame({</span>
+<span class="prompt1">...     &#39;decimalLatitude&#39;: [-35.310, &quot;-35.273&quot;], # deliberate error for demonstration purposes</span>
+<span class="prompt1">...     &#39;decimalLongitude&#39;: [149.125, 149.133],</span>
+<span class="prompt1">...     &#39;date&#39;: [&quot;14-01-2023&quot;, &quot;15-01-2023&quot;],</span>
+<span class="prompt1">...     &#39;individualCount&#39;: [0, 2],</span>
+<span class="prompt1">...     &#39;scientificName&#39;: [&quot;Callocephalon fimbriatum&quot;, &quot;Eolophus roseicapilla&quot;],</span>
+<span class="prompt1">...     &#39;country&#39;: [&quot;AU&quot;, &quot;AU&quot;],</span>
+<span class="prompt1">...     &#39;occurrenceStatus&#39;: [&quot;present&quot;, &quot;present&quot;],</span>
+<span class="prompt1">... })</span>
+<span class="prompt1">&gt;&gt;&gt; corella.check_dataset(occurrences=df)</span>
+</pre></div></div><div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Checking 1 column(s): individualCount
+Checking 1 column(s): occurrenceStatus
+Checking 2 column(s): decimalLatitude, decimalLongitude
+Checking 1 column(s): country
+Checking 0 column(s): 
+Checking 1 column(s): occurrenceStatus
+Checking 1 column(s): scientificName
+
+  Number of Errors  Pass/Fail    Column name
+------------------  -----------  ----------------
+                 1  ✗            decimalLatitude
+                 0  ✓            decimalLongitude
+                 0  ✓            individualCount
+                 0  ✓            scientificName
+                 1  ✗            country
+                 1  ✗            occurrenceStatus
+
+
+══ Results ════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+
+Errors: 3 | Passes: 3
+
+✗ Data does not meet minimum Darwin core requirements
+Use corella.suggest_workflow()
+
+── Error in decimalLatitude ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+the decimalLatitude column must be numeric.
+
+── Error in country ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Some of your country are incorrect.  Accepted values are found on Wikipedia: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
+── Error in occurrenceStatus ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Some of your individual counts are 0, yet the occurrence status is set to present.  Please change occurrenceStatus to ABSENT
+</pre></div>
+</div>
+</section>
+<section id="users-have-options">
+<h2>Users have options<a class="headerlink" href="#users-have-options" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">corella</span></code> offers two options for checking a dataset, which we have detailed above:
+Running individual checks through <code class="docutils literal notranslate"><span class="pre">set_</span></code> functions, or running a “test suite” with
+<code class="docutils literal notranslate"><span class="pre">check_dataset()</span></code>. We hope that these alternative options provide users with different
+options for their workflow, allowing them to choose their favourite method or switch
+between methods as they standardise their data.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-individual-terms">Checking individual terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-terms">Supported terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-a-full-dataset">Checking a full dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#users-have-options">Users have options</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright Atlas of Living Australia.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

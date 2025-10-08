@@ -22,6 +22,7 @@ def check_basisOfRecord(dataframe=None,
 
     # check basisOfRecord values
     if 'basisOfRecord' in dataframe.columns:
+        print('Checking 1 column(s): basisOfRecord')
         errors = check_is_string(dataframe=dataframe,column_name='basisOfRecord',errors=errors)
         terms = get_bor_values()
         if not set(terms).issuperset(set(dataframe['basisOfRecord'])):

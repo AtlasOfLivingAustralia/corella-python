@@ -45,8 +45,13 @@ def check_locality(dataframe=None,
         'countryCode': 'Code'
     }
 
+    # let user know what terms are being checked
+    terms_to_check = ['continent','country','countryCode','stateProvince','locality']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
+
     # loop over all variables
-    for var in ['continent','country','countryCode','stateProvince','locality']:
+    for var in terms_to_check:
         if var in dataframe.columns:
             errors = check_is_string(dataframe=dataframe,column_name=var,errors=errors)
             in_column = any(var in x for x in errors)

@@ -1,3 +1,15 @@
+## 0.1.5 (2025-10-08)
+
+### Fix
+
+- **added-print-statements-to-check-functions**: added print statements to check functions
+
+## 0.1.4 (2025-10-02)
+
+### Fix
+
+- **fixed-how-corella-works-with-galaxias**: fixed how corella works with galaxias
+
 ## 0.1.3 (2025-08-08)
 
 ### Fix

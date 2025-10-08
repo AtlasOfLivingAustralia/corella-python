@@ -36,8 +36,10 @@ def check_coordinates(dataframe=None,
     # First, check if a dataframe is provided
     check_for_dataframe(dataframe=dataframe,func='check_coordinates')
     
-    # required terms
-    terms_to_check = GEO_REQUIRED_DWCA_TERMS["Australia"] + ['coordinatePrecision','coordinateUncertaintyInMeters']
+    # let user know what terms are being checked
+    terms_to_check = GEO_REQUIRED_DWCA_TERMS["Australia"] + ['coordinatePrecision']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
 
     # check data types for location data
     for c in terms_to_check:
@@ -50,7 +52,7 @@ def check_coordinates(dataframe=None,
             # then, check for string columns
             if c == 'geodeticDatum': 
                 errors = check_is_string(dataframe=dataframe,column_name=c,errors=errors)
-                
+
     # set ranges for easy looping
     ranges = {
         'decimalLatitude': [-90,90],

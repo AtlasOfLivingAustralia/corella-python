@@ -24,6 +24,7 @@ def check_occurrenceStatus(dataframe=None,
     
     # check basisOfRecord values
     if 'occurrenceStatus' in dataframe.columns:
+        print('Checking 1 column(s): occurrenceStatus')
         errors = check_is_string(dataframe=dataframe,column_name='occurrenceStatus',errors=errors)
         terms = ['PRESENT','ABSENT','present','absent']
         if not all(x in terms for x in dataframe['occurrenceStatus']):

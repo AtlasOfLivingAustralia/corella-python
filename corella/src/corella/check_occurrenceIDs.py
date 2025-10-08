@@ -24,6 +24,10 @@ def check_occurrenceIDs(dataframe=None,
     if dataframe is None:
         raise ValueError("Please provide a dataframe to this function.")
 
+    terms_to_check = 'occurrenceID','catalogNumber','recordNumber'
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
+
     # look for duplicate unique IDs
     list_terms = list(dataframe.columns)
     unique_id_columns = ['occurrenceID','catalogNumber','recordNumber']

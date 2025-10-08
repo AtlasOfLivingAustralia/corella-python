@@ -28,6 +28,11 @@ def check_events(dataframe=None,
     # First, check if a dataframe is provided
     check_for_dataframe(dataframe=dataframe,func='check_events')
 
+    # let user know what terms are being checked
+    terms_to_check = ['eventDate','year','month','day','eventTime']
+    columns_to_check = set(dataframe.columns).intersection(terms_to_check)
+    print('Checking {} column(s): {}'.format(len(columns_to_check),', '.join(columns_to_check)))
+
     # check values 
     for item in ['eventID','parentEventID','eventType''Event','samplingProtocol']:
         if item in dataframe.columns:
