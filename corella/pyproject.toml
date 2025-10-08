@@ -31,7 +31,7 @@ requests = "^2.31.0"
 name = "cz_conventional_commits"
 update_changelog_on_bump = true
 tag_format = "$version"
-version = "0.1.4"
+version = "0.1.5"
 version_files = [
     "pyproject.toml:version",
     "src/corella/version.py:version",
